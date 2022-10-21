@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1g44ne846cs6"
-path="res://.godot/imported/bot_tutor_2-sheet1.png-b6b4205cded27d6d1825445c547bb661.ctex"
+path="res://.godot/imported/bot_tutor_2-sheet1.png-f33e4f27979ff585b258cca1f0e3b30b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/bot_tutor_1/bot_tutor_2-sheet1.png"
-dest_files=["res://.godot/imported/bot_tutor_2-sheet1.png-b6b4205cded27d6d1825445c547bb661.ctex"]
+source_file="res://images/character/bot_tutor/bot_tutor_2-sheet1.png"
+dest_files=["res://.godot/imported/bot_tutor_2-sheet1.png-f33e4f27979ff585b258cca1f0e3b30b.ctex"]
 
 [params]
 
