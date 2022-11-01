@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c15jbfgva35x8"
-path="res://.godot/imported/ee_tent-sheet0.png-574c6e5e0e4e0fff8bec541fdfe9e2b6.ctex"
+path="res://.godot/imported/ee_tent-sheet0.png-b76bdf0498f2ae1cb164f079036c2f0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/easter_gg/ee_tent-sheet0.png"
-dest_files=["res://.godot/imported/ee_tent-sheet0.png-574c6e5e0e4e0fff8bec541fdfe9e2b6.ctex"]
+source_file="res://images/environment/easter_gg/ee_tent-sheet0.png"
+dest_files=["res://.godot/imported/ee_tent-sheet0.png-b76bdf0498f2ae1cb164f079036c2f0d.ctex"]
 
 [params]
 

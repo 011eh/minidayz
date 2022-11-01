@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvx6faiva2uah"
-path="res://.godot/imported/ee_castle_tower-sheet0.png-810097fa7a567b86deb237ceb440aba6.ctex"
+path="res://.godot/imported/ee_castle_tower-sheet0.png-8fff43eca3c2b62c5005f16ede16d2ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/easter_gg/ee_castle_tower-sheet0.png"
-dest_files=["res://.godot/imported/ee_castle_tower-sheet0.png-810097fa7a567b86deb237ceb440aba6.ctex"]
+source_file="res://images/environment/easter_gg/ee_castle_tower-sheet0.png"
+dest_files=["res://.godot/imported/ee_castle_tower-sheet0.png-8fff43eca3c2b62c5005f16ede16d2ec.ctex"]
 
 [params]
 

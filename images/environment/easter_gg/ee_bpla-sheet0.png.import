@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bndk1h3p6t8uf"
-path="res://.godot/imported/ee_bpla-sheet0.png-cec35e2934301b9363628a94bcd86897.ctex"
+path="res://.godot/imported/ee_bpla-sheet0.png-1f28ed99e1ee922e81a6b33481443ba2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/easter_gg/ee_bpla-sheet0.png"
-dest_files=["res://.godot/imported/ee_bpla-sheet0.png-cec35e2934301b9363628a94bcd86897.ctex"]
+source_file="res://images/environment/easter_gg/ee_bpla-sheet0.png"
+dest_files=["res://.godot/imported/ee_bpla-sheet0.png-1f28ed99e1ee922e81a6b33481443ba2.ctex"]
 
 [params]
 

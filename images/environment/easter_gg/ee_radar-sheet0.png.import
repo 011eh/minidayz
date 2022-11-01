@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd47jc15mggkv"
-path="res://.godot/imported/ee_radar-sheet0.png-ecc82f77876cb5f88ca9978345d11303.ctex"
+path="res://.godot/imported/ee_radar-sheet0.png-d92dbb2378b713734662ce71a29cad74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/easter_gg/ee_radar-sheet0.png"
-dest_files=["res://.godot/imported/ee_radar-sheet0.png-ecc82f77876cb5f88ca9978345d11303.ctex"]
+source_file="res://images/environment/easter_gg/ee_radar-sheet0.png"
+dest_files=["res://.godot/imported/ee_radar-sheet0.png-d92dbb2378b713734662ce71a29cad74.ctex"]
 
 [params]
 

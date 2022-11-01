@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1lejbt0uicba"
-path="res://.godot/imported/ee_radiotower_part2-sheet0.png-47e10dedef3579bd98598b6a7845b6cc.ctex"
+path="res://.godot/imported/ee_radiotower_part2-sheet0.png-bce7cdd4098803478f10964948caf701.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/easter_gg/ee_radiotower_part2-sheet0.png"
-dest_files=["res://.godot/imported/ee_radiotower_part2-sheet0.png-47e10dedef3579bd98598b6a7845b6cc.ctex"]
+source_file="res://images/environment/easter_gg/ee_radiotower_part2-sheet0.png"
+dest_files=["res://.godot/imported/ee_radiotower_part2-sheet0.png-bce7cdd4098803478f10964948caf701.ctex"]
 
 [params]
 

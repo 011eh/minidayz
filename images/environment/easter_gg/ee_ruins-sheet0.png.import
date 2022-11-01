@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://owlv2cstvegy"
-path="res://.godot/imported/ee_ruins-sheet0.png-ba89c5e254e158866349423c9f92447a.ctex"
+path="res://.godot/imported/ee_ruins-sheet0.png-08259ef9044a81b41549d55ec75fc7ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/easter_gg/ee_ruins-sheet0.png"
-dest_files=["res://.godot/imported/ee_ruins-sheet0.png-ba89c5e254e158866349423c9f92447a.ctex"]
+source_file="res://images/environment/easter_gg/ee_ruins-sheet0.png"
+dest_files=["res://.godot/imported/ee_ruins-sheet0.png-08259ef9044a81b41549d55ec75fc7ab.ctex"]
 
 [params]
 
