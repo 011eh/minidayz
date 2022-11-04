@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvgpx3wf23x0j"
-path="res://.godot/imported/zed_bullet-sheet0.png-ed3d9dd9c314b6811dc56e9df754ab82.ctex"
+path="res://.godot/imported/zed_bullet-sheet0.png-e8f7e714cd400631362e051192125314.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/zed/zed_bullet-sheet0.png"
-dest_files=["res://.godot/imported/zed_bullet-sheet0.png-ed3d9dd9c314b6811dc56e9df754ab82.ctex"]
+source_file="res://images/zed/others/zed_bullet-sheet0.png"
+dest_files=["res://.godot/imported/zed_bullet-sheet0.png-e8f7e714cd400631362e051192125314.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsvqp743l1b2v"
-path="res://.godot/imported/zed_screamer_eyes-sheet0.png-b2129bddf9eae617d820a4b6483d543f.ctex"
+path="res://.godot/imported/zed_screamer_eyes-sheet0.png-bdab0db4541d9b0bcb7c947ecfabad3d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/zed/zed_screamer_eyes-sheet0.png"
-dest_files=["res://.godot/imported/zed_screamer_eyes-sheet0.png-b2129bddf9eae617d820a4b6483d543f.ctex"]
+source_file="res://images/zed/others/zed_screamer_eyes-sheet0.png"
+dest_files=["res://.godot/imported/zed_screamer_eyes-sheet0.png-bdab0db4541d9b0bcb7c947ecfabad3d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lk7ji2h5pnew"
-path="res://.godot/imported/zed_tank_eyes-sheet0.png-4690c3067a743a12668de6e6db0f512e.ctex"
+uid="uid://bv0wjs85pd2j6"
+path="res://.godot/imported/zed_normal_skin5.png-104761af629fb78436d11e0dd2d88ea7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/zed/others/zed_tank_eyes-sheet0.png"
-dest_files=["res://.godot/imported/zed_tank_eyes-sheet0.png-4690c3067a743a12668de6e6db0f512e.ctex"]
+source_file="res://images/zed/zed_normal_skin5.png"
+dest_files=["res://.godot/imported/zed_normal_skin5.png-104761af629fb78436d11e0dd2d88ea7.ctex"]
 
 [params]
 

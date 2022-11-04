@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3gpnyui254s2"
-path="res://.godot/imported/zed_fast_eyes-sheet0.png-578a6407725e52e9d3c7005b27687351.ctex"
+path="res://.godot/imported/zed_fast_eyes-sheet0.png-3c75178767349935a24722ad59cf073a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/zed/zed_fast_eyes-sheet0.png"
-dest_files=["res://.godot/imported/zed_fast_eyes-sheet0.png-578a6407725e52e9d3c7005b27687351.ctex"]
+source_file="res://images/zed/others/zed_fast_eyes-sheet0.png"
+dest_files=["res://.godot/imported/zed_fast_eyes-sheet0.png-3c75178767349935a24722ad59cf073a.ctex"]
 
 [params]
 

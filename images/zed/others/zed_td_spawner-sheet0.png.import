@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8aw0uf8m5ufc"
-path="res://.godot/imported/zed_td_spawner-sheet0.png-7eeaa041f83d35e1f17dde2df8a20c52.ctex"
+path="res://.godot/imported/zed_td_spawner-sheet0.png-52e721f36a1d516a9596b436f4b6564a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/zed/zed_td_spawner-sheet0.png"
-dest_files=["res://.godot/imported/zed_td_spawner-sheet0.png-7eeaa041f83d35e1f17dde2df8a20c52.ctex"]
+source_file="res://images/zed/others/zed_td_spawner-sheet0.png"
+dest_files=["res://.godot/imported/zed_td_spawner-sheet0.png-52e721f36a1d516a9596b436f4b6564a.ctex"]
 
 [params]
 
