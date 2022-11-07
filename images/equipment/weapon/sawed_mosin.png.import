@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnj4uw312yxuy"
-path="res://.godot/imported/sawed_mosin-sheet1.png-78dd48a243c4faf2d6f1ccacade53bb3.ctex"
+uid="uid://crlm4d0tbqjb3"
+path="res://.godot/imported/sawed_mosin.png-7df5c58f223b911c55efca39534ec9e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/sawed_mosin/sawed_mosin-sheet1.png"
-dest_files=["res://.godot/imported/sawed_mosin-sheet1.png-78dd48a243c4faf2d6f1ccacade53bb3.ctex"]
+source_file="res://images/equipment/weapon/sawed_mosin.png"
+dest_files=["res://.godot/imported/sawed_mosin.png-7df5c58f223b911c55efca39534ec9e2.ctex"]
 
 [params]
 
