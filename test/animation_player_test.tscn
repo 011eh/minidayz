@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://joombihlhhmv"]
+
+[ext_resource type="Texture2D" uid="uid://bmt5v24pwi7xk" path="res://images/zed/zed_army_skin1.png" id="2_7y8dq"]
+[ext_resource type="Script" path="res://test/AnimationPlayer.gd" id="2_w1img"]
+[ext_resource type="Texture2D" uid="uid://0q2r08jp8m85" path="res://images/effect/rain_ground-sheet0.png" id="3_trssw"]
+
+[sub_resource type="Animation" id="Animation_x4aqw"]
+resource_name = "New Anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zed:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RainGround-sheet0:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ula0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RainGround-sheet0:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6sc0"]
+_data = {
+"New Anim": SubResource("Animation_x4aqw"),
+"RESET": SubResource("Animation_ula0n")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("2_w1img")
+
+[node name="Zed" type="Sprite2D" parent="."]
+position = Vector2(88, 24)
+texture = ExtResource("2_7y8dq")
+hframes = 4
+vframes = 13
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m6sc0")
+}
+
+[node name="RainGround-sheet0" type="Sprite2D" parent="."]
+position = Vector2(248, 88)
+texture = ExtResource("3_trssw")
+hframes = 3
+vframes = 4
