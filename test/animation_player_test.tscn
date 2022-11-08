@@ -2,11 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bmt5v24pwi7xk" path="res://images/zed/zed_army_skin1.png" id="2_7y8dq"]
 [ext_resource type="Script" path="res://test/AnimationPlayer.gd" id="2_w1img"]
-[ext_resource type="Texture2D" uid="uid://0q2r08jp8m85" path="res://images/effect/rain_ground-sheet0.png" id="3_trssw"]
+[ext_resource type="Texture2D" uid="uid://0fikyytu4qct" path="res://images/effect/rain_ground.png" id="3_n317k"]
 
 [sub_resource type="Animation" id="Animation_x4aqw"]
 resource_name = "New Anim"
-length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -27,10 +26,10 @@ tracks/1/path = NodePath("RainGround-sheet0:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_ula0n"]
@@ -70,7 +69,7 @@ libraries = {
 }
 
 [node name="RainGround-sheet0" type="Sprite2D" parent="."]
-position = Vector2(248, 88)
-texture = ExtResource("3_trssw")
-hframes = 3
-vframes = 4
+position = Vector2(272, 80)
+texture = ExtResource("3_n317k")
+hframes = 5
+vframes = 2
