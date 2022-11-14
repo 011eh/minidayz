@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxr7ncbqmq5fk"
+path="res://.godot/imported/gren pin.ogg-14188ec03c0df99420b59617642a23b5.oggvorbisstr"
+
+[deps]
+
+source_file="res://media/action/gren pin.ogg"
+dest_files=["res://.godot/imported/gren pin.ogg-14188ec03c0df99420b59617642a23b5.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
