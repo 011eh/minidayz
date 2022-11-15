@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://densrey0jo50"
-path="res://.godot/imported/player_skin_aika.png-e079cd5ef02cb34edb2523b128a9229e.ctex"
+uid="uid://ck4hkxma1121j"
+path="res://.godot/imported/player_skin_ganzo.png-934a43f5b1098cd88ede3969f43249cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_aika.png"
-dest_files=["res://.godot/imported/player_skin_aika.png-e079cd5ef02cb34edb2523b128a9229e.ctex"]
+source_file="res://images/character/player_skin/player_skin_ganzo.png"
+dest_files=["res://.godot/imported/player_skin_ganzo.png-934a43f5b1098cd88ede3969f43249cc.ctex"]
 
 [params]
 

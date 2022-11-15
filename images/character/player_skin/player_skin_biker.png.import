@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8sy3w2vhw35s"
-path="res://.godot/imported/player_skin_bandit.png-8a19b5a4204b7136ee0df0af94f16809.ctex"
+uid="uid://q5lewswaf3so"
+path="res://.godot/imported/player_skin_biker.png-5f22102276cefaa35c4869d5d76a28dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_bandit.png"
-dest_files=["res://.godot/imported/player_skin_bandit.png-8a19b5a4204b7136ee0df0af94f16809.ctex"]
+source_file="res://images/character/player_skin/player_skin_biker.png"
+dest_files=["res://.godot/imported/player_skin_biker.png-5f22102276cefaa35c4869d5d76a28dc.ctex"]
 
 [params]
 

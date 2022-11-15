@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bchsf8i4m2ii6"
-path="res://.godot/imported/player_skin_doc.png-c213df1860cc79f3fb039bc808ca850b.ctex"
+uid="uid://d3hxnsotvdbxi"
+path="res://.godot/imported/player_skin_survivalist.png-9ed1c9fa9aca5cfe2271321dddc3207a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_doc.png"
-dest_files=["res://.godot/imported/player_skin_doc.png-c213df1860cc79f3fb039bc808ca850b.ctex"]
+source_file="res://images/character/player_skin/player_skin_survivalist.png"
+dest_files=["res://.godot/imported/player_skin_survivalist.png-9ed1c9fa9aca5cfe2271321dddc3207a.ctex"]
 
 [params]
 

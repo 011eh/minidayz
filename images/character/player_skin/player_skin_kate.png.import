@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://capd7lwlbdbs7"
-path="res://.godot/imported/player_skin_kate.png-7ba7988a676aa5ca9af4c5e5f457b31c.ctex"
+uid="uid://cf0ey41dtsaod"
+path="res://.godot/imported/player_skin_kate.png-3615c6b0fa3058d459e1bdab2da0c24f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_kate.png"
-dest_files=["res://.godot/imported/player_skin_kate.png-7ba7988a676aa5ca9af4c5e5f457b31c.ctex"]
+source_file="res://images/character/player_skin/player_skin_kate.png"
+dest_files=["res://.godot/imported/player_skin_kate.png-3615c6b0fa3058d459e1bdab2da0c24f.ctex"]
 
 [params]
 

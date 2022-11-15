@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c40sjpvpimy6g"
-path="res://.godot/imported/player_skin_jasmine.png-f1af3a9097a89fbf3c64d8c4f599382e.ctex"
+uid="uid://w1fdu7i00wdm"
+path="res://.godot/imported/player_skin_doc.png-6285468e79786d5d31172fc4ca6b2c17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_jasmine.png"
-dest_files=["res://.godot/imported/player_skin_jasmine.png-f1af3a9097a89fbf3c64d8c4f599382e.ctex"]
+source_file="res://images/character/player_skin/player_skin_doc.png"
+dest_files=["res://.godot/imported/player_skin_doc.png-6285468e79786d5d31172fc4ca6b2c17.ctex"]
 
 [params]
 

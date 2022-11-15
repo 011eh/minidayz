@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbtkt2ypm8yxr"
-path="res://.godot/imported/player_skin_biker.png-57080ffa31e54be9c4c465e603ad5f23.ctex"
+uid="uid://c7q7jxoy54b0x"
+path="res://.godot/imported/player_skin_jasmine.png-140637888c9a204c7ea3e3a39dac4d87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_biker.png"
-dest_files=["res://.godot/imported/player_skin_biker.png-57080ffa31e54be9c4c465e603ad5f23.ctex"]
+source_file="res://images/character/player_skin/player_skin_jasmine.png"
+dest_files=["res://.godot/imported/player_skin_jasmine.png-140637888c9a204c7ea3e3a39dac4d87.ctex"]
 
 [params]
 

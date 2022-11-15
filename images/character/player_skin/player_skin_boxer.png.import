@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw3h44ywjr8tp"
-path="res://.godot/imported/player_skin_redneck.png-46fd034a6a0cb2382d4f45ef62658917.ctex"
+uid="uid://b2a6hbrybo6al"
+path="res://.godot/imported/player_skin_boxer.png-8f726febf2507d274b5242d953d19f16.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/character/player_skin_redneck.png"
-dest_files=["res://.godot/imported/player_skin_redneck.png-46fd034a6a0cb2382d4f45ef62658917.ctex"]
+source_file="res://images/character/player_skin/player_skin_boxer.png"
+dest_files=["res://.godot/imported/player_skin_boxer.png-8f726febf2507d274b5242d953d19f16.ctex"]
 
 [params]
 
