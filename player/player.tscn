@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv50q5y8b5idp"]
+
+[ext_resource type="PackedScene" uid="uid://w66kok06lhmh" path="res://character.tscn" id="1_g5mqy"]
+[ext_resource type="Script" path="res://player/player.gd" id="2_wwair"]
+[ext_resource type="Script" path="res://player/run_state.gd" id="3_7g6r8"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ra41q"]
+
+[node name="Player" instance=ExtResource("1_g5mqy")]
+script = ExtResource("2_wwair")
+
+[node name="Clothes" parent="Sprite" index="1"]
+visible = true
+
+[node name="Pants" parent="Sprite" index="2"]
+visible = true
+
+[node name="Helmet" parent="Sprite" index="3"]
+visible = true
+
+[node name="Vest" parent="Sprite" index="4"]
+visible = true
+
+[node name="Backpack" parent="Sprite" index="5"]
+visible = true
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ra41q")
+
+[node name="Run" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("3_7g6r8")
