@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://b48o4hsuigm0g"
+path="res://.godot/imported/l85_rifle.png-b2898d8c65f96e35e8bfe9534570dd52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/rifle/l85_rifle.png"
+dest_files=["res://.godot/imported/l85_rifle.png-b2898d8c65f96e35e8bfe9534570dd52.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://b1rs3kgqo6ngv"
+path="res://.godot/imported/groza_rifle.png-36b894c42190cd912ddb8ff5f6f87f49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/rifle/groza_rifle.png"
+dest_files=["res://.godot/imported/groza_rifle.png-36b894c42190cd912ddb8ff5f6f87f49.ctex"]
 
 [params]
 

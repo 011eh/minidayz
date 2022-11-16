@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://cwdq32q07p3np"
+path="res://.godot/imported/akm_rifle.png-8181ef299fc9a50bf5fac65805224076.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/rifle/akm_rifle.png"
+dest_files=["res://.godot/imported/akm_rifle.png-8181ef299fc9a50bf5fac65805224076.ctex"]
 
 [params]
 

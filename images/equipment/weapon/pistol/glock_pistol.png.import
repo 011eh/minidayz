@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://dva4p6uf68njr"
+path="res://.godot/imported/glock_pistol.png-50c6230c074b895be6fbd2c42b8a3568.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/pistol/glock_pistol.png"
+dest_files=["res://.godot/imported/glock_pistol.png-50c6230c074b895be6fbd2c42b8a3568.ctex"]
 
 [params]
 

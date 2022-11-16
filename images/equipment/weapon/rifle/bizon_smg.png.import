@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://dwoh5pr5nouq3"
+path="res://.godot/imported/bizon_smg.png-92d03c9bdf62c1fc304941f2e36b0fd4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/rifle/bizon_smg.png"
+dest_files=["res://.godot/imported/bizon_smg.png-92d03c9bdf62c1fc304941f2e36b0fd4.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://c3v23u6gtycbv"
+path="res://.godot/imported/pipe_wrench.png-d85cb8bd5638e34079e15e49f196e9c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/melee/pipe_wrench.png"
+dest_files=["res://.godot/imported/pipe_wrench.png-d85cb8bd5638e34079e15e49f196e9c5.ctex"]
 
 [params]
 

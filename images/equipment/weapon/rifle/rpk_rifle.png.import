@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jvq15jaw1b0u"
-path="res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"
+uid="uid://ciy8op3oaih8m"
+path="res://.godot/imported/rpk_rifle.png-67387c8e341a12bd6a30218026231af6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/equipment/weapon/bullet/pistol_bullet-sheet0.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet0.png-a1b20acb30062076e4306b3c24ce1b04.ctex"]
+source_file="res://images/equipment/weapon/rifle/rpk_rifle.png"
+dest_files=["res://.godot/imported/rpk_rifle.png-67387c8e341a12bd6a30218026231af6.ctex"]
 
 [params]
 
