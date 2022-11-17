@@ -18,10 +18,16 @@ _global_script_classes=[{
 "class": &"StateMachine",
 "language": &"GDScript",
 "path": "res://state/state_machine.gd"
+}, {
+"base": "RefCounted",
+"class": &"Weapon",
+"language": &"GDScript",
+"path": "res://items/weapon.gd"
 }]
 _global_script_class_icons={
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"Weapon": ""
 }
 
 [application]
