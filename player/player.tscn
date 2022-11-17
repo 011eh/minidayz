@@ -1,31 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv50q5y8b5idp"]
+[gd_scene load_steps=6 format=3 uid="uid://cv50q5y8b5idp"]
 
 [ext_resource type="PackedScene" uid="uid://w66kok06lhmh" path="res://character.tscn" id="1_g5mqy"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_wwair"]
 [ext_resource type="Script" path="res://player/run_state.gd" id="3_7g6r8"]
+[ext_resource type="Script" path="res://player/idle_state.gd" id="3_iiftj"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ra41q"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_8ca5u"]
 
 [node name="Player" instance=ExtResource("1_g5mqy")]
 script = ExtResource("2_wwair")
 
+[node name="Skin" parent="Sprite" index="0"]
+frame = 15
+
 [node name="Clothes" parent="Sprite" index="1"]
-visible = true
+frame = 14
 
 [node name="Pants" parent="Sprite" index="2"]
-visible = true
+frame = 14
 
 [node name="Helmet" parent="Sprite" index="3"]
-visible = true
+frame = 14
 
 [node name="Vest" parent="Sprite" index="4"]
-visible = true
+frame = 14
 
 [node name="Backpack" parent="Sprite" index="5"]
-visible = true
+frame = 14
+
+[node name="Rifle" parent="WeaponSprite" index="0"]
+frame = 14
+
+[node name="Melee" parent="WeaponSprite" index="2"]
+frame = 14
 
 [node name="AnimationTree" parent="." index="3"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_ra41q")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_8ca5u")
 
-[node name="Run" type="Node" parent="StateMachine" index="0"]
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("3_iiftj")
+
+[node name="Run" type="Node" parent="StateMachine" index="1"]
 script = ExtResource("3_7g6r8")
