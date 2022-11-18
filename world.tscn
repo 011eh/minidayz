@@ -1,7 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0mc7rv1kggs0"]
+[gd_scene load_steps=5 format=3 uid="uid://b3rbvu3iaughq"]
 
-[ext_resource type="PackedScene" uid="uid://cv50q5y8b5idp" path="res://player/player.tscn" id="1_r5q47"]
+[ext_resource type="PackedScene" uid="uid://62yuykp5osve" path="res://player/player.tscn" id="1_r5q47"]
+[ext_resource type="PackedScene" uid="uid://54nan5kjfqb4" path="res://character/character.tscn" id="2_qj2cx"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_s6ova"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_tl2v1"]
 
 [node name="World" type="Node2D"]
 
+[node name="Character" parent="." instance=ExtResource("2_qj2cx")]
+position = Vector2(70, 57)
+
+[node name="Skin" parent="Character/Sprite" index="0"]
+frame = 12
+
+[node name="Clothes" parent="Character/Sprite" index="1"]
+frame = 12
+
+[node name="Pants" parent="Character/Sprite" index="2"]
+frame = 12
+
+[node name="Helmet" parent="Character/Sprite" index="3"]
+frame = 12
+
+[node name="Vest" parent="Character/Sprite" index="4"]
+frame = 12
+
+[node name="Backpack" parent="Character/Sprite" index="5"]
+frame = 12
+
+[node name="Rifle" parent="Character/Sprite" index="6"]
+frame = 12
+
+[node name="Melee" parent="Character/Sprite" index="8"]
+frame = 12
+
+[node name="AnimationTree" parent="Character" index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_s6ova")
+
 [node name="Player" parent="." instance=ExtResource("1_r5q47")]
+position = Vector2(116, 55)
+
+[node name="AnimationTree" parent="Player" index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_tl2v1")
+
+[editable path="Character"]
+[editable path="Player"]
