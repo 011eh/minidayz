@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b01dw2glpagdl" path="res://images/equipment/weapon/rifle/m4_rifle.png" id="7_jcxe6"]
 [ext_resource type="Texture2D" uid="uid://havkpsdwyban" path="res://images/equipment/weapon/pistol/colt_pistol.png" id="8_ihsae"]
 [ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://images/equipment/weapon/melee/fireaxe.png" id="9_8450s"]
-[ext_resource type="Script" path="res://state/state_machine.gd" id="10_c7wa5"]
 [ext_resource type="Script" path="res://character/character_animation.gd" id="11_3gvf8"]
+[ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1fp6"]
 radius = 2.0
@@ -2444,43 +2444,36 @@ script = ExtResource("1_psyd6")
 texture = ExtResource("1_pjamp")
 hframes = 4
 vframes = 11
-frame = 37
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("2_cm1wb")
 hframes = 4
 vframes = 11
-frame = 37
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("3_p6dlh")
 hframes = 4
 vframes = 11
-frame = 37
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_pxvut")
 hframes = 4
 vframes = 11
-frame = 37
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_8mkd2")
 hframes = 4
 vframes = 11
-frame = 37
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("6_dcxgx")
 hframes = 4
 vframes = 10
-frame = 38
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("7_jcxe6")
 hframes = 4
 vframes = 16
-frame = 36
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_ihsae")
@@ -2492,7 +2485,6 @@ frame = 25
 texture = ExtResource("9_8450s")
 hframes = 4
 vframes = 17
-frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -2516,5 +2508,4 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/MeleeAttack/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("10_c7wa5")
+[node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]

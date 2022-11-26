@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://62yuykp5osve"]
+[gd_scene load_steps=4 format=3 uid="uid://62yuykp5osve"]
 
 [ext_resource type="PackedScene" uid="uid://54nan5kjfqb4" path="res://character/character.tscn" id="1_g5mqy"]
 [ext_resource type="Script" path="res://player/player.gd" id="2_wwair"]
-[ext_resource type="Script" path="res://player/run_state.gd" id="3_7g6r8"]
-[ext_resource type="Script" path="res://player/idle_state.gd" id="3_iiftj"]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_byg45"]
 
@@ -13,8 +11,9 @@ script = ExtResource("2_wwair")
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_byg45")
 
+[node name="StateMachine" parent="." index="4"]
+state_script_dir = "res://player"
+
 [node name="Idle" type="Node" parent="StateMachine" index="0"]
-script = ExtResource("3_iiftj")
 
 [node name="Run" type="Node" parent="StateMachine" index="1"]
-script = ExtResource("3_7g6r8")
