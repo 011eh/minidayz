@@ -1,5 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://54nan5kjfqb4"]
+[gd_scene load_steps=64 format=3 uid="uid://54nan5kjfqb4"]
 
+[ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="1_pjamp"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
 [ext_resource type="Texture2D" uid="uid://bofdxlc76qrp6" path="res://images/equipment/clothes/gorka_jacket.png" id="2_cm1wb"]
@@ -12,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://images/equipment/weapon/melee/fireaxe.png" id="9_8450s"]
 [ext_resource type="Script" path="res://character/character_animation.gd" id="11_3gvf8"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
+[ext_resource type="Script" path="res://character/idle_state.gd" id="14_w2eld"]
+[ext_resource type="Script" path="res://character/run_state.gd" id="15_bo3ra"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1fp6"]
 radius = 2.0
@@ -2412,29 +2415,33 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_udhfj")
 blend_point_3/pos = Vector2(0, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5aeux"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1i7k"]
+animation = &"dead"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_abasc"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v0aas"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r1udl"]
+animation = &"work"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lfv1j"]
 states/Aim/node = SubResource("AnimationNodeBlendSpace2D_fya8e")
-states/Aim/position = Vector2(171, 161)
-states/End/position = Vector2(354, 192)
+states/Aim/position = Vector2(-83, 140)
+states/End/position = Vector2(-239, 220)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_yd2co")
-states/Idle/position = Vector2(60, 61)
+states/Idle/position = Vector2(208, 192)
 states/MeleeAttack/node = SubResource("AnimationNodeBlendSpace2D_gs6kg")
-states/MeleeAttack/position = Vector2(-89.0867, 136)
+states/MeleeAttack/position = Vector2(-271.087, 44)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_7egj7")
-states/Run/position = Vector2(403, 80)
-states/Start/position = Vector2(-67.0867, 55)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5aeux"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_abasc"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_v0aas")]
-graph_offset = Vector2(-453.087, -34)
+states/Run/position = Vector2(53, 134)
+states/Start/position = Vector2(-23.0867, 30)
+states/dead/node = SubResource("AnimationNodeAnimation_u1i7k")
+states/dead/position = Vector2(371.913, 160)
+states/work/node = SubResource("AnimationNodeAnimation_r1udl")
+states/work/position = Vector2(-290.087, 129)
+graph_offset = Vector2(-424.368, -8.3846)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_tyetr"]
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_kp4oj"]
 
 [node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_d4mdx")
 
 [node name="Sprite" type="Node2D" parent="."]
 position = Vector2(0, -14)
@@ -2444,36 +2451,43 @@ script = ExtResource("1_psyd6")
 texture = ExtResource("1_pjamp")
 hframes = 4
 vframes = 11
+frame = 14
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("2_cm1wb")
 hframes = 4
 vframes = 11
+frame = 14
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("3_p6dlh")
 hframes = 4
 vframes = 11
+frame = 14
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_pxvut")
 hframes = 4
 vframes = 11
+frame = 14
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_8mkd2")
 hframes = 4
 vframes = 11
+frame = 14
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("6_dcxgx")
 hframes = 4
 vframes = 10
+frame = 14
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("7_jcxe6")
 hframes = 4
 vframes = 16
+frame = 14
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_ihsae")
@@ -2485,6 +2499,7 @@ frame = 25
 texture = ExtResource("9_8450s")
 hframes = 4
 vframes = 17
+frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -2502,10 +2517,16 @@ script = ExtResource("11_3gvf8")
 tree_root = SubResource("AnimationNodeStateMachine_lfv1j")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_tyetr")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_kp4oj")
 parameters/Aim/blend_position = Vector2(0, 0)
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/MeleeAttack/blend_position = Vector2(0, 0)
-parameters/Run/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = Vector2(0.197647, -0.0393013)
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("14_w2eld")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("15_bo3ra")
