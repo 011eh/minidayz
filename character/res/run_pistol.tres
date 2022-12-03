@@ -1,0 +1,24 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=5 format=3 uid="uid://cly713wn0kybr"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wc2wy"]
+animation = &"run_pistol_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sdvxi"]
+animation = &"run_pistol_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yv32w"]
+animation = &"run_pistol_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ri77"]
+animation = &"run_pistol_down"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeAnimation_wc2wy")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_sdvxi")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_yv32w")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_1ri77")
+blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1

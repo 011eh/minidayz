@@ -1,9 +1,8 @@
 extends Node
 
-
 class_name State
 
-var state_owner
+signal state_changed
 
-func set_state_owner(state_owner):
-	state_owner = state_owner
+var state_owner
+var state_machine: StateMachine

@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://54nan5kjfqb4"]
+[gd_scene load_steps=78 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="1_pjamp"]
@@ -13,8 +13,17 @@
 [ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://images/equipment/weapon/melee/fireaxe.png" id="9_8450s"]
 [ext_resource type="Script" path="res://character/character_animation.gd" id="11_3gvf8"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
-[ext_resource type="Script" path="res://character/idle_state.gd" id="14_w2eld"]
-[ext_resource type="Script" path="res://character/run_state.gd" id="15_5l7gj"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="13_xl15n"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://c3fmdqaiyvk35" path="res://character/res/idle_pistol.tres" id="14_3ps4m"]
+[ext_resource type="Script" path="res://character/state/idle_state.gd" id="14_w2eld"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bkt62wj8et6re" path="res://character/res/run_rifle.tres" id="15_8f3mh"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dg6i5ecrhw66t" path="res://character/res/idle_melee.tres" id="15_ck7j4"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://d0ysow8htmhc2" path="res://character/res/melee_attack.tres" id="16_5d887"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cly713wn0kybr" path="res://character/res/run_pistol.tres" id="16_6gjlo"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://hlfygt5ju8dk" path="res://character/res/run_meleel.tres" id="17_o584k"]
+[ext_resource type="Script" path="res://character/state/melee_attack_state.gd" id="24_ctipj"]
+[ext_resource type="Script" path="res://character/state/run_state.gd" id="24_n2yy1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1fp6"]
 radius = 2.0
@@ -2387,6 +2396,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [62, 63, 62]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("StateMachine/MeleeAttack")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_udi6c"]
 resource_name = "melee_attack_left"
@@ -2498,6 +2521,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [64, 65, 64]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("StateMachine/MeleeAttack")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_d13bx"]
@@ -2611,6 +2648,20 @@ tracks/8/keys = {
 "update": 1,
 "values": [66, 67, 66]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("StateMachine/MeleeAttack")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_urrf1"]
 resource_name = "melee_attack_up"
@@ -2722,6 +2773,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [60, 61, 60]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("StateMachine/MeleeAttack")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hktke"]
@@ -4235,178 +4300,76 @@ _data = {
 "work": SubResource("Animation_a3v7a")
 }
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_38jef"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c06jx"]
+animation = &"aim_rifle_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ofp1o"]
-animation = &"idle_melee_left"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lcv05"]
+animation = &"aim_rifle_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ruw80"]
-animation = &"idle_melee_down"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o2tll"]
+animation = &"aim_rifle_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w0gid"]
-animation = &"idle_melee_right"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i08k1"]
+animation = &"aim_rifle_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yc4ys"]
-animation = &"idle_melee_up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ee2gc"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_ofp1o")
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_fqkc6"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_c06jx")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_ruw80")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_w0gid")
+blend_point_1/node = SubResource("AnimationNodeAnimation_lcv05")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_o2tll")
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_yc4ys")
-blend_point_3/pos = Vector2(0, -1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gxi3c"]
-animation = &"idle_pistol_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_llemr"]
-animation = &"idle_pistol_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uvrfj"]
-animation = &"idle_pistol_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j7r4v"]
-animation = &"idle_pistol_up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_tfhay"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_gxi3c")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_llemr")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_uvrfj")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_j7r4v")
-blend_point_3/pos = Vector2(0, -0.9)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0hf4d"]
-animation = &"idle_rifle_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xu2j2"]
-animation = &"idle_rifle_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_81t64"]
-animation = &"idle_rifle_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1pxj1"]
-animation = &"run_rifle_left"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_chgkn"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_0hf4d")
-blend_point_0/pos = Vector2(0, 1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_xu2j2")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_81t64")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_1pxj1")
-blend_point_3/pos = Vector2(-1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fy522"]
-animation = &"run_melee_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uhapj"]
-animation = &"run_melee_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_05y6o"]
-animation = &"run_melee_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bw61q"]
-animation = &"run_melee_up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2pvwi"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_fy522")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_uhapj")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_05y6o")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_bw61q")
-blend_point_3/pos = Vector2(0, -1)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vp7m7"]
-animation = &"run_pistol_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oxfd0"]
-animation = &"run_pistol_down"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cwjum"]
-animation = &"run_pistol_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m2eh7"]
-animation = &"run_pistol_right"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_pn455"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_vp7m7")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_oxfd0")
-blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_cwjum")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_m2eh7")
-blend_point_3/pos = Vector2(1, 0)
-blend_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a4x5g"]
-animation = &"run_rifle_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hu5ty"]
-animation = &"run_rifle_right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vk3m2"]
-animation = &"run_rifle_up"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aa8xf"]
-animation = &"run_rifle_down"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_w5buf"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_a4x5g")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_hu5ty")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_vk3m2")
-blend_point_2/pos = Vector2(0, -1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_aa8xf")
+blend_point_3/node = SubResource("AnimationNodeAnimation_i08k1")
 blend_point_3/pos = Vector2(0, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u1i7k"]
-animation = &"dead"
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_l4qe8"]
+blend_point_0/node = SubResource("AnimationNodeBlendSpace2D_fqkc6")
+blend_point_0/pos = 0.0
+blend_point_1/node = ExtResource("13_io0a3")
+blend_point_1/pos = 1.0
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r1udl"]
-animation = &"work"
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_uxr08"]
+blend_point_0/node = ExtResource("13_xl15n")
+blend_point_0/pos = 0.0
+blend_point_1/node = ExtResource("14_3ps4m")
+blend_point_1/pos = 1.0
+blend_point_2/node = ExtResource("15_ck7j4")
+blend_point_2/pos = 2.0
+max_space = 3.0
+snap = 1.0
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lfv1j"]
-states/Aim/node = SubResource("AnimationNodeStateMachine_38jef")
-states/Aim/position = Vector2(558.632, 47)
-states/End/position = Vector2(-87.087, 162)
-states/IdleMelee/node = SubResource("AnimationNodeBlendSpace2D_ee2gc")
-states/IdleMelee/position = Vector2(165, 93)
-states/IdlePistol/node = SubResource("AnimationNodeBlendSpace2D_tfhay")
-states/IdlePistol/position = Vector2(34, -8)
-states/IdleRifle/node = SubResource("AnimationNodeBlendSpace2D_chgkn")
-states/IdleRifle/position = Vector2(165, 3)
-states/RunMelee/node = SubResource("AnimationNodeBlendSpace2D_2pvwi")
-states/RunMelee/position = Vector2(323, 119)
-states/RunPistol/node = SubResource("AnimationNodeBlendSpace2D_pn455")
-states/RunPistol/position = Vector2(323, -8)
-states/RunRifle/node = SubResource("AnimationNodeBlendSpace2D_w5buf")
-states/RunRifle/position = Vector2(331, 47)
-states/Start/position = Vector2(-87.087, 22.615)
-states/dead/node = SubResource("AnimationNodeAnimation_u1i7k")
-states/dead/position = Vector2(-38.087, 108)
-states/work/node = SubResource("AnimationNodeAnimation_r1udl")
-states/work/position = Vector2(-177.087, 108)
-graph_offset = Vector2(-764.103, -52.5749)
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_rfgak"]
+blend_point_0/node = ExtResource("15_8f3mh")
+blend_point_0/pos = 0.0
+blend_point_1/node = ExtResource("16_6gjlo")
+blend_point_1/pos = 1.0
+blend_point_2/node = ExtResource("17_o584k")
+blend_point_2/pos = 2.0
+max_space = 3.0
+snap = 1.0
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_kp4oj"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xxtpa"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_dme0c"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ridx0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_42fk3"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25lx7"]
+states/Aim/node = SubResource("AnimationNodeBlendSpace1D_l4qe8")
+states/Aim/position = Vector2(425, 174)
+states/End/position = Vector2(715, 100)
+states/Idle/node = SubResource("AnimationNodeBlendSpace1D_uxr08")
+states/Idle/position = Vector2(385, 77)
+states/MeleeAttack/node = ExtResource("16_5d887")
+states/MeleeAttack/position = Vector2(193, 176)
+states/Run/node = SubResource("AnimationNodeBlendSpace1D_rfgak")
+states/Run/position = Vector2(579, 125)
+states/Start/position = Vector2(120, 77)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xxtpa"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_ridx0"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_42fk3")]
+graph_offset = Vector2(-33, 15)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
 
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_d4mdx")
@@ -4419,43 +4382,43 @@ script = ExtResource("1_psyd6")
 texture = ExtResource("1_pjamp")
 hframes = 4
 vframes = 11
-frame = 5
+frame = 20
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("2_cm1wb")
 hframes = 4
 vframes = 11
-frame = 5
+frame = 20
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("3_p6dlh")
 hframes = 4
 vframes = 11
-frame = 5
+frame = 20
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_pxvut")
 hframes = 4
 vframes = 11
-frame = 5
+frame = 20
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_8mkd2")
 hframes = 4
 vframes = 11
-frame = 5
+frame = 20
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("6_dcxgx")
 hframes = 4
 vframes = 10
-frame = 5
+frame = 20
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("7_jcxe6")
 hframes = 4
 vframes = 16
-frame = 41
+frame = 20
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_ihsae")
@@ -4467,7 +4430,7 @@ frame = 25
 texture = ExtResource("9_8450s")
 hframes = 4
 vframes = 17
-frame = 5
+frame = 60
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -4481,17 +4444,22 @@ libraries = {
 script = ExtResource("11_3gvf8")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_lfv1j")
+tree_root = SubResource("AnimationNodeStateMachine_25lx7")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_kp4oj")
-parameters/Aim/playback = SubResource("AnimationNodeStateMachinePlayback_dme0c")
-parameters/IdleMelee/blend_position = Vector2(0, 0)
-parameters/IdlePistol/blend_position = Vector2(-0.0585366, -0.458515)
-parameters/IdleRifle/blend_position = Vector2(0.502439, -0.292576)
-parameters/RunMelee/blend_position = Vector2(0, 0)
-parameters/RunPistol/blend_position = Vector2(-0.850407, 0.5)
-parameters/RunRifle/blend_position = Vector2(0, 0)
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_rxyu4")
+parameters/Aim/blend_position = 0.0
+parameters/Aim/0/blend_position = Vector2(0, 0)
+parameters/Aim/1/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = 2.0
+parameters/Idle/0/blend_position = Vector2(0, 0)
+parameters/Idle/1/blend_position = Vector2(0, 0)
+parameters/Idle/2/blend_position = Vector2(0, 0)
+parameters/MeleeAttack/blend_position = Vector2(0, 0)
+parameters/Run/blend_position = 2.0
+parameters/Run/0/blend_position = Vector2(0, 0)
+parameters/Run/1/blend_position = Vector2(0, 0)
+parameters/Run/2/blend_position = Vector2(0, 0)
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
 
@@ -4499,4 +4467,7 @@ parameters/RunRifle/blend_position = Vector2(0, 0)
 script = ExtResource("14_w2eld")
 
 [node name="Run" type="Node" parent="StateMachine"]
-script = ExtResource("15_5l7gj")
+script = ExtResource("24_n2yy1")
+
+[node name="MeleeAttack" type="Node" parent="StateMachine"]
+script = ExtResource("24_ctipj")

@@ -6,6 +6,6 @@ func start() -> void:
 
 func run() -> void:
 	if state_owner.is_moving():
-		state_owner.set_blend_position('parameters/Run/blend_position', state_owner.velocity)
+		state_owner.set_blend_position('parameters/Run/2/blend_position', state_owner.velocity)
 	else:
-		state_owner.set_state('Idle')
+		state_machine.set_state('Idle')
