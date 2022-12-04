@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
+class_name Character
 
 const SPEED = 130
-
 
 @onready
 var state_machine := $StateMachine
@@ -20,22 +20,18 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	state_machine.run()
+	move_and_slide()
+
+func get_direction() -> void:
 	var direction = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
 	if direction:
 		last_direction = direction
-		velocity = velocity.move_toward(direction * SPEED,SPEED / 15)
+		velocity = velocity.move_toward(direction * SPEED, SPEED / 10)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO,SPEED / 15)
-	move_and_slide()
-
-func play_animation(animation :String) -> void:
-	playback.travel(animation)
-
-func set_blend_position(param: String, value: Vector2) -> void:
-	animation_tree.set(param,value)
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED / 10)
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO
 
 func direction_to_mouse() -> Vector2:
-	return position.direction_to(get_local_mouse_position())
+	return position.direction_to(get_global_mouse_position())

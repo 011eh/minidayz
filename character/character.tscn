@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b2ddeoxi0wvv5"]
+[gd_scene load_steps=75 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="1_pjamp"]
@@ -2396,20 +2396,6 @@ tracks/8/keys = {
 "update": 1,
 "values": [62, 63, 62]
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("StateMachine/MeleeAttack")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_udi6c"]
 resource_name = "melee_attack_left"
@@ -2521,20 +2507,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [64, 65, 64]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("StateMachine/MeleeAttack")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_d13bx"]
@@ -2648,20 +2620,6 @@ tracks/8/keys = {
 "update": 1,
 "values": [66, 67, 66]
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("StateMachine/MeleeAttack")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_urrf1"]
 resource_name = "melee_attack_up"
@@ -2773,20 +2731,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [60, 61, 60]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("StateMachine/MeleeAttack")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"end"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_hktke"]
@@ -4349,25 +4293,18 @@ blend_point_2/pos = 2.0
 max_space = 3.0
 snap = 1.0
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xxtpa"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ridx0"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_42fk3"]
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25lx7"]
 states/Aim/node = SubResource("AnimationNodeBlendSpace1D_l4qe8")
 states/Aim/position = Vector2(425, 174)
 states/End/position = Vector2(715, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_uxr08")
-states/Idle/position = Vector2(385, 77)
+states/Idle/position = Vector2(379, 77)
 states/MeleeAttack/node = ExtResource("16_5d887")
-states/MeleeAttack/position = Vector2(193, 176)
+states/MeleeAttack/position = Vector2(192, 181)
 states/Run/node = SubResource("AnimationNodeBlendSpace1D_rfgak")
 states/Run/position = Vector2(579, 125)
-states/Start/position = Vector2(120, 77)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xxtpa"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_ridx0"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_42fk3")]
-graph_offset = Vector2(-33, 15)
+states/Start/position = Vector2(229, 100)
+graph_offset = Vector2(-13, 43)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
 
@@ -4471,3 +4408,7 @@ script = ExtResource("24_n2yy1")
 
 [node name="MeleeAttack" type="Node" parent="StateMachine"]
 script = ExtResource("24_ctipj")
+
+[node name="Timer" type="Timer" parent="StateMachine/MeleeAttack"]
+wait_time = 0.3
+one_shot = true

@@ -1,9 +1,20 @@
 extends State
 
+@onready
+var timer := $Timer
+
+func _ready():
+	timer.timeout.connect(Callable(self,'end'))
 
 func start() -> void:
-	state_owner.set_blend_position('parameters/MeleeAttack/blend_position', state_owner.last_direction)
+	timer.start()
+	if not state_owner.is_moving():
+		state_owner.animation_tree.set('parameters/MeleeAttack/blend_position', \
+state_owner.last_direction)
+		state_owner.playback.start('MeleeAttack')
 
 func end() -> void:
-	print('attack end')
-	
+	if state_owner.is_moving():
+		state_machine.set_state('Run')
+	else:
+		state_machine.set_state('Idle')
