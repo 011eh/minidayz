@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://b2ddeoxi0wvv5"]
+[gd_scene load_steps=76 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="1_pjamp"]
@@ -24,6 +24,7 @@
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://hlfygt5ju8dk" path="res://character/res/run_meleel.tres" id="17_o584k"]
 [ext_resource type="Script" path="res://character/state/melee_attack_state.gd" id="24_ctipj"]
 [ext_resource type="Script" path="res://character/state/run_state.gd" id="24_n2yy1"]
+[ext_resource type="Script" path="res://character/state/aim_state.gd" id="25_ykhtx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1fp6"]
 radius = 2.0
@@ -4295,7 +4296,7 @@ snap = 1.0
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25lx7"]
 states/Aim/node = SubResource("AnimationNodeBlendSpace1D_l4qe8")
-states/Aim/position = Vector2(425, 174)
+states/Aim/position = Vector2(488, 216)
 states/End/position = Vector2(715, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_uxr08")
 states/Idle/position = Vector2(379, 77)
@@ -4319,55 +4320,55 @@ script = ExtResource("1_psyd6")
 texture = ExtResource("1_pjamp")
 hframes = 4
 vframes = 11
-frame = 20
+frame = 29
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("2_cm1wb")
 hframes = 4
 vframes = 11
-frame = 20
+frame = 29
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("3_p6dlh")
 hframes = 4
 vframes = 11
-frame = 20
+frame = 29
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_pxvut")
 hframes = 4
 vframes = 11
-frame = 20
+frame = 29
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_8mkd2")
 hframes = 4
 vframes = 11
-frame = 20
+frame = 29
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("6_dcxgx")
 hframes = 4
 vframes = 10
-frame = 20
+frame = 29
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("7_jcxe6")
 hframes = 4
 vframes = 16
-frame = 20
+frame = 29
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_ihsae")
 hframes = 4
 vframes = 7
-frame = 25
+frame = 17
 
 [node name="Melee" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("9_8450s")
 hframes = 4
 vframes = 17
-frame = 60
+frame = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -4386,8 +4387,8 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_rxyu4")
 parameters/Aim/blend_position = 0.0
-parameters/Aim/0/blend_position = Vector2(0, 0)
-parameters/Aim/1/blend_position = Vector2(0, 0)
+parameters/Aim/0/blend_position = Vector2(-0.0146341, -0.362445)
+parameters/Aim/1/blend_position = Vector2(-0.00325203, 0.615721)
 parameters/Idle/blend_position = 2.0
 parameters/Idle/0/blend_position = Vector2(0, 0)
 parameters/Idle/1/blend_position = Vector2(0, 0)
@@ -4412,3 +4413,6 @@ script = ExtResource("24_ctipj")
 [node name="Timer" type="Timer" parent="StateMachine/MeleeAttack"]
 wait_time = 0.3
 one_shot = true
+
+[node name="Aim" type="Node" parent="StateMachine"]
+script = ExtResource("25_ykhtx")

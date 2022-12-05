@@ -1,10 +1,10 @@
 extends State
 
 func start() -> void:
-	state_owner.playback.start('Run')
+	state_owner.playback.travel('Run')
 
 func run() -> void:
-	state_owner.get_direction()
+	state_owner.set_direction()
 	if Input.is_action_pressed("attack"):
 		state_machine.set_state('MeleeAttack')
 	if state_owner.is_moving():
