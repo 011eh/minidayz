@@ -1,17 +1,10 @@
 extends Node2D
 
+signal em(a)
 
 func _ready():
-	print(FileAccess.file_exists('res://player/idle_s3tate.gd'))
-
-func _process(delta):
-	if Input.is_action_pressed('ui_up'):
-		var animation = $AnimationPlayer.get_animation('run') as Animation
-		animation.track_set_path(0, "Skin:frame")
-		animation.track_set_key_value(0,0,1)
-
-	if Input.is_action_pressed('ui_down'):
-		var animation = $AnimationPlayer.get_animation('run') as Animation
-		animation.track_set_path(0, "Skin:frame")
-		animation.track_set_key_value(0,0,4)
-
+	var c1= Callable($N2,'print1').bind('a','1')
+	var c2= Callable($N2,'print1')
+	c1.call()
+	c2.call('a',2)
+	

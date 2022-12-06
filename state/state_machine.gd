@@ -1,10 +1,11 @@
 extends Node
 
+
 class_name StateMachine
 
 var current_state: State
-
 var state_data := {}
+
 
 func set_state(state_name: String) -> void:
 	assert(has_node(state_name), '状态机没有 %s 状态！' % state_name)

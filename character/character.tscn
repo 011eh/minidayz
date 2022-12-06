@@ -1,9 +1,9 @@
 [gd_scene load_steps=76 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
-[ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="1_pjamp"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
 [ext_resource type="Texture2D" uid="uid://bofdxlc76qrp6" path="res://images/equipment/clothes/gorka_jacket.png" id="2_cm1wb"]
+[ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="3_kvru2"]
 [ext_resource type="Texture2D" uid="uid://cjmc5gw4ej850" path="res://images/equipment/pants/gorka_pants.png" id="3_p6dlh"]
 [ext_resource type="Texture2D" uid="uid://bwrd8qkhg3f36" path="res://images/equipment/helmet/gorka_helmet.png" id="4_pxvut"]
 [ext_resource type="Texture2D" uid="uid://dy5odq80y1n7f" path="res://images/equipment/vest/kevlar_vest.png" id="5_8mkd2"]
@@ -945,6 +945,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_piu3a"]
 resource_name = "idle_melee_down"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1057,6 +1058,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_cp443"]
 resource_name = "idle_melee_left"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1169,6 +1171,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_42dkk"]
 resource_name = "idle_melee_right"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1281,6 +1284,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_r03fn"]
 resource_name = "idle_melee_up"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1393,6 +1397,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_dk6ff"]
 resource_name = "idle_pistol_down"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1505,6 +1510,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_o7j46"]
 resource_name = "idle_pistol_left"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1617,6 +1623,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_bbhha"]
 resource_name = "idle_pistol_right"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1729,6 +1736,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_pd6kf"]
 resource_name = "idle_pistol_up"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1841,6 +1849,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_3brp4"]
 resource_name = "idle_rifle_down"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1953,6 +1962,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_wphwb"]
 resource_name = "idle_rifle_left"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2065,6 +2075,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_hn0t4"]
 resource_name = "idle_rifle_right"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2177,6 +2188,7 @@ tracks/8/keys = {
 [sub_resource type="Animation" id="Animation_ikbor"]
 resource_name = "idle_rifle_up"
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4293,13 +4305,14 @@ blend_point_2/node = ExtResource("17_o584k")
 blend_point_2/pos = 2.0
 max_space = 3.0
 snap = 1.0
+sync = true
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25lx7"]
 states/Aim/node = SubResource("AnimationNodeBlendSpace1D_l4qe8")
 states/Aim/position = Vector2(488, 216)
 states/End/position = Vector2(715, 100)
 states/Idle/node = SubResource("AnimationNodeBlendSpace1D_uxr08")
-states/Idle/position = Vector2(379, 77)
+states/Idle/position = Vector2(334, 93)
 states/MeleeAttack/node = ExtResource("16_5d887")
 states/MeleeAttack/position = Vector2(192, 181)
 states/Run/node = SubResource("AnimationNodeBlendSpace1D_rfgak")
@@ -4317,58 +4330,58 @@ position = Vector2(0, -14)
 script = ExtResource("1_psyd6")
 
 [node name="Skin" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("1_pjamp")
+texture = ExtResource("3_kvru2")
 hframes = 4
 vframes = 11
-frame = 29
+frame = 33
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("2_cm1wb")
 hframes = 4
 vframes = 11
-frame = 29
+frame = 33
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("3_p6dlh")
 hframes = 4
 vframes = 11
-frame = 29
+frame = 33
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_pxvut")
 hframes = 4
 vframes = 11
-frame = 29
+frame = 33
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_8mkd2")
 hframes = 4
 vframes = 11
-frame = 29
+frame = 33
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("6_dcxgx")
 hframes = 4
 vframes = 10
-frame = 29
+frame = 33
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("7_jcxe6")
 hframes = 4
 vframes = 16
-frame = 29
+frame = 33
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_ihsae")
 hframes = 4
 vframes = 7
-frame = 17
+frame = 21
 
 [node name="Melee" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("9_8450s")
 hframes = 4
 vframes = 17
-frame = 29
+frame = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -4387,14 +4400,14 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_rxyu4")
 parameters/Aim/blend_position = 0.0
-parameters/Aim/0/blend_position = Vector2(-0.0146341, -0.362445)
-parameters/Aim/1/blend_position = Vector2(-0.00325203, 0.615721)
-parameters/Idle/blend_position = 2.0
+parameters/Aim/0/blend_position = Vector2(0, 0)
+parameters/Aim/1/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = 0.0
 parameters/Idle/0/blend_position = Vector2(0, 0)
 parameters/Idle/1/blend_position = Vector2(0, 0)
 parameters/Idle/2/blend_position = Vector2(0, 0)
 parameters/MeleeAttack/blend_position = Vector2(0, 0)
-parameters/Run/blend_position = 2.0
+parameters/Run/blend_position = 0.0
 parameters/Run/0/blend_position = Vector2(0, 0)
 parameters/Run/1/blend_position = Vector2(0, 0)
 parameters/Run/2/blend_position = Vector2(0, 0)
