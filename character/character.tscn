@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://b2ddeoxi0wvv5"]
+[gd_scene load_steps=78 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
@@ -4296,7 +4296,9 @@ blend_point_2/pos = 2.0
 max_space = 3.0
 snap = 1.0
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_rfgak"]
+[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_873jm"]
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_1f3bu"]
 blend_point_0/node = ExtResource("15_8f3mh")
 blend_point_0/pos = 0.0
 blend_point_1/node = ExtResource("16_6gjlo")
@@ -4305,7 +4307,14 @@ blend_point_2/node = ExtResource("17_o584k")
 blend_point_2/pos = 2.0
 max_space = 3.0
 snap = 1.0
-sync = true
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4lvu4"]
+graph_offset = Vector2(-446.165, 86.9787)
+nodes/Seek/node = SubResource("AnimationNodeTimeSeek_873jm")
+nodes/Seek/position = Vector2(100, 180)
+nodes/WeaponState/node = SubResource("AnimationNodeBlendSpace1D_1f3bu")
+nodes/WeaponState/position = Vector2(-148.998, 244.774)
+node_connections = [&"output", 0, &"Seek", &"Seek", 0, &"WeaponState"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25lx7"]
 states/Aim/node = SubResource("AnimationNodeBlendSpace1D_l4qe8")
@@ -4315,8 +4324,8 @@ states/Idle/node = SubResource("AnimationNodeBlendSpace1D_uxr08")
 states/Idle/position = Vector2(334, 93)
 states/MeleeAttack/node = ExtResource("16_5d887")
 states/MeleeAttack/position = Vector2(192, 181)
-states/Run/node = SubResource("AnimationNodeBlendSpace1D_rfgak")
-states/Run/position = Vector2(579, 125)
+states/Run/node = SubResource("AnimationNodeBlendTree_4lvu4")
+states/Run/position = Vector2(521, 122)
 states/Start/position = Vector2(229, 100)
 graph_offset = Vector2(-13, 43)
 
@@ -4333,55 +4342,55 @@ script = ExtResource("1_psyd6")
 texture = ExtResource("3_kvru2")
 hframes = 4
 vframes = 11
-frame = 33
+frame = 34
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("2_cm1wb")
 hframes = 4
 vframes = 11
-frame = 33
+frame = 34
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("3_p6dlh")
 hframes = 4
 vframes = 11
-frame = 33
+frame = 34
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_pxvut")
 hframes = 4
 vframes = 11
-frame = 33
+frame = 34
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_8mkd2")
 hframes = 4
 vframes = 11
-frame = 33
+frame = 34
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("6_dcxgx")
 hframes = 4
 vframes = 10
-frame = 33
+frame = 34
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("7_jcxe6")
 hframes = 4
 vframes = 16
-frame = 33
+frame = 62
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_ihsae")
 hframes = 4
 vframes = 7
-frame = 21
+frame = 4
 
 [node name="Melee" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("9_8450s")
 hframes = 4
 vframes = 17
-frame = 33
+frame = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -4407,10 +4416,11 @@ parameters/Idle/0/blend_position = Vector2(0, 0)
 parameters/Idle/1/blend_position = Vector2(0, 0)
 parameters/Idle/2/blend_position = Vector2(0, 0)
 parameters/MeleeAttack/blend_position = Vector2(0, 0)
-parameters/Run/blend_position = 0.0
-parameters/Run/0/blend_position = Vector2(0, 0)
-parameters/Run/1/blend_position = Vector2(0, 0)
-parameters/Run/2/blend_position = Vector2(0, 0)
+parameters/Run/Seek/seek_position = -1.0
+parameters/Run/WeaponState/blend_position = 0.0
+parameters/Run/WeaponState/0/blend_position = Vector2(0, 0)
+parameters/Run/WeaponState/1/blend_position = Vector2(0, 0)
+parameters/Run/WeaponState/2/blend_position = Vector2(0, 0)
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
 
@@ -4429,3 +4439,7 @@ one_shot = true
 
 [node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("25_ykhtx")
+
+[node name="WeaponSwitchTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

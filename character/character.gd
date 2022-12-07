@@ -15,6 +15,8 @@ var state_machine := $StateMachine as StateMachine
 var animation_tree := $AnimationTree as AnimationTree
 @onready
 var playback := animation_tree.get('parameters/playback') as AnimationNodeStateMachinePlayback
+@onready
+var weapon_switch_timer := $WeaponSwitchTimer as Timer
 var current_state: State
 var last_direction := Vector2.ZERO
 var direction: Vector2
@@ -52,10 +54,16 @@ func direction_to_mouse() -> Vector2:
 	return position.direction_to(get_global_mouse_position())
 
 func switch_weapon(weapon: int) -> void:
-	state_machine.state_data.merge({'weapon_state': weapon}, true)
-	animation_tree.set('parameters/Idle/blend_position', weapon)
-	animation_tree.set('parameters/Run/blend_position', weapon)
-	var param := 'parameters/Idle/%d/blend_position' % state_machine.state_data.get('weapon_state') as String
-	animation_tree.set(param, state_machine.state_data.get('idle_direction'))
-	if weapon != MELEE:
-		animation_tree.set('parameters/Aim/blend_position', weapon)
+	if weapon_switch_timer.is_stopped():
+		weapon_switch_timer.start()
+		state_machine.state_data.merge({'weapon_state': weapon}, true)
+		animation_tree.set('parameters/Idle/blend_position', weapon)
+		animation_tree.set('parameters/Run/WeaponState/blend_position', weapon)
+		var param := 'parameters/Idle/%d/blend_position' % state_machine.state_data.get('weapon_state') as String
+		animation_tree.set(param, state_machine.state_data.get('idle_direction'))
+		if weapon != MELEE:
+			animation_tree.set('parameters/Aim/blend_position', weapon)
+		
+		if is_moving():
+			var pos := playback.get_current_play_position()
+			animation_tree.set('parameters/Run/Seek/seek_position', pos)
