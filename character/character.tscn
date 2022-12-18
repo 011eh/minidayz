@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b2ddeoxi0wvv5"]
+[gd_scene load_steps=79 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
@@ -22,6 +22,7 @@
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://d0ysow8htmhc2" path="res://character/res/melee_attack.tres" id="16_5d887"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cly713wn0kybr" path="res://character/res/run_pistol.tres" id="16_6gjlo"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://hlfygt5ju8dk" path="res://character/res/run_meleel.tres" id="17_o584k"]
+[ext_resource type="Script" path="res://character/animation_tree.gd" id="21_fqsuc"]
 [ext_resource type="Script" path="res://character/state/melee_attack_state.gd" id="24_ctipj"]
 [ext_resource type="Script" path="res://character/state/run_state.gd" id="24_n2yy1"]
 [ext_resource type="Script" path="res://character/state/aim_state.gd" id="25_ykhtx"]
@@ -4421,6 +4422,7 @@ parameters/Run/WeaponState/blend_position = 0.0
 parameters/Run/WeaponState/0/blend_position = Vector2(0, 0)
 parameters/Run/WeaponState/1/blend_position = Vector2(0, 0)
 parameters/Run/WeaponState/2/blend_position = Vector2(0, 0)
+script = ExtResource("21_fqsuc")
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
 

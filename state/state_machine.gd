@@ -3,8 +3,11 @@ extends Node
 
 class_name StateMachine
 
+
+signal state
+
 var current_state: State
-var state_data := {}
+var state_data := {'weapon_state': 0}
 
 
 func set_state(state_name: String) -> void:
@@ -14,9 +17,10 @@ func set_state(state_name: String) -> void:
 		state.start()
 		current_state = state
 
-func setup(state_owner) -> void:
+func setup(owner) -> void:
 	for state in get_children():
-		state.state_owner = state_owner
+		state.finished.connect(set_state)
+		
 		state.state_machine = self
 
 func run() -> void:

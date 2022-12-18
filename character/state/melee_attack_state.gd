@@ -6,21 +6,21 @@ var timer := $Timer
 
 
 func _ready():
-	timer.timeout.connect(Callable(self,'end'))
+	timer.timeout.connect(end)
 
 func start() -> void:
 	if timer.is_stopped():
 		timer.start()
-		if not state_owner.is_moving():
-			state_owner.animation_tree.set('parameters/MeleeAttack/blend_position', state_machine.state_data.get('attack_direction'))
-			state_owner.playback.start('MeleeAttack')
+		if not owner.is_moving():
+			owner.animation_tree.set('parameters/MeleeAttack/blend_position', state_machine.state_data.get('attack_direction'))
+			owner.playback.start('MeleeAttack')
 
 func run() -> void:
-	if state_owner.is_moving():
-		state_machine.set_state('Run')
+	if owner.is_moving():
+		emit_signal('finished', 'Run')
 
 func end() -> void:
-	if state_owner.is_moving():
-		state_machine.set_state('Run')
+	if owner.is_moving():
+		emit_signal('finished', 'Run')
 	else:
-		state_machine.set_state('Idle')
+		emit_signal('finished', 'Idle')
