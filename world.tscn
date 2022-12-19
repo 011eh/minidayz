@@ -6,4 +6,4 @@
 y_sort_enabled = true
 
 [node name="Character" parent="." instance=ExtResource("1_3b8u2")]
-position = Vector2(46, 62)
+position = Vector2(46, 30)

@@ -12,7 +12,7 @@ func start() -> void:
 	if timer.is_stopped():
 		timer.start()
 		if not owner.is_moving():
-			owner.animation_tree.set('parameters/MeleeAttack/blend_position', state_machine.state_data.get('attack_direction'))
+			owner.animation_tree.set('parameters/MeleeAttack/blend_position', owner.last_direction)
 			owner.playback.start('MeleeAttack')
 
 func run() -> void:

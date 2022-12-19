@@ -20,6 +20,7 @@ var weapon_switch_timer := $WeaponSwitchTimer as Timer
 var current_state: State
 var last_direction := Vector2.ZERO
 var direction: Vector2
+var weapon_state := RIFLE
 
 
 func _ready() -> void:
@@ -51,16 +52,17 @@ func is_moving() -> bool:
 	return velocity != Vector2.ZERO
 
 func direction_to_mouse() -> Vector2:
-	return position.direction_to(get_global_mouse_position())
+	last_direction = position.direction_to(get_global_mouse_position())
+	return last_direction
 
 func switch_weapon(weapon: int) -> void:
 	if weapon_switch_timer.is_stopped():
 		weapon_switch_timer.start()
-		state_machine.state_data.merge({'weapon_state': weapon}, true)
+		weapon_state = weapon
 		animation_tree.set('parameters/Idle/blend_position', weapon)
 		animation_tree.set('parameters/Run/WeaponState/blend_position', weapon)
-		var param := 'parameters/Idle/%d/blend_position' % state_machine.state_data.get('weapon_state') as String
-		animation_tree.set(param, state_machine.state_data.get('idle_direction'))
+		var param := 'parameters/Idle/%d/blend_position' % weapon as String
+		animation_tree.set(param, last_direction)
 		if weapon != MELEE:
 			animation_tree.set('parameters/Aim/blend_position', weapon)
 		
