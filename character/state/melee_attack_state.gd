@@ -1,21 +1,13 @@
 extends State
 
 
-@onready
-var timer := $Timer
-
-
-func _ready():
-	timer.timeout.connect(end)
-
 func start() -> void:
-	if timer.is_stopped():
-		timer.start()
-		if not owner.is_moving():
-			owner.animation_tree.set('parameters/MeleeAttack/blend_position', owner.last_direction)
-			owner.playback.start('MeleeAttack')
+	if not owner.is_moving():
+		owner.animation_tree.set('parameters/MeleeAttack/blend_position', owner.last_direction)
+		owner.playback.start('MeleeAttack')
 
 func run() -> void:
+	owner.get_input_diretion()
 	if owner.is_moving():
 		emit_signal('finished', 'Run')
 

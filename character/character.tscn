@@ -4435,13 +4435,13 @@ script = ExtResource("24_n2yy1")
 [node name="MeleeAttack" type="Node" parent="StateMachine"]
 script = ExtResource("24_ctipj")
 
-[node name="Timer" type="Timer" parent="StateMachine/MeleeAttack"]
-wait_time = 0.3
-one_shot = true
-
 [node name="Aim" type="Node" parent="StateMachine"]
 script = ExtResource("25_ykhtx")
 
-[node name="WeaponSwitchTimer" type="Timer" parent="."]
+[node name="WeaponSwitchTimer" type="Timer" parent="StateMachine"]
 wait_time = 0.1
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="StateMachine"]
+wait_time = 0.3
 one_shot = true

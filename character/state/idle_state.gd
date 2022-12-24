@@ -7,14 +7,12 @@ func start() -> void:
 	owner.playback.start('Idle')
 
 func run() -> void:
-	owner.set_direction()
+	owner.get_input_diretion()
 	if owner.is_moving():
 		emit_signal('finished','Run')
-
-	if owner.weapon_state == owner.MELEE and Input.is_action_pressed("attack"):
+	if owner.weapon_state == StateMachine.MELEE and Input.is_action_pressed("attack"):
 		owner.direction_to_mouse()
 		emit_signal('finished','MeleeAttack')
 		return
-	if owner.weapon_state != owner.MELEE and Input.is_action_pressed('aim'):
+	if owner.weapon_state != StateMachine.MELEE and Input.is_action_pressed('aim'):
 		emit_signal('finished','Aim')
-		return

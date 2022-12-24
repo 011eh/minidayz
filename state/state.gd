@@ -2,9 +2,9 @@ extends Node
 
 class_name State
 
+
 signal finished
 
-var state_machine: StateMachine
 
 func start() -> void:
 	pass
