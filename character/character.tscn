@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://b2ddeoxi0wvv5"]
+[gd_scene load_steps=77 format=3 uid="uid://b2ddeoxi0wvv5"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://b01dw2glpagdl" path="res://images/equipment/weapon/rifle/m4_rifle.png" id="7_jcxe6"]
 [ext_resource type="Texture2D" uid="uid://havkpsdwyban" path="res://images/equipment/weapon/pistol/colt_pistol.png" id="8_ihsae"]
 [ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://images/equipment/weapon/melee/fireaxe.png" id="9_8450s"]
-[ext_resource type="Script" path="res://character/character_animation.gd" id="11_3gvf8"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="13_xl15n"]
@@ -22,7 +21,6 @@
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://d0ysow8htmhc2" path="res://character/res/melee_attack.tres" id="16_5d887"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cly713wn0kybr" path="res://character/res/run_pistol.tres" id="16_6gjlo"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://hlfygt5ju8dk" path="res://character/res/run_meleel.tres" id="17_o584k"]
-[ext_resource type="Script" path="res://character/animation_tree.gd" id="21_fqsuc"]
 [ext_resource type="Script" path="res://character/state/melee_attack_state.gd" id="24_ctipj"]
 [ext_resource type="Script" path="res://character/state/run_state.gd" id="24_n2yy1"]
 [ext_resource type="Script" path="res://character/state/aim_state.gd" id="25_ykhtx"]
@@ -4402,7 +4400,6 @@ shape = SubResource("CapsuleShape2D_s1fp6")
 libraries = {
 "": SubResource("AnimationLibrary_n0p77")
 }
-script = ExtResource("11_3gvf8")
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_25lx7")
@@ -4422,7 +4419,6 @@ parameters/Run/WeaponState/blend_position = 0.0
 parameters/Run/WeaponState/0/blend_position = Vector2(0, 0)
 parameters/Run/WeaponState/1/blend_position = Vector2(0, 0)
 parameters/Run/WeaponState/2/blend_position = Vector2(0, 0)
-script = ExtResource("21_fqsuc")
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
 
