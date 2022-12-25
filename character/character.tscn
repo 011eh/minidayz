@@ -1,16 +1,16 @@
-[gd_scene load_steps=77 format=3 uid="uid://b2ddeoxi0wvv5"]
+[gd_scene load_steps=77 format=3 uid="uid://svp7mopwgcu0"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
-[ext_resource type="Texture2D" uid="uid://bofdxlc76qrp6" path="res://images/equipment/clothes/gorka_jacket.png" id="2_cm1wb"]
-[ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://images/character/player_skin/player_skin_def_1.png" id="3_kvru2"]
-[ext_resource type="Texture2D" uid="uid://cjmc5gw4ej850" path="res://images/equipment/pants/gorka_pants.png" id="3_p6dlh"]
-[ext_resource type="Texture2D" uid="uid://bwrd8qkhg3f36" path="res://images/equipment/helmet/gorka_helmet.png" id="4_pxvut"]
-[ext_resource type="Texture2D" uid="uid://dy5odq80y1n7f" path="res://images/equipment/vest/kevlar_vest.png" id="5_8mkd2"]
-[ext_resource type="Texture2D" uid="uid://bywdouvd6udwo" path="res://images/equipment/backpack/mountain_backpack.png" id="6_dcxgx"]
-[ext_resource type="Texture2D" uid="uid://b01dw2glpagdl" path="res://images/equipment/weapon/rifle/m4_rifle.png" id="7_jcxe6"]
-[ext_resource type="Texture2D" uid="uid://havkpsdwyban" path="res://images/equipment/weapon/pistol/colt_pistol.png" id="8_ihsae"]
-[ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://images/equipment/weapon/melee/fireaxe.png" id="9_8450s"]
+[ext_resource type="Texture2D" uid="uid://pcjkwx3v8i4j" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="3_qxl6g"]
+[ext_resource type="Texture2D" uid="uid://bofdxlc76qrp6" path="res://asset/images/equipment/clothes/gorka_jacket.png" id="4_telng"]
+[ext_resource type="Texture2D" uid="uid://cjmc5gw4ej850" path="res://asset/images/equipment/pants/gorka_pants.png" id="5_qop5o"]
+[ext_resource type="Texture2D" uid="uid://bwrd8qkhg3f36" path="res://asset/images/equipment/helmet/gorka_helmet.png" id="6_tcxpg"]
+[ext_resource type="Texture2D" uid="uid://draou1rpfv3ku" path="res://asset/images/equipment/vest/razgruz.png" id="7_1jptc"]
+[ext_resource type="Texture2D" uid="uid://bywdouvd6udwo" path="res://asset/images/equipment/backpack/mountain_backpack.png" id="8_k476l"]
+[ext_resource type="Texture2D" uid="uid://b01dw2glpagdl" path="res://asset/images/equipment/weapon/rifle/m4_rifle.png" id="9_7lenr"]
+[ext_resource type="Texture2D" uid="uid://5jk74c7lcygg" path="res://asset/images/equipment/weapon/pistol/fnx_pistol.png" id="10_yefwb"]
+[ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://asset/images/equipment/weapon/melee/fireaxe.png" id="11_vvaba"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="13_xl15n"]
@@ -4338,55 +4338,55 @@ position = Vector2(0, -14)
 script = ExtResource("1_psyd6")
 
 [node name="Skin" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("3_kvru2")
+texture = ExtResource("3_qxl6g")
 hframes = 4
 vframes = 11
 frame = 34
 
 [node name="Clothes" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("2_cm1wb")
+texture = ExtResource("4_telng")
 hframes = 4
 vframes = 11
 frame = 34
 
 [node name="Pants" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("3_p6dlh")
+texture = ExtResource("5_qop5o")
 hframes = 4
 vframes = 11
 frame = 34
 
 [node name="Helmet" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("4_pxvut")
+texture = ExtResource("6_tcxpg")
 hframes = 4
 vframes = 11
 frame = 34
 
 [node name="Vest" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("5_8mkd2")
+texture = ExtResource("7_1jptc")
 hframes = 4
 vframes = 11
 frame = 34
 
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("6_dcxgx")
+texture = ExtResource("8_k476l")
 hframes = 4
 vframes = 10
 frame = 34
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("7_jcxe6")
+texture = ExtResource("9_7lenr")
 hframes = 4
 vframes = 16
 frame = 62
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("8_ihsae")
+texture = ExtResource("10_yefwb")
 hframes = 4
 vframes = 7
 frame = 4
 
 [node name="Melee" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("9_8450s")
+texture = ExtResource("11_vvaba")
 hframes = 4
 vframes = 17
 frame = 34
