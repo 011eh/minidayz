@@ -1,0 +1,26 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=5 format=3 uid="uid://bkt62wj8et6re"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7pwru"]
+animation = &"run_rifle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t1j1v"]
+animation = &"run_rifle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1gd43"]
+animation = &"run_rifle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2nvyn"]
+animation = &"run_rifle_down"
+
+[resource]
+auto_triangles = false
+blend_point_0/node = SubResource("AnimationNodeAnimation_7pwru")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_t1j1v")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_1gd43")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2nvyn")
+blend_point_3/pos = Vector2(0, 1)
+triangles = PackedInt32Array(0, 1, 3, 1, 2, 3)
+blend_mode = 1

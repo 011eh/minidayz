@@ -1,0 +1,24 @@
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=5 format=3 uid="uid://d0ysow8htmhc2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p2ukq"]
+animation = &"melee_attack_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kgshk"]
+animation = &"melee_attack_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ueea"]
+animation = &"melee_attack_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fdjme"]
+animation = &"melee_attack_down"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeAnimation_p2ukq")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kgshk")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_8ueea")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_fdjme")
+blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1
