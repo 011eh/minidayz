@@ -14,6 +14,36 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://character/character.gd"
 }, {
+"base": "Item",
+"class": &"Craft",
+"language": &"GDScript",
+"path": "res://item/craft.gd"
+}, {
+"base": "SlotItem",
+"class": &"Food",
+"language": &"GDScript",
+"path": "res://item/food.gd"
+}, {
+"base": "Item",
+"class": &"Gear",
+"language": &"GDScript",
+"path": "res://item/gear.gd"
+}, {
+"base": "Node2D",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://item/item.gd"
+}, {
+"base": "Weapon",
+"class": &"RangedWeapon",
+"language": &"GDScript",
+"path": "res://item/ranged_weapon.gd"
+}, {
+"base": "Item",
+"class": &"SlotItem",
+"language": &"GDScript",
+"path": "res://item/slot_item.gd"
+}, {
 "base": "Node",
 "class": &"State",
 "language": &"GDScript",
@@ -23,11 +53,23 @@ _global_script_classes=[{
 "class": &"StateMachine",
 "language": &"GDScript",
 "path": "res://state/state_machine.gd"
+}, {
+"base": "Craft",
+"class": &"Weapon",
+"language": &"GDScript",
+"path": "res://item/weapon.gd"
 }]
 _global_script_class_icons={
 "Character": "",
+"Craft": "",
+"Food": "",
+"Gear": "",
+"Item": "",
+"RangedWeapon": "",
+"SlotItem": "",
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"Weapon": ""
 }
 
 [application]
