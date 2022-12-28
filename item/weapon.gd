@@ -1,7 +1,3 @@
-extends Craft
+extends 'durability_item.gd'
 
 class_name Weapon
-
-
-var damage: int
-var runPenalty: int

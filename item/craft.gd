@@ -1,7 +1,3 @@
-extends Item
+extends 'durability_item.gd'
 
 class_name Craft
-
-
-var wear_per_use: float
-var durability: float
