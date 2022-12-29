@@ -1,4 +1,4 @@
 extends Item
 
 
-var number: int
+var number := 1

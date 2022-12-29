@@ -1,4 +1,4 @@
 extends Item
 
 
-var durability: float
+var durability := 100.0

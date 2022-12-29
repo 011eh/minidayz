@@ -29,7 +29,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://item/res/script/gear_resource.gd"
 }, {
-"base": "Node2D",
+"base": "Sprite2D",
 "class": &"Item",
 "language": &"GDScript",
 "path": "res://item/item.gd"
@@ -117,8 +117,8 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/mode="viewport"
-window/stretch/scale=2.0
+window/size/always_on_top=true
+window/stretch/scale=8.0
 
 [input]
 
