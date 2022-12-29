@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://biw438lrldn50"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_58t2g"]
+[ext_resource type="Texture2D" uid="uid://b2ua7x2np6pdh" path="res://asset/images/equipment/weapon/rifle/ak74_rifle.png" id="2_tkf24"]
+
+[resource]
+script = ExtResource("1_58t2g")
+basic_spread = 1
+min_spread = 2
+max_spread = 3
+spread_per_shot = 4
+mag_size = 5
+ammo_type = 6
+aim_speed = 7.0
+reload_time = 8.0
+fire_rate = 9.0
+damage = 10
+runPenalty = 2
+wear_per_use = 0.1
+id = 0
+item_name = &"ak74_rifle"
+texture = ExtResource("2_tkf24")

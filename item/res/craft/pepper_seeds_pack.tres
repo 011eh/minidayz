@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bc3qc7l0g57ta"]
+
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_uto8q"]
+[ext_resource type="Texture2D" uid="uid://r63wk2ab8ubq" path="res://asset/images/item/fruit_pepper_seeds_pack.png" id="2_7meev"]
+
+[resource]
+script = ExtResource("1_uto8q")
+wear_per_use = 20.0
+id = 72
+item_name = &"pepper_seeds_pack"
+texture = ExtResource("2_7meev")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c01830o4qg2t"]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_p1lwo"]
+[ext_resource type="Texture2D" uid="uid://s4outbrfn6qy" path="res://asset/images/item/food_products_mre.png" id="2_qfg0n"]
+
+[resource]
+script = ExtResource("1_p1lwo")
+stackable = false
+stack_limit = 2
+id = 44
+item_name = &"mre"
+texture = ExtResource("2_qfg0n")

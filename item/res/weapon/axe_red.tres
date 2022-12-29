@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cpi8xdrpei455"]
+
+[ext_resource type="Script" path="res://item/res/script/weapon_resource.gd" id="1_7sxxe"]
+[ext_resource type="Texture2D" uid="uid://b8gaqic0vk5yj" path="res://asset/images/equipment/weapon/melee/axe_red.png" id="2_0kun3"]
+
+[resource]
+script = ExtResource("1_7sxxe")
+damage = 10
+runPenalty = 1
+wear_per_use = 0.1
+id = 0
+item_name = &"axe_red"
+texture = ExtResource("2_0kun3")
