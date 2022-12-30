@@ -12,5 +12,5 @@ heat = 4
 stackable = true
 stack_limit = 20
 id = 13
-item_name = &"edrink"
+item_name = &"Edrink"
 texture = ExtResource("2_whneu")

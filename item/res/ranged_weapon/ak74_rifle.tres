@@ -18,5 +18,5 @@ damage = 10
 runPenalty = 2
 wear_per_use = 0.1
 id = 0
-item_name = &"ak74_rifle"
+item_name = &"Ak74"
 texture = ExtResource("2_tkf24")

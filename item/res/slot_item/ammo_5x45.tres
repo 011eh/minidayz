@@ -8,5 +8,5 @@ script = ExtResource("1_373oy")
 stackable = true
 stack_limit = 90
 id = 0
-item_name = &"ammo_5x45"
+item_name = &"Ammo 5x45"
 texture = ExtResource("2_o1jht")

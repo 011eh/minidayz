@@ -7,5 +7,5 @@
 script = ExtResource("1_uto8q")
 wear_per_use = 20.0
 id = 72
-item_name = &"pepper_seeds_pack"
+item_name = &"Pepper Seeds"
 texture = ExtResource("2_7meev")

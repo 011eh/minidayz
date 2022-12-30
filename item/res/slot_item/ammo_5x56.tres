@@ -8,5 +8,5 @@ script = ExtResource("1_pgodd")
 stackable = true
 stack_limit = 90
 id = 1
-item_name = &"ammo_5x56"
+item_name = &"Ammo 5x56"
 texture = ExtResource("2_r1mhs")
