@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsqxc2124e8ly"
-path="res://.godot/imported/weapon_handmade_arrows.png-e12498b03ad475ee6770e6f14d4c10d8.ctex"
+uid="uid://dc65rvuexqkcg"
+path="res://.godot/imported/ammo_composite_arrows.png-08ca298c1ce0e6f9b68cbf20300410a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/weapon_handmade_arrows.png"
-dest_files=["res://.godot/imported/weapon_handmade_arrows.png-e12498b03ad475ee6770e6f14d4c10d8.ctex"]
+source_file="res://asset/images/item/ammo_composite_arrows.png"
+dest_files=["res://.godot/imported/ammo_composite_arrows.png-08ca298c1ce0e6f9b68cbf20300410a5.ctex"]
 
 [params]
 
