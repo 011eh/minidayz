@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://item/res/script/craft_resource.gd"
 }, {
+"base": "",
+"class": &"Gear",
+"language": &"GDScript",
+"path": "res://item/gear.gd"
+}, {
 "base": "ItemResource",
 "class": &"GearResource",
 "language": &"GDScript",
@@ -93,6 +98,7 @@ _global_script_class_icons={
 "Character": "",
 "Craft": "",
 "CraftResource": "",
+"Gear": "",
 "GearResource": "",
 "Item": "",
 "ItemResource": "",

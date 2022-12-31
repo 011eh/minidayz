@@ -14,7 +14,7 @@ var bullet_number := 0
 
 
 func _ready():
-	hframes = WEAPON_HFRAMES
+	hframes = SPRITE_HFRAMES
 	vframes = RANGE_WEAPON_VFRAMES
 	frame = WEAPON_INIT_FRAME
 	texture = resource.texture
