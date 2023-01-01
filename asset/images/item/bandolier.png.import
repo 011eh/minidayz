@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://c850n26vkoyoa"
+path="res://.godot/imported/bandolier.png-19a02c173459013922a5142082eb47bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/bandolier.png"
+dest_files=["res://.godot/imported/bandolier.png-19a02c173459013922a5142082eb47bb.ctex"]
 
 [params]
 

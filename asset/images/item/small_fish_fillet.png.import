@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://804ea4r5cg7p"
+path="res://.godot/imported/small_fish_fillet.png-81e3b04327f2bce55fc6300f0bde268d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/small_fish_fillet.png"
+dest_files=["res://.godot/imported/small_fish_fillet.png-81e3b04327f2bce55fc6300f0bde268d.ctex"]
 
 [params]
 

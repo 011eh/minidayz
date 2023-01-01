@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://kkm1l683je5o"
+path="res://.godot/imported/vitamins.png-7d194211ed576a91ef84d4235f7eeab2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/vitamins.png"
+dest_files=["res://.godot/imported/vitamins.png-7d194211ed576a91ef84d4235f7eeab2.ctex"]
 
 [params]
 

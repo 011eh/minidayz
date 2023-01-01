@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://bu8m2c1ocgs5t"
+path="res://.godot/imported/wood_sticks.png-55bc21cc244c809e56ba37fa940facd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/wood_sticks.png"
+dest_files=["res://.godot/imported/wood_sticks.png-55bc21cc244c809e56ba37fa940facd7.ctex"]
 
 [params]
 

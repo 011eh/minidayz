@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://py8ha6fl404i"
+path="res://.godot/imported/tomato_seeds_pack.png-64f0f58eae411b6bc92fb618360b2a3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/tomato_seeds_pack.png"
+dest_files=["res://.godot/imported/tomato_seeds_pack.png-64f0f58eae411b6bc92fb618360b2a3f.ctex"]
 
 [params]
 

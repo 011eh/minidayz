@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://bo1a7tbim4ecx"
+path="res://.godot/imported/claymore_deployed.png-ab8c19735a4f811e36d961de2842f6b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/claymore_deployed.png"
+dest_files=["res://.godot/imported/claymore_deployed.png-ab8c19735a4f811e36d961de2842f6b7.ctex"]
 
 [params]
 

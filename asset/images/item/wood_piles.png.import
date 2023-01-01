@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://bfbarncoa4mkd"
+path="res://.godot/imported/wood_piles.png-6abd43de7c328357d76e60a82dbe2569.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/wood_piles.png"
+dest_files=["res://.godot/imported/wood_piles.png-6abd43de7c328357d76e60a82dbe2569.ctex"]
 
 [params]
 

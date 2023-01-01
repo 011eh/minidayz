@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://coufydmjrkwx4"
+path="res://.godot/imported/flare_active-1.png-f3d4e3e43a9eeeb3171dbb49f0132c0c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/flare_active-1.png"
+dest_files=["res://.godot/imported/flare_active-1.png-f3d4e3e43a9eeeb3171dbb49f0132c0c.ctex"]
 
 [params]
 

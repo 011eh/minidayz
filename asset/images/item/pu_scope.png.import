@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://bn18uix70otsq"
+path="res://.godot/imported/pu_scope.png-d2330b5a92da9e3e99c8ee63fe38d224.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/pu_scope.png"
+dest_files=["res://.godot/imported/pu_scope.png-d2330b5a92da9e3e99c8ee63fe38d224.ctex"]
 
 [params]
 

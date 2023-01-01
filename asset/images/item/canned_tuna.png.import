@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://ch2fc1yv0qf5a"
+path="res://.godot/imported/canned_tuna.png-f8cd726ba48649e845d5ca3805079817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/canned_tuna.png"
+dest_files=["res://.godot/imported/canned_tuna.png-f8cd726ba48649e845d5ca3805079817.ctex"]
 
 [params]
 

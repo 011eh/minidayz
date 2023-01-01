@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://b2x7kpummv5mx"
+path="res://.godot/imported/perch.png-7884f0d9999b7759f3622f2f4c764a37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/perch.png"
+dest_files=["res://.godot/imported/perch.png-7884f0d9999b7759f3622f2f4c764a37.ctex"]
 
 [params]
 

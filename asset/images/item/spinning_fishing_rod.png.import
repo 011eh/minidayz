@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://cegsmtubgf4wa"
+path="res://.godot/imported/spinning_fishing_rod.png-89e7f396c33527e7bebc40cadf332f40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/spinning_fishing_rod.png"
+dest_files=["res://.godot/imported/spinning_fishing_rod.png-89e7f396c33527e7bebc40cadf332f40.ctex"]
 
 [params]
 

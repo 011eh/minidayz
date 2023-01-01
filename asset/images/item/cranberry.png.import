@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://8fbxlysm2qup"
+path="res://.godot/imported/cranberry.png-5802dd3d72b1e2b07b412f7f4fc8f50f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/cranberry.png"
+dest_files=["res://.godot/imported/cranberry.png-5802dd3d72b1e2b07b412f7f4fc8f50f.ctex"]
 
 [params]
 

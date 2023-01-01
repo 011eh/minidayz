@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://ou32fic0y5rl"
+path="res://.godot/imported/pepper_seeds_pack.png-6a6861a30efd230c0e3f8a71507683ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/pepper_seeds_pack.png"
+dest_files=["res://.godot/imported/pepper_seeds_pack.png-6a6861a30efd230c0e3f8a71507683ff.ctex"]
 
 [params]
 

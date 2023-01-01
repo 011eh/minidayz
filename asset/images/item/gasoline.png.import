@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://cwnvtx1rmdblh"
+path="res://.godot/imported/gasoline.png-6480d1d9217a04b4c739f0cb28804242.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/gasoline.png"
+dest_files=["res://.godot/imported/gasoline.png-6480d1d9217a04b4c739f0cb28804242.ctex"]
 
 [params]
 

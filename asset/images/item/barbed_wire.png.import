@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://bxbitmldwxa2"
+path="res://.godot/imported/barbed_wire.png-b849eb7bf720eb294f1e3b41598817db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/barbed_wire.png"
+dest_files=["res://.godot/imported/barbed_wire.png-b849eb7bf720eb294f1e3b41598817db.ctex"]
 
 [params]
 

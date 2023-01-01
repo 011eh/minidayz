@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7eh63hn2mpx"
-path="res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"
+uid="uid://d122mvkoksbsy"
+path="res://.godot/imported/duct_tape.png-b8e172299163712669a7d87fa3b7c85c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/item/ammo_count_inv_bg.png"
-dest_files=["res://.godot/imported/ammo_count_inv_bg.png-29643d8eea3015fb0cda11d64eb01f17.ctex"]
+source_file="res://asset/images/item/duct_tape.png"
+dest_files=["res://.godot/imported/duct_tape.png-b8e172299163712669a7d87fa3b7c85c.ctex"]
 
 [params]
 
