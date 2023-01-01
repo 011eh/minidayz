@@ -5,7 +5,6 @@ class_name Gear
 
 const GEAR_VFRAMES = 11
 const GENAR_RES_TABLE := {
-	0: preload('res://item/res/gear/cloak_brown.tres'),
 }
 
 func _ready():

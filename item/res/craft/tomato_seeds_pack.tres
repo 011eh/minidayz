@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_u4ef0"]
+[ext_resource type="Texture2D" path="res://asset/images/item/tomato_seeds_pack.png" id="2_xsghn"]
+
+[resource]
+script = ExtResource("1_u4ef0")
+wear_per_use = 20.0
+id = 86
+item_name = &"Tomato Seeds Pack"
+texture = ExtResource("2_xsghn")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_bk68c"]
+[ext_resource type="Texture2D" path="res://asset/images/item/herring.png" id="2_atpci"]
+
+[resource]
+script = ExtResource("1_bk68c")
+health = 0
+hunger = 15
+drink = 3
+heat = 0
+stackable = true
+stack_limit = 5
+id = 72
+item_name = &"Herring"
+texture = ExtResource("2_atpci")

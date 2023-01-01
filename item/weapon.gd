@@ -4,7 +4,6 @@ class_name Weapon
 
 const WEAPON_VFRAMES = 17
 const WEAPON_RES_TABLE :={
-	0: preload('res://item/res/weapon/axe_red.tres'),
 }
 
 

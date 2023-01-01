@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_f34a4"]
+[ext_resource type="Texture2D" path="res://asset/images/item/basic_fishing_rod.png" id="2_v2omv"]
+
+[resource]
+script = ExtResource("1_f34a4")
+wear_per_use = 0.0
+id = 93
+item_name = &"Basic Fishing Rod"
+texture = ExtResource("2_v2omv")

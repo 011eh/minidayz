@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_3u66a"]
+[ext_resource type="Texture2D" path="res://asset/images/item/vitamins.png" id="2_66pvg"]
+
+[resource]
+script = ExtResource("1_3u66a")
+stackable = true
+stack_limit = 3
+id = 24
+item_name = &"Vitamins"
+texture = ExtResource("2_66pvg")

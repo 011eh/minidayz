@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_o5ras"]
+[ext_resource type="Texture2D" path="res://asset/images/item/molotov.png" id="2_mbdbb"]
+
+[resource]
+script = ExtResource("1_o5ras")
+stackable = true
+stack_limit = 3
+id = 29
+item_name = &"Molotov"
+texture = ExtResource("2_mbdbb")

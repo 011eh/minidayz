@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_e67tp"]
+[ext_resource type="Texture2D" path="res://asset/images/item/wood_sticks.png" id="2_lo4g5"]
+
+[resource]
+script = ExtResource("1_e67tp")
+stackable = true
+stack_limit = 5
+id = 14
+item_name = &"Wood Sticks"
+texture = ExtResource("2_lo4g5")

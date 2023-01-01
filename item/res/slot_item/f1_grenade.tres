@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_xo0k8"]
+[ext_resource type="Texture2D" path="res://asset/images/item/f1_grenade.png" id="2_hy8r5"]
+
+[resource]
+script = ExtResource("1_xo0k8")
+stackable = true
+stack_limit = 5
+id = 28
+item_name = &"F1 Grenade"
+texture = ExtResource("2_hy8r5")

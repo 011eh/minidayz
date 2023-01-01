@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_oxbs5"]
+[ext_resource type="Texture2D" path="res://asset/images/item/composite_arrow.png" id="2_0t8eq"]
+
+[resource]
+script = ExtResource("1_oxbs5")
+stackable = true
+stack_limit = 30
+id = 12
+item_name = &"Composite Arrow"
+texture = ExtResource("2_0t8eq")

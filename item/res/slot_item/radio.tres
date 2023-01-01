@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_216o2"]
+[ext_resource type="Texture2D" path="res://asset/images/item/radio.png" id="2_sqlpa"]
+
+[resource]
+script = ExtResource("1_216o2")
+stackable = true
+stack_limit = 1
+id = 89
+item_name = &"Radio"
+texture = ExtResource("2_sqlpa")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_70yue"]
+[ext_resource type="Texture2D" path="res://asset/images/item/7.62x39_ammo.png" id="2_n6w53"]
+
+[resource]
+script = ExtResource("1_70yue")
+stackable = true
+stack_limit = 40
+id = 3
+item_name = &"7.62x39 Ammo"
+texture = ExtResource("2_n6w53")

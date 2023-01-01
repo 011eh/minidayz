@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_vuw6x"]
+[ext_resource type="Texture2D" path="res://asset/images/item/ruffe.png" id="2_x7dom"]
+
+[resource]
+script = ExtResource("1_vuw6x")
+health = 0
+hunger = 20
+drink = 3
+heat = 0
+stackable = true
+stack_limit = 5
+id = 74
+item_name = &"Ruffe"
+texture = ExtResource("2_x7dom")

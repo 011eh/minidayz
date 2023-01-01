@@ -5,7 +5,6 @@ class_name RangedWeapon
 
 const RANGE_WEAPON_VFRAMES = 16
 const RANGED_WEAPON_RES_TABLE := {
-	0: preload('res://item/res/ranged_weapon/ak74_rifle.tres'),
 }
 
 
@@ -16,7 +15,7 @@ var bullet_number := 0
 func _ready():
 	hframes = SPRITE_HFRAMES
 	vframes = RANGE_WEAPON_VFRAMES
-	frame = WEAPON_INIT_FRAME
+	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
 static func create_item(id: int) -> Weapon:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_mjll4"]
+[ext_resource type="Texture2D" path="res://asset/images/item/big_fish_fillet.png" id="2_si465"]
+
+[resource]
+script = ExtResource("1_mjll4")
+health = 0
+hunger = 80
+drink = 0
+heat = 0
+stackable = true
+stack_limit = 5
+id = 77
+item_name = &"Big Fish Fillet"
+texture = ExtResource("2_si465")

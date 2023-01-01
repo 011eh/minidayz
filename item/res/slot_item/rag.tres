@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_7bsk7"]
+[ext_resource type="Texture2D" path="res://asset/images/item/rag.png" id="2_rdhf1"]
+
+[resource]
+script = ExtResource("1_7bsk7")
+stackable = true
+stack_limit = 5
+id = 22
+item_name = &"Rag"
+texture = ExtResource("2_rdhf1")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_crx33"]
+[ext_resource type="Texture2D" path="res://asset/images/item/nota_cola.png" id="2_at1fk"]
+
+[resource]
+script = ExtResource("1_crx33")
+health = 0
+hunger = 3
+drink = 10
+heat = 0
+stackable = true
+stack_limit = 3
+id = 49
+item_name = &"Nota Cola"
+texture = ExtResource("2_at1fk")

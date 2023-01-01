@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_djfat"]
+[ext_resource type="Texture2D" path="res://asset/images/item/sewing_kit.png" id="2_gsp16"]
+
+[resource]
+script = ExtResource("1_djfat")
+wear_per_use = 10.0
+id = 92
+item_name = &"Sewing Kit"
+texture = ExtResource("2_gsp16")
