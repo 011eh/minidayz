@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c1cjfu1a072s3"
+
+[deps]
+
+files=["res://dev_res/工具.item.translation", "res://dev_res/工具.texture.translation", "res://dev_res/工具.wear.translation"]
+
+source_file="res://dev_res/工具.CSV"
+dest_files=["res://dev_res/工具.item.translation", "res://dev_res/工具.texture.translation", "res://dev_res/工具.wear.translation"]
+
+[params]
+
+compress=true
+delimiter=0

@@ -1,0 +1,49 @@
+id,item_name,texture,stackable,stack_limit
+0,5.45x39 Ammo,res://asset/images/item/5.45x39_ammo.png,1,60
+1,5.56x45 Ammo,res://asset/images/item/5.56x45_ammo.png,1,60
+2,7.62 Ammo,res://asset/images/item/7.62_ammo.png,1,40
+3,7.62x39 Ammo,res://asset/images/item/7.62x39_ammo.png,1,40
+4,9mm Ammo,res://asset/images/item/9mm_ammo.png,1,60
+5,9x18 Ammo,res://asset/images/item/9x18_ammo.png,1,60
+6,9x39 Ammo,res://asset/images/item/9x39_ammo.png,1,40
+7,12cal Ammo,res://asset/images/item/12cal_ammo.png,1,40
+8,.22lr Ammo,res://asset/images/item/.22lr_ammo.png,1,60
+9,.45 ACP Ammo,res://asset/images/item/.45_acp_ammo.png,1,60
+10,.357 Ammo,res://asset/images/item/.357_ammo.png,1,60
+11,Crafted Arrow,res://asset/images/item/crafted_arrow.png,1,30
+12,Composite Arrow,res://asset/images/item/composite_arrow.png,1,30
+13,Ashwood Stick,res://asset/images/item/ashwood_stick.png,1,5
+14,Wood Sticks,res://asset/images/item/wood_sticks.png,1,5
+15,Wood Piles,res://asset/images/item/wood_piles.png,1,3
+16,Campfire Kit,res://asset/images/item/campfire_kit.png,0,1
+17,Rope,res://asset/images/item/rope.png,1,5
+18,Papers,res://asset/images/item/papers.png,1,5
+19,Burlap Sack,res://asset/images/item/burlap_sack.png,1,5
+20,Matches,res://asset/images/item/matches.png,1,5
+21,Protective Case,res://asset/images/item/protective_case.png,0,1
+22,Rag,res://asset/images/item/rag.png,1,5
+23,Bandage,res://asset/images/item/bandage.png,1,5
+24,Vitamins,res://asset/images/item/vitamins.png,1,3
+25,Tetracycline,res://asset/images/item/tetracycline.png,1,3
+26,Morphine,res://asset/images/item/morphine.png,1,3
+27,Flare,res://asset/images/item/flare.png,1,3
+28,F1 Grenade,res://asset/images/item/f1_grenade.png,1,5
+29,Molotov,res://asset/images/item/molotov.png,1,3
+30,Duct Tape,res://asset/images/item/duct_tape.png,1,5
+31,Gasoline,res://asset/images/item/gasoline.png,0,1
+32,Car Toolbox,res://asset/images/item/car_toolbox.png,0,1
+33,Bandolier,res://asset/images/item/bandolier.png,1,3
+34,Magpul,res://asset/images/item/magpul.png,1,3
+35,Choke,res://asset/images/item/choke.png,1,3
+36,ACOG Scope,res://asset/images/item/acog_scope.png,1,3
+37,Long Range Scope,res://asset/images/item/long_range_scope.png,1,3
+38,PSO-1 Scope,res://asset/images/item/pso-1_scope.png,1,3
+39,PU Scope,res://asset/images/item/pu_scope.png,1,3
+40,RDS Scope,res://asset/images/item/rds_scope.png,1,3
+41,Silencer 5.45,res://asset/images/item/silencer_5.45.png,1,3
+42,Silencer 5.56,res://asset/images/item/silencer_5.56.png,1,3
+43,Barbed Wire,res://asset/images/item/barbed_wire.png,1,3
+44,Bear Trap,res://asset/images/item/bear_trap.png,1,3
+45,Landmine,res://asset/images/item/landmine.png,1,3
+46,Claymore,res://asset/images/item/claymore.png,1,3
+89,Radio,res://asset/images/item/radio.png,0,1

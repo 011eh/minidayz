@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://btojw3758tyj1"
+
+[deps]
+
+files=["res://dev_res/状态物品.item.translation", "res://dev_res/状态物品.texture.translation", "res://dev_res/状态物品.stackable.translation", "res://dev_res/状态物品.stack.translation", "res://dev_res/状态物品.health.translation", "res://dev_res/状态物品.hunger.translation", "res://dev_res/状态物品.drink.translation", "res://dev_res/状态物品.heat.translation"]
+
+source_file="res://dev_res/状态物品.CSV"
+dest_files=["res://dev_res/状态物品.item.translation", "res://dev_res/状态物品.texture.translation", "res://dev_res/状态物品.stackable.translation", "res://dev_res/状态物品.stack.translation", "res://dev_res/状态物品.health.translation", "res://dev_res/状态物品.hunger.translation", "res://dev_res/状态物品.drink.translation", "res://dev_res/状态物品.heat.translation"]
+
+[params]
+
+compress=true
+delimiter=0
