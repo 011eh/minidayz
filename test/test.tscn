@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
 
 [node name="Test" type="Node2D"]
+position = Vector2(48, 21)
 script = ExtResource("1_ekwsy")
+dir = "res://asset/images/equipment/weapon/rifle"
