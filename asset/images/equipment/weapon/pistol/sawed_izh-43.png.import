@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://caxm8cl3ortgy"
+path="res://.godot/imported/sawed_izh-43.png-75899a64d08062cc476fe545507b6529.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/pistol/sawed_izh-43.png"
+dest_files=["res://.godot/imported/sawed_izh-43.png-75899a64d08062cc476fe545507b6529.ctex"]
 
 [params]
 

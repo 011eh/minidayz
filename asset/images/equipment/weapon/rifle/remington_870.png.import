@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://ccbpwc8tba47p"
+path="res://.godot/imported/remington_870.png-0faa6c0d2079c6df1b41f136c057a470.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/rifle/remington_870.png"
+dest_files=["res://.godot/imported/remington_870.png-0faa6c0d2079c6df1b41f136c057a470.ctex"]
 
 [params]
 

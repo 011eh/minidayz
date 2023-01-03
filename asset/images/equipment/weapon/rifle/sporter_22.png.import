@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://c5fvpphrlyqso"
+path="res://.godot/imported/sporter_22.png-71b4a65fee91c5d0e41eee8f90d4a5f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/rifle/sporter_22.png"
+dest_files=["res://.godot/imported/sporter_22.png-71b4a65fee91c5d0e41eee8f90d4a5f4.ctex"]
 
 [params]
 

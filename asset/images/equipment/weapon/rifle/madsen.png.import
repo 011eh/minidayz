@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://duwtossv4ki7s"
+path="res://.godot/imported/madsen.png-e04062be22cc4e1f43a9d98451348314.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/rifle/madsen.png"
+dest_files=["res://.godot/imported/madsen.png-e04062be22cc4e1f43a9d98451348314.ctex"]
 
 [params]
 

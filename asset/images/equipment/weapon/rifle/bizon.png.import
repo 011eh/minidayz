@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://khqtcuwicc4l"
+path="res://.godot/imported/bizon.png-aa9405c73bfac11b1777043a47b674de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/rifle/bizon.png"
+dest_files=["res://.godot/imported/bizon.png-aa9405c73bfac11b1777043a47b674de.ctex"]
 
 [params]
 

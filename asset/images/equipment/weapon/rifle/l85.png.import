@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://cnql2q738x2uh"
+path="res://.godot/imported/l85.png-6ee27ab2bf85ef4634915d3f03d86ab4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/rifle/l85.png"
+dest_files=["res://.godot/imported/l85.png-6ee27ab2bf85ef4634915d3f03d86ab4.ctex"]
 
 [params]
 

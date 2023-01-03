@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljrt2h4y5nob"
-path="res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"
+uid="uid://f4rqngijwggs"
+path="res://.godot/imported/mosin.png-ea0dde5b55a185fa260c2b06f1cd7883.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/rifle/gui_firearm_device.png"
-dest_files=["res://.godot/imported/gui_firearm_device.png-fea842f3ff54a3b5953b355ad3cdb0df.ctex"]
+source_file="res://asset/images/equipment/weapon/rifle/mosin.png"
+dest_files=["res://.godot/imported/mosin.png-ea0dde5b55a185fa260c2b06f1cd7883.ctex"]
 
 [params]
 
