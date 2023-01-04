@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bwrd8qkhg3f36" path="res://asset/images/equipment/helmet/gorka_helmet.png" id="6_tcxpg"]
 [ext_resource type="Texture2D" uid="uid://draou1rpfv3ku" path="res://asset/images/equipment/vest/razgruz.png" id="7_1jptc"]
 [ext_resource type="Texture2D" uid="uid://bywdouvd6udwo" path="res://asset/images/equipment/backpack/mountain_backpack.png" id="8_k476l"]
-[ext_resource type="Texture2D" uid="uid://b01dw2glpagdl" path="res://asset/images/equipment/weapon/rifle/m4_rifle.png" id="9_7lenr"]
-[ext_resource type="Texture2D" uid="uid://5jk74c7lcygg" path="res://asset/images/equipment/weapon/pistol/fnx_pistol.png" id="10_yefwb"]
+[ext_resource type="Texture2D" uid="uid://p2dk71uacvaw" path="res://asset/images/equipment/weapon/rifle/m4_carbine.png" id="9_cm7w7"]
+[ext_resource type="Texture2D" uid="uid://dsts6mgsc1opg" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="10_ya5fv"]
 [ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://asset/images/equipment/weapon/melee/fireaxe.png" id="11_vvaba"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
@@ -4374,13 +4374,13 @@ vframes = 10
 frame = 34
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("9_7lenr")
+texture = ExtResource("9_cm7w7")
 hframes = 4
 vframes = 16
 frame = 62
 
 [node name="Pistol" type="Sprite2D" parent="Sprite"]
-texture = ExtResource("10_yefwb")
+texture = ExtResource("10_ya5fv")
 hframes = 4
 vframes = 7
 frame = 4
