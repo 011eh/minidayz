@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4j0dd3wtjena"
-path="res://.godot/imported/pistol_bullet-sheet1.png-92943c70d6f5e73b7c900c028fa06fa1.ctex"
+uid="uid://ciqveioch1yn4"
+path="res://.godot/imported/tracksuit_jacket.png-3c1bcb4f6ffc06293c10a41a8d99867d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/bullet/pistol_bullet-sheet1.png"
-dest_files=["res://.godot/imported/pistol_bullet-sheet1.png-92943c70d6f5e73b7c900c028fa06fa1.ctex"]
+source_file="res://asset/images/equipment/clothes/tracksuit_jacket.png"
+dest_files=["res://.godot/imported/tracksuit_jacket.png-3c1bcb4f6ffc06293c10a41a8d99867d.ctex"]
 
 [params]
 

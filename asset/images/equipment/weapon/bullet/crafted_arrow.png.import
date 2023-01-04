@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwnjuo0ihrv8s"
-path="res://.godot/imported/shotgun_pellet-sheet1.png-d096a47e81b7378820fc8a8ea09c1e1d.ctex"
+uid="uid://dmi5stwiia3um"
+path="res://.godot/imported/crafted_arrow.png-a074e0ebaa82afd0930d663f344b5198.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/bullet/shotgun_pellet-sheet1.png"
-dest_files=["res://.godot/imported/shotgun_pellet-sheet1.png-d096a47e81b7378820fc8a8ea09c1e1d.ctex"]
+source_file="res://asset/images/equipment/weapon/bullet/crafted_arrow.png"
+dest_files=["res://.godot/imported/crafted_arrow.png-a074e0ebaa82afd0930d663f344b5198.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dto1hdhpe4ft7"
-path="res://.godot/imported/sportpants.png-c9fe0cbb49a7bb37ee2ba95cf27e6df7.ctex"
+uid="uid://b6gatga57g6d4"
+path="res://.godot/imported/12cal_pellet.png-ff28139da647ac27f830ce5449cc681f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/pants/sportpants.png"
-dest_files=["res://.godot/imported/sportpants.png-c9fe0cbb49a7bb37ee2ba95cf27e6df7.ctex"]
+source_file="res://asset/images/equipment/weapon/bullet/12cal_pellet.png"
+dest_files=["res://.godot/imported/12cal_pellet.png-ff28139da647ac27f830ce5449cc681f.ctex"]
 
 [params]
 

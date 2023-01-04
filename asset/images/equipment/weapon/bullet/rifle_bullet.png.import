@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmtmsjdetcf7k"
-path="res://.godot/imported/arrow_bullet_c-sheet1.png-5f514a98eb61afc0a6409bd152d0ca98.ctex"
+uid="uid://fqkjs6ravu6p"
+path="res://.godot/imported/rifle_bullet.png-8cb751d2032d25a9927dff51ab22288b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/bullet/arrow_bullet_c-sheet1.png"
-dest_files=["res://.godot/imported/arrow_bullet_c-sheet1.png-5f514a98eb61afc0a6409bd152d0ca98.ctex"]
+source_file="res://asset/images/equipment/weapon/bullet/rifle_bullet.png"
+dest_files=["res://.godot/imported/rifle_bullet.png-8cb751d2032d25a9927dff51ab22288b.ctex"]
 
 [params]
 

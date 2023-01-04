@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oqesr33igbhd"
-path="res://.godot/imported/akm_bullet.png-5e377d2b562b3399df4751ba071655b1.ctex"
+uid="uid://71d57qimx7k3"
+path="res://.godot/imported/work_pants.png-f983b7797c8fa9db5732072f611837e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/bullet/akm_bullet.png"
-dest_files=["res://.godot/imported/akm_bullet.png-5e377d2b562b3399df4751ba071655b1.ctex"]
+source_file="res://asset/images/equipment/pants/work_pants.png"
+dest_files=["res://.godot/imported/work_pants.png-f983b7797c8fa9db5732072f611837e2.ctex"]
 
 [params]
 

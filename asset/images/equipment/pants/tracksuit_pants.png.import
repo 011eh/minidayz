@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bepy3ephg8rfy"
-path="res://.godot/imported/m4_bullet_bot.png-cd821bc3fa4a74e79b240a046499aa31.ctex"
+uid="uid://dto1hdhpe4ft7"
+path="res://.godot/imported/tracksuit_pants.png-29887d634cb695da41ae639e150cdcfa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/bullet/m4_bullet_bot.png"
-dest_files=["res://.godot/imported/m4_bullet_bot.png-cd821bc3fa4a74e79b240a046499aa31.ctex"]
+source_file="res://asset/images/equipment/pants/tracksuit_pants.png"
+dest_files=["res://.godot/imported/tracksuit_pants.png-29887d634cb695da41ae639e150cdcfa.ctex"]
 
 [params]
 
