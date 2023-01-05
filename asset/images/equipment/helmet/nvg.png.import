@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0xd0hjj3vigt"
-path="res://.godot/imported/knife_hunter.png-5d3a92a6fc366b3e8d35a409d1f4f688.ctex"
+uid="uid://ox8eugbsipwk"
+path="res://.godot/imported/nvg.png-1609eb88ed44333d7554950574759383.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/melee/knife_hunter.png"
-dest_files=["res://.godot/imported/knife_hunter.png-5d3a92a6fc366b3e8d35a409d1f4f688.ctex"]
+source_file="res://asset/images/equipment/helmet/nvg.png"
+dest_files=["res://.godot/imported/nvg.png-1609eb88ed44333d7554950574759383.ctex"]
 
 [params]
 

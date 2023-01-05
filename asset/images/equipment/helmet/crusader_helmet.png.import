@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp02bs6ineys1"
-path="res://.godot/imported/knife_army.png-2f44b586573ffc7fa7dae055cf86f6c4.ctex"
+uid="uid://dx03wy52v2eip"
+path="res://.godot/imported/crusader_helmet.png-5b45ae969581c9c71f13e6142a5b5cf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/melee/knife_army.png"
-dest_files=["res://.godot/imported/knife_army.png-2f44b586573ffc7fa7dae055cf86f6c4.ctex"]
+source_file="res://asset/images/equipment/helmet/crusader_helmet.png"
+dest_files=["res://.godot/imported/crusader_helmet.png-5b45ae969581c9c71f13e6142a5b5cf0.ctex"]
 
 [params]
 

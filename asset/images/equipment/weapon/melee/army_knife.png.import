@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mu7xuet1xkp3"
-path="res://.godot/imported/knife_butcher.png-ba4d36616c9315e095f1ce9e65a8bb11.ctex"
+uid="uid://bp02bs6ineys1"
+path="res://.godot/imported/army_knife.png-4bb0ec2a0a0d49f19d2799f31cf81fb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/weapon/melee/knife_butcher.png"
-dest_files=["res://.godot/imported/knife_butcher.png-ba4d36616c9315e095f1ce9e65a8bb11.ctex"]
+source_file="res://asset/images/equipment/weapon/melee/army_knife.png"
+dest_files=["res://.godot/imported/army_knife.png-4bb0ec2a0a0d49f19d2799f31cf81fb3.ctex"]
 
 [params]
 

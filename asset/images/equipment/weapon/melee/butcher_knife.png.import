@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://71d57qimx7k3"
-path="res://.godot/imported/worker_pants.png-d55dbda77ac9e40f00bcf6d7a39c93da.ctex"
+uid="uid://mu7xuet1xkp3"
+path="res://.godot/imported/butcher_knife.png-14d6707b8da7ac7dad5a2561e9772375.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/pants/worker_pants.png"
-dest_files=["res://.godot/imported/worker_pants.png-d55dbda77ac9e40f00bcf6d7a39c93da.ctex"]
+source_file="res://asset/images/equipment/weapon/melee/butcher_knife.png"
+dest_files=["res://.godot/imported/butcher_knife.png-14d6707b8da7ac7dad5a2561e9772375.ctex"]
 
 [params]
 

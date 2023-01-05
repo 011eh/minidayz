@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://71d57qimx7k3"
-path="res://.godot/imported/worker_pants.png-d55dbda77ac9e40f00bcf6d7a39c93da.ctex"
+uid="uid://bkjlaeke3ynxn"
+path="res://.godot/imported/moto_helmet.png-d2170a52ecb31b1c1caeeb556212aafe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/equipment/pants/worker_pants.png"
-dest_files=["res://.godot/imported/worker_pants.png-d55dbda77ac9e40f00bcf6d7a39c93da.ctex"]
+source_file="res://asset/images/equipment/helmet/moto_helmet.png"
+dest_files=["res://.godot/imported/moto_helmet.png-d2170a52ecb31b1c1caeeb556212aafe.ctex"]
 
 [params]
 
