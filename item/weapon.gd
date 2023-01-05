@@ -3,7 +3,7 @@ extends 'durability_item.gd'
 class_name Weapon
 
 const WEAPON_VFRAMES = 17
-const WEAPON_RES_TABLE :={
+const WEAPON_RES_TABLE := {
 }
 
 

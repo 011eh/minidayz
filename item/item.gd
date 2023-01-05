@@ -96,7 +96,7 @@ const SOLT_ITEM_RES_TABLE := {
 	86: preload('res://item/res/craft/tomato_seeds_pack.tres'),
 	87: preload('res://item/res/craft/pepper_seeds_pack.tres'),
 	88: preload('res://item/res/craft/zucchini_seeds_pack.tres'),
-	89: preload('res://item/res/slot_item/radio.tres'),
+	89: preload('res://item/res/craft/radio.tres'),
 	90: preload('res://item/res/craft/hacksaw.tres'),
 	91: preload('res://item/res/craft/cleaning_kit.tres'),
 	92: preload('res://item/res/craft/sewing_kit.tres'),
