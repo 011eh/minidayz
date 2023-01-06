@@ -1,0 +1,57 @@
+id,item_name,texture,type,slot_number,heat,armor
+0,Cloak Brown,res://asset/images/equipment/clothes/cloak_brown.png,0,1,8,0
+1,Down Jacket,res://asset/images/equipment/clothes/down_jacket.png,0,2,7,0
+2,Dress,res://asset/images/equipment/clothes/dress.png,0,1,4,0
+3,Gorka Jacket,res://asset/images/equipment/clothes/gorka_jacket.png,0,3,6,0
+4,Hoodie Gray,res://asset/images/equipment/clothes/hoodie_gray.png,0,2,5,0
+5,Hoodie Red,res://asset/images/equipment/clothes/hoodie_red.png,0,2,5,0
+6,Hunter Jacket,res://asset/images/equipment/clothes/hunter_jacket.png,0,3,6,0
+7,Jacket,res://asset/images/equipment/clothes/jacket.png,0,1,4,0
+8,Orel Jacket,res://asset/images/equipment/clothes/orel_jacket.png,0,2,5,0
+9,Paramedic Jacket,res://asset/images/equipment/clothes/paramedic_jacket.png,0,2,5,0
+10,Raider Jacket,res://asset/images/equipment/clothes/raider_jacket.png,0,1,4,0
+11,Raincoat Blue,res://asset/images/equipment/clothes/raincoat_blue.png,0,2,6,0
+12,Shirt Gray,res://asset/images/equipment/clothes/shirt_gray.png,0,1,3,0
+13,Shirt Green,res://asset/images/equipment/clothes/shirt_green.png,0,1,3,0
+14,Sweater,res://asset/images/equipment/clothes/sweater.png,0,1,6,0
+15,Tracksuit Jacket,res://asset/images/equipment/clothes/tracksuit_jacket.png,0,1,4,0
+16,Tshirt,res://asset/images/equipment/clothes/tshirt.png,0,0,2,0
+17,Gorka Pants,res://asset/images/equipment/pants/gorka_pants.png,1,3,5,0
+18,Hunter Pants,res://asset/images/equipment/pants/hunter_pants.png,1,3,5,0
+19,Jeans,res://asset/images/equipment/pants/jeans.png,1,2,4,0
+20,Orel Pants,res://asset/images/equipment/pants/orel_pants.png,1,2,4,0
+21,Paramedic Pants,res://asset/images/equipment/pants/paramedic_pants.png,1,2,3,0
+22,Tracksuit Pants,res://asset/images/equipment/pants/tracksuit_pants.png,1,2,3,0
+23,Worker Pants,res://asset/images/equipment/pants/worker_pants.png,1,3,4,0
+24,Army Helmet,res://asset/images/equipment/helmet/army_helmet.png,2,0,2,3
+25,Balaklava,res://asset/images/equipment/helmet/balaklava.png,2,0,3,0
+26,Bandana,res://asset/images/equipment/helmet/bandana.png,2,0,1,0
+27,Baseball Cap,res://asset/images/equipment/helmet/baseball_cap.png,2,0,2,0
+28,Beret,res://asset/images/equipment/helmet/beret.png,2,0,2,0
+29,Cowboy Hat,res://asset/images/equipment/helmet/cowboy_hat.png,2,0,2,0
+30,Crusader_helmet,res://asset/images/equipment/helmet/crusader_helmet.png,2,0,4,3
+31,Gasmask,res://asset/images/equipment/helmet/gasmask.png,2,0,2,0
+32,Gorka Helmet,res://asset/images/equipment/helmet/gorka_helmet.png,2,0,3,4
+33,Hard Helmet,res://asset/images/equipment/helmet/hard_helmet.png,2,0,2,1
+34,Headlamp,res://asset/images/equipment/helmet/headlamp.png,2,0,0,0
+35,Moto Helmet,res://asset/images/equipment/helmet/moto_helmet.png,2,0,3,2
+36,Moto Helmet Red,res://asset/images/equipment/helmet/moto_helmet_red.png,2,0,3,2
+37,NVG,res://asset/images/equipment/helmet/nvg.png,2,0,0,0
+38,Police Hat,res://asset/images/equipment/helmet/police_hat.png,2,0,2,0
+39,Ushanka,res://asset/images/equipment/helmet/ushanka.png,2,0,5,0
+40,Warm Hat,res://asset/images/equipment/helmet/warm_hat.png,2,0,4,0
+41,Welding Mask,res://asset/images/equipment/helmet/welding_mask.png,2,0,0.3,0
+42,Assault Vest,res://asset/images/equipment/vest/assault_vest.png,3,2,0,1
+43,Bulletproof Vest,res://asset/images/equipment/vest/bulletproof_vest.png,3,0,0,3
+44,High Capacity Vest,res://asset/images/equipment/vest/high_capacity_vest.png,3,3,0,1
+45,Kevlar Vest,res://asset/images/equipment/vest/kevlar_vest.png,3,3,0,3
+46,Press Vest,res://asset/images/equipment/vest/press_vest.png,3,1,0,2
+47,Soviet Vest,res://asset/images/equipment/vest/soviet_vest.png,3,,0,
+48,Bag,res://asset/images/equipment/backpack/bag.png,4,3,0,0
+49,Civilian Tent,res://asset/images/equipment/backpack/civilian_tent.png,4,0,0,0
+50,Hunter Backpack,res://asset/images/equipment/backpack/hunter_backpack.png,4,5,0,0
+51,Improvised Bag,res://asset/images/equipment/backpack/improvised_bag.png,4,5,0,0
+52,Mountain Backpack,res://asset/images/equipment/backpack/mountain_backpack.png,4,7,0,0
+53,School Backpack,res://asset/images/equipment/backpack/school_backpack.png,4,2,0,0
+54,Taloon Backpack,res://asset/images/equipment/backpack/taloon_backpack.png,4,3,0,0
+55,Tortilla Backpack,res://asset/images/equipment/backpack/tortilla_backpack.png,4,6,0,0

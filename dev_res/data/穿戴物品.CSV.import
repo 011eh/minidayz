@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b0q1w3kqj0gtp"
+
+[deps]
+
+files=["res://dev_res/data/穿戴物品.item.translation", "res://dev_res/data/穿戴物品.texture.translation", "res://dev_res/data/穿戴物品.type.translation", "res://dev_res/data/穿戴物品.slot.translation", "res://dev_res/data/穿戴物品.heat.translation", "res://dev_res/data/穿戴物品.armor.translation"]
+
+source_file="res://dev_res/data/穿戴物品.CSV"
+dest_files=["res://dev_res/data/穿戴物品.item.translation", "res://dev_res/data/穿戴物品.texture.translation", "res://dev_res/data/穿戴物品.type.translation", "res://dev_res/data/穿戴物品.slot.translation", "res://dev_res/data/穿戴物品.heat.translation", "res://dev_res/data/穿戴物品.armor.translation"]
+
+[params]
+
+compress=true
+delimiter=0

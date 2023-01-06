@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://byfgsm6ghg2df"
+
+[deps]
+
+files=["res://dev_res/data/近战武器.item.translation", "res://dev_res/data/近战武器.texture.translation", "res://dev_res/data/近战武器.wear.translation", "res://dev_res/data/近战武器.min.translation", "res://dev_res/data/近战武器.max.translation", "res://dev_res/data/近战武器.runPenalty.translation", "res://dev_res/data/近战武器.attack.translation", "res://dev_res/data/近战武器.crit.translation", "res://dev_res/data/近战武器.block.translation"]
+
+source_file="res://dev_res/data/近战武器.CSV"
+dest_files=["res://dev_res/data/近战武器.item.translation", "res://dev_res/data/近战武器.texture.translation", "res://dev_res/data/近战武器.wear.translation", "res://dev_res/data/近战武器.min.translation", "res://dev_res/data/近战武器.max.translation", "res://dev_res/data/近战武器.runPenalty.translation", "res://dev_res/data/近战武器.attack.translation", "res://dev_res/data/近战武器.crit.translation", "res://dev_res/data/近战武器.block.translation"]
+
+[params]
+
+compress=true
+delimiter=0
