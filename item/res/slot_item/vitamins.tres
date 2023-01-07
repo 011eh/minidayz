@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://u0jqnbe6s30t"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_3u66a"]
-[ext_resource type="Texture2D" path="res://asset/images/item/vitamins.png" id="2_66pvg"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_q87qg"]
+[ext_resource type="Texture2D" uid="uid://kkm1l683je5o" path="res://asset/images/item/vitamins.png" id="2_hpipx"]
 
 [resource]
-script = ExtResource("1_3u66a")
+script = ExtResource("1_q87qg")
 stackable = true
 stack_limit = 3
 id = 24
 item_name = &"Vitamins"
-texture = ExtResource("2_66pvg")
+texture = ExtResource("2_hpipx")

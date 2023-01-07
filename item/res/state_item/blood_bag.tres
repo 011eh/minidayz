@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dy662lgwu2jy7"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_3v0e5"]
-[ext_resource type="Texture2D" path="res://asset/images/item/blood_bag.png" id="2_853d0"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_jaryi"]
+[ext_resource type="Texture2D" uid="uid://cwp5hknhhfqhu" path="res://asset/images/item/blood_bag.png" id="2_475bg"]
 
 [resource]
-script = ExtResource("1_3v0e5")
+script = ExtResource("1_jaryi")
 health = 70
 hunger = 0
 drink = 5
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 81
 item_name = &"Blood Bag"
-texture = ExtResource("2_853d0")
+texture = ExtResource("2_475bg")

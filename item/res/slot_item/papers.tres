@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://xbomoun07xbo"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_rvoqf"]
-[ext_resource type="Texture2D" path="res://asset/images/item/papers.png" id="2_lagdi"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_25fuo"]
+[ext_resource type="Texture2D" uid="uid://dlil4fdyp412c" path="res://asset/images/item/papers.png" id="2_1ms47"]
 
 [resource]
-script = ExtResource("1_rvoqf")
+script = ExtResource("1_25fuo")
 stackable = true
 stack_limit = 5
 id = 18
 item_name = &"Papers"
-texture = ExtResource("2_lagdi")
+texture = ExtResource("2_1ms47")

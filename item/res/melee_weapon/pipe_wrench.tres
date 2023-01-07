@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bh41o7gnlruky"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_7q848"]
+[ext_resource type="Texture2D" uid="uid://c3v23u6gtycbv" path="res://asset/images/equipment/weapon/melee/pipe_Wrench.png" id="2_8vec3"]
+
+[resource]
+script = ExtResource("1_7q848")
+crit_chance = 0.25
+block_chance = 0.15
+min_damage = 27
+max_damage = 33
+run_penalty = 2
+attack_rate = 1.3
+wear_per_use = 0.3
+id = 6
+item_name = &"Pipe Wrench"
+texture = ExtResource("2_8vec3")

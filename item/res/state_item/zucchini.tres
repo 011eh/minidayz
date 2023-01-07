@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b6nx2xcy0ehij"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_ab2v0"]
-[ext_resource type="Texture2D" path="res://asset/images/item/zucchini.png" id="2_lgc0c"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_5ovps"]
+[ext_resource type="Texture2D" uid="uid://1onolkrwqer3" path="res://asset/images/item/zucchini.png" id="2_26dlw"]
 
 [resource]
-script = ExtResource("1_ab2v0")
+script = ExtResource("1_5ovps")
 health = 0
 hunger = 10
 drink = 15
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 62
 item_name = &"Zucchini"
-texture = ExtResource("2_lgc0c")
+texture = ExtResource("2_26dlw")

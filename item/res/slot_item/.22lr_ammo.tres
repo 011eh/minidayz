@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://boojw0qv0x2kx"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_13833"]
-[ext_resource type="Texture2D" path="res://asset/images/item/.22lr_ammo.png" id="2_ycacy"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_wmspo"]
+[ext_resource type="Texture2D" uid="uid://b6tbhm53rix8g" path="res://asset/images/item/.22lr_ammo.png" id="2_sdhwg"]
 
 [resource]
-script = ExtResource("1_13833")
+script = ExtResource("1_wmspo")
 stackable = true
 stack_limit = 60
 id = 8
 item_name = &".22lr Ammo"
-texture = ExtResource("2_ycacy")
+texture = ExtResource("2_sdhwg")

@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bwxo7c36nnxp0"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_l5yso"]
-[ext_resource type="Texture2D" path="res://asset/images/item/car_toolbox.png" id="2_xaqfe"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_7y46x"]
+[ext_resource type="Texture2D" uid="uid://bi2sdlub1cwpq" path="res://asset/images/item/car_toolbox.png" id="2_gl206"]
 
 [resource]
-script = ExtResource("1_l5yso")
+script = ExtResource("1_7y46x")
 stackable = true
 stack_limit = 1
 id = 32
 item_name = &"Car Toolbox"
-texture = ExtResource("2_xaqfe")
+texture = ExtResource("2_gl206")

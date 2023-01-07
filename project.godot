@@ -49,7 +49,27 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://item/knife.gd"
 }, {
-"base": "Weapon",
+"base": "",
+"class": &"MainWeapon",
+"language": &"GDScript",
+"path": "res://item/main_weapon.gd"
+}, {
+"base": "",
+"class": &"MeleeWeapon",
+"language": &"GDScript",
+"path": "res://item/melee_weapon.gd"
+}, {
+"base": "WeaponResource",
+"class": &"MeleeWeaponResource",
+"language": &"GDScript",
+"path": "res://item/res/script/melee_weapon.gd"
+}, {
+"base": "",
+"class": &"Pistol",
+"language": &"GDScript",
+"path": "res://item/pistol.gd"
+}, {
+"base": "",
 "class": &"RangedWeapon",
 "language": &"GDScript",
 "path": "res://item/ranged_weapon.gd"
@@ -89,11 +109,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://test/test.gd"
 }, {
-"base": "",
-"class": &"Weapon",
-"language": &"GDScript",
-"path": "res://item/weapon.gd"
-}, {
 "base": "CraftResource",
 "class": &"WeaponResource",
 "language": &"GDScript",
@@ -108,6 +123,10 @@ _global_script_class_icons={
 "Item": "",
 "ItemResource": "",
 "Knife": "",
+"MainWeapon": "",
+"MeleeWeapon": "",
+"MeleeWeaponResource": "",
+"Pistol": "",
 "RangedWeapon": "",
 "RangedWeaponResource": "",
 "SlotItem": "",
@@ -116,7 +135,6 @@ _global_script_class_icons={
 "StateItemResource": "",
 "StateMachine": "",
 "Test": "",
-"Weapon": "",
 "WeaponResource": ""
 }
 

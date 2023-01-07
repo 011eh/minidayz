@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dwcujx5rpe2jk"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_w1d5e"]
-[ext_resource type="Texture2D" path="res://asset/images/item/pipsi.png" id="2_qd6je"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_j5el5"]
+[ext_resource type="Texture2D" uid="uid://cxt186jabhwyr" path="res://asset/images/item/pipsi.png" id="2_k4r5t"]
 
 [resource]
-script = ExtResource("1_w1d5e")
+script = ExtResource("1_j5el5")
 health = 0
 hunger = 3
 drink = 10
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 3
 id = 51
 item_name = &"Pipsi"
-texture = ExtResource("2_qd6je")
+texture = ExtResource("2_k4r5t")

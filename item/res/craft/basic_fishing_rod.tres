@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://0mx3mfoo5o6t"]
 
-[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_f34a4"]
-[ext_resource type="Texture2D" path="res://asset/images/item/basic_fishing_rod.png" id="2_v2omv"]
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_jwsid"]
+[ext_resource type="Texture2D" uid="uid://chk54k6nk4fl7" path="res://asset/images/item/basic_fishing_rod.png" id="2_ty60k"]
 
 [resource]
-script = ExtResource("1_f34a4")
-wear_per_use = 0.0
+script = ExtResource("1_jwsid")
+wear_per_use = 20.0
 id = 93
 item_name = &"Basic Fishing Rod"
-texture = ExtResource("2_v2omv")
+texture = ExtResource("2_ty60k")

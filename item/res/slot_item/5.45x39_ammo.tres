@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cnkdcem0uuet4"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_hl26r"]
-[ext_resource type="Texture2D" path="res://asset/images/item/5.45x39_ammo.png" id="2_hj8ly"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_51yta"]
+[ext_resource type="Texture2D" uid="uid://cd0ijuxcdkmtj" path="res://asset/images/item/5.45x39_ammo.png" id="2_vtv2k"]
 
 [resource]
-script = ExtResource("1_hl26r")
+script = ExtResource("1_51yta")
 stackable = true
 stack_limit = 60
 id = 0
 item_name = &"5.45x39 Ammo"
-texture = ExtResource("2_hj8ly")
+texture = ExtResource("2_vtv2k")

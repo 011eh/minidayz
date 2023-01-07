@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bpqtcbwxyp83c"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_bqnim"]
+[ext_resource type="Texture2D" uid="uid://gm20goecuvj" path="res://asset/images/equipment/helmet/ushanka.png" id="2_i2coh"]
+
+[resource]
+script = ExtResource("1_bqnim")
+type = 2
+slot_number = 0
+heat = 5.0
+armor = 0.0
+id = 39
+item_name = &"Ushanka"
+texture = ExtResource("2_i2coh")

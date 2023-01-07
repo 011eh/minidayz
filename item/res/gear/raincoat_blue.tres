@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://che3n7q1myn3y"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_jkwm3"]
+[ext_resource type="Texture2D" uid="uid://5u1r8xh7gypm" path="res://asset/images/equipment/clothes/raincoat_blue.png" id="2_rx7uf"]
+
+[resource]
+script = ExtResource("1_jkwm3")
+type = 0
+slot_number = 2
+heat = 6.0
+armor = 0.0
+id = 11
+item_name = &"Raincoat Blue"
+texture = ExtResource("2_rx7uf")

@@ -4,6 +4,10 @@ class_name WeaponResource
 
 
 @export
-var damage: int
+var min_damage: int
 @export
-var runPenalty: int
+var max_damage: int
+@export
+var run_penalty: int
+@export
+var attack_rate: float

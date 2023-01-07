@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://besyfklcijomc"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_1wekr"]
-[ext_resource type="Texture2D" path="res://asset/images/item/nuko_cola.png" id="2_fol73"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_dppwf"]
+[ext_resource type="Texture2D" uid="uid://b4g5e5263kf1g" path="res://asset/images/item/nuko_cola.png" id="2_5gn5p"]
 
 [resource]
-script = ExtResource("1_1wekr")
+script = ExtResource("1_dppwf")
 health = 0
 hunger = 3
 drink = 10
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 3
 id = 50
 item_name = &"Nuko Cola"
-texture = ExtResource("2_fol73")
+texture = ExtResource("2_5gn5p")

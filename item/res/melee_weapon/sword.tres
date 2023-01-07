@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://hni457t1oh4k"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_goukm"]
+[ext_resource type="Texture2D" uid="uid://dofmk7h1xjjsm" path="res://asset/images/equipment/weapon/melee/sword.png" id="2_ict4k"]
+
+[resource]
+script = ExtResource("1_goukm")
+crit_chance = 0.35
+block_chance = 0.25
+min_damage = 73
+max_damage = 78
+run_penalty = 2
+attack_rate = 1.5
+wear_per_use = 0.3
+id = 10
+item_name = &"Sword"
+texture = ExtResource("2_ict4k")

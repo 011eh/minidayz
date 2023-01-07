@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxu5hv8tiaxtp"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_odpr7"]
-[ext_resource type="Texture2D" path="res://asset/images/item/tetracycline.png" id="2_jwvp1"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_hptbw"]
+[ext_resource type="Texture2D" uid="uid://xe8hspkrhfpc" path="res://asset/images/item/tetracycline.png" id="2_nhx6n"]
 
 [resource]
-script = ExtResource("1_odpr7")
+script = ExtResource("1_hptbw")
 stackable = true
 stack_limit = 3
 id = 25
 item_name = &"Tetracycline"
-texture = ExtResource("2_jwvp1")
+texture = ExtResource("2_nhx6n")

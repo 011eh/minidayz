@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqdhfcvhw80mu"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_e67tp"]
-[ext_resource type="Texture2D" path="res://asset/images/item/wood_sticks.png" id="2_lo4g5"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_20ude"]
+[ext_resource type="Texture2D" uid="uid://bu8m2c1ocgs5t" path="res://asset/images/item/wood_sticks.png" id="2_3v41l"]
 
 [resource]
-script = ExtResource("1_e67tp")
+script = ExtResource("1_20ude")
 stackable = true
 stack_limit = 5
 id = 14
 item_name = &"Wood Sticks"
-texture = ExtResource("2_lo4g5")
+texture = ExtResource("2_3v41l")

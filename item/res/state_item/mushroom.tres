@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c224mwtyovhtq"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_b38gl"]
-[ext_resource type="Texture2D" path="res://asset/images/item/mushroom.png" id="2_pabob"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_l1lkr"]
+[ext_resource type="Texture2D" uid="uid://ohu6dkorj1cu" path="res://asset/images/item/mushroom.png" id="2_2dk7x"]
 
 [resource]
-script = ExtResource("1_b38gl")
+script = ExtResource("1_l1lkr")
 health = 0
 hunger = 10
 drink = 0
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 67
 item_name = &"Mushroom"
-texture = ExtResource("2_pabob")
+texture = ExtResource("2_2dk7x")

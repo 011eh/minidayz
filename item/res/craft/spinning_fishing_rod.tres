@@ -1,11 +1,11 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b877ghod00n1d"]
 
-[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_qwyr2"]
-[ext_resource type="Texture2D" path="res://asset/images/item/spinning_fishing_rod.png" id="2_rtjs3"]
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_s8npn"]
+[ext_resource type="Texture2D" uid="uid://cegsmtubgf4wa" path="res://asset/images/item/spinning_fishing_rod.png" id="2_51mye"]
 
 [resource]
-script = ExtResource("1_qwyr2")
-wear_per_use = 0.0
+script = ExtResource("1_s8npn")
+wear_per_use = 15.0
 id = 94
 item_name = &"Spinning Fishing Rod"
-texture = ExtResource("2_rtjs3")
+texture = ExtResource("2_51mye")

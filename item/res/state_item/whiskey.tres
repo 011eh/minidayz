@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b41s2fux8tdjf"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_u788a"]
-[ext_resource type="Texture2D" path="res://asset/images/item/whiskey.png" id="2_10x34"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_oy46f"]
+[ext_resource type="Texture2D" uid="uid://bb02miw24lpel" path="res://asset/images/item/whiskey.png" id="2_5l8kn"]
 
 [resource]
-script = ExtResource("1_u788a")
+script = ExtResource("1_oy46f")
 health = 0
 hunger = 3
 drink = 5
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 3
 id = 53
 item_name = &"Whiskey"
-texture = ExtResource("2_10x34")
+texture = ExtResource("2_5l8kn")

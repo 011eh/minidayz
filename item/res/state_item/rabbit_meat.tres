@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dteb3537lqj0p"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_n1brh"]
-[ext_resource type="Texture2D" path="res://asset/images/item/rabbit_meat.png" id="2_sqgu6"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_khjgp"]
+[ext_resource type="Texture2D" uid="uid://dxittscjxtjsk" path="res://asset/images/item/rabbit_meat.png" id="2_tbibe"]
 
 [resource]
-script = ExtResource("1_n1brh")
+script = ExtResource("1_khjgp")
 health = 0
 hunger = 15
 drink = 3
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 68
 item_name = &"Rabbit Meat"
-texture = ExtResource("2_sqgu6")
+texture = ExtResource("2_tbibe")

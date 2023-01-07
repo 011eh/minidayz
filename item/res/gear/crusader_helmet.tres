@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dmjr8dp7y7ser"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_xwrd4"]
+[ext_resource type="Texture2D" uid="uid://dx03wy52v2eip" path="res://asset/images/equipment/helmet/crusader_helmet.png" id="2_uuq54"]
+
+[resource]
+script = ExtResource("1_xwrd4")
+type = 2
+slot_number = 0
+heat = 4.0
+armor = 3.0
+id = 30
+item_name = &"Crusader_helmet"
+texture = ExtResource("2_uuq54")

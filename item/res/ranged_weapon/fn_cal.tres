@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dtikmbsn21lw3"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_xtrkb"]
+[ext_resource type="Texture2D" uid="uid://bwow0ynp62cdr" path="res://asset/images/equipment/weapon/rifle/fn_cal.png" id="2_8t2tl"]
+
+[resource]
+script = ExtResource("1_xtrkb")
+basic_spread = 6
+min_spread = 4
+max_spread = 24
+spread_per_shot = 6
+mag_size = 20
+ammo_type = PackedInt32Array(1)
+aim_speed = 3.0
+reload_time = 2.5
+min_damage = 22
+max_damage = 38
+run_penalty = 2
+attack_rate = 550.0
+wear_per_use = 0.3
+id = 7
+item_name = &"FN CAL"
+texture = ExtResource("2_8t2tl")

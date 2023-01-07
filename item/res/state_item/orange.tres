@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d03b5igkhqm1s"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_mw0r5"]
-[ext_resource type="Texture2D" path="res://asset/images/item/orange.png" id="2_oo7my"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_v2yvi"]
+[ext_resource type="Texture2D" uid="uid://ckf1oesjhfaqn" path="res://asset/images/item/orange.png" id="2_4qdyb"]
 
 [resource]
-script = ExtResource("1_mw0r5")
+script = ExtResource("1_v2yvi")
 health = 0
 hunger = 5
 drink = 10
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 60
 item_name = &"Orange"
-texture = ExtResource("2_oo7my")
+texture = ExtResource("2_4qdyb")

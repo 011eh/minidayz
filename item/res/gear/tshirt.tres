@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcyk3k4ksuke1"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_d7l8o"]
+[ext_resource type="Texture2D" uid="uid://cq2kepmpqhcb4" path="res://asset/images/equipment/clothes/tshirt.png" id="2_1uii0"]
+
+[resource]
+script = ExtResource("1_d7l8o")
+type = 0
+slot_number = 0
+heat = 2.0
+armor = 0.0
+id = 16
+item_name = &"Tshirt"
+texture = ExtResource("2_1uii0")

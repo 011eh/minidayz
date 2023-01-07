@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bml6hmtkpq1jr"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ptjy6"]
+[ext_resource type="Texture2D" uid="uid://dlep4q20yraym" path="res://asset/images/equipment/weapon/rifle/izh-43.png" id="2_2vg2f"]
+
+[resource]
+script = ExtResource("1_ptjy6")
+basic_spread = 26
+min_spread = 18
+max_spread = 146
+spread_per_shot = 40
+mag_size = 2
+ammo_type = PackedInt32Array(7)
+aim_speed = 2.0
+reload_time = 3.0
+min_damage = 15
+max_damage = 25
+run_penalty = 2
+attack_rate = 0.0
+wear_per_use = 1.0
+id = 5
+item_name = &"IZH-43"
+texture = ExtResource("2_2vg2f")

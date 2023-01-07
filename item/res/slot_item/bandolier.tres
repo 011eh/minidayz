@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bgtoa2wb658dn"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_vjidg"]
-[ext_resource type="Texture2D" path="res://asset/images/item/bandolier.png" id="2_8nfr8"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_s3enj"]
+[ext_resource type="Texture2D" uid="uid://c850n26vkoyoa" path="res://asset/images/item/bandolier.png" id="2_eql5w"]
 
 [resource]
-script = ExtResource("1_vjidg")
+script = ExtResource("1_s3enj")
 stackable = true
 stack_limit = 3
 id = 33
 item_name = &"Bandolier"
-texture = ExtResource("2_8nfr8")
+texture = ExtResource("2_eql5w")

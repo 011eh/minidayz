@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://6xl4br4bgn20"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_xo0k8"]
-[ext_resource type="Texture2D" path="res://asset/images/item/f1_grenade.png" id="2_hy8r5"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_m4ldi"]
+[ext_resource type="Texture2D" uid="uid://ve1ggtvhjyir" path="res://asset/images/item/f1_grenade.png" id="2_2aw85"]
 
 [resource]
-script = ExtResource("1_xo0k8")
+script = ExtResource("1_m4ldi")
 stackable = true
 stack_limit = 5
 id = 28
 item_name = &"F1 Grenade"
-texture = ExtResource("2_hy8r5")
+texture = ExtResource("2_2aw85")

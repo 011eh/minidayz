@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://xkh716lf00l6"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_mqv7d"]
-[ext_resource type="Texture2D" path="res://asset/images/item/crafted_arrow.png" id="2_bru7k"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_vg4vw"]
+[ext_resource type="Texture2D" uid="uid://dyylm4r34almw" path="res://asset/images/item/crafted_arrow.png" id="2_nsxia"]
 
 [resource]
-script = ExtResource("1_mqv7d")
+script = ExtResource("1_vg4vw")
 stackable = true
 stack_limit = 30
 id = 11
 item_name = &"Crafted Arrow"
-texture = ExtResource("2_bru7k")
+texture = ExtResource("2_nsxia")

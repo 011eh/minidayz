@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://sk47ypklbg77"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_h66wq"]
+[ext_resource type="Texture2D" uid="uid://f4rqngijwggs" path="res://asset/images/equipment/weapon/rifle/mosin.png" id="2_e47o7"]
+
+[resource]
+script = ExtResource("1_h66wq")
+basic_spread = 6
+min_spread = 4
+max_spread = 126
+spread_per_shot = 40
+mag_size = 5
+ammo_type = PackedInt32Array(2)
+aim_speed = 2.0
+reload_time = 4.0
+min_damage = 67
+max_damage = 113
+run_penalty = 5
+attack_rate = 1.0
+wear_per_use = 0.8
+id = 13
+item_name = &"Mosin"
+texture = ExtResource("2_e47o7")

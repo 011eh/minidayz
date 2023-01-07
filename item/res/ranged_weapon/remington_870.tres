@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b04x0rmov86y3"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_sewdh"]
+[ext_resource type="Texture2D" uid="uid://ccbpwc8tba47p" path="res://asset/images/equipment/weapon/rifle/remington_870.png" id="2_apjpg"]
+
+[resource]
+script = ExtResource("1_sewdh")
+basic_spread = 30
+min_spread = 21
+max_spread = 150
+spread_per_shot = 40
+mag_size = 6
+ammo_type = PackedInt32Array(7)
+aim_speed = 2.0
+reload_time = 3.0
+min_damage = 15
+max_damage = 25
+run_penalty = 2
+attack_rate = 0.65
+wear_per_use = 0.5
+id = 15
+item_name = &"Remington 870"
+texture = ExtResource("2_apjpg")

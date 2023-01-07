@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cgc3a4geygj81"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_wvny3"]
-[ext_resource type="Texture2D" path="res://asset/images/item/canned_tuna.png" id="2_wd03a"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_e0p2i"]
+[ext_resource type="Texture2D" uid="uid://ch2fc1yv0qf5a" path="res://asset/images/item/canned_tuna.png" id="2_inc56"]
 
 [resource]
-script = ExtResource("1_wvny3")
+script = ExtResource("1_e0p2i")
 health = 0
 hunger = 20
 drink = 0
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 3
 id = 55
 item_name = &"Canned Tuna"
-texture = ExtResource("2_wd03a")
+texture = ExtResource("2_inc56")

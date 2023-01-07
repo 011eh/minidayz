@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b66k8e4neyrsf"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_oxbs5"]
-[ext_resource type="Texture2D" path="res://asset/images/item/composite_arrow.png" id="2_0t8eq"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_c7jmh"]
+[ext_resource type="Texture2D" uid="uid://cx4c6r7ma4d6a" path="res://asset/images/item/composite_arrow.png" id="2_mdpne"]
 
 [resource]
-script = ExtResource("1_oxbs5")
+script = ExtResource("1_c7jmh")
 stackable = true
 stack_limit = 30
 id = 12
 item_name = &"Composite Arrow"
-texture = ExtResource("2_0t8eq")
+texture = ExtResource("2_mdpne")

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b3cva5l6aicbf"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_v2x02"]
-[ext_resource type="Texture2D" path="res://asset/images/item/kvas.png" id="2_gwr1j"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_rq3p5"]
+[ext_resource type="Texture2D" uid="uid://chky7hgw14fyo" path="res://asset/images/item/kvas.png" id="2_b7pk1"]
 
 [resource]
-script = ExtResource("1_v2x02")
+script = ExtResource("1_rq3p5")
 health = 0
 hunger = 3
 drink = 40
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 3
 id = 48
 item_name = &"Kvas"
-texture = ExtResource("2_gwr1j")
+texture = ExtResource("2_b7pk1")

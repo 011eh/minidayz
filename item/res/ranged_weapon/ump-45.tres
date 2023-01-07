@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dxpns8bwpa8ht"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_50ijl"]
+[ext_resource type="Texture2D" uid="uid://dplgd14isyhvs" path="res://asset/images/equipment/weapon/rifle/ump-45.png" id="2_v8hwe"]
+
+[resource]
+script = ExtResource("1_50ijl")
+basic_spread = 14
+min_spread = 9
+max_spread = 32
+spread_per_shot = 6
+mag_size = 30
+ammo_type = PackedInt32Array(9)
+aim_speed = 4.0
+reload_time = 2.0
+min_damage = 13
+max_damage = 23
+run_penalty = 1
+attack_rate = 650.0
+wear_per_use = 0.3
+id = 23
+item_name = &"UMP-45"
+texture = ExtResource("2_v8hwe")

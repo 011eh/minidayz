@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cn0b50tll3fp2"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_lhxp2"]
-[ext_resource type="Texture2D" path="res://asset/images/item/gasoline.png" id="2_nrm0o"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_jsngj"]
+[ext_resource type="Texture2D" uid="uid://cwnvtx1rmdblh" path="res://asset/images/item/gasoline.png" id="2_r234t"]
 
 [resource]
-script = ExtResource("1_lhxp2")
+script = ExtResource("1_jsngj")
 stackable = true
 stack_limit = 1
 id = 31
 item_name = &"Gasoline"
-texture = ExtResource("2_nrm0o")
+texture = ExtResource("2_r234t")

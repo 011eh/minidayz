@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cutxahs83ysiu"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_ffpbo"]
-[ext_resource type="Texture2D" path="res://asset/images/item/silencer_5.56.png" id="2_14t4o"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_0jix4"]
+[ext_resource type="Texture2D" uid="uid://d2tx2d32c31en" path="res://asset/images/item/silencer_5.56.png" id="2_2ggdm"]
 
 [resource]
-script = ExtResource("1_ffpbo")
+script = ExtResource("1_0jix4")
 stackable = true
 stack_limit = 3
 id = 42
 item_name = &"Silencer 5.56"
-texture = ExtResource("2_14t4o")
+texture = ExtResource("2_2ggdm")

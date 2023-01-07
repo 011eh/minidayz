@@ -3,14 +3,98 @@ extends 'number_item.gd'
 class_name SlotItem
 
 
-func _ready():
-	super._ready()
-	if resource.id == 16:
-		hframes = 3
-		vframes = 2
-		frame = 5
+const RES_TABLE := {
+	0: preload('res://item/res/slot_item/5.45x39_ammo.tres'),
+	1: preload('res://item/res/slot_item/5.56x45_ammo.tres'),
+	2: preload('res://item/res/slot_item/7.62_ammo.tres'),
+	3: preload('res://item/res/slot_item/7.62x39_ammo.tres'),
+	4: preload('res://item/res/slot_item/9mm_ammo.tres'),
+	5: preload('res://item/res/slot_item/9x18_ammo.tres'),
+	6: preload('res://item/res/slot_item/9x39_ammo.tres'),
+	7: preload('res://item/res/slot_item/12cal_ammo.tres'),
+	8: preload('res://item/res/slot_item/.22lr_ammo.tres'),
+	9: preload('res://item/res/slot_item/.45_acp_ammo.tres'),
+	10: preload('res://item/res/slot_item/.357_ammo.tres'),
+	11: preload('res://item/res/slot_item/crafted_arrow.tres'),
+	12: preload('res://item/res/slot_item/composite_arrow.tres'),
+	13: preload('res://item/res/slot_item/ashwood_stick.tres'),
+	14: preload('res://item/res/slot_item/wood_sticks.tres'),
+	15: preload('res://item/res/slot_item/wood_piles.tres'),
+	16: preload('res://item/res/slot_item/campfire_kit.tres'),
+	17: preload('res://item/res/slot_item/rope.tres'),
+	18: preload('res://item/res/slot_item/papers.tres'),
+	19: preload('res://item/res/slot_item/burlap_sack.tres'),
+	20: preload('res://item/res/slot_item/matches.tres'),
+	21: preload('res://item/res/slot_item/protective_case.tres'),
+	22: preload('res://item/res/slot_item/rag.tres'),
+	23: preload('res://item/res/slot_item/bandage.tres'),
+	24: preload('res://item/res/slot_item/vitamins.tres'),
+	25: preload('res://item/res/slot_item/tetracycline.tres'),
+	26: preload('res://item/res/slot_item/morphine.tres'),
+	27: preload('res://item/res/slot_item/flare.tres'),
+	28: preload('res://item/res/slot_item/f1_grenade.tres'),
+	29: preload('res://item/res/slot_item/molotov.tres'),
+	30: preload('res://item/res/slot_item/duct_tape.tres'),
+	31: preload('res://item/res/slot_item/gasoline.tres'),
+	32: preload('res://item/res/slot_item/car_toolbox.tres'),
+	33: preload('res://item/res/slot_item/bandolier.tres'),
+	34: preload('res://item/res/slot_item/magpul.tres'),
+	35: preload('res://item/res/slot_item/choke.tres'),
+	36: preload('res://item/res/slot_item/acog_scope.tres'),
+	37: preload('res://item/res/slot_item/long_range_scope.tres'),
+	38: preload('res://item/res/slot_item/pso-1_scope.tres'),
+	39: preload('res://item/res/slot_item/pu_scope.tres'),
+	40: preload('res://item/res/slot_item/rds_scope.tres'),
+	41: preload('res://item/res/slot_item/silencer_5.45.tres'),
+	42: preload('res://item/res/slot_item/silencer_5.56.tres'),
+	43: preload('res://item/res/slot_item/barbed_wire.tres'),
+	44: preload('res://item/res/slot_item/bear_trap.tres'),
+	45: preload('res://item/res/slot_item/landmine.tres'),
+	46: preload('res://item/res/slot_item/claymore.tres'),
+	47: preload('res://item/res/state_item/energy_drink.tres'),
+
+	48: preload('res://item/res/state_item/kvas.tres'),
+	49: preload('res://item/res/state_item/nota_cola.tres'),
+	50: preload('res://item/res/state_item/nuko_cola.tres'),
+	51: preload('res://item/res/state_item/pipsi.tres'),
+	52: preload('res://item/res/state_item/spite.tres'),
+	53: preload('res://item/res/state_item/whiskey.tres'),
+	54: preload('res://item/res/state_item/canned_bean.tres'),
+	55: preload('res://item/res/state_item/canned_tuna.tres'),
+	56: preload('res://item/res/state_item/rice.tres'),
+	57: preload('res://item/res/state_item/tactical_bacon.tres'),
+	58: preload('res://item/res/state_item/apple.tres'),
+	59: preload('res://item/res/state_item/banana.tres'),
+	60: preload('res://item/res/state_item/orange.tres'),
+	61: preload('res://item/res/state_item/bell_pepper.tres'),
+	62: preload('res://item/res/state_item/zucchini.tres'),
+	63: preload('res://item/res/state_item/tomato.tres'),
+	64: preload('res://item/res/state_item/bilberry.tres'),
+	65: preload('res://item/res/state_item/cranberry.tres'),
+	66: preload('res://item/res/state_item/cloudberry.tres'),
+	67: preload('res://item/res/state_item/mushroom.tres'),
+	68: preload('res://item/res/state_item/rabbit_meat.tres'),
+	69: preload('res://item/res/state_item/cooked_rabbit_meat.tres'),
+	70: preload('res://item/res/state_item/raw_steak.tres'),
+	71: preload('res://item/res/state_item/cooked_steak.tres'),
+	72: preload('res://item/res/state_item/herring.tres'),
+	73: preload('res://item/res/state_item/perch.tres'),
+	74: preload('res://item/res/state_item/ruffe.tres'),
+	75: preload('res://item/res/state_item/salmon.tres'),
+	76: preload('res://item/res/state_item/small_fish_fillet.tres'),
+	77: preload('res://item/res/state_item/big_fish_fillet.tres'),
+	78: preload('res://item/res/state_item/mre_ration_1.tres'),
+	79: preload('res://item/res/state_item/mre_ration_2.tres'),
+	80: preload('res://item/res/state_item/saline_bag.tres'),
+	81: preload('res://item/res/state_item/blood_bag.tres'),
+	82: preload('res://item/res/state_item/water_bottle.tres'),
+	83: preload('res://item/res/state_item/canteen.tres'),
+	84: preload('res://item/res/state_item/heat_pack.tres'),
+}
+
 
 static func create_item(id: int) -> SlotItem:
+	assert_id_exists(id, RES_TABLE)
 	var item := SlotItem.new()
-	item.resource = SOLT_ITEM_RES_TABLE.get(id)
+	item.resource = RES_TABLE.get(id) as ItemResource
 	return item

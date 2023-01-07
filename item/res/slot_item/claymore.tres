@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d24iuvj6kjs8b"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_2i5j4"]
-[ext_resource type="Texture2D" path="res://asset/images/item/claymore.png" id="2_xnndp"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_hlmnc"]
+[ext_resource type="Texture2D" uid="uid://bmnrtmp2l1jr4" path="res://asset/images/item/claymore.png" id="2_wqtdr"]
 
 [resource]
-script = ExtResource("1_2i5j4")
+script = ExtResource("1_hlmnc")
 stackable = true
 stack_limit = 3
 id = 46
 item_name = &"Claymore"
-texture = ExtResource("2_xnndp")
+texture = ExtResource("2_wqtdr")

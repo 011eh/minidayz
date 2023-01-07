@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bhlu28v11yqdl"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_2nixp"]
+[ext_resource type="Texture2D" uid="uid://clk8ekvq82kak" path="res://asset/images/equipment/clothes/orel_jacket.png" id="2_if0f4"]
+
+[resource]
+script = ExtResource("1_2nixp")
+type = 0
+slot_number = 2
+heat = 5.0
+armor = 0.0
+id = 8
+item_name = &"Orel Jacket"
+texture = ExtResource("2_if0f4")

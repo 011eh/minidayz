@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://iwk50mwauat2"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_yy2cx"]
+[ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://asset/images/equipment/weapon/melee/fire_axe.png" id="2_ownm5"]
+
+[resource]
+script = ExtResource("1_yy2cx")
+crit_chance = 0.25
+block_chance = 0.25
+min_damage = 58
+max_damage = 62
+run_penalty = 2
+attack_rate = 1.6
+wear_per_use = 0.1
+id = 3
+item_name = &"Fire axe"
+texture = ExtResource("2_ownm5")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bkjock2wsltgu"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_5mmxh"]
+[ext_resource type="Texture2D" uid="uid://cyftk5i8ww8qf" path="res://asset/images/equipment/helmet/beret.png" id="2_0v880"]
+
+[resource]
+script = ExtResource("1_5mmxh")
+type = 2
+slot_number = 0
+heat = 2.0
+armor = 0.0
+id = 28
+item_name = &"Beret"
+texture = ExtResource("2_0v880")

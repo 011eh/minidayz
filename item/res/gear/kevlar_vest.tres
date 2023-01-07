@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://byw86hkga0uee"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_5pkgn"]
+[ext_resource type="Texture2D" uid="uid://dy5odq80y1n7f" path="res://asset/images/equipment/vest/kevlar_vest.png" id="2_njoyp"]
+
+[resource]
+script = ExtResource("1_5pkgn")
+type = 3
+slot_number = 3
+heat = 0.0
+armor = 3.0
+id = 45
+item_name = &"Kevlar Vest"
+texture = ExtResource("2_njoyp")

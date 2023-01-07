@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcwaj5v8nurs7"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_bpx3o"]
-[ext_resource type="Texture2D" path="res://asset/images/item/canteen.png" id="2_vmvpu"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_706wn"]
+[ext_resource type="Texture2D" uid="uid://co74snpu7rnss" path="res://asset/images/item/canteen.png" id="2_up6wj"]
 
 [resource]
-script = ExtResource("1_bpx3o")
+script = ExtResource("1_706wn")
 health = 0
 hunger = 0
 drink = 15
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 83
 item_name = &"Canteen"
-texture = ExtResource("2_vmvpu")
+texture = ExtResource("2_up6wj")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://uu8t2hv0hp1a"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_rpocj"]
+[ext_resource type="Texture2D" uid="uid://4nvbnjugxk2v" path="res://asset/images/equipment/vest/high_capacity_vest.png" id="2_2gqyp"]
+
+[resource]
+script = ExtResource("1_rpocj")
+type = 3
+slot_number = 3
+heat = 0.0
+armor = 1.0
+id = 44
+item_name = &"High Capacity Vest"
+texture = ExtResource("2_2gqyp")

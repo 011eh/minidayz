@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://rtoi7e5y66n"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_tdh6p"]
-[ext_resource type="Texture2D" path="res://asset/images/item/cranberry.png" id="2_ev1xs"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_ih23f"]
+[ext_resource type="Texture2D" uid="uid://8fbxlysm2qup" path="res://asset/images/item/cranberry.png" id="2_iakg7"]
 
 [resource]
-script = ExtResource("1_tdh6p")
+script = ExtResource("1_ih23f")
 health = 0
 hunger = 5
 drink = 10
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 65
 item_name = &"Cranberry"
-texture = ExtResource("2_ev1xs")
+texture = ExtResource("2_iakg7")

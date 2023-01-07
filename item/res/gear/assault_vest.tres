@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bwep8irsw4r8t"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_hg6pr"]
+[ext_resource type="Texture2D" uid="uid://wmwb5a78ir7s" path="res://asset/images/equipment/vest/assault_vest.png" id="2_7xcbg"]
+
+[resource]
+script = ExtResource("1_hg6pr")
+type = 3
+slot_number = 2
+heat = 0.0
+armor = 1.0
+id = 42
+item_name = &"Assault Vest"
+texture = ExtResource("2_7xcbg")

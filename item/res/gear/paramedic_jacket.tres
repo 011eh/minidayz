@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cna8et4ya5l7e"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_kk1c6"]
+[ext_resource type="Texture2D" uid="uid://b83bw41pelnrt" path="res://asset/images/equipment/clothes/paramedic_jacket.png" id="2_hs5x8"]
+
+[resource]
+script = ExtResource("1_kk1c6")
+type = 0
+slot_number = 2
+heat = 5.0
+armor = 0.0
+id = 9
+item_name = &"Paramedic Jacket"
+texture = ExtResource("2_hs5x8")

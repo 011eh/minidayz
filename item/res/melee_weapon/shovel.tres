@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ds7dxscpfxt6t"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_b6jed"]
+[ext_resource type="Texture2D" uid="uid://bh4dsbs8ho3bl" path="res://asset/images/equipment/weapon/melee/shovel.png" id="2_4dtvm"]
+
+[resource]
+script = ExtResource("1_b6jed")
+crit_chance = 0.15
+block_chance = 0.35
+min_damage = 22
+max_damage = 28
+run_penalty = 3
+attack_rate = 1.2
+wear_per_use = 0.3
+id = 8
+item_name = &"Shovel"
+texture = ExtResource("2_4dtvm")

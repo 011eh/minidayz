@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bfowm0rue3mwy"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_vuw6x"]
-[ext_resource type="Texture2D" path="res://asset/images/item/ruffe.png" id="2_x7dom"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_rja2o"]
+[ext_resource type="Texture2D" uid="uid://d0suf3d570x3l" path="res://asset/images/item/ruffe.png" id="2_t1wek"]
 
 [resource]
-script = ExtResource("1_vuw6x")
+script = ExtResource("1_rja2o")
 health = 0
 hunger = 20
 drink = 3
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 74
 item_name = &"Ruffe"
-texture = ExtResource("2_x7dom")
+texture = ExtResource("2_t1wek")

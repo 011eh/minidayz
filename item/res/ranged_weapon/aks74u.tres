@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cdjqxl8yk1s43"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_od7mj"]
+[ext_resource type="Texture2D" uid="uid://bovittya2of7s" path="res://asset/images/equipment/weapon/rifle/aks74u.png" id="2_th7ul"]
+
+[resource]
+script = ExtResource("1_od7mj")
+basic_spread = 12
+min_spread = 8
+max_spread = 36
+spread_per_shot = 8
+mag_size = 30
+ammo_type = PackedInt32Array(0)
+aim_speed = 4.0
+reload_time = 2.5
+min_damage = 18
+max_damage = 32
+run_penalty = 1
+attack_rate = 750.0
+wear_per_use = 0.3
+id = 2
+item_name = &"AKS74U"
+texture = ExtResource("2_th7ul")

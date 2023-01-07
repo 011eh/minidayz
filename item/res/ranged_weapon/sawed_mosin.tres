@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bc4kvn1ce6r4w"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_2oeau"]
+[ext_resource type="Texture2D" uid="uid://dmfff7jgmrex1" path="res://asset/images/equipment/weapon/pistol/sawed_mosin.png" id="2_3qtvv"]
+
+[resource]
+script = ExtResource("1_2oeau")
+basic_spread = 24
+min_spread = 16
+max_spread = 174
+spread_per_shot = 50
+mag_size = 5
+ammo_type = PackedInt32Array(2)
+aim_speed = 4.0
+reload_time = 4.0
+min_damage = 67
+max_damage = 113
+run_penalty = 1
+attack_rate = 1.0
+wear_per_use = 0.8
+id = 36
+item_name = &"Sawed Mosin"
+texture = ExtResource("2_3qtvv")

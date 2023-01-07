@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dskad53uxdvl6"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_nc78b"]
+[ext_resource type="Texture2D" uid="uid://bdvl5r1a11ork" path="res://asset/images/equipment/vest/soviet_vest.png" id="2_7viyy"]
+
+[resource]
+script = ExtResource("1_nc78b")
+type = 3
+slot_number = 0
+heat = 0.0
+armor = 0.0
+id = 47
+item_name = &"Soviet Vest"
+texture = ExtResource("2_7viyy")

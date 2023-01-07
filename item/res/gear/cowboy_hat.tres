@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cypkcctrxpcdr"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_jysfb"]
+[ext_resource type="Texture2D" uid="uid://cwg755yk0xpst" path="res://asset/images/equipment/helmet/cowboy_hat.png" id="2_dmuvv"]
+
+[resource]
+script = ExtResource("1_jysfb")
+type = 2
+slot_number = 0
+heat = 2.0
+armor = 0.0
+id = 29
+item_name = &"Cowboy Hat"
+texture = ExtResource("2_dmuvv")

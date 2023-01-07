@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcgni5gm7cwd3"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_7qjiu"]
-[ext_resource type="Texture2D" path="res://asset/images/item/spite.png" id="2_b1at4"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_dw3wi"]
+[ext_resource type="Texture2D" uid="uid://go623tquc8j1" path="res://asset/images/item/spite.png" id="2_30j1s"]
 
 [resource]
-script = ExtResource("1_7qjiu")
+script = ExtResource("1_dw3wi")
 health = 0
 hunger = 3
 drink = 10
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 3
 id = 52
 item_name = &"Spite"
-texture = ExtResource("2_b1at4")
+texture = ExtResource("2_30j1s")

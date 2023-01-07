@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ws5eino8m7vh"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_xxs5n"]
+[ext_resource type="Texture2D" uid="uid://cn4sa666phmcl" path="res://asset/images/equipment/weapon/pistol/sawed_repeater.png" id="2_vg0lf"]
+
+[resource]
+script = ExtResource("1_xxs5n")
+basic_spread = 22
+min_spread = 15
+max_spread = 124
+spread_per_shot = 34
+mag_size = 7
+ammo_type = PackedInt32Array(10)
+aim_speed = 6.0
+reload_time = 3.0
+min_damage = 33
+max_damage = 57
+run_penalty = 1
+attack_rate = 0.0
+wear_per_use = 0.4
+id = 35
+item_name = &"Sawed Repeater"
+texture = ExtResource("2_vg0lf")

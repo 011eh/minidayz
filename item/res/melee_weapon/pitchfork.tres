@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d07lkhf82tylb"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_mkq6i"]
+[ext_resource type="Texture2D" uid="uid://d4ei74n6dm0dj" path="res://asset/images/equipment/weapon/melee/pitchfork.png" id="2_u3brb"]
+
+[resource]
+script = ExtResource("1_mkq6i")
+crit_chance = 0.15
+block_chance = 0.35
+min_damage = 38
+max_damage = 42
+run_penalty = 3
+attack_rate = 1.2
+wear_per_use = 0.3
+id = 7
+item_name = &"Pitchfork"
+texture = ExtResource("2_u3brb")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dhf8m6n0hkl0j"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_dpoij"]
+[ext_resource type="Texture2D" uid="uid://bkjlaeke3ynxn" path="res://asset/images/equipment/helmet/moto_helmet.png" id="2_wikq7"]
+
+[resource]
+script = ExtResource("1_dpoij")
+type = 2
+slot_number = 0
+heat = 3.0
+armor = 2.0
+id = 35
+item_name = &"Moto Helmet"
+texture = ExtResource("2_wikq7")

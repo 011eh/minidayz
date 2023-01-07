@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://332xhfdvq4vk"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_txvnp"]
-[ext_resource type="Texture2D" path="res://asset/images/item/pu_scope.png" id="2_k57r8"]
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_vye2b"]
+[ext_resource type="Texture2D" uid="uid://bn18uix70otsq" path="res://asset/images/item/pu_scope.png" id="2_6nj5o"]
 
 [resource]
-script = ExtResource("1_txvnp")
+script = ExtResource("1_vye2b")
 stackable = true
 stack_limit = 3
 id = 39
 item_name = &"PU Scope"
-texture = ExtResource("2_k57r8")
+texture = ExtResource("2_6nj5o")

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yd4ujdvx5ipv"]
 
-[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_aas2e"]
-[ext_resource type="Texture2D" path="res://asset/images/item/bilberry.png" id="2_2pbky"]
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_f51af"]
+[ext_resource type="Texture2D" uid="uid://b0y4srbu5wojr" path="res://asset/images/item/bilberry.png" id="2_06fvj"]
 
 [resource]
-script = ExtResource("1_aas2e")
+script = ExtResource("1_f51af")
 health = 0
 hunger = 5
 drink = 10
@@ -13,4 +13,4 @@ stackable = true
 stack_limit = 5
 id = 64
 item_name = &"Bilberry"
-texture = ExtResource("2_2pbky")
+texture = ExtResource("2_06fvj")

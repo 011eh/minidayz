@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bgwq2iym0g0u8"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_acwl3"]
+[ext_resource type="Texture2D" uid="uid://bwqw5mwk68pv7" path="res://asset/images/equipment/weapon/rifle/improvised_bow.png" id="2_le7df"]
+
+[resource]
+script = ExtResource("1_acwl3")
+basic_spread = 12
+min_spread = 8
+max_spread = 132
+spread_per_shot = 40
+mag_size = 1
+ammo_type = PackedInt32Array(11, 12)
+aim_speed = 4.0
+reload_time = 2.0
+min_damage = 37
+max_damage = 63
+run_penalty = 3
+attack_rate = 2.0
+wear_per_use = 1.0
+id = 9
+item_name = &"Improvised Bow"
+texture = ExtResource("2_le7df")

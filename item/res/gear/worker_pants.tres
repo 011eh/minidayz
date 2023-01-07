@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dei4qjvkfooew"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_2rl4o"]
+[ext_resource type="Texture2D" uid="uid://71d57qimx7k3" path="res://asset/images/equipment/pants/worker_pants.png" id="2_n2iax"]
+
+[resource]
+script = ExtResource("1_2rl4o")
+type = 1
+slot_number = 3
+heat = 4.0
+armor = 0.0
+id = 23
+item_name = &"Worker Pants"
+texture = ExtResource("2_n2iax")

@@ -1,12 +1,11 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://5pf2icgpjdfs"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_216o2"]
-[ext_resource type="Texture2D" path="res://asset/images/item/radio.png" id="2_sqlpa"]
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_16coe"]
+[ext_resource type="Texture2D" uid="uid://cqb0t6kwm8cce" path="res://asset/images/item/radio.png" id="2_f8k0f"]
 
 [resource]
-script = ExtResource("1_216o2")
-stackable = true
-stack_limit = 1
+script = ExtResource("1_16coe")
+wear_per_use = 20.0
 id = 89
 item_name = &"Radio"
-texture = ExtResource("2_sqlpa")
+texture = ExtResource("2_f8k0f")

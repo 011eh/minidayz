@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dt1o873n7iiky"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ydppv"]
+[ext_resource type="Texture2D" uid="uid://cdyakn3as3wfl" path="res://asset/images/equipment/weapon/rifle/sks.png" id="2_ypyij"]
+
+[resource]
+script = ExtResource("1_ydppv")
+basic_spread = 8
+min_spread = 5
+max_spread = 68
+spread_per_shot = 20
+mag_size = 10
+ammo_type = PackedInt32Array(3)
+aim_speed = 4.0
+reload_time = 3.0
+min_damage = 33
+max_damage = 357
+run_penalty = 4
+attack_rate = 0.0
+wear_per_use = 0.5
+id = 19
+item_name = &"SKS"
+texture = ExtResource("2_ypyij")
