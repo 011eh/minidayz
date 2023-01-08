@@ -1,4 +1,4 @@
-id,item_name,texture,stackable,stack_limit,,
+﻿id,item_name,texture,stackable,stack_limit,,
 0,5.45x39 Ammo,res://asset/images/item/5.45x39_ammo.png,1,60,,
 1,5.56x45 Ammo,res://asset/images/item/5.56x45_ammo.png,1,60,,
 2,7.62 Ammo,res://asset/images/item/7.62_ammo.png,1,40,,

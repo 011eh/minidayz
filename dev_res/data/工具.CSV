@@ -7,5 +7,5 @@ id,item_name,texture,wear_per_use
 90,Hacksaw,res://asset/images/item/hacksaw.png,10
 91,Cleaning Kit,res://asset/images/item/cleaning_kit.png,10
 92,Sewing Kit,res://asset/images/item/sewing_kit.png,10
-93,Basic Fishing Rod,res://asset/images/item/basic_fishing_rod.png,0
-94,Spinning Fishing Rod,res://asset/images/item/spinning_fishing_rod.png,0
+93,Basic Fishing Rod,res://asset/images/item/basic_fishing_rod.png,20
+94,Spinning Fishing Rod,res://asset/images/item/spinning_fishing_rod.png,15

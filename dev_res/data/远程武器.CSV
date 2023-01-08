@@ -1,57 +1,38 @@
-id,item_name,texture,type,slot_number,heat,armor
-0,Cloak Brown,res://asset/images/equipment/clothes/cloak_brown.png,0,1,8,0
-1,Down Jacket,res://asset/images/equipment/clothes/down_jacket.png,0,2,7,0
-2,Dress,res://asset/images/equipment/clothes/dress.png,0,1,4,0
-3,Gorka Jacket,res://asset/images/equipment/clothes/gorka_jacket.png,0,3,6,0
-4,Hoodie Gray,res://asset/images/equipment/clothes/hoodie_gray.png,0,2,5,0
-5,Hoodie Red,res://asset/images/equipment/clothes/hoodie_red.png,0,2,5,0
-6,Hunter Jacket,res://asset/images/equipment/clothes/hunter_jacket.png,0,3,6,0
-7,Jacket,res://asset/images/equipment/clothes/jacket.png,0,1,4,0
-8,Orel Jacket,res://asset/images/equipment/clothes/orel_jacket.png,0,2,5,0
-9,Paramedic Jacket,res://asset/images/equipment/clothes/paramedic_jacket.png,0,2,5,0
-10,Raider Jacket,res://asset/images/equipment/clothes/raider_jacket.png,0,1,4,0
-11,Raincoat Blue,res://asset/images/equipment/clothes/raincoat_blue.png,0,2,6,0
-12,Shirt Gray,res://asset/images/equipment/clothes/shirt_gray.png,0,1,3,0
-13,Shirt Green,res://asset/images/equipment/clothes/shirt_green.png,0,1,3,0
-14,Sweater,res://asset/images/equipment/clothes/sweater.png,0,1,6,0
-15,Tracksuit Jacket,res://asset/images/equipment/clothes/tracksuit_jacket.png,0,1,4,0
-16,Tshirt,res://asset/images/equipment/clothes/tshirt.png,0,0,2,0
-17,Gorka Pants,res://asset/images/equipment/pants/gorka_pants.png,1,3,5,0
-18,Hunter Pants,res://asset/images/equipment/pants/hunter_pants.png,1,3,5,0
-19,Jeans,res://asset/images/equipment/pants/jeans.png,1,2,4,0
-20,Orel Pants,res://asset/images/equipment/pants/orel_pants.png,1,2,4,0
-21,Paramedic Pants,res://asset/images/equipment/pants/paramedic_pants.png,1,2,3,0
-22,Tracksuit Pants,res://asset/images/equipment/pants/tracksuit_pants.png,1,2,3,0
-23,Worker Pants,res://asset/images/equipment/pants/worker_pants.png,1,3,4,0
-24,Army Helmet,res://asset/images/equipment/helmet/army_helmet.png,2,0,2,3
-25,Balaklava,res://asset/images/equipment/helmet/balaklava.png,2,0,3,0
-26,Bandana,res://asset/images/equipment/helmet/bandana.png,2,0,1,0
-27,Baseball Cap,res://asset/images/equipment/helmet/baseball_cap.png,2,0,2,0
-28,Beret,res://asset/images/equipment/helmet/beret.png,2,0,2,0
-29,Cowboy Hat,res://asset/images/equipment/helmet/cowboy_hat.png,2,0,2,0
-30,Crusader_helmet,res://asset/images/equipment/helmet/crusader_helmet.png,2,0,4,3
-31,Gasmask,res://asset/images/equipment/helmet/gasmask.png,2,0,2,0
-32,Gorka Helmet,res://asset/images/equipment/helmet/gorka_helmet.png,2,0,3,4
-33,Hard Helmet,res://asset/images/equipment/helmet/hard_helmet.png,2,0,2,1
-34,Headlamp,res://asset/images/equipment/helmet/headlamp.png,2,0,0,0
-35,Moto Helmet,res://asset/images/equipment/helmet/moto_helmet.png,2,0,3,2
-36,Moto Helmet Red,res://asset/images/equipment/helmet/moto_helmet_red.png,2,0,3,2
-37,NVG,res://asset/images/equipment/helmet/nvg.png,2,0,0,0
-38,Police Hat,res://asset/images/equipment/helmet/police_hat.png,2,0,2,0
-39,Ushanka,res://asset/images/equipment/helmet/ushanka.png,2,0,5,0
-40,Warm Hat,res://asset/images/equipment/helmet/warm_hat.png,2,0,4,0
-41,Welding Mask,res://asset/images/equipment/helmet/welding_mask.png,2,0,0.3,0
-42,Assault Vest,res://asset/images/equipment/vest/assault_vest.png,3,2,0,1
-43,Bulletproof Vest,res://asset/images/equipment/vest/bulletproof_vest.png,3,0,0,3
-44,High Capacity Vest,res://asset/images/equipment/vest/high_capacity_vest.png,3,3,0,1
-45,Kevlar Vest,res://asset/images/equipment/vest/kevlar_vest.png,3,3,0,3
-46,Press Vest,res://asset/images/equipment/vest/press_vest.png,3,1,0,2
-47,Soviet Vest,res://asset/images/equipment/vest/soviet_vest.png,3,,0,
-48,Bag,res://asset/images/equipment/backpack/bag.png,4,3,0,0
-49,Civilian Tent,res://asset/images/equipment/backpack/civilian_tent.png,4,0,0,0
-50,Hunter Backpack,res://asset/images/equipment/backpack/hunter_backpack.png,4,5,0,0
-51,Improvised Bag,res://asset/images/equipment/backpack/improvised_bag.png,4,5,0,0
-52,Mountain Backpack,res://asset/images/equipment/backpack/mountain_backpack.png,4,7,0,0
-53,School Backpack,res://asset/images/equipment/backpack/school_backpack.png,4,2,0,0
-54,Taloon Backpack,res://asset/images/equipment/backpack/taloon_backpack.png,4,3,0,0
-55,Tortilla Backpack,res://asset/images/equipment/backpack/tortilla_backpack.png,4,6,0,0
+id,item_name,texture,wear_per_use,min_damage,max_damage,run_penalty,attack_rate,basic_spread,min_spread,max_spread,spread_per_shot,mag_size,ammo_type,aim_speed,reload_time
+0,AK-74,res://asset/images/equipment/weapon/rifle/ak-74.png,0.3,18,32,2,600,10,7,34,8,30,[0],3,2.5
+1,AKM,res://asset/images/equipment/weapon/rifle/akm.png,0.3,26,44,2,450,10,7,40,10,30,[3],3,2.5
+2,AKS74U,res://asset/images/equipment/weapon/rifle/aks74u.png,0.3,18,32,1.5,750,12,8.4,36,8,30,[0],4,2.5
+3,AUG,res://asset/images/equipment/weapon/rifle/aug.png,0.4,18,30,2.5,650,6,4.2,24,6,30,[1],3.5,3
+4,Bizon,res://asset/images/equipment/weapon/rifle/bizon.png,0.3,12,20,1,550,12,8.4,36,8,40,[5],4,3.5
+5,IZH-43,res://asset/images/equipment/weapon/rifle/izh-43.png,1,15,25,2,,26,18.2,146,40,2,[7],2,3
+6,Crossbow,res://asset/images/equipment/weapon/rifle/crossbow.png,0.8,37,63,3,2,6,4.2,126,40,1,"[11, 12]",4,2
+7,FN CAL,res://asset/images/equipment/weapon/rifle/fn_cal.png,0.3,22,38,2,550,6,4.2,24,6,20,[1],3,2.5
+8,Groza,res://asset/images/equipment/weapon/rifle/groza.png,0.4,30,50,2.5,450,10,7,31,7,30,[6],3.5,3
+9,Improvised Bow,res://asset/images/equipment/weapon/rifle/improvised_bow.png,1,37,63,3,2,12,8.4,132,40,1,"[11, 12]",4,2
+10,L85,res://asset/images/equipment/weapon/rifle/l85.png,0.4,18,30,2,500,6,4.2,24,6,30,[1],3,3
+11,M4 Carbine,res://asset/images/equipment/weapon/rifle/m4_carbine.png,0.4,18,30,2,600,8,5.6,26,6,30,[1],3,2.5
+12,Madsen,res://asset/images/equipment/weapon/rifle/madsen.png,0.5,52,87,2,500,12,8.4,48,12,20,[2],4,3
+13,Mosin,res://asset/images/equipment/weapon/rifle/mosin.png,0.8,67,113,5,1,6,4.2,126,40,5,[2],2,4
+14,MP5K,res://asset/images/equipment/weapon/rifle/mp5k.png,0.3,13,23,1,850,12,8.4,36,8,30,[4],4,2
+15,Remington 870,res://asset/images/equipment/weapon/rifle/remington_870.png,0.5,15,25,2,0.65,30,21,150,40,6,[7],2,3
+16,Repeater,res://asset/images/equipment/weapon/rifle/repeater.png,0.4,30,50,3,,10,7,70,20,7,[10],4,3
+17,RPK,res://asset/images/equipment/weapon/rifle/rpk.png,0.3,26,44,2,600,10,7,46,12,40,[3],4,3
+18,Saiga-12,res://asset/images/equipment/weapon/rifle/saiga-12.png,0.5,15,25,2,200,34,23.8,148,38,8,[7],2,3
+19,SKS,res://asset/images/equipment/weapon/rifle/sks.png,0.5,33,357,4,,8,5.6,68,20,10,[3],4,3
+20,Sporter 22,res://asset/images/equipment/weapon/rifle/sporter_22.png,0.4,15,25,3,,8,5.6,56,16,30,[8],4,2.5
+21,SV-98,res://asset/images/equipment/weapon/rifle/sv-98.png,0.6,64,106,5,0.9,6,4.2,60,18,10,[2],1.5,3
+22,SVD,res://asset/images/equipment/weapon/rifle/svd.png,0.8,60,100,5,0.4,6,4.2,84,26,10,[2],1,3
+23,UMP-45,res://asset/images/equipment/weapon/rifle/ump-45.png,0.3,13,23,1,650,14,9.8,32,6,30,[9],4,2
+24,VSS,res://asset/images/equipment/weapon/rifle/vss.png,0.4,37,62,2,450,4,2.8,28,8,20,[6],3,3
+25,Amphibia,res://asset/images/equipment/weapon/pistol/amphibia.png,0.8,11,19,0,450,8,5.6,62,18,10,[8],8,2
+26,Kolt 1911,res://asset/images/equipment/weapon/pistol/kolt_1911.png,0.8,18,32,0,450,12,8.4,72,20,7,[9],8,2
+27,FNX-45,res://asset/images/equipment/weapon/pistol/fnx-45.png,0.8,15,25,0,450,14,9.8,68,18,15,[9],8,2
+28,Glock,res://asset/images/equipment/weapon/pistol/glock.png,0.8,14,24,0,450,10,7,70,20,18,[4],8,2
+29,MAC-10,res://asset/images/equipment/weapon/pistol/mac-10.png,0.8,15,25,1,1000,20,14,50,10,30,[4],5,2
+30,Magnum ,res://asset/images/equipment/weapon/pistol/magnum.png,0.8,33,57,0,257,12,8.4,102,30,6,[10],4,2
+31,PB,res://asset/images/equipment/weapon/pistol/pb.png,0.8,18,30,0,450,18,12.6,66,16,8,[5],8,2
+32,PM,res://asset/images/equipment/weapon/pistol/pm.png,0.8,18,30,0,450,16,11.2,76,20,8,[5],8,2
+33,Rare Kolt 1911,res://asset/images/equipment/weapon/pistol/rare_kolt_1911.png,0.8,18,32,0,450,10,7,70,20,12,[9],8,2
+34,Sawed IZH-43,res://asset/images/equipment/weapon/pistol/sawed_izh-43.png,0.8,15,25,1,,26,18.2,146,40,2,[7],6,3
+35,Sawed Repeater,res://asset/images/equipment/weapon/pistol/sawed_repeater.png,0.4,33,57,1,,22,15.4,124,34,7,[10],6,3
+36,Sawed Mosin,res://asset/images/equipment/weapon/pistol/sawed_mosin.png,0.8,67,113,1,1,24,16.8,174,50,5,[2],4,4
