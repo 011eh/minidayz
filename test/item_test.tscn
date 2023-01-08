@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw5chuj6odjva"]
+
+[ext_resource type="Script" path="res://test/item_test.gd" id="1_3suvy"]
+
+[node name="Test" type="Node2D"]
+position = Vector2(41, 31)
+script = ExtResource("1_3suvy")
