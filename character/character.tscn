@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bywdouvd6udwo" path="res://asset/images/equipment/backpack/mountain_backpack.png" id="8_k476l"]
 [ext_resource type="Texture2D" uid="uid://p2dk71uacvaw" path="res://asset/images/equipment/weapon/rifle/m4_carbine.png" id="9_cm7w7"]
 [ext_resource type="Texture2D" uid="uid://dsts6mgsc1opg" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="10_ya5fv"]
-[ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://asset/images/equipment/weapon/melee/fireaxe.png" id="11_vvaba"]
+[ext_resource type="Texture2D" uid="uid://bu3ltdpj1runf" path="res://asset/images/equipment/weapon/melee/fire_axe.png" id="11_vvaba"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="13_xl15n"]
@@ -4370,7 +4370,7 @@ frame = 34
 [node name="Backpack" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("8_k476l")
 hframes = 4
-vframes = 10
+vframes = 11
 frame = 34
 
 [node name="Rifle" type="Sprite2D" parent="Sprite"]

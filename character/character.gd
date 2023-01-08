@@ -31,7 +31,7 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func get_input_diretion() -> void:
-	direction = Input.get_vector('ui_left', 'ui_right', 'ui_up', 'ui_down')
+	direction = Input.get_vector('move_left', 'move_right', 'move_up', 'move_down')
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO
