@@ -51,8 +51,8 @@ const RES_TABLE := {
 	44: preload('res://item/res/slot_item/bear_trap.tres'),
 	45: preload('res://item/res/slot_item/landmine.tres'),
 	46: preload('res://item/res/slot_item/claymore.tres'),
+	
 	47: preload('res://item/res/state_item/energy_drink.tres'),
-
 	48: preload('res://item/res/state_item/kvas.tres'),
 	49: preload('res://item/res/state_item/nota_cola.tres'),
 	50: preload('res://item/res/state_item/nuko_cola.tres'),
