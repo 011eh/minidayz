@@ -147,7 +147,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/scale=8.0
+window/stretch/mode="canvas_items"
 
 [input]
 
