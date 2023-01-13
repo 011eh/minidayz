@@ -1,18 +1,16 @@
 extends Node2D
 
 
-@export_dir
-var dir: String
-
 func _ready():
 	var count := 0
 	var ids: PackedInt32Array
+#	add_child(SlotItem.create_item(47))
 
-	ids = SlotItem.RES_TABLE.keys()
-	for id in ids:
-		add_child(SlotItem.create_item(id))
-	count += ids.size()
-	print(count == get_child_count())
+#	ids = SlotItem.RES_TABLE.keys()
+#	for id in ids:
+#		add_child(SlotItem.create_item(id))
+#	count += ids.size()
+#	print(count == get_child_count())
 #
 #	ids = Craft.RES_TABLE.keys()
 #	for id in ids:
