@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw5chuj6odjva"]
+[gd_scene load_steps=3 format=3 uid="uid://do6tmxkhtem7n"]
 
-[ext_resource type="Script" path="res://test/item_test.gd" id="1_3suvy"]
+[ext_resource type="Script" path="res://test/item_list.gd" id="2_8wqed"]
 [ext_resource type="Texture2D" uid="uid://bxaqdq7db23pn" path="res://asset/images/item/gui_slot_item.png" id="2_d40tc"]
 
 [node name="ItemTest" type="Node2D"]
-position = Vector2(96, 78)
-script = ExtResource("1_3suvy")
 
 [node name="Panel" type="Panel" parent="."]
 offset_right = 40.0
@@ -31,260 +29,21 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Panel/ColorRect/TabContainer"]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-split_offset = 176
+split_offset = 124
+script = ExtResource("2_8wqed")
+gui_texture = ExtResource("2_d40tc")
+frame_size = 32
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ColorRect/TabContainer/HSplitContainer"]
+[node name="ItemList" type="ItemList" parent="Panel/ColorRect/TabContainer/HSplitContainer"]
+custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
-
-[node name="HBoxContainer" type="HFlowContainer" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Control" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control2" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control2"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control3" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control3"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control4" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control4"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control5" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control5"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control6" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control6"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control7" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control7"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control8" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control8"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control9" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control9"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control10" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control10"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control11" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control11"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control12" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control12"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control13" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control13"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control14" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control14"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control15" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control15"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control16" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control16"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control17" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control17"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control18" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control18"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
-
-[node name="Control19" type="Control" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/ColorRect/TabContainer/HSplitContainer/ScrollContainer/HBoxContainer/Control19"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
+max_columns = 5
+same_column_width = true
+fixed_column_width = 32
+fixed_icon_size = Vector2i(32, 32)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/ColorRect/TabContainer/HSplitContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 text = "erereeeeere"
-
-[node name="Control" type="Control" parent="Panel"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 32.0
-offset_bottom = 32.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Panel/Control"]
-texture = ExtResource("2_d40tc")
-offset = Vector2(16, 16)
-hframes = 5
-vframes = 20
