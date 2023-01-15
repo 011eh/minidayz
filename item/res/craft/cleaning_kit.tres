@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bn1pf8dxbux4l"]
 
 [ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_d5qaq"]
-[ext_resource type="Texture2D" uid="uid://p2ycumnqnl3a" path="res://asset/images/item/cleaning_kit.png" id="2_vltn4"]
+[ext_resource type="Texture2D" uid="uid://dwwopusil1jxs" path="res://asset/images/item/cleaning_kit.png" id="2_vltn4"]
 
 [resource]
 script = ExtResource("1_d5qaq")

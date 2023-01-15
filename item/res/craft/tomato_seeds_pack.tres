@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://be3xjvw23ut2o"]
 
 [ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_ohhbj"]
-[ext_resource type="Texture2D" uid="uid://py8ha6fl404i" path="res://asset/images/item/tomato_seeds_pack.png" id="2_s1hp8"]
+[ext_resource type="Texture2D" uid="uid://bh6bnnmsdvffp" path="res://asset/images/item/tomato_seeds_pack.png" id="2_s1hp8"]
 
 [resource]
 script = ExtResource("1_ohhbj")

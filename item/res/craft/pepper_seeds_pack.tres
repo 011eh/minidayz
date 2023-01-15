@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cgxgjhbefao33"]
 
 [ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_o8570"]
-[ext_resource type="Texture2D" uid="uid://ou32fic0y5rl" path="res://asset/images/item/pepper_seeds_pack.png" id="2_2l4gi"]
+[ext_resource type="Texture2D" uid="uid://t4r8yvkuecdi" path="res://asset/images/item/pepper_seeds_pack.png" id="2_2l4gi"]
 
 [resource]
 script = ExtResource("1_o8570")

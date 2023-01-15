@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bgvuip6lqc01c"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_mqpv5"]
-[ext_resource type="Texture2D" uid="uid://duwtossv4ki7s" path="res://asset/images/equipment/weapon/rifle/madsen.png" id="2_vdclk"]
+[ext_resource type="Texture2D" uid="uid://bdjsa25ibiw8c" path="res://asset/images/equipment/weapon/main/madsen.png" id="2_vdclk"]
 
 [resource]
 script = ExtResource("1_mqpv5")

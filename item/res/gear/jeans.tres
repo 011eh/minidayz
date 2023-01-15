@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcyomas4gsmw"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_31rcp"]
-[ext_resource type="Texture2D" uid="uid://d1ipedswecupn" path="res://asset/images/equipment/pants/jeans.png" id="2_0aa1x"]
+[ext_resource type="Texture2D" uid="uid://qaqi5minnrkr" path="res://asset/images/equipment/pants/jeans.png" id="2_0aa1x"]
 
 [resource]
 script = ExtResource("1_31rcp")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://m2d2q68tga8k"]
 
 [ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_71vsi"]
-[ext_resource type="Texture2D" uid="uid://be8ehicid7ifa" path="res://asset/images/item/cloudberry.png" id="2_4attb"]
+[ext_resource type="Texture2D" uid="uid://c67kne1iofj2d" path="res://asset/images/item/cloudberry.png" id="2_4attb"]
 
 [resource]
 script = ExtResource("1_71vsi")

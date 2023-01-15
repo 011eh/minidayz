@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://ce67v8v7s0dwj"]
 
 [ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_gnh0v"]
-[ext_resource type="Texture2D" uid="uid://m3l5dmy1gi25" path="res://asset/images/item/pso-1_scope.png" id="2_h5yqa"]
+[ext_resource type="Texture2D" uid="uid://cpo6wr0di2poj" path="res://asset/images/item/pso-1_scope.png" id="2_h5yqa"]
 
 [resource]
 script = ExtResource("1_gnh0v")

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://sk47ypklbg77"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_h66wq"]
-[ext_resource type="Texture2D" uid="uid://f4rqngijwggs" path="res://asset/images/equipment/weapon/rifle/mosin.png" id="2_e47o7"]
+[ext_resource type="Texture2D" uid="uid://k6wf7y5ssggd" path="res://asset/images/equipment/weapon/main/mosin.png" id="2_e47o7"]
 
 [resource]
 script = ExtResource("1_h66wq")

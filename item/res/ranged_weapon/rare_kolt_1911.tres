@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bgn7besqwujkj"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_lgdxn"]
-[ext_resource type="Texture2D" uid="uid://cvrvb1e5ucoaw" path="res://asset/images/equipment/weapon/pistol/rare_kolt_1911.png" id="2_8nb7u"]
+[ext_resource type="Texture2D" uid="uid://gxua24alvagd" path="res://asset/images/equipment/weapon/pistol/rare_kolt_1911.png" id="2_8nb7u"]
 
 [resource]
 script = ExtResource("1_lgdxn")

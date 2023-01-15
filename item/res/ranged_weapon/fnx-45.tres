@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://co6l0ibfh2x1g"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_1uf27"]
-[ext_resource type="Texture2D" uid="uid://dsts6mgsc1opg" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="2_dm3dd"]
+[ext_resource type="Texture2D" uid="uid://b4hwgg5ngeygt" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="2_dm3dd"]
 
 [resource]
 script = ExtResource("1_1uf27")

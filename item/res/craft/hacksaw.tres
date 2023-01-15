@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dsbv0r6gpm2cj"]
 
 [ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_2xt6c"]
-[ext_resource type="Texture2D" uid="uid://dqtddyy6jl24i" path="res://asset/images/item/hacksaw.png" id="2_8squj"]
+[ext_resource type="Texture2D" uid="uid://0wadyfl2p23o" path="res://asset/images/item/hacksaw.png" id="2_8squj"]
 
 [resource]
 script = ExtResource("1_2xt6c")

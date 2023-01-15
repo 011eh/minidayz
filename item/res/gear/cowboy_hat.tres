@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cypkcctrxpcdr"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_jysfb"]
-[ext_resource type="Texture2D" uid="uid://cwg755yk0xpst" path="res://asset/images/equipment/helmet/cowboy_hat.png" id="2_dmuvv"]
+[ext_resource type="Texture2D" uid="uid://o5gxqcoawqaa" path="res://asset/images/equipment/helmet/cowboy_hat.png" id="2_dmuvv"]
 
 [resource]
 script = ExtResource("1_jysfb")

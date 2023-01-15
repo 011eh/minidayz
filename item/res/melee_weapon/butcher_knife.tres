@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dexcx74i3a4kc"]
 
 [ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_gxiig"]
-[ext_resource type="Texture2D" uid="uid://mu7xuet1xkp3" path="res://asset/images/equipment/weapon/melee/butcher_knife.png" id="2_psk7n"]
+[ext_resource type="Texture2D" uid="uid://oq8t5atkpb11" path="res://asset/images/equipment/weapon/melee/butcher_knife.png" id="2_psk7n"]
 
 [resource]
 script = ExtResource("1_gxiig")

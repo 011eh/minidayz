@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://lcgookfn8x2v"]
 
 [ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_weabg"]
-[ext_resource type="Texture2D" uid="uid://cyd11cyxi1dcg" path="res://asset/images/item/mre_ration.png" id="2_wub2a"]
+[ext_resource type="Texture2D" uid="uid://ckacx2rehbi51" path="res://asset/images/item/mre_ration.png" id="2_wub2a"]
 
 [resource]
 script = ExtResource("1_weabg")

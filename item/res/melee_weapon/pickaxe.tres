@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://gxiyrkisy3fu"]
 
 [ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_oj6it"]
-[ext_resource type="Texture2D" uid="uid://bg4fok2hwusc2" path="res://asset/images/equipment/weapon/melee/pickaxe.png" id="2_w5k51"]
+[ext_resource type="Texture2D" uid="uid://hxf1fflycclu" path="res://asset/images/equipment/weapon/melee/pickaxe.png" id="2_w5k51"]
 
 [resource]
 script = ExtResource("1_oj6it")

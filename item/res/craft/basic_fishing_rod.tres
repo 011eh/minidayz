@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://0mx3mfoo5o6t"]
 
 [ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_jwsid"]
-[ext_resource type="Texture2D" uid="uid://chk54k6nk4fl7" path="res://asset/images/item/basic_fishing_rod.png" id="2_ty60k"]
+[ext_resource type="Texture2D" uid="uid://dne811f3aq243" path="res://asset/images/item/basic_fishing_rod.png" id="2_ty60k"]
 
 [resource]
 script = ExtResource("1_jwsid")
