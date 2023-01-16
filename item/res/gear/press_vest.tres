@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://buwi0aoejugo"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_f71wo"]
+[ext_resource type="Texture2D" uid="uid://kwemihkyjsnr" path="res://asset/images/equipment/vest/press_vest.png" id="2_y6jwe"]
+
+[resource]
+script = ExtResource("1_f71wo")
+type = 3
+slot_number = 1
+heat = 0.0
+armor = 2.0
+id = 46
+item_name = &"Press Vest"
+texture = ExtResource("2_y6jwe")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bvxcyfnkodpqk"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_3daws"]
+[ext_resource type="Texture2D" uid="uid://kljj1aam6emr" path="res://asset/images/equipment/helmet/gasmask.png" id="2_ymluo"]
+
+[resource]
+script = ExtResource("1_3daws")
+type = 2
+slot_number = 0
+heat = 2.0
+armor = 0.0
+id = 31
+item_name = &"Gasmask"
+texture = ExtResource("2_ymluo")

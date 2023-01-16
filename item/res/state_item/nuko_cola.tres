@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://besyfklcijomc"]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_dppwf"]
+[ext_resource type="Texture2D" uid="uid://c8cjm7tltjv5c" path="res://asset/images/item/nuko_cola.png" id="2_5gn5p"]
+
+[resource]
+script = ExtResource("1_dppwf")
+health = 0
+hunger = 3
+drink = 10
+heat = 0
+stackable = true
+stack_limit = 3
+id = 50
+item_name = &"Nuko Cola"
+texture = ExtResource("2_5gn5p")

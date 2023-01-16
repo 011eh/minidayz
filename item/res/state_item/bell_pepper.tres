@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://yas8102bcoh0"]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_2stqh"]
+[ext_resource type="Texture2D" uid="uid://db7jwr2hi147a" path="res://asset/images/item/bell_pepper.png" id="2_tjomt"]
+
+[resource]
+script = ExtResource("1_2stqh")
+health = 0
+hunger = 5
+drink = 5
+heat = 0
+stackable = true
+stack_limit = 5
+id = 61
+item_name = &"Bell Pepper"
+texture = ExtResource("2_tjomt")

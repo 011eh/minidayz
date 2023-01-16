@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://y7d2vtmjcmkf"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_fxun8"]
+[ext_resource type="Texture2D" uid="uid://ds1r7brdpbndn" path="res://asset/images/equipment/backpack/mountain_backpack.png" id="2_qn2yr"]
+
+[resource]
+script = ExtResource("1_fxun8")
+type = 4
+slot_number = 7
+heat = 0.0
+armor = 0.0
+id = 52
+item_name = &"Mountain Backpack"
+texture = ExtResource("2_qn2yr")

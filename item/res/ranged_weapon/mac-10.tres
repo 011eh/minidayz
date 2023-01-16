@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bjdbgabn2dmdb"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_4q0o5"]
+[ext_resource type="Texture2D" uid="uid://bhulqb00maelc" path="res://asset/images/equipment/weapon/pistol/mac-10.png" id="2_6t2fq"]
+
+[resource]
+script = ExtResource("1_4q0o5")
+basic_spread = 20
+min_spread = 14
+max_spread = 50
+spread_per_shot = 10
+mag_size = 30
+ammo_type = PackedInt32Array(4)
+aim_speed = 5.0
+reload_time = 2.0
+min_damage = 15
+max_damage = 25
+run_penalty = 1
+attack_rate = 1000.0
+wear_per_use = 0.8
+id = 29
+item_name = &"MAC-10"
+texture = ExtResource("2_6t2fq")

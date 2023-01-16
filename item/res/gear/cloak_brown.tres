@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bunbpkdisu3mm"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_j1mk7"]
+[ext_resource type="Texture2D" uid="uid://b7rchn6tb6ucp" path="res://asset/images/equipment/clothes/cloak_brown.png" id="2_ahrdd"]
+
+[resource]
+script = ExtResource("1_j1mk7")
+type = 0
+slot_number = 1
+heat = 8.0
+armor = 0.0
+id = 0
+item_name = &"Cloak Brown"
+texture = ExtResource("2_ahrdd")

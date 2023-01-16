@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://crtdvbyui868d"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_3j5om"]
+[ext_resource type="Texture2D" uid="uid://cqr6ffkvjj53j" path="res://asset/images/equipment/weapon/melee/crowbar.png" id="2_g60ek"]
+
+[resource]
+script = ExtResource("1_3j5om")
+crit_chance = 0.25
+block_chance = 0.15
+min_damage = 22
+max_damage = 28
+run_penalty = 2
+attack_rate = 1.2
+wear_per_use = 0.3
+id = 2
+item_name = &"Crowbar"
+texture = ExtResource("2_g60ek")

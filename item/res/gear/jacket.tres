@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c6vauj1maaae7"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_jubfc"]
+[ext_resource type="Texture2D" uid="uid://bg2yvm1mv6b0y" path="res://asset/images/equipment/clothes/jacket.png" id="2_ta02f"]
+
+[resource]
+script = ExtResource("1_jubfc")
+type = 0
+slot_number = 1
+heat = 4.0
+armor = 0.0
+id = 7
+item_name = &"Jacket"
+texture = ExtResource("2_ta02f")

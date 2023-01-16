@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cja3kcowr25d6"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_4gafo"]
+[ext_resource type="Texture2D" uid="uid://ckh1fq6h6cu6h" path="res://asset/images/equipment/clothes/hunter_jacket.png" id="2_8pryn"]
+
+[resource]
+script = ExtResource("1_4gafo")
+type = 0
+slot_number = 3
+heat = 6.0
+armor = 0.0
+id = 6
+item_name = &"Hunter Jacket"
+texture = ExtResource("2_8pryn")

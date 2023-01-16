@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dsgypvbja1dj2"]
+
+[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_wx43o"]
+[ext_resource type="Texture2D" uid="uid://dt1gykjlu0qg" path="res://asset/images/equipment/weapon/melee/sledgehammer.png" id="2_fu0rg"]
+
+[resource]
+script = ExtResource("1_wx43o")
+crit_chance = 0.25
+block_chance = 0.25
+min_damage = 46
+max_damage = 50
+run_penalty = 3
+attack_rate = 1.8
+wear_per_use = 0.1
+id = 9
+item_name = &"Sledgehammer"
+texture = ExtResource("2_fu0rg")

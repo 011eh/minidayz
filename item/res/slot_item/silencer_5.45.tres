@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bk3we7vr7lvwh"]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_lb4t2"]
+[ext_resource type="Texture2D" uid="uid://bkmq7fdhnbmu4" path="res://asset/images/item/silencer_5.45.png" id="2_7d6fp"]
+
+[resource]
+script = ExtResource("1_lb4t2")
+stackable = true
+stack_limit = 3
+id = 41
+item_name = &"Silencer 5.45"
+texture = ExtResource("2_7d6fp")

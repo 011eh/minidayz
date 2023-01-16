@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://djsn1804eupa2"]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_q8upq"]
+[ext_resource type="Texture2D" uid="uid://dn0sg7hgbtquv" path="res://asset/images/item/duct_tape.png" id="2_iwip3"]
+
+[resource]
+script = ExtResource("1_q8upq")
+stackable = true
+stack_limit = 5
+id = 30
+item_name = &"Duct Tape"
+texture = ExtResource("2_iwip3")

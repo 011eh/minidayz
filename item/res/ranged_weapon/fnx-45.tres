@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://co6l0ibfh2x1g"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_1uf27"]
+[ext_resource type="Texture2D" uid="uid://b4hwgg5ngeygt" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="2_dm3dd"]
+
+[resource]
+script = ExtResource("1_1uf27")
+basic_spread = 14
+min_spread = 9
+max_spread = 68
+spread_per_shot = 18
+mag_size = 15
+ammo_type = PackedInt32Array(9)
+aim_speed = 8.0
+reload_time = 2.0
+min_damage = 15
+max_damage = 25
+run_penalty = 0
+attack_rate = 450.0
+wear_per_use = 0.8
+id = 27
+item_name = &"FNX-45"
+texture = ExtResource("2_dm3dd")

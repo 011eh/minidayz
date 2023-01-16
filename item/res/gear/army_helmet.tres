@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cjc40lu42xud"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_ewad6"]
+[ext_resource type="Texture2D" uid="uid://c0us3eqaixvdl" path="res://asset/images/equipment/helmet/army_helmet.png" id="2_o0fxq"]
+
+[resource]
+script = ExtResource("1_ewad6")
+type = 2
+slot_number = 0
+heat = 2.0
+armor = 3.0
+id = 24
+item_name = &"Army Helmet"
+texture = ExtResource("2_o0fxq")

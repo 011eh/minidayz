@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://7slenw2m3t43"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_2o3o1"]
+[ext_resource type="Texture2D" uid="uid://cx625rn6vchp6" path="res://asset/images/equipment/weapon/main/ak-74.png" id="2_0vd0y"]
+
+[resource]
+script = ExtResource("1_2o3o1")
+basic_spread = 10
+min_spread = 7
+max_spread = 34
+spread_per_shot = 8
+mag_size = 30
+ammo_type = PackedInt32Array(0)
+aim_speed = 3.0
+reload_time = 2.5
+min_damage = 18
+max_damage = 32
+run_penalty = 2
+attack_rate = 600.0
+wear_per_use = 0.3
+id = 0
+item_name = &"AK-74"
+texture = ExtResource("2_0vd0y")

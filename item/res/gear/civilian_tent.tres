@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bycsi1vj8epr2"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_nc85j"]
+[ext_resource type="Texture2D" uid="uid://br7df7j2xx6j0" path="res://asset/images/equipment/backpack/civilian_tent.png" id="2_f1vwt"]
+
+[resource]
+script = ExtResource("1_nc85j")
+type = 4
+slot_number = 0
+heat = 0.0
+armor = 0.0
+id = 49
+item_name = &"Civilian Tent"
+texture = ExtResource("2_f1vwt")

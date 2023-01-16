@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dvvysfpnrieii"]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_nun16"]
+[ext_resource type="Texture2D" uid="uid://dgvu38k0emd20" path="res://asset/images/item/rice.png" id="2_thxr0"]
+
+[resource]
+script = ExtResource("1_nun16")
+health = 0
+hunger = 80
+drink = 0
+heat = 0
+stackable = true
+stack_limit = 3
+id = 56
+item_name = &"Rice"
+texture = ExtResource("2_thxr0")

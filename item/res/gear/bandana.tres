@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://sc6jxrgc8soa"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_o7wy4"]
+[ext_resource type="Texture2D" uid="uid://dh4jwd2scjffy" path="res://asset/images/equipment/helmet/bandana.png" id="2_0rbba"]
+
+[resource]
+script = ExtResource("1_o7wy4")
+type = 2
+slot_number = 0
+heat = 1.0
+armor = 0.0
+id = 26
+item_name = &"Bandana"
+texture = ExtResource("2_0rbba")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://brqko2lqufkvl"]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_rnakk"]
+[ext_resource type="Texture2D" uid="uid://bxcq57j1npam3" path="res://asset/images/item/rope.png" id="2_4athc"]
+
+[resource]
+script = ExtResource("1_rnakk")
+stackable = true
+stack_limit = 5
+id = 17
+item_name = &"Rope"
+texture = ExtResource("2_4athc")

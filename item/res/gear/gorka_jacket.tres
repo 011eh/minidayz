@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bncppt5g205f3"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_ydkhq"]
+[ext_resource type="Texture2D" uid="uid://beyhutbuaki8c" path="res://asset/images/equipment/clothes/gorka_jacket.png" id="2_16glt"]
+
+[resource]
+script = ExtResource("1_ydkhq")
+type = 0
+slot_number = 3
+heat = 6.0
+armor = 0.0
+id = 3
+item_name = &"Gorka Jacket"
+texture = ExtResource("2_16glt")

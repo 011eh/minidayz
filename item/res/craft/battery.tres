@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dynghq3rvbik6"]
+
+[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_e2a6n"]
+[ext_resource type="Texture2D" uid="uid://bru7ot7vx43gk" path="res://asset/images/item/battery.png" id="2_vbivj"]
+
+[resource]
+script = ExtResource("1_e2a6n")
+wear_per_use = 10.0
+id = 85
+item_name = &"Battery"
+texture = ExtResource("2_vbivj")

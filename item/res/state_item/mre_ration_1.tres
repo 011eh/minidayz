@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://lcgookfn8x2v"]
+
+[ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_weabg"]
+[ext_resource type="Texture2D" uid="uid://ckacx2rehbi51" path="res://asset/images/item/mre_ration.png" id="2_wub2a"]
+
+[resource]
+script = ExtResource("1_weabg")
+health = 0
+hunger = 90
+drink = 80
+heat = 0
+stackable = true
+stack_limit = 5
+id = 78
+item_name = &"MRE Ration 1"
+texture = ExtResource("2_wub2a")

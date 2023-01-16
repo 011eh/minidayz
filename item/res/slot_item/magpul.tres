@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dkobqigvasbvx"]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_lwo7d"]
+[ext_resource type="Texture2D" uid="uid://da6aypdlonal8" path="res://asset/images/item/magpul.png" id="2_ie5rp"]
+
+[resource]
+script = ExtResource("1_lwo7d")
+stackable = true
+stack_limit = 3
+id = 34
+item_name = &"Magpul"
+texture = ExtResource("2_ie5rp")

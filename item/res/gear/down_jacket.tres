@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b1dv3lpadas4d"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_gmc2x"]
+[ext_resource type="Texture2D" uid="uid://hd7b5lst401u" path="res://asset/images/equipment/clothes/down_jacket.png" id="2_4lpf1"]
+
+[resource]
+script = ExtResource("1_gmc2x")
+type = 0
+slot_number = 2
+heat = 7.0
+armor = 0.0
+id = 1
+item_name = &"Down Jacket"
+texture = ExtResource("2_4lpf1")

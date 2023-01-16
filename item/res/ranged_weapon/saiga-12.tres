@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcy5l8tkfd6ak"]
+
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_gfqoh"]
+[ext_resource type="Texture2D" uid="uid://cjbl67c603cx3" path="res://asset/images/equipment/weapon/main/saiga-12.png" id="2_tuuoq"]
+
+[resource]
+script = ExtResource("1_gfqoh")
+basic_spread = 34
+min_spread = 23
+max_spread = 148
+spread_per_shot = 38
+mag_size = 8
+ammo_type = PackedInt32Array(7)
+aim_speed = 2.0
+reload_time = 3.0
+min_damage = 15
+max_damage = 25
+run_penalty = 2
+attack_rate = 200.0
+wear_per_use = 0.5
+id = 18
+item_name = &"Saiga-12"
+texture = ExtResource("2_tuuoq")

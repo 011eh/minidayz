@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b2bu21rgjwdfn"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_0q6m7"]
+[ext_resource type="Texture2D" uid="uid://didymbqosu6wk" path="res://asset/images/equipment/backpack/improvised_bag.png" id="2_virqs"]
+
+[resource]
+script = ExtResource("1_0q6m7")
+type = 4
+slot_number = 5
+heat = 0.0
+armor = 0.0
+id = 51
+item_name = &"Improvised Bag"
+texture = ExtResource("2_virqs")

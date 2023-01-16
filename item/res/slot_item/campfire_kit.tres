@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bbv2cgljw22a7"]
+
+[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_q0d7j"]
+[ext_resource type="Texture2D" uid="uid://crrvtbto2extr" path="res://asset/images/item/campfire_kit.png" id="2_e74y3"]
+
+[resource]
+script = ExtResource("1_q0d7j")
+stackable = true
+stack_limit = 1
+id = 16
+item_name = &"Campfire Kit"
+texture = ExtResource("2_e74y3")

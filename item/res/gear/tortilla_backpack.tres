@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ck8r70fjerl3g"]
+
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_d65j4"]
+[ext_resource type="Texture2D" uid="uid://duebhw278n5tm" path="res://asset/images/equipment/backpack/tortilla_backpack.png" id="2_g6jja"]
+
+[resource]
+script = ExtResource("1_d65j4")
+type = 4
+slot_number = 6
+heat = 0.0
+armor = 0.0
+id = 55
+item_name = &"Tortilla Backpack"
+texture = ExtResource("2_g6jja")
