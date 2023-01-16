@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d07lkhf82tylb"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_mkq6i"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_mkq6i"]
 [ext_resource type="Texture2D" uid="uid://cdhyy2jc2qh6" path="res://asset/images/equipment/weapon/melee/pitchfork.png" id="2_u3brb"]
 
 [resource]

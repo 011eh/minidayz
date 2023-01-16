@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://qxonmpl8v26j"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_ivol3"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_ivol3"]
 [ext_resource type="Texture2D" uid="uid://cnl33e7onom36" path="res://asset/images/equipment/weapon/melee/baseball_bat.png" id="2_ssk7r"]
 
 [resource]

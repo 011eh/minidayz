@@ -93,8 +93,6 @@ const RES_TABLE := {
 }
 
 
-static func create_item(id: int) -> SlotItem:
+static func get_item_resource(id: int) -> ItemResource:
 	assert_id_exists(id, RES_TABLE)
-	var item := SlotItem.new()
-	item.resource = RES_TABLE.get(id) as ItemResource
-	return item
+	return RES_TABLE.get(id)

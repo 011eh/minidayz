@@ -38,8 +38,6 @@ func _ready():
 	vframes = MAIN_WEAPON_VFRAMES
 	frame = SPRITE_INIT_FRAME
 
-static func create_item(id: int) -> MainWeapon:
+static func get_item_resource(id: int) -> RangedWeaponResource:
 	assert_id_exists(id, RES_TABLE)
-	var weapon := MainWeapon.new()
-	weapon.resource = RES_TABLE.get(id) as RangedWeaponResource
-	return weapon
+	return RES_TABLE.get(id)

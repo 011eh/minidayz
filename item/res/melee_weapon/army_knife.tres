@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://di744athq5mxh"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_mi2h6"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_mi2h6"]
 [ext_resource type="Texture2D" uid="uid://bq3h701cqmdmc" path="res://asset/images/equipment/weapon/melee/army_knife.png" id="2_l21on"]
 
 [resource]

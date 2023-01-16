@@ -70,8 +70,6 @@ func _ready():
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
-static func create_item(id: int) -> Gear:
+static func get_item_resource(id: int) -> GearResource:
 	assert_id_exists(id, RES_TABLE)
-	var gear := Gear.new()
-	gear.resource = RES_TABLE.get(id) as GearResource
-	return gear
+	return RES_TABLE.get(id)

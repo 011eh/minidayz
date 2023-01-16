@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://crtdvbyui868d"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_3j5om"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_3j5om"]
 [ext_resource type="Texture2D" uid="uid://cqr6ffkvjj53j" path="res://asset/images/equipment/weapon/melee/crowbar.png" id="2_g60ek"]
 
 [resource]

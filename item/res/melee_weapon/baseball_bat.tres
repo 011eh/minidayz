@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ctf2p1djjffsn"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_aaykb"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_aaykb"]
 [ext_resource type="Texture2D" uid="uid://ct57wuigxfkic" path="res://asset/images/equipment/weapon/melee/hatchet.png" id="2_7k6ko"]
 
 [resource]

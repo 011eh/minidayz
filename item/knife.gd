@@ -16,8 +16,6 @@ func _ready():
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
-static func create_item(id: int) -> Knife:
+static func get_item_resource(id: int) -> MeleeWeaponResource:
 	assert_id_exists(id, RES_TABLE)
-	var weapon := Knife.new()
-	weapon.resource = RES_TABLE.get(id) as MeleeWeaponResource
-	return weapon
+	return RES_TABLE.get(id)

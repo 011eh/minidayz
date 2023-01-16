@@ -25,8 +25,6 @@ func _ready():
 	vframes = PISTOL_VFRAMES
 	frame = PISTOL_INIT_FRAME
 
-static func create_item(id: int) -> Pistol:
+static func get_item_resource(id: int) -> RangedWeaponResource:
 	assert_id_exists(id, RES_TABLE)
-	var pistol := Pistol.new()
-	pistol.resource = RES_TABLE.get(id) as RangedWeaponResource
-	return pistol
+	return RES_TABLE.get(id)

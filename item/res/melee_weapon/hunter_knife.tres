@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://m1q356thodrr"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_m1sxe"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_m1sxe"]
 [ext_resource type="Texture2D" uid="uid://ulcigs3jc07e" path="res://asset/images/equipment/weapon/melee/hunter_knife.png" id="2_u77m3"]
 
 [resource]

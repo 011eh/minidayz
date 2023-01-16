@@ -17,8 +17,6 @@ const RES_TABLE := {
 }
 
 
-static func create_item(id: int) -> Craft:
+static func get_item_resource(id: int) -> CraftResource:
 	assert_id_exists(id, RES_TABLE)
-	var item := Craft.new()
-	item.resource = RES_TABLE.get(id) as CraftResource
-	return item
+	return RES_TABLE.get(id)
