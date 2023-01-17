@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://dp2toi1ru5xka"]
+
+[ext_resource type="Script" path="res://test/item_pick_up_test.gd" id="1_wuj0k"]
+[ext_resource type="PackedScene" uid="uid://svp7mopwgcu0" path="res://character/character.tscn" id="2_urtou"]
+[ext_resource type="PackedScene" uid="uid://bwk1r1ou8750n" path="res://item/item.tscn" id="3_if0n4"]
+[ext_resource type="Texture2D" uid="uid://cm7cb1bxd2o2b" path="res://asset/images/item/9mm_ammo.png" id="4_nfl32"]
+[ext_resource type="Script" path="res://item/slot_item.gd" id="5_um3pu"]
+[ext_resource type="Resource" uid="uid://wj5oi1fwnkr1" path="res://item/res/slot_item/9mm_ammo.tres" id="6_tvwmj"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_jcnxa"]
+
+[node name="ItemPickupTest" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(125, 59)
+script = ExtResource("1_wuj0k")
+
+[node name="Character" parent="." instance=ExtResource("2_urtou")]
+position = Vector2(-29, 61)
+
+[node name="AnimationTree" parent="Character" index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_jcnxa")
+
+[node name="Sprite2D" parent="." instance=ExtResource("3_if0n4")]
+texture = ExtResource("4_nfl32")
+script = ExtResource("5_um3pu")
+resource = ExtResource("6_tvwmj")
+
+[node name="Sprite2D2" parent="." instance=ExtResource("3_if0n4")]
+position = Vector2(-39, 4)
+texture = ExtResource("4_nfl32")
+script = ExtResource("5_um3pu")
+resource = ExtResource("6_tvwmj")
+
+[editable path="Character"]
+[editable path="Sprite2D"]
+[editable path="Sprite2D2"]
