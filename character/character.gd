@@ -25,9 +25,9 @@ func _physics_process(delta) -> void:
 	state_machine.run()
 	if direction:
 		last_direction = direction
-		velocity = velocity.move_toward(direction * SPEED, SPEED / 10)
+		velocity = velocity.move_toward(direction * SPEED, SPEED * 5 * delta)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, SPEED / 10)
+		velocity = velocity.move_toward(Vector2.ZERO, SPEED * 4 * delta)
 	move_and_slide()
 
 func get_input_diretion() -> void:
