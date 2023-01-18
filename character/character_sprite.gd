@@ -1,7 +1,7 @@
 extends Node2D
 
 
-func set_texture(node_name: String,texture :Texture) -> void:
-	assert(has_node(node_name),'没有 %s 节点！')
-	var sprite = get_node(node_name) as Sprite2D
-	sprite.texture = texture 
+func set_texture(index: int,texture :Texture) -> void:
+	var sprite: Sprite2D = get_child(index)
+	assert(is_instance_valid(sprite),'节点不存在')
+	sprite.texture = texture

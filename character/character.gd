@@ -20,6 +20,7 @@ var weapon_state: int
 
 func _ready() -> void:
 	state_machine.set_state('Idle')
+	$Inventory.equipment_changed.connect($Sprites.set_texture)
 
 func _physics_process(delta) -> void:
 	state_machine.run()
