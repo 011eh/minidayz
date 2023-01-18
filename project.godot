@@ -8,142 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "CharacterBody2D",
-"class": &"Character",
-"language": &"GDScript",
-"path": "res://character/character.gd"
-}, {
-"base": "",
-"class": &"Craft",
-"language": &"GDScript",
-"path": "res://item/craft.gd"
-}, {
-"base": "ItemResource",
-"class": &"CraftResource",
-"language": &"GDScript",
-"path": "res://item/res/script/craft_resource.gd"
-}, {
-"base": "",
-"class": &"Gear",
-"language": &"GDScript",
-"path": "res://item/gear.gd"
-}, {
-"base": "ItemResource",
-"class": &"GearResource",
-"language": &"GDScript",
-"path": "res://item/res/script/gear_resource.gd"
-}, {
-"base": "Sprite2D",
-"class": &"Item",
-"language": &"GDScript",
-"path": "res://item/item.gd"
-}, {
-"base": "Node",
-"class": &"ItemCreator",
-"language": &"GDScript",
-"path": "res://item/item_creator.gd"
-}, {
-"base": "Resource",
-"class": &"ItemResource",
-"language": &"GDScript",
-"path": "res://item/res/script/item_resource.gd"
-}, {
-"base": "",
-"class": &"Knife",
-"language": &"GDScript",
-"path": "res://item/knife.gd"
-}, {
-"base": "",
-"class": &"MainWeapon",
-"language": &"GDScript",
-"path": "res://item/main_weapon.gd"
-}, {
-"base": "",
-"class": &"MeleeWeapon",
-"language": &"GDScript",
-"path": "res://item/melee_weapon.gd"
-}, {
-"base": "WeaponResource",
-"class": &"MeleeWeaponResource",
-"language": &"GDScript",
-"path": "res://item/res/script/melee_weapon_resource.gd"
-}, {
-"base": "",
-"class": &"Pistol",
-"language": &"GDScript",
-"path": "res://item/pistol.gd"
-}, {
-"base": "",
-"class": &"RangedWeapon",
-"language": &"GDScript",
-"path": "res://item/ranged_weapon.gd"
-}, {
-"base": "WeaponResource",
-"class": &"RangedWeaponResource",
-"language": &"GDScript",
-"path": "res://item/res/script/ranged_weapon_resource.gd"
-}, {
-"base": "",
-"class": &"SlotItem",
-"language": &"GDScript",
-"path": "res://item/slot_item.gd"
-}, {
-"base": "ItemResource",
-"class": &"SlotItemResource",
-"language": &"GDScript",
-"path": "res://item/res/script/slot_item_resource.gd"
-}, {
-"base": "Node",
-"class": &"State",
-"language": &"GDScript",
-"path": "res://state/state.gd"
-}, {
-"base": "SlotItemResource",
-"class": &"StateItemResource",
-"language": &"GDScript",
-"path": "res://item/res/script/state_resource.gd"
-}, {
-"base": "Node",
-"class": &"StateMachine",
-"language": &"GDScript",
-"path": "res://state/state_machine.gd"
-}, {
-"base": "Node2D",
-"class": &"Test",
-"language": &"GDScript",
-"path": "res://test/test.gd"
-}, {
-"base": "CraftResource",
-"class": &"WeaponResource",
-"language": &"GDScript",
-"path": "res://item/res/script/weapon_resource.gd"
-}]
-_global_script_class_icons={
-"Character": "",
-"Craft": "",
-"CraftResource": "",
-"Gear": "",
-"GearResource": "",
-"Item": "",
-"ItemCreator": "",
-"ItemResource": "",
-"Knife": "",
-"MainWeapon": "",
-"MeleeWeapon": "",
-"MeleeWeaponResource": "",
-"Pistol": "",
-"RangedWeapon": "",
-"RangedWeaponResource": "",
-"SlotItem": "",
-"SlotItemResource": "",
-"State": "",
-"StateItemResource": "",
-"StateMachine": "",
-"Test": "",
-"WeaponResource": ""
-}
-
 [application]
 
 config/name="Minidayz"
@@ -154,6 +18,11 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/scale=3.0
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [input]
 
