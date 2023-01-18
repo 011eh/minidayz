@@ -82,6 +82,9 @@ func add_to_slot(item: Item) -> void:
 func not_full() -> bool:
 	return slots.size() < resource.slot_number
 
+func is_equipment() -> bool:
+	return true
+
 static func get_item_resource(id: int) -> GearResource:
 	assert_id_exists(id, RES_TABLE)
 	return RES_TABLE.get(id)

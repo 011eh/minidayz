@@ -23,6 +23,9 @@ func _ready():
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
+func is_equipment() -> bool:
+	return true
+
 static func get_item_resource(id: int) -> MeleeWeaponResource:
 	assert_id_exists(id, RES_TABLE)
 	return RES_TABLE.get(id)
