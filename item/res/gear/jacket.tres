@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_jubfc")
-type = 0
+type = 1
 slot_number = 1
 heat = 4.0
 armor = 0.0

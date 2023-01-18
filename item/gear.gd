@@ -2,7 +2,6 @@ extends 'durability_item.gd'
 
 class_name Gear
 
-
 const GEAR_VFRAMES = 11
 const RES_TABLE := {
 	0: preload('res://item/res/gear/cloak_brown.tres'),
@@ -22,6 +21,7 @@ const RES_TABLE := {
 	14: preload('res://item/res/gear/sweater.tres'),
 	15: preload('res://item/res/gear/tracksuit_jacket.tres'),
 	16: preload('res://item/res/gear/tshirt.tres'),
+
 	17: preload('res://item/res/gear/gorka_pants.tres'),
 	18: preload('res://item/res/gear/hunter_pants.tres'),
 	19: preload('res://item/res/gear/jeans.tres'),
@@ -29,6 +29,7 @@ const RES_TABLE := {
 	21: preload('res://item/res/gear/paramedic_pants.tres'),
 	22: preload('res://item/res/gear/tracksuit_pants.tres'),
 	23: preload('res://item/res/gear/worker_pants.tres'),
+
 	24: preload('res://item/res/gear/army_helmet.tres'),
 	25: preload('res://item/res/gear/balaklava.tres'),
 	26: preload('res://item/res/gear/bandana.tres'),
@@ -47,12 +48,14 @@ const RES_TABLE := {
 	39: preload('res://item/res/gear/ushanka.tres'),
 	40: preload('res://item/res/gear/warm_hat.tres'),
 	41: preload('res://item/res/gear/welding_mask.tres'),
+
 	42: preload('res://item/res/gear/assault_vest.tres'),
 	43: preload('res://item/res/gear/bulletproof_vest.tres'),
 	44: preload('res://item/res/gear/high_capacity_vest.tres'),
 	45: preload('res://item/res/gear/kevlar_vest.tres'),
 	46: preload('res://item/res/gear/press_vest.tres'),
 	47: preload('res://item/res/gear/soviet_vest.tres'),
+
 	48: preload('res://item/res/gear/bag.tres'),
 	49: preload('res://item/res/gear/civilian_tent.tres'),
 	50: preload('res://item/res/gear/hunter_backpack.tres'),
@@ -64,12 +67,29 @@ const RES_TABLE := {
 }
 
 
+var slots: Array[Item]
+
+
 func _ready():
 	hframes = SPRITE_HFRAMES
 	vframes = GEAR_VFRAMES
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
+func add_to_slot(item: Item) -> void:
+	slots.append(item)
+
+func not_full() -> bool:
+	return slots.size() < resource.slot_number
+
 static func get_item_resource(id: int) -> GearResource:
 	assert_id_exists(id, RES_TABLE)
 	return RES_TABLE.get(id)
+
+static func create_character_slot() -> Gear:
+	var res := GearResource.new()
+	res.slot_number = 1
+	var gear := Gear.new() as Gear
+	gear.resource = res
+	gear.durability = 100
+	return gear

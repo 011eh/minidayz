@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_hg6pr")
-type = 3
+type = 4
 slot_number = 2
 heat = 0.0
 armor = 1.0

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_fa00k")
-type = 4
+type = 5
 slot_number = 3
 heat = 0.0
 armor = 0.0

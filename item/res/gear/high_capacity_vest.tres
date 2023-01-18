@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_rpocj")
-type = 3
+type = 4
 slot_number = 3
 heat = 0.0
 armor = 1.0

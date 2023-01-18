@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_pfum4")
-type = 3
+type = 4
 slot_number = 0
 heat = 0.0
 armor = 3.0
