@@ -1,4 +1,4 @@
-extends 'number_item.gd'
+extends NumberItem
 
 class_name SlotItem
 

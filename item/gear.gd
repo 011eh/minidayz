@@ -2,7 +2,6 @@ extends 'durability_item.gd'
 
 class_name Gear
 
-const GEAR_VFRAMES = 11
 const RES_TABLE := {
 	0: preload('res://item/res/gear/cloak_brown.tres'),
 	1: preload('res://item/res/gear/down_jacket.tres'),
@@ -65,7 +64,7 @@ const RES_TABLE := {
 	54: preload('res://item/res/gear/taloon_backpack.tres'),
 	55: preload('res://item/res/gear/tortilla_backpack.tres'),
 }
-
+const GEAR_VFRAMES = 11
 
 var slots: Array[Item]
 
@@ -76,11 +75,29 @@ func _ready():
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
-func add_to_slot(item: Item) -> void:
-	slots.append(item)
+func add_to_slot(item: NumberItem) -> bool:
+	var item_in_slot := get_item_to_stack(item.get_item_id()) as NumberItem
+	if is_instance_valid(item_in_slot):
+		var capacity := item_in_slot.resource.stack_limit - item_in_slot.number as int
+		if capacity >= item.number:
+			item_in_slot.number += item.number
+			# todo，释放对应的 Item 实例
+		else:
+			item_in_slot.number += capacity
+			item.number -= capacity
+			return false
+	else:
+		slots.append(item)
+	return true
 
-func not_full() -> bool:
-	return slots.size() < resource.slot_number
+func get_item_to_stack(item_id: int) -> Item:
+	var stackable_item_in_slot := func (item_in_slot) -> bool:
+		var res := item_in_slot.resource as SlotItemResource
+		return item_id == res.id and res.stackable and item_in_slot.number < res.stack_limit
+	return slots.filter(stackable_item_in_slot).front()
+
+func has_empty_slot() -> bool:
+	return resource.slot_number > 0 and slots.size() < resource.slot_number
 
 func is_equipment() -> bool:
 	return true
