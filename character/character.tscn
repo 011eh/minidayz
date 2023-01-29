@@ -1,16 +1,8 @@
-[gd_scene load_steps=81 format=3 uid="uid://svp7mopwgcu0"]
+[gd_scene load_steps=73 format=3 uid="uid://svp7mopwgcu0"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
 [ext_resource type="Texture2D" uid="uid://pqlbc4otpf82" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="3_qxl6g"]
-[ext_resource type="Texture2D" uid="uid://beyhutbuaki8c" path="res://asset/images/equipment/clothes/gorka_jacket.png" id="4_telng"]
-[ext_resource type="Texture2D" uid="uid://py7s00ka5egu" path="res://asset/images/equipment/pants/gorka_pants.png" id="5_qop5o"]
-[ext_resource type="Texture2D" uid="uid://dhaygyghgxdpw" path="res://asset/images/equipment/helmet/gorka_helmet.png" id="6_tcxpg"]
-[ext_resource type="Texture2D" uid="uid://rq8pxpeobfuq" path="res://asset/images/equipment/vest/assault_vest.png" id="7_crcwg"]
-[ext_resource type="Texture2D" uid="uid://ds1r7brdpbndn" path="res://asset/images/equipment/backpack/mountain_backpack.png" id="8_k476l"]
-[ext_resource type="Texture2D" uid="uid://biiiva8l8ybte" path="res://asset/images/equipment/weapon/main/m4_carbine.png" id="9_cm7w7"]
-[ext_resource type="Texture2D" uid="uid://b4hwgg5ngeygt" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="10_ya5fv"]
-[ext_resource type="Texture2D" uid="uid://5oia8fbakmbg" path="res://asset/images/equipment/weapon/melee/fire_axe.png" id="11_vvaba"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="13_xl15n"]
@@ -4351,55 +4343,40 @@ script = ExtResource("1_psyd6")
 texture = ExtResource("3_qxl6g")
 hframes = 4
 vframes = 11
-frame = 33
 
 [node name="Clothes" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("4_telng")
 hframes = 4
 vframes = 11
-frame = 33
 
 [node name="Pants" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("5_qop5o")
 hframes = 4
 vframes = 11
-frame = 33
 
 [node name="Helmet" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("6_tcxpg")
 hframes = 4
 vframes = 11
-frame = 33
 
 [node name="Vest" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("7_crcwg")
 hframes = 4
 vframes = 11
-frame = 33
 
 [node name="Backpack" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("8_k476l")
 hframes = 4
 vframes = 11
-frame = 33
 
 [node name="Rifle" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("9_cm7w7")
 hframes = 4
 vframes = 16
-frame = 61
 
 [node name="Pistol" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("10_ya5fv")
 hframes = 4
 vframes = 7
 frame = 4
 
 [node name="Melee" type="Sprite2D" parent="Sprites"]
-texture = ExtResource("11_vvaba")
 hframes = 4
 vframes = 17
-frame = 33
+frame = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -4419,16 +4396,16 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_rxyu4")
 parameters/Aim/blend_position = 0.0
 parameters/Aim/0/blend_position = Vector2(0, 0)
 parameters/Aim/1/blend_position = Vector2(0, 0)
-parameters/Idle/blend_position = 0.0
+parameters/Idle/blend_position = 2.0
 parameters/Idle/0/blend_position = Vector2(0, 1)
-parameters/Idle/1/blend_position = Vector2(0, 0)
-parameters/Idle/2/blend_position = Vector2(0, 0)
+parameters/Idle/1/blend_position = Vector2(0, 1)
+parameters/Idle/2/blend_position = Vector2(0, 1)
 parameters/MeleeAttack/blend_position = Vector2(0, 0)
 parameters/Run/Seek/seek_position = -1.0
-parameters/Run/WeaponState/blend_position = 0.0
-parameters/Run/WeaponState/0/blend_position = Vector2(0, 0)
-parameters/Run/WeaponState/1/blend_position = Vector2(0, 0)
-parameters/Run/WeaponState/2/blend_position = Vector2(0, 0)
+parameters/Run/WeaponState/blend_position = 2.0
+parameters/Run/WeaponState/0/blend_position = Vector2(0, 1)
+parameters/Run/WeaponState/1/blend_position = Vector2(0, 1)
+parameters/Run/WeaponState/2/blend_position = Vector2(0, 1)
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
 

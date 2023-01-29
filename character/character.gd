@@ -15,7 +15,7 @@ var playback := animation_tree.get('parameters/playback') as AnimationNodeStateM
 var current_state: State
 var last_direction := Vector2.ZERO
 var direction: Vector2
-var weapon_state: int
+var weapon_state := StateMachine.MELEE
 
 
 func _ready() -> void:
