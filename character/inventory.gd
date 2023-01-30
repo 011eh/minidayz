@@ -30,34 +30,47 @@ func pickup(area: Area2D) -> void:
 		item.get_parent().remove_child(item)
 		emit_signal('equipment_changed', index, item.texture)
 	else:
-		var gears: Array[Item]
-		if item is NumberItem:
-			gears = equipment_slots.slice(0, WEPAON_OFFSET) as Array[Gear]
-			var items:Array[NumberItem] = []
-			for gear in gears:
-				if is_instance_valid(gear):
-					var same_item := func(item_in_slot: NumberItem) -> NumberItem:
-						if item.get_item_id() == item_in_slot.resource.id:
-							return item_in_slot
-						else:
-							return null
-					items.append_array(gear.slots.map(same_item))
-			# todo，将物品堆叠到背包物品
+		var gears = equipment_slots.slice(0, WEPAON_OFFSET)\
+		.filter(func(gear: Gear) -> bool: return is_instance_valid(gear))
+		gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
 		
-		var not_full = func(gear: Gear) -> bool:
-			return is_instance_valid(gear) and gear.has_empty_slot()
-		gears = equipment_slots.slice(0, WEPAON_OFFSET).filter(not_full) as Array[Item]
-		var sort_by_stackable_and_durability = func(g1: Gear, g2: Gear) -> bool:
-			var item_id := item.get_item_id()
-			var g1_stackable := is_instance_valid(g1.get_item_to_stack(item_id))
-			var g2_stackable := is_instance_valid(g2.get_item_to_stack(item_id))
-			if g1_stackable == g1_stackable:
-				return g1.durability > g2.durability
-			return g1_stackable > g2_stackable
-		gears.sort_custom(sort_by_stackable_and_durability)
+		# 尝试进行堆叠
+		if item is NumberItem:
+			var inventory_items:Array[NumberItem] = []
+			for gear in gears:
+				var same_item := func(inventory_item):
+					if is_instance_valid(inventory_item) and item.get_item_id() == inventory_item.get_item_id()\
+					and inventory_item.number < inventory_item.get_resource().stack_limit:
+						return inventory_item
+					else:
+						return null
+				inventory_items.append_array(gear.slots.map(same_item))
+				inventory_items = inventory_items.filter(func(item: Item) -> bool: return is_instance_valid(item))
+			
+			# todo，将物品堆叠到背包物品
+			if not inventory_items.is_empty() and stack_item(item, inventory_items):
+					return
+		
+		# 需要放到背包空槽位上
+		gears = gears.filter(func(gear: Gear): return gear.has_empty_slot())
 		if not gears.is_empty():
 			gears.pop_front().add_to_slot(item)
 			item.get_parent().remove_child(item)
+
+func stack_item(item: NumberItem,inventory_items: Array[NumberItem]) -> bool:
+	while not inventory_items.is_empty():
+		var inventory_item := inventory_items.pop_front() as NumberItem
+		var item_number := item.number
+		var inventory_item_number := inventory_item.number
+		var stack_limit := inventory_item.get_resource().stack_limit
+		var residual_capacity := stack_limit - inventory_item_number
+		inventory_item.number = clamp(inventory_item_number + item_number, inventory_item_number + 1, stack_limit)
+		item.number = clamp(item_number - residual_capacity, 0, item_number - 1)
+		if item.number == 0:
+			# 释放物品实例
+			item.queue_free()
+			return true
+	return false
 
 func get_slot_index(item: Item) -> int:
 	if item is Gear:

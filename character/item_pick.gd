@@ -24,7 +24,6 @@ func erase_item_position(area : Area2D) -> void:
 	if nearest_item == item:
 		nearest_item = null
 	if nearby_items.is_empty():
-		nearby_items
 		timer.stop()
 
 func set_nearest_item() -> void:
