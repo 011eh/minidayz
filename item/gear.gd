@@ -75,29 +75,13 @@ func _ready():
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
-func add_to_slot(item: NumberItem) -> bool:
-	var item_in_slot := get_item_to_stack(item.get_item_id()) as NumberItem
-	if is_instance_valid(item_in_slot):
-		var capacity := item_in_slot.resource.stack_limit - item_in_slot.number as int
-		if capacity >= item.number:
-			item_in_slot.number += item.number
-			# todo，释放对应的 Item 实例
-		else:
-			item_in_slot.number += capacity
-			item.number -= capacity
-			return false
-	else:
-		slots.append(item)
-	return true
-
-func get_item_to_stack(item_id: int) -> Item:
-	var stackable_item_in_slot := func (item_in_slot) -> bool:
-		var res := item_in_slot.resource as SlotItemResource
-		return item_id == res.id and res.stackable and item_in_slot.number < res.stack_limit
-	return slots.filter(stackable_item_in_slot).front()
+func add_to_slot(item: Item) -> void:
+	slots.append(item)
 
 func has_empty_slot() -> bool:
-	return resource.slot_number > 0 and slots.size() < resource.slot_number
+	slots = slots.filter(func(item) -> bool: return is_instance_valid(item))
+	var slot_number = resource.slot_number
+	return slot_number > 0 and slots.size() < slot_number
 
 func is_equipment() -> bool:
 	return true

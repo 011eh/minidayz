@@ -4,11 +4,14 @@ class_name Item
 
 
 @export
-var resource: ItemResource
+var resource: ItemResource: get = get_resource
 
 
 func _ready():
 	texture = resource.texture
+
+func get_resource():
+	return resource
 
 func is_equipment() -> bool:
 	return false
