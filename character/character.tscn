@@ -1,23 +1,16 @@
-[gd_scene load_steps=73 format=3 uid="uid://svp7mopwgcu0"]
+[gd_scene load_steps=64 format=3 uid="uid://ch2rssv03o2ak"]
 
-[ext_resource type="Script" path="res://character/character.gd" id="1_d4mdx"]
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
 [ext_resource type="Texture2D" uid="uid://pqlbc4otpf82" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="3_qxl6g"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="12_gpkti"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="13_io0a3"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="13_xl15n"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://c3fmdqaiyvk35" path="res://character/res/idle_pistol.tres" id="14_3ps4m"]
-[ext_resource type="Script" path="res://character/state/idle_state.gd" id="14_w2eld"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bkt62wj8et6re" path="res://character/res/run_rifle.tres" id="15_8f3mh"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://dg6i5ecrhw66t" path="res://character/res/idle_melee.tres" id="15_ck7j4"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://d0ysow8htmhc2" path="res://character/res/melee_attack.tres" id="16_5d887"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://cly713wn0kybr" path="res://character/res/run_pistol.tres" id="16_6gjlo"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://hlfygt5ju8dk" path="res://character/res/run_meleel.tres" id="17_o584k"]
-[ext_resource type="Script" path="res://character/state/melee_attack_state.gd" id="24_ctipj"]
-[ext_resource type="Script" path="res://character/state/run_state.gd" id="24_n2yy1"]
-[ext_resource type="Script" path="res://character/inventory.gd" id="25_u5d8d"]
-[ext_resource type="Script" path="res://character/item_pick.gd" id="25_wgfd8"]
-[ext_resource type="Script" path="res://character/state/aim_state.gd" id="25_ykhtx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1fp6"]
 radius = 2.0
@@ -4324,16 +4317,7 @@ graph_offset = Vector2(-13, 43)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o3e1o"]
-radius = 31.0
-height = 88.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yc4qg"]
-radius = 4.0
-height = 12.0
-
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource("1_d4mdx")
 
 [node name="Sprites" type="Node2D" parent="."]
 position = Vector2(0, -14)
@@ -4408,52 +4392,3 @@ parameters/Run/WeaponState/1/blend_position = Vector2(0, 1)
 parameters/Run/WeaponState/2/blend_position = Vector2(0, 1)
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("14_w2eld")
-
-[node name="Run" type="Node" parent="StateMachine"]
-script = ExtResource("24_n2yy1")
-
-[node name="MeleeAttack" type="Node" parent="StateMachine"]
-script = ExtResource("24_ctipj")
-
-[node name="Aim" type="Node" parent="StateMachine"]
-script = ExtResource("25_ykhtx")
-
-[node name="WeaponSwitchTimer" type="Timer" parent="StateMachine"]
-wait_time = 0.1
-one_shot = true
-
-[node name="AttackTimer" type="Timer" parent="StateMachine"]
-wait_time = 0.3
-one_shot = true
-
-[node name="Inventory" type="Node2D" parent="."]
-script = ExtResource("25_u5d8d")
-
-[node name="Area2D" type="Area2D" parent="Inventory"]
-visible = false
-collision_layer = 2
-collision_mask = 2
-monitorable = false
-script = ExtResource("25_wgfd8")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inventory/Area2D"]
-position = Vector2(0, -5)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_o3e1o")
-
-[node name="Timer" type="Timer" parent="Inventory/Area2D"]
-wait_time = 0.2
-
-[node name="Node" type="Node" parent="Inventory/Area2D"]
-
-[node name="PickupArea" type="Area2D" parent="Inventory"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/PickupArea"]
-position = Vector2(0, -4)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_yc4qg")

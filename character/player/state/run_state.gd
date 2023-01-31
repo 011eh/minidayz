@@ -11,5 +11,5 @@ func run() -> void:
 		owner.animation_tree.set(param, owner.velocity)
 	else:
 		emit_signal('finished','Idle')
-	if owner.weapon_state == StateMachine.MELEE and Input.is_action_pressed("attack"):
+	if owner.weapon_state == PlayerStateMachine.WeaponState.MELEE_WEAPON and Input.is_action_pressed("attack"):
 		emit_signal('finished','MeleeAttack')

@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-class_name Character
+class_name Player
 
 
 const SPEED := 130
 
 
 @onready
-var state_machine := $StateMachine as StateMachine
+var state_machine := $StateMachine as PlayerStateMachine
 @onready
 var animation_tree := $AnimationTree as AnimationTree
 @onready
@@ -15,7 +15,7 @@ var playback := animation_tree.get('parameters/playback') as AnimationNodeStateM
 var current_state: State
 var last_direction := Vector2.ZERO
 var direction: Vector2
-var weapon_state := StateMachine.MELEE
+var weapon_state := PlayerStateMachine.WeaponState.MELEE_WEAPON
 
 
 func _ready() -> void:
@@ -40,3 +40,6 @@ func is_moving() -> bool:
 func direction_to_mouse() -> Vector2:
 	last_direction = position.direction_to(get_global_mouse_position())
 	return last_direction
+
+func get_inventory() -> Array:
+	return $Inventory.equipment_slots

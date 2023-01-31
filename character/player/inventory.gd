@@ -1,8 +1,24 @@
 extends Node2D
 
 
+class_name PlayerInventory
+
+
 const EQUIPMENT_SLOT_NUMBER = 9
 const WEPAON_OFFSET = 6
+
+
+enum {
+	PLAYER_SLOT,
+	CLOTHES,
+	PANTS,
+	HELMET,
+	VEST,
+	BACKPACK,
+	MAIN_WEAPON,
+	PISTOL,
+	MELEE_WEAPON
+}
 
 
 signal equipment_changed
@@ -15,13 +31,13 @@ var pickup_area := $PickupArea as Area2D
 func _ready():
 	pickup_area.area_entered.connect(pickup)
 	equipment_slots.resize(EQUIPMENT_SLOT_NUMBER)
-	var charact_slot := Gear.create_character_slot()
-	equipment_slots[0] = charact_slot
+	var player_slot := Gear.create_player_slot()
+	equipment_slots[0] = player_slot
 
 func pickup(area: Area2D) -> void:
 	var item := area.owner as Item
 	if item.is_equipment():
-		var index := get_slot_index(item)
+		var index := get_equipment_slot_index(item)
 		var item_in_equment_slot := equipment_slots[index]
 		if is_instance_valid(item_in_equment_slot):
 			# todo，丢弃装备
@@ -72,11 +88,11 @@ func stack_item(item: NumberItem,inventory_items: Array[NumberItem]) -> bool:
 			return true
 	return false
 
-func get_slot_index(item: Item) -> int:
+func get_equipment_slot_index(item: Item) -> int:
 	if item is Gear:
 		return item.resource.type
 	if item is MainWeapon:
-		return 6
+		return MAIN_WEAPON
 	if item is Pistol:
-		return 7
-	return 8
+		return PISTOL
+	return MELEE_WEAPON
