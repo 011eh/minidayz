@@ -90,7 +90,7 @@ static func get_item_resource(id: int) -> GearResource:
 	assert_id_exists(id, RES_TABLE)
 	return RES_TABLE.get(id)
 
-static func create_character_slot() -> Gear:
+static func create_player_slot() -> Gear:
 	var res := GearResource.new()
 	res.slot_number = 1
 	var gear := Gear.new() as Gear
