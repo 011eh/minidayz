@@ -3,15 +3,7 @@ extends Node2D
 class_name Test
 
 
-var slots: Array[Gear]
-
-var n:int: get= ggg
-var s:int
-func ggg():
-	return s+10
-
 func _ready():
-	stack_test()
 	pass
 
 func stack_test():
