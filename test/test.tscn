@@ -1,15 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc7u14f8vn0ek"]
+[gd_scene load_steps=2 format=3 uid="uid://75idi11r5lmw"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
-[ext_resource type="PackedScene" uid="uid://bl4ott2pk0gi3" path="res://character/player/player.tscn" id="3_ev0mp"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ekwsy")
-
-[node name="Player" parent="." instance=ExtResource("3_ev0mp")]
-
-[node name="ItemPosition" type="Marker2D" parent="."]
-position = Vector2(24, 32)
-
-[node name="EquipmentPosition" type="Marker2D" parent="."]
-position = Vector2(16, 32)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn4y3gu1c5hqu"]
+[gd_scene load_steps=18 format=3 uid="uid://b2uwn5l2tu5fk"]
 
 [ext_resource type="Script" path="res://test/inventory_test.gd" id="1_tigcr"]
 [ext_resource type="Texture2D" uid="uid://dvil1ok7epdck" path="res://asset/images/gui/inventory/gui_inventory_background.png" id="2_c5b56"]
@@ -36,6 +36,29 @@ region = Rect2(178, 245, 45, 30)
 atlas = ExtResource("3_nmmca")
 region = Rect2(227, 133, 43, 52)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmm5p"]
+atlas = ExtResource("3_nmmca")
+region = Rect2(62, 66, 98, 66)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_se6jk"]
+load_path = "res://.godot/imported/gui_inventory_card_cover.png-30a661c9030f823e11d01e8f5bf10b84.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om01e"]
+atlas = SubResource("CompressedTexture2D_se6jk")
+region = Rect2(160, 66, 67, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ecm"]
+atlas = SubResource("CompressedTexture2D_se6jk")
+region = Rect2(0, 0, 227, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0beea"]
+atlas = SubResource("CompressedTexture2D_se6jk")
+region = Rect2(0, 66, 62, 145)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilnpj"]
+atlas = SubResource("CompressedTexture2D_se6jk")
+region = Rect2(62, 132, 64, 57)
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Control" type="Control" parent="."]
@@ -53,132 +76,161 @@ offset_right = 362.0
 offset_bottom = 283.0
 texture = ExtResource("2_c5b56")
 
-[node name="ClothesIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="Icons" type="Control" parent="Control/InventoryBackground"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClothesIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -57.5
-offset_right = 16.0
-offset_bottom = -11.5
+anchors_preset = -1
+offset_left = 149.0
+offset_top = 84.0
+offset_right = 197.0
+offset_bottom = 130.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_kgj3c")
 
-[node name="PantsIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="PantsIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = 6.5
-offset_right = 14.0
-offset_bottom = 53.5
+anchors_preset = -1
+offset_left = 149.0
+offset_top = 148.0
+offset_right = 195.0
+offset_bottom = 195.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_u2l8y")
 
-[node name="HelmetIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="HelmetIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 54.0
-offset_top = -124.5
-offset_right = 94.0
-offset_bottom = -79.5
+anchors_preset = -1
+offset_left = 235.0
+offset_top = 17.0
+offset_right = 275.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_gfg8n")
 
-[node name="VestIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="VestIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -125.5
-offset_right = 12.0
-offset_bottom = -79.5
+anchors_preset = -1
+offset_left = 150.0
+offset_top = 16.0
+offset_right = 193.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_migpd")
 
-[node name="BackpackIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="BackpackIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 33.0
-offset_top = 72.0
-offset_right = 80.0
-offset_bottom = 119.0
+anchors_preset = -1
+offset_left = 214.0
+offset_top = 213.5
+offset_right = 261.0
+offset_bottom = 260.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_cbmqd")
 
-[node name="MainWeaponIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="MainWeaponIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 61.0
-offset_top = -57.5
-offset_right = 190.0
-offset_bottom = -14.5
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 299.0
+offset_top = 196.0
+offset_right = 428.0
+offset_bottom = 239.0
 rotation = -1.5708
-pivot_offset = Vector2(84.5, 28.5)
 texture = SubResource("AtlasTexture_4jg1u")
 expand_mode = 1
 
-[node name="PistolIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="PistolIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 120.0
-offset_top = -121.5
-offset_right = 159.0
-offset_bottom = -95.5
+anchors_preset = -1
+offset_left = 301.0
+offset_top = 20.0
+offset_right = 340.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_jrdal")
 expand_mode = 1
 
-[node name="MeleeWeaponIcon" type="TextureRect" parent="Control/InventoryBackground"]
+[node name="MeleeWeaponIcon" type="TextureRect" parent="Control/InventoryBackground/Icons"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 55.0
-offset_top = 7.5
-offset_right = 92.0
-offset_bottom = 52.5
+anchors_preset = -1
+offset_left = 236.0
+offset_top = 149.0
+offset_right = 273.0
+offset_bottom = 194.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_gu6wg")
 expand_mode = 1
 
+[node name="Cards" type="Control" parent="Control/InventoryBackground"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PantsCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 140.0
+offset_right = 222.0
+offset_bottom = 206.0
+texture = SubResource("AtlasTexture_vmm5p")
+
+[node name="VestCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 1
+offset_left = 124.0
+offset_top = 6.0
+offset_right = 222.0
+offset_bottom = 72.0
+texture = SubResource("AtlasTexture_vmm5p")
+
+[node name="HelmetCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 6.0
+offset_right = 289.0
+offset_bottom = 72.0
+texture = SubResource("AtlasTexture_om01e")
+
+[node name="MeleeWeaponCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 139.0
+offset_right = 289.0
+offset_bottom = 205.0
+texture = SubResource("AtlasTexture_om01e")
+
+[node name="BackpackCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 205.0
+offset_right = 351.0
+offset_bottom = 270.0
+texture = SubResource("AtlasTexture_h8ecm")
+
+[node name="MainWeaponCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 61.0
+offset_right = 352.0
+offset_bottom = 206.0
+texture = SubResource("AtlasTexture_0beea")
+
+[node name="PistolCard" type="TextureRect" parent="Control/InventoryBackground/Cards"]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 6.0
+offset_right = 353.0
+offset_bottom = 63.0
+texture = SubResource("AtlasTexture_ilnpj")
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(220, 120)
+position = Vector2(192, 137)
 current = true
-zoom = Vector2(2, 2)

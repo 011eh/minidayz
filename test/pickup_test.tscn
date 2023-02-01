@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvwcuqqutjq4r"]
+
+[ext_resource type="Script" path="res://test/pick_test.gd" id="1_mtblv"]
+[ext_resource type="PackedScene" uid="uid://bl4ott2pk0gi3" path="res://character/player/player.tscn" id="2_chdy4"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_mtblv")
+
+[node name="Player" parent="." instance=ExtResource("2_chdy4")]
+
+[node name="ItemPosition" type="Marker2D" parent="."]
+position = Vector2(24, 32)
+
+[node name="EquipmentPosition" type="Marker2D" parent="."]
+position = Vector2(16, 32)
