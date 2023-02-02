@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhs8wfgoswhj0"]
+
+[ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="1_yht5p"]
+[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_2l8nm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egiho"]
+atlas = ExtResource("1_yht5p")
+region = Rect2(62, 66, 98, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ytr7"]
+atlas = ExtResource("2_2l8nm")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7xqo"]
+atlas = ExtResource("2_2l8nm")
+region = Rect2(0, 32, 32, 32)
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = -0.00150832
+texture = SubResource("AtlasTexture_egiho")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.99698
+offset_top = 2.00603
+offset_right = 35.997
+offset_bottom = 34.006
+texture = SubResource("AtlasTexture_7ytr7")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.95015
+offset_top = 33.0513
+offset_right = 33.9502
+offset_bottom = 65.0513
+texture = SubResource("AtlasTexture_7ytr7")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 33.9501
+offset_top = 33.0995
+offset_right = 65.9501
+offset_bottom = 65.0995
+texture = SubResource("AtlasTexture_7ytr7")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 65.9501
+offset_top = 33.1478
+offset_right = 97.9501
+offset_bottom = 65.1478
+texture = SubResource("AtlasTexture_x7xqo")

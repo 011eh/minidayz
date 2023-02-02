@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://vtmvdubsbp8x"]
+[gd_scene load_steps=6 format=3 uid="uid://vtmvdubsbp8x"]
 
 [ext_resource type="Texture2D" uid="uid://ckh1fq6h6cu6h" path="res://asset/images/equipment/clothes/hunter_jacket.png" id="1_hpyt3"]
 [ext_resource type="FontFile" uid="uid://t2fy04gt31yn" path="res://test/SourceHanSansHWSC-VF.otf.woff2" id="2_xojlp"]
+[ext_resource type="Texture2D" uid="uid://bshhdlqycovo6" path="res://asset/images/gui/inventory/gui_inv_slot_shadow.png" id="3_o84cj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_33o6o"]
 atlas = ExtResource("1_hpyt3")
@@ -16,10 +17,12 @@ font_size = 6
 
 [node name="CardInfo" type="VBoxContainer" parent="."]
 offset_right = 128.0
-offset_bottom = 68.0
+offset_bottom = 64.0
+theme_override_constants/separation = 0
 
 [node name="ItemInfo" type="HBoxContainer" parent="CardInfo"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="CardInfo/ItemInfo"]
@@ -51,38 +54,18 @@ label_settings = SubResource("LabelSettings_55mhe")
 
 [node name="Slots" type="HBoxContainer" parent="CardInfo"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="CardInfo/Slots"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = SubResource("AtlasTexture_33o6o")
-stretch_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="CardInfo/Slots"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = SubResource("AtlasTexture_33o6o")
-stretch_mode = 2
-
-[node name="TextureRect3" type="TextureRect" parent="CardInfo/Slots"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = SubResource("AtlasTexture_33o6o")
-stretch_mode = 2
-
-[node name="TextureRect4" type="TextureRect" parent="CardInfo/Slots"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = SubResource("AtlasTexture_33o6o")
+texture = ExtResource("3_o84cj")
 stretch_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(62, 32)
-current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
