@@ -1,54 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhs8wfgoswhj0"]
+[gd_scene load_steps=7 format=3 uid="uid://bmv3t8nw5v44b"]
 
 [ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="1_yht5p"]
-[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_2l8nm"]
+[ext_resource type="Texture2D" uid="uid://ckh1fq6h6cu6h" path="res://asset/images/equipment/clothes/hunter_jacket.png" id="3_bnfne"]
+[ext_resource type="Texture2D" uid="uid://bshhdlqycovo6" path="res://asset/images/gui/inventory/gui_inv_slot_shadow.png" id="4_apw71"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_egiho"]
 atlas = ExtResource("1_yht5p")
 region = Rect2(62, 66, 98, 66)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7ytr7"]
-atlas = ExtResource("2_2l8nm")
-region = Rect2(64, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1ydt"]
+atlas = ExtResource("3_bnfne")
+region = Rect2(0, 320, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7xqo"]
-atlas = ExtResource("2_2l8nm")
-region = Rect2(0, 32, 32, 32)
+[sub_resource type="LabelSettings" id="LabelSettings_1u6gu"]
+line_spacing = -1.0
+font_size = 8
 
 [node name="TextureRect" type="TextureRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 98.0
+offset_bottom = 66.0
 rotation = -0.00150832
 texture = SubResource("AtlasTexture_egiho")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 3.99698
-offset_top = 2.00603
-offset_right = 35.997
-offset_bottom = 34.006
-texture = SubResource("AtlasTexture_7ytr7")
+layout_mode = 1
+anchors_preset = -1
+offset_left = 4.0
+offset_top = 3.00148
+offset_right = 36.0
+offset_bottom = 35.0015
+scale = Vector2(0.9823, 0.999984)
+texture = SubResource("AtlasTexture_n1ydt")
 
-[node name="TextureRect3" type="TextureRect" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 1.95015
-offset_top = 33.0513
-offset_right = 33.9502
-offset_bottom = 65.0513
-texture = SubResource("AtlasTexture_7ytr7")
+offset_left = 4.99849
+offset_top = 35.0015
+offset_right = 96.9985
+offset_bottom = 65.0015
+theme_override_constants/separation = 1
 
-[node name="TextureRect4" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 33.9501
-offset_top = 33.0995
-offset_right = 65.9501
-offset_bottom = 65.0995
-texture = SubResource("AtlasTexture_7ytr7")
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_apw71")
 
-[node name="TextureRect5" type="TextureRect" parent="."]
+[node name="ItemName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 65.9501
-offset_top = 33.1478
-offset_right = 97.9501
-offset_bottom = 65.1478
-texture = SubResource("AtlasTexture_x7xqo")
+offset_left = 35.997
+offset_top = 4.0
+offset_right = 90.997
+offset_bottom = 38.0
+text = "Higt Capacity Vest"
+label_settings = SubResource("LabelSettings_1u6gu")
+autowrap_mode = 3
+
+[node name="Durability" type="Label" parent="ItemName"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "11111"
+label_settings = SubResource("LabelSettings_1u6gu")
+horizontal_alignment = 1
