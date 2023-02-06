@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://b1yu78gla0r30"]
-
-[node name="ClothesCard" type="TextureRect"]
-offset_left = 124.0
-offset_top = 74.0
-offset_right = 222.0
-offset_bottom = 140.0
