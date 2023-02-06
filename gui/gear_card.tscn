@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://gui/gear_card.gd" id="2_a8k1g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1u6gu"]
-line_spacing = -1.0
+line_spacing = -2.0
 font_size = 8
 
 [node name="GearCardInfo" type="TextureRect"]
@@ -29,16 +29,13 @@ offset_left = 36.0015
 offset_top = 3.0
 offset_right = -8.99849
 offset_bottom = 26.0
-text = "ffffffffffffffffffffff"
 label_settings = SubResource("LabelSettings_1u6gu")
 autowrap_mode = 3
 
 [node name="Durability" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 40.0
-offset_top = 11.0
-offset_right = 61.0
-offset_bottom = 23.0
-text = "100%"
+layout_mode = 0
+offset_left = 35.9788
+offset_top = 14.0543
+offset_right = 56.9788
+offset_bottom = 38.0543
 label_settings = SubResource("LabelSettings_1u6gu")
