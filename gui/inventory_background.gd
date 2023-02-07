@@ -2,10 +2,13 @@ extends TextureRect
 
 
 func _ready():
-	var type := 1
+	$Cards/ClothesCard.update(ItemCreator.create_item(Gear, 6))
+	$Cards/PantsCard.update(ItemCreator.create_item(Gear, 6))
+	$Cards/VestCard.update(ItemCreator.create_item(Gear, 6))
+	$Cards/BackpackCard.update(ItemCreator.create_item(Gear, 55))
+	var type := 2
 	match type:
 		PlayerInventory.CLOTHES:
-			$Cards/ClothesCard.update(ItemCreator.create_item(Gear, 6))
 			pass
 		PlayerInventory.PANTS:
 			pass
