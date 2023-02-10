@@ -1,6 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://75idi11r5lmw"]
+[gd_scene load_steps=10 format=3 uid="uid://75idi11r5lmw"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
+[ext_resource type="PackedScene" uid="uid://bmv3t8nw5v44b" path="res://gui/gear_card.tscn" id="2_mpf0g"]
+[ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="3_7vkvp"]
+[ext_resource type="Texture2D" uid="uid://ckh1fq6h6cu6h" path="res://asset/images/equipment/clothes/hunter_jacket.png" id="4_x3vsl"]
+[ext_resource type="Texture2D" uid="uid://bshhdlqycovo6" path="res://asset/images/gui/inventory/gui_inv_slot_shadow.png" id="5_i6qm3"]
+[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="6_hpmqa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u11f"]
+atlas = ExtResource("3_7vkvp")
+region = Rect2(62, 66, 98, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sogx4"]
+atlas = ExtResource("4_x3vsl")
+region = Rect2(0, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj3fc"]
+atlas = ExtResource("6_hpmqa")
+region = Rect2(64, 64, 32, 32)
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ekwsy")
+
+[node name="GearCardInfo" parent="." instance=ExtResource("2_mpf0g")]
+texture = SubResource("AtlasTexture_0u11f")
+
+[node name="Icon" parent="GearCardInfo" index="0"]
+offset_top = 3.0
+offset_bottom = 35.0
+texture = SubResource("AtlasTexture_sogx4")
+
+[node name="Slots" parent="GearCardInfo" index="3"]
+offset_left = 4.00452
+offset_top = -32.994
+offset_right = 96.0045
+offset_bottom = -2.99396
+
+[node name="TextureRect" type="TextureRect" parent="GearCardInfo/Slots" index="0"]
+layout_mode = 2
+texture = ExtResource("5_i6qm3")
+
+[node name="TextureRect" type="TextureRect" parent="GearCardInfo/Slots/TextureRect"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_cj3fc")
+
+[node name="TextureRect3" type="TextureRect" parent="GearCardInfo/Slots" index="1"]
+layout_mode = 2
+texture = ExtResource("5_i6qm3")
+
+[node name="TextureRect" type="TextureRect" parent="GearCardInfo/Slots/TextureRect3"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_cj3fc")
+
+[node name="TextureRect2" type="TextureRect" parent="GearCardInfo/Slots" index="2"]
+layout_mode = 2
+texture = ExtResource("5_i6qm3")
+
+[node name="TextureRect" type="TextureRect" parent="GearCardInfo/Slots/TextureRect2"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_cj3fc")
+
+[editable path="GearCardInfo"]
