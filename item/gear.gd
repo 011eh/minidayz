@@ -74,14 +74,13 @@ func _ready():
 	vframes = GEAR_VFRAMES
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
+	slots.resize(resource.slot_number)
 
 func add_to_slot(item: Item) -> void:
-	slots.append(item)
+	slots[slots.find(null)] = item
 
 func has_empty_slot() -> bool:
-	slots = slots.filter(func(item) -> bool: return is_instance_valid(item))
-	var slot_number = resource.slot_number
-	return slot_number > 0 and slots.size() < slot_number
+	return slots.find(null) != -1
 
 func is_equipment() -> bool:
 	return true
