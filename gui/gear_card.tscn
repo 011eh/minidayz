@@ -7,28 +7,28 @@ line_spacing = -2.0
 font_size = 8
 
 [node name="GearCardInfo" type="TextureRect"]
-offset_right = 98.0
+offset_right = 97.0
 offset_bottom = 66.0
 rotation = -0.00150832
 script = ExtResource("2_a8k1g")
 
 [node name="Icon" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 4.0
-offset_top = 3.00148
-offset_right = 36.0
-offset_bottom = 35.0015
-scale = Vector2(0.9823, 0.999984)
+layout_mode = 0
+offset_left = 3.99698
+offset_top = 2.00603
+offset_right = 35.997
+offset_bottom = 34.0061
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_left = 36.0015
+offset_left = 36.0
 offset_top = 3.0
-offset_right = -8.99849
+offset_right = -8.0
 offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 label_settings = SubResource("LabelSettings_1u6gu")
 autowrap_mode = 3
 clip_text = true
@@ -42,13 +42,9 @@ offset_bottom = 38.0543
 label_settings = SubResource("LabelSettings_1u6gu")
 
 [node name="Slots" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 5.99999
-offset_top = -29.991
-offset_right = 98.0
-offset_bottom = 0.00904846
-grow_vertical = 0
+layout_mode = 0
+offset_left = 4.94871
+offset_top = 34.0075
+offset_right = 96.9487
+offset_bottom = 64.0076
 theme_override_constants/separation = 1

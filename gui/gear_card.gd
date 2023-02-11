@@ -1,11 +1,12 @@
 extends TextureRect
 
-
+const ItemIcon := preload('res://gui/item_icon.tscn')
 const SlotTexture := preload('res://asset/images/gui/inventory/gui_inv_slot_shadow.png')
 const GEAR_ICON_REGION := Rect2(0, 320, 32, 32)
 const DURABILITY_OFFSET := 8
 
-func update(gear: Gear) -> void:
+
+func update_gear_ui(gear: Gear) -> void:
 	var resource := gear.resource as GearResource
 	var atlas := AtlasTexture.new()
 	atlas.atlas = resource.texture
