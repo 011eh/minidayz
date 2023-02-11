@@ -1,6 +1,6 @@
 extends ItemResource
 
-class_name SlotItemResource
+class_name NumberItemResource
 
 @export
 var stackable := true

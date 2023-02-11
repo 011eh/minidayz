@@ -1,4 +1,4 @@
-extends 'durability_item.gd'
+extends DurabilityItem
 
 class_name MeleeWeapon
 

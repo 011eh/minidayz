@@ -1,4 +1,4 @@
-extends SlotItemResource
+extends NumberItemResource
 
 class_name StateItemResource
 

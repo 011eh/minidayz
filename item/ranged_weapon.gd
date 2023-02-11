@@ -1,10 +1,10 @@
-extends 'durability_item.gd'
+extends DurabilityItem
 
 class_name RangedWeapon
 
 
 var spread: int
-var bullet_number := 0
+var bullet: NumberItem
 
 
 func _ready():
@@ -13,3 +13,6 @@ func _ready():
 
 func is_equipment() -> bool:
 	return true
+
+func get_bullet_number() -> int:
+	return bullet.number if is_instance_valid(bullet) else 0
