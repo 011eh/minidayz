@@ -38,7 +38,7 @@ func _ready():
 		var item_info := String()
 		var res := table[id] as ItemResource
 		for property in properties:
-			var value := res.get(property)
+			var value = res.get(property)
 			if value != null:
 				if property == 'texture':
 					value = value.resource_path

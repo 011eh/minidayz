@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://dev_res/item_gallery/item_container.tscn" id="1_5ce7j"]
 [ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_1k22a"]
-[ext_resource type="Script" path="res://item/slot_item.gd" id="3_4x5ee"]
+[ext_resource type="Script" path="res://item/number_item.gd" id="3_0r7kv"]
 [ext_resource type="Script" path="res://item/craft.gd" id="4_shltk"]
 [ext_resource type="Script" path="res://item/knife.gd" id="5_egtqp"]
 [ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="6_rwjs0"]
@@ -35,7 +35,7 @@ layout_mode = 2
 split_offset = 124
 gui_texture = ExtResource("2_1k22a")
 frame_size = Vector2i(32, 32)
-item_script = ExtResource("3_4x5ee")
+item_script = ExtResource("3_0r7kv")
 properties = PackedStringArray("id", "item_name", "texture", "wear_per_use")
 
 [node name="ItemList" parent="TabContainer/Slot Item" index="0"]
