@@ -11,7 +11,7 @@ const RES_TABLE = {
 	27: preload('res://item/res/ranged_weapon/fnx-45.tres'),
 	28: preload('res://item/res/ranged_weapon/glock.tres'),
 	29: preload('res://item/res/ranged_weapon/mac-10.tres'),
-	30: preload('res://item/res/ranged_weapon/magnum_.tres'),
+	30: preload('res://item/res/ranged_weapon/magnum.tres'),
 	31: preload('res://item/res/ranged_weapon/pb.tres'),
 	32: preload('res://item/res/ranged_weapon/pm.tres'),
 	33: preload('res://item/res/ranged_weapon/rare_kolt_1911.tres'),
