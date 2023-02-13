@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://gbltea834iw7"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://gui/item_icon.gd" id="1_ly8wf"]
+[ext_resource type="Script" path="res://gui/item_ui_content.gd" id="1_ly8wf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bctva"]
 line_spacing = 0.0
