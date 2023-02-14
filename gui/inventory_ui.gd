@@ -14,23 +14,30 @@ var helmet_card_content := $Cards/HelmetCard/HelmetContent
 @onready
 var main_wepaon_content := $Cards/MainWeaponCard/MainWeaponContent
 @onready
+var pistol_content := $Cards/PistolCard/PistolContent
+@onready
 var melee_weapon_content := $Cards/MeleeWeaponCard/MeleeWeaponContent
 
-func _ready():
-	helmet_card_content.update_item_ui(ItemCreator.create_item(Gear, 35))
-	var type := 2
-	match type:
+
+func _unhandled_input(event):
+	if event.is_action_pressed('open_inventory'):
+		visible = not visible
+
+func update_inventory_ui(equipment_type: int, item: Item) -> void:
+	match equipment_type:
 		PlayerInventory.CLOTHES:
-			pass
+			clothes_card.update_gear_ui(item)
 		PlayerInventory.PANTS:
-			pass
+			pants_card.update_gear_ui(item)
 		PlayerInventory.HELMET:
-			pass
+			helmet_card_content.update_item_ui(item)
 		PlayerInventory.VEST:
-			pass
+			vest_card.update_gear_ui(item)
 		PlayerInventory.BACKPACK:
-			pass
+			backpack_card.update_gear_ui(item)
 		PlayerInventory.MAIN_WEAPON:
-			pass
+			main_wepaon_content.update_item_ui(item)
+		PlayerInventory.PISTOL:
+			pistol_content.update_item_ui(item)
 		PlayerInventory.MELEE_WEAPON:
-			pass
+			melee_weapon_content.update_item_ui(item)
