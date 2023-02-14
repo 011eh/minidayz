@@ -19,5 +19,5 @@ run_penalty = 0
 attack_rate = 257.0
 wear_per_use = 0.8
 id = 30
-item_name = &"Magnum "
+item_name = &"Magnum"
 texture = ExtResource("2_ospem")

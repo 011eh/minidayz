@@ -18,6 +18,6 @@ max_damage = 30
 run_penalty = 2
 attack_rate = 650.0
 wear_per_use = 0.4
-id = 3
+id = 5
 item_name = &"AUG"
 texture = ExtResource("2_busxx")

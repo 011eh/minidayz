@@ -18,6 +18,6 @@ max_damage = 63
 run_penalty = 3
 attack_rate = 2.0
 wear_per_use = 0.8
-id = 6
+id = 1
 item_name = &"Crossbow"
 texture = ExtResource("2_jl70g")

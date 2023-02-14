@@ -18,6 +18,6 @@ max_damage = 50
 run_penalty = 2
 attack_rate = 450.0
 wear_per_use = 0.4
-id = 8
+id = 9
 item_name = &"Groza"
 texture = ExtResource("2_8d170")
