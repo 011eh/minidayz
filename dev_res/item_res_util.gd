@@ -15,7 +15,7 @@ var dict := {
 	ItemType.SLOT_ITEM: {
 		'csv_dir': 'res://dev_res/data/背包物品.CSV',
 		'res_dir': 'res://item/res/slot_item/',
-		'resource_class': SlotItemResource.new()
+		'resource_class': NumberItem.new()
 	},
 	ItemType.STATE_ITEM: {
 		'csv_dir': 'res://dev_res/data/状态物品.CSV',
