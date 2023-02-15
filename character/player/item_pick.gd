@@ -3,9 +3,9 @@ extends Area2D
 
 var nearby_items = {}
 var nearest_item: Item
-
 @onready
 var timer := $Timer as Timer
+
 
 func _ready():
 	area_entered.connect(record_item_position)

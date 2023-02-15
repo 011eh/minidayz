@@ -1,11 +1,9 @@
 extends Node2D
 
-
 class_name PlayerInventory
 
 
-const EQUIPMENT_SLOT_NUMBER = 9
-const WEPAON_OFFSET = 6
+signal equipment_changed
 
 
 enum {
@@ -21,12 +19,18 @@ enum {
 }
 
 
-signal equipment_changed
+const EQUIPMENT_SLOT_NUMBER = 9
+const WEPAON_OFFSET = 6
 
 
+var target_item: Item
 var equipment_slots: Array[Item]
 @onready
-var pickup_area := $PickupArea as Area2D
+var pickup_area := $PickupArea
+@onready
+var detection_area := $DetectionArea
+
+
 
 func _ready():
 	pickup_area.area_entered.connect(pickup)
@@ -34,14 +38,27 @@ func _ready():
 	var player_slot := Gear.create_player_slot()
 	equipment_slots[0] = player_slot
 
+func _process(delta):
+	if Input.is_action_pressed('pickup'):
+		print('p')
+		var item:Item = detection_area.nearest_item
+		if is_instance_valid(item):
+			pickup_area.set_deferred('monitoring', true)
+			owner.target_position = item.global_position
+
 func pickup(area: Area2D) -> void:
 	var item := area.owner as Item
+	if item != detection_area.nearest_item:
+		return
+	pickup_area.set_deferred('monitoring', false)
+	owner.target_position = Vector2.ZERO
+	
 	if item.is_equipment():
 		var index := get_equipment_slot_index(item)
 		var item_in_equment_slot := equipment_slots[index]
 		if is_instance_valid(item_in_equment_slot):
-			# todo，丢弃装备
-			pass
+			item_in_equment_slot.position = owner.global_position
+			owner.get_parent().add_child(item_in_equment_slot)
 		equipment_slots[index] = item
 		item.get_parent().remove_child(item)
 		emit_signal('equipment_changed', index, item.texture)

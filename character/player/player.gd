@@ -14,8 +14,9 @@ var animation_tree := $AnimationTree as AnimationTree
 var playback := animation_tree.get('parameters/playback') as AnimationNodeStateMachinePlayback
 var current_state: State
 var last_direction := Vector2.ZERO
-var direction: Vector2
+var direction :Vector2
 var weapon_state := PlayerStateMachine.WeaponState.MELEE_WEAPON
+var target_position: Vector2
 
 
 func _ready() -> void:
@@ -24,6 +25,10 @@ func _ready() -> void:
 
 func _physics_process(delta) -> void:
 	state_machine.run()
+	if direction == Vector2.ZERO and target_position != Vector2.ZERO:
+		direction = position.direction_to(target_position)
+	else:
+		target_position = Vector2.ZERO
 	if direction:
 		last_direction = direction
 		velocity = velocity.move_toward(direction * SPEED, SPEED * 5 * delta)
