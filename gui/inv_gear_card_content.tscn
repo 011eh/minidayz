@@ -48,3 +48,11 @@ offset_top = 34.0075
 offset_right = 96.9487
 offset_bottom = 64.0076
 theme_override_constants/separation = 1
+
+[node name="Items" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.94871
+offset_top = 34.0075
+offset_right = 96.9487
+offset_bottom = 64.0076
+theme_override_constants/separation = 1

@@ -17,7 +17,8 @@ var main_wepaon_content := $Cards/MainWeaponCard/MainWeaponContent
 var pistol_content := $Cards/PistolCard/PistolContent
 @onready
 var melee_weapon_content := $Cards/MeleeWeaponCard/MeleeWeaponContent
-
+@onready
+var player_slot := $Cards/PlayerSlot
 
 func _unhandled_input(event):
 	if event.is_action_pressed('open_inventory'):
@@ -29,12 +30,14 @@ func update_inventory_ui(equipment_type: int, item: Item) -> void:
 			clothes_card.update_gear_ui(item)
 		PlayerInventory.PANTS:
 			pants_card.update_gear_ui(item)
-		PlayerInventory.HELMET:
-			helmet_card_content.update_item_ui(item)
 		PlayerInventory.VEST:
 			vest_card.update_gear_ui(item)
 		PlayerInventory.BACKPACK:
 			backpack_card.update_gear_ui(item)
+		PlayerInventory.PLAYER_SLOT:
+			player_slot.update_item_ui(item)
+		PlayerInventory.HELMET:
+			helmet_card_content.update_item_ui(item)
 		PlayerInventory.MAIN_WEAPON:
 			main_wepaon_content.update_item_ui(item)
 		PlayerInventory.PISTOL:

@@ -9,7 +9,7 @@ const NUMBER_FORMAT = '%d'
 @onready
 var icon := $Icon
 @onready
-var number_or_duability := $ColorRect/NumberOrDuability
+var number_or_durability := $ColorRect/NumberOrDurability
 @export
 var atlas_texture:= preload('res://asset/images/item/gui_slot_item.png')
 @export
@@ -19,12 +19,14 @@ var column_number := 5
 @export
 var icon_size := Vector2(32, 32)
 
-var update_general_ui = func update_item_ui(item: Item) -> void:
+func _ready():
 	var atlas := AtlasTexture.new()
 	$Icon.texture = atlas
-	var id := item.resource.id
 	atlas.atlas = atlas_texture
-	atlas.region = Rect2(
+
+var update_general_ui = func update_item_ui(item: Item) -> void:
+	var id := item.resource.id
+	$Icon.texture.region = Rect2(
 		(id + atlas_texture_id_offset) % column_number * icon_size.x,
 		(id + atlas_texture_id_offset) / column_number * icon_size.y,
 		icon_size.x,
@@ -35,13 +37,14 @@ var update_general_ui = func update_item_ui(item: Item) -> void:
 		label_text = NUMBER_FORMAT % item.number
 	else:
 		label_text = (NUMBER_FORMAT + '%%') % item.durability
-	number_or_duability.text = label_text
+	number_or_durability.text = label_text
 	if item is RangedWeapon:
 		$ColorRect/BulletNumber.text = NUMBER_FORMAT % item.get_bullet_number()
 
 var update_helmet_ui = func update_item_ui(gear: Gear) -> void:
 	icon.texture.atlas = gear.get_resource().texture
-	number_or_duability.text = (NUMBER_FORMAT + '%%') % gear.durability
+	number_or_durability.text = (NUMBER_FORMAT + '%%') % gear.durability
+
 
 func update_item_ui(item: Item) -> void:
 	if item is Gear and item.get_resource().type == GearResource.GearType.HELMET:

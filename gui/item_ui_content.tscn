@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://c0a3bc5wsv514"]
 
 [ext_resource type="Script" path="res://gui/item_ui_content.gd" id="1_ly8wf"]
 
@@ -11,6 +11,7 @@ line_spacing = 0.0
 font_size = 8
 
 [node name="ItemIcon" type="Control"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 32.0
@@ -18,6 +19,7 @@ offset_bottom = 32.0
 script = ExtResource("1_ly8wf")
 
 [node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 32.0
 offset_bottom = 32.0
 
@@ -32,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 0.207843)
 
-[node name="NumberOrDuability" type="Label" parent="ColorRect"]
+[node name="NumberOrDurability" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

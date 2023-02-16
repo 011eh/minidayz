@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://gui/inventory_ui.gd" id="2_nqdqm"]
 [ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="3_loxy1"]
 [ext_resource type="PackedScene" uid="uid://ccjdtkn3p76m2" path="res://gui/inv_gear_card_content.tscn" id="4_kg2l0"]
-[ext_resource type="PackedScene" path="res://gui/item_ui_content.tscn" id="5_2i4el"]
+[ext_resource type="PackedScene" uid="uid://c0a3bc5wsv514" path="res://gui/item_ui_content.tscn" id="5_2i4el"]
 [ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="6_cs0jb"]
 [ext_resource type="Texture2D" uid="uid://bb5h2ev7gk3ua" path="res://asset/images/equipment/weapon/main/gui_main_weapon.png" id="6_rscyh"]
 [ext_resource type="Texture2D" uid="uid://3amhjsr2gevu" path="res://asset/images/equipment/weapon/pistol/gui_pistol.png" id="7_0iod2"]
@@ -64,7 +64,7 @@ region = Rect2(0, 66, 61, 144)
 atlas = ExtResource("3_loxy1")
 region = Rect2(62, 132, 63, 56)
 
-[node name="InventoryBackground" type="TextureRect"]
+[node name="InventoryUI" type="TextureRect"]
 offset_right = 362.0
 offset_bottom = 283.0
 texture = ExtResource("1_nil65")
@@ -181,6 +181,7 @@ offset_top = 75.0
 offset_right = 221.0
 offset_bottom = 140.0
 texture = SubResource("AtlasTexture_wgb8t")
+max_slot_number = 3
 
 [node name="PantsCard" parent="Cards" instance=ExtResource("4_kg2l0")]
 z_index = 1
@@ -190,6 +191,7 @@ offset_top = 140.0
 offset_right = 221.0
 offset_bottom = 205.0
 texture = SubResource("AtlasTexture_wgb8t")
+max_slot_number = 3
 
 [node name="VestCard" parent="Cards" instance=ExtResource("4_kg2l0")]
 z_index = 3
@@ -199,6 +201,7 @@ offset_top = 8.0
 offset_right = 221.0
 offset_bottom = 73.0
 texture = SubResource("AtlasTexture_wgb8t")
+max_slot_number = 3
 
 [node name="HelmetCard" type="TextureRect" parent="Cards"]
 layout_mode = 0
@@ -220,7 +223,6 @@ grow_vertical = 2
 column_number = 4
 
 [node name="Icon" parent="Cards/HelmetCard/HelmetContent" index="0"]
-layout_mode = 0
 offset_left = 16.0
 offset_top = 11.0
 offset_right = 48.0
@@ -239,6 +241,7 @@ offset_top = 204.0
 offset_right = 350.0
 offset_bottom = 270.0
 texture = SubResource("AtlasTexture_ad1hj")
+max_slot_number = 7
 
 [node name="MainWeaponCard" type="TextureRect" parent="Cards"]
 layout_mode = 0
@@ -280,17 +283,6 @@ pivot_offset = Vector2(34, 92)
 offset_top = -19.0
 offset_right = -2.0
 
-[node name="NumberOrDuability" parent="Cards/MainWeaponCard/MainWeaponContent/ColorRect" index="0"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-offset_left = 6.0
-offset_top = -6.5
-offset_right = 27.0
-offset_bottom = 5.5
-grow_horizontal = 1
-
 [node name="BulletNumber" parent="Cards/MainWeaponCard/MainWeaponContent/ColorRect" index="1"]
 offset_left = -21.0
 offset_right = -1.0
@@ -318,7 +310,6 @@ column_number = 4
 icon_size = Vector2(82, 82)
 
 [node name="Icon" parent="Cards/PistolCard/PistolContent" index="0"]
-layout_mode = 0
 offset_left = 4.0
 offset_top = -1.0
 offset_right = 86.0
@@ -329,17 +320,6 @@ scale = Vector2(0.7, 0.7)
 offset_top = -19.0
 offset_right = -3.0
 offset_bottom = -2.0
-
-[node name="NumberOrDuability" parent="Cards/PistolCard/PistolContent/ColorRect" index="0"]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_right = 0.0
-anchor_bottom = 0.5
-offset_left = 7.0
-offset_top = -6.5
-offset_right = 28.0
-offset_bottom = 5.5
-grow_horizontal = 1
 
 [node name="BulletNumber" parent="Cards/PistolCard/PistolContent/ColorRect" index="1"]
 offset_left = -21.0
@@ -367,7 +347,6 @@ column_number = 7
 icon_size = Vector2(44, 44)
 
 [node name="Icon" parent="Cards/MeleeWeaponCard/MeleeWeaponContent" index="0"]
-layout_mode = 0
 offset_left = 11.0
 offset_top = 9.0
 offset_right = 55.0
@@ -378,14 +357,17 @@ offset_top = -20.0
 offset_right = -3.0
 offset_bottom = -2.0
 
-[node name="TextureRect" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 238.0
-offset_top = 90.0
-offset_right = 270.0
-offset_bottom = 122.0
+[node name="PlayerSlot" parent="Cards" instance=ExtResource("5_2i4el")]
+offset_left = 239.0
+offset_top = 91.0
+offset_right = 269.0
+offset_bottom = 121.0
 
+[editable path="Cards/ClothesCard"]
+[editable path="Cards/PantsCard"]
+[editable path="Cards/VestCard"]
 [editable path="Cards/HelmetCard/HelmetContent"]
+[editable path="Cards/BackpackCard"]
 [editable path="Cards/MainWeaponCard/MainWeaponContent"]
 [editable path="Cards/PistolCard/PistolContent"]
 [editable path="Cards/MeleeWeaponCard/MeleeWeaponContent"]
