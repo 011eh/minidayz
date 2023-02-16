@@ -2,6 +2,8 @@ extends Node2D
 
 
 func _ready():
+	var inventory_ui := $CanvasLayer/InventoryUI
+	$Player/Inventory.equipment_changed.connect(inventory_ui.update_inventory_ui)
 	stack_test()
 	pass
 

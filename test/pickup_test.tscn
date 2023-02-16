@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvwcuqqutjq4r"]
 
 [ext_resource type="Script" path="res://test/pick_test.gd" id="1_mtblv"]
-[ext_resource type="PackedScene" uid="uid://jnv8e03n4vy0" path="res://character/player/player.tscn" id="2_chdy4"]
+[ext_resource type="PackedScene" uid="uid://dcw2u1wjgyjt7" path="res://character/player/player.tscn" id="2_chdy4"]
 [ext_resource type="PackedScene" uid="uid://c00ecivngyaml" path="res://gui/inventory_ui.tscn" id="3_0pq3o"]
 
 [node name="Test" type="Node2D"]
@@ -17,4 +17,4 @@ position = Vector2(16, 32)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InventoryBackground" parent="CanvasLayer" instance=ExtResource("3_0pq3o")]
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_0pq3o")]
