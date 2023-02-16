@@ -4,7 +4,7 @@ class_name Item
 
 
 @export
-var resource: ItemResource: get = get_resource
+var resource: ItemResource: get = get_resource, set = set_resource
 
 
 func _ready():
@@ -12,6 +12,9 @@ func _ready():
 
 func get_resource():
 	return resource
+
+func set_resource(res: ItemResource):
+	resource = res
 
 func is_equipment() -> bool:
 	return false

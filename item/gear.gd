@@ -66,6 +66,7 @@ const RES_TABLE := {
 }
 const GEAR_VFRAMES = 11
 
+
 var slots: Array[Item]
 
 
@@ -74,7 +75,6 @@ func _ready():
 	vframes = GEAR_VFRAMES
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
-	slots.resize(resource.slot_number)
 
 func add_to_slot(item: Item) -> void:
 	slots[slots.find(null)] = item
@@ -84,6 +84,10 @@ func has_empty_slot() -> bool:
 
 func is_equipment() -> bool:
 	return true
+
+func set_resource(resource: ItemResource) -> void:
+	super.set_resource(resource)
+	slots.resize(resource.slot_number)
 
 static func get_item_resource(id: int) -> GearResource:
 	assert_id_exists(id, RES_TABLE)
