@@ -1,3 +1,4 @@
+[gd_scene load_steps=13 format=3 uid="uid://dcw2u1wjgyjt7"]
 
 [ext_resource type="PackedScene" uid="uid://ch2rssv03o2ak" path="res://character/character.tscn" id="1_kl3tb"]
 [ext_resource type="Script" path="res://character/player/player.gd" id="2_o60qm"]
@@ -64,11 +65,8 @@ shape = SubResource("CapsuleShape2D_kbmrn")
 [node name="Timer" type="Timer" parent="Inventory/DetectionArea" index="1"]
 wait_time = 0.2
 
-[node name="Node" type="Node" parent="Inventory/DetectionArea" index="2"]
-
 [node name="PickupArea" type="Area2D" parent="Inventory" index="1"]
 collision_layer = 0
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/PickupArea" index="0"]
 position = Vector2(0, -4)

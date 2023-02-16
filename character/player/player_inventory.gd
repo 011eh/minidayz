@@ -31,7 +31,6 @@ var pickup_area := $PickupArea
 var detection_area := $DetectionArea
 
 
-
 func _ready():
 	pickup_area.area_entered.connect(pickup)
 	equipment_slots.resize(EQUIPMENT_SLOT_NUMBER)
@@ -40,7 +39,6 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed('pickup'):
-		print('p')
 		var item:Item = detection_area.nearest_item
 		if is_instance_valid(item):
 			pickup_area.set_deferred('monitoring', true)
@@ -52,21 +50,21 @@ func pickup(area: Area2D) -> void:
 		return
 	pickup_area.set_deferred('monitoring', false)
 	owner.target_position = Vector2.ZERO
-	
+
 	if item.is_equipment():
 		var index := get_equipment_slot_index(item)
 		var item_in_equment_slot := equipment_slots[index]
 		if is_instance_valid(item_in_equment_slot):
 			item_in_equment_slot.position = owner.global_position
-			owner.get_parent().add_child(item_in_equment_slot)
+			owner.get_parent().call_deferred('add_child', item_in_equment_slot)
 		equipment_slots[index] = item
 		item.get_parent().remove_child(item)
-		emit_signal('equipment_changed', index, item.texture)
+		emit_signal('equipment_changed', index, item)
 	else:
 		var gears = equipment_slots.slice(0, WEPAON_OFFSET)\
 		.filter(func(gear: Gear) -> bool: return is_instance_valid(gear))
 		gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
-		
+
 		# 尝试进行堆叠
 		if item is NumberItem:
 			var inventory_items:Array[NumberItem] = []
@@ -79,11 +77,10 @@ func pickup(area: Area2D) -> void:
 						return null
 				inventory_items.append_array(gear.slots.map(same_item))
 				inventory_items = inventory_items.filter(func(item: Item) -> bool: return is_instance_valid(item))
-			
-			# todo，将物品堆叠到背包物品
+
 			if not inventory_items.is_empty() and stack_item(item, inventory_items):
-					return
-		
+				return
+
 		# 需要放到背包空槽位上
 		gears = gears.filter(func(gear: Gear): return gear.has_empty_slot())
 		if not gears.is_empty():
