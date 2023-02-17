@@ -9,7 +9,6 @@ const DURABILITY_LABEL_OFFSET := 8
 
 @export_range(1, 7)
 var max_slot_number: int
-var gear: Gear
 @onready
 var slots := $Slots
 
@@ -24,7 +23,6 @@ func _ready():
 		$Items.add_child(item_ui)
 
 func update_gear_ui(gear: Gear) -> void:
-	self.gear = gear
 	var resource := gear.resource as GearResource
 	var atlas := AtlasTexture.new()
 	atlas.atlas = resource.texture

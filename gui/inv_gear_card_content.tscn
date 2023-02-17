@@ -45,14 +45,15 @@ label_settings = SubResource("LabelSettings_1u6gu")
 layout_mode = 0
 offset_left = 4.94871
 offset_top = 34.0075
-offset_right = 96.9487
-offset_bottom = 64.0076
+offset_right = 102.949
+offset_bottom = 64.0075
 theme_override_constants/separation = 1
 
 [node name="Items" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 4.94871
 offset_top = 34.0075
-offset_right = 96.9487
-offset_bottom = 64.0076
+offset_right = 102.949
+offset_bottom = 66.0075
+scale = Vector2(0.938, 0.938)
 theme_override_constants/separation = 1

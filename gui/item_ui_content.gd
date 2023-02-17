@@ -24,11 +24,11 @@ func _ready():
 	$Icon.texture = atlas
 	atlas.atlas = atlas_texture
 
-var update_general_ui = func update_item_ui(item: Item) -> void:
-	var id := item.resource.id
+var update_general_ui = func update_item_ui(item: Item, offset: int = 0) -> void:
+	var index := item.resource.id + offset
 	$Icon.texture.region = Rect2(
-		(id + atlas_texture_id_offset) % column_number * icon_size.x,
-		(id + atlas_texture_id_offset) / column_number * icon_size.y,
+		(index + atlas_texture_id_offset) % column_number * icon_size.x,
+		(index + atlas_texture_id_offset) / column_number * icon_size.y,
 		icon_size.x,
 		icon_size.y)
 
@@ -49,5 +49,7 @@ var update_helmet_ui = func update_item_ui(gear: Gear) -> void:
 func update_item_ui(item: Item) -> void:
 	if item is Gear and item.get_resource().type == GearResource.GearType.HELMET:
 		update_helmet_ui.call(item)
+	elif item is Knife:
+		update_general_ui.call(item, 84)
 	else:
 		update_general_ui.call(item)

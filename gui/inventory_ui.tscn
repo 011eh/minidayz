@@ -180,6 +180,7 @@ offset_left = 124.0
 offset_top = 75.0
 offset_right = 221.0
 offset_bottom = 140.0
+scale = Vector2(0.938, 0.938)
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 
@@ -363,11 +364,7 @@ offset_top = 91.0
 offset_right = 269.0
 offset_bottom = 121.0
 
-[editable path="Cards/ClothesCard"]
-[editable path="Cards/PantsCard"]
-[editable path="Cards/VestCard"]
 [editable path="Cards/HelmetCard/HelmetContent"]
-[editable path="Cards/BackpackCard"]
 [editable path="Cards/MainWeaponCard/MainWeaponContent"]
 [editable path="Cards/PistolCard/PistolContent"]
 [editable path="Cards/MeleeWeaponCard/MeleeWeaponContent"]
