@@ -77,7 +77,9 @@ func _ready():
 	texture = resource.texture
 
 func add_to_slot(item: Item) -> void:
-	slots[slots.find(null)] = item
+	var index := slots.find(null)
+	if index != -1:
+		slots[index] = item
 
 func has_empty_slot() -> bool:
 	return slots.find(null) != -1
