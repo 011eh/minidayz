@@ -25,6 +25,7 @@ script = ExtResource("2_o60qm")
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_xv6yy")
+parameters/Run/Seek/seek_position = 1.0
 
 [node name="StateMachine" parent="." index="4"]
 script = ExtResource("3_qn0rk")
@@ -67,6 +68,7 @@ wait_time = 0.2
 
 [node name="PickupArea" type="Area2D" parent="Inventory" index="1"]
 collision_layer = 0
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/PickupArea" index="0"]
 position = Vector2(0, -4)
@@ -74,4 +76,5 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v81y3")
 
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
-zoom = Vector2(3, 3)
+current = true
+zoom = Vector2(1.5, 1.5)

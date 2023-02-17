@@ -4,7 +4,7 @@ class_name PlayerInventory
 
 
 signal equipment_changed
-
+signal slot_item_changed
 
 enum {
 	PLAYER_SLOT,
@@ -60,6 +60,7 @@ func pickup(area: Area2D) -> void:
 		equipment_slots[index] = item
 		item.get_parent().remove_child(item)
 		emit_signal('equipment_changed', index, item)
+		emit_signal('slot_item_changed', index, item)
 	else:
 		var gears = equipment_slots.slice(0, WEPAON_OFFSET)\
 		.filter(func(gear: Gear) -> bool: return is_instance_valid(gear))
@@ -79,12 +80,14 @@ func pickup(area: Area2D) -> void:
 				inventory_items = inventory_items.filter(func(item: Item) -> bool: return is_instance_valid(item))
 
 			if not inventory_items.is_empty() and stack_item(item, inventory_items):
+				update_inventory_ui()
 				return
 
 		# 需要放到背包空槽位上
 		gears = gears.filter(func(gear: Gear): return gear.has_empty_slot())
 		if not gears.is_empty():
 			gears.pop_front().add_to_slot(item)
+			update_inventory_ui()
 			item.get_parent().remove_child(item)
 
 func stack_item(item: NumberItem,inventory_items: Array[NumberItem]) -> bool:
@@ -110,3 +113,9 @@ func get_equipment_slot_index(item: Item) -> int:
 	if item is Pistol:
 		return PISTOL
 	return MELEE_WEAPON
+
+func update_inventory_ui() -> void:
+	for i in range(equipment_slots.size()):
+		var item := equipment_slots[i] as Item
+		if is_instance_valid(item):
+			emit_signal('slot_item_changed', i, item)
