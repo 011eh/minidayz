@@ -1,53 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://75idi11r5lmw"]
+[gd_scene load_steps=3 format=3 uid="uid://75idi11r5lmw"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
 [ext_resource type="PackedScene" uid="uid://c00ecivngyaml" path="res://gui/inventory_ui.tscn" id="2_s3nru"]
-[ext_resource type="Texture2D" uid="uid://bshhdlqycovo6" path="res://asset/images/gui/inventory/gui_inv_slot_shadow.png" id="3_17olc"]
-[ext_resource type="PackedScene" uid="uid://c0a3bc5wsv514" path="res://gui/item_ui_content.tscn" id="4_4ugml"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ekwsy")
 
 [node name="InventoryUI" parent="." instance=ExtResource("2_s3nru")]
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-visible = false
-offset_left = 162.0
-offset_top = 379.0
-offset_right = 254.0
-offset_bottom = 409.0
-theme_override_constants/separation = 1
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer2"]
-layout_mode = 2
-texture = ExtResource("3_17olc")
-
-[node name="TextureRect2" type="TextureRect" parent="HBoxContainer2"]
-layout_mode = 2
-texture = ExtResource("3_17olc")
-
-[node name="TextureRect3" type="TextureRect" parent="HBoxContainer2"]
-layout_mode = 2
-texture = ExtResource("3_17olc")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-offset_left = 162.0
-offset_top = 379.0
-offset_right = 260.0
-offset_bottom = 411.0
-scale = Vector2(0.938, 0.938)
-theme_override_constants/separation = 1
-
-[node name="ItemIcon" parent="HBoxContainer" instance=ExtResource("4_4ugml")]
-layout_mode = 2
-
-[node name="Icon" parent="HBoxContainer/ItemIcon" index="0"]
-offset_right = 30.0
-
-[node name="ItemIcon2" parent="HBoxContainer" instance=ExtResource("4_4ugml")]
-layout_mode = 2
-
-[node name="ItemIcon3" parent="HBoxContainer" instance=ExtResource("4_4ugml")]
-layout_mode = 2
-
-[editable path="HBoxContainer/ItemIcon"]
