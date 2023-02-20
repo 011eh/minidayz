@@ -180,7 +180,6 @@ offset_left = 124.0
 offset_top = 75.0
 offset_right = 221.0
 offset_bottom = 140.0
-scale = Vector2(0.938, 0.938)
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 
@@ -359,6 +358,7 @@ offset_right = -3.0
 offset_bottom = -2.0
 
 [node name="PlayerSlot" parent="Cards" instance=ExtResource("5_2i4el")]
+custom_minimum_size = Vector2(30, 30)
 offset_left = 239.0
 offset_top = 91.0
 offset_right = 269.0

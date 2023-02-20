@@ -11,7 +11,7 @@ line_spacing = 0.0
 font_size = 8
 
 [node name="ItemIcon" type="Control"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 32.0
