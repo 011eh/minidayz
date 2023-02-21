@@ -358,11 +358,11 @@ offset_right = -3.0
 offset_bottom = -2.0
 
 [node name="PlayerSlot" parent="Cards" instance=ExtResource("5_2i4el")]
-custom_minimum_size = Vector2(30, 30)
 offset_left = 239.0
 offset_top = 91.0
 offset_right = 269.0
 offset_bottom = 121.0
+scale = Vector2(0.938, 0.938)
 
 [editable path="Cards/HelmetCard/HelmetContent"]
 [editable path="Cards/MainWeaponCard/MainWeaponContent"]

@@ -23,6 +23,9 @@ func _ready():
 		$Items.add_child(item_ui)
 
 func update_gear_ui(gear: Gear) -> void:
+	if not is_instance_valid(gear):
+		visible = false
+	
 	var resource := gear.resource as GearResource
 	var atlas := AtlasTexture.new()
 	atlas.atlas = resource.texture

@@ -27,6 +27,8 @@ func _unhandled_input(event):
 
 func update_inventory_ui(equipment_type: int, item: Item) -> void:
 	match equipment_type:
+		PlayerInventory.PLAYER_SLOT:
+			player_slot.update_item_ui(item.slots[0])
 		PlayerInventory.CLOTHES:
 			clothes_card.update_gear_ui(item)
 		PlayerInventory.PANTS:
@@ -35,8 +37,6 @@ func update_inventory_ui(equipment_type: int, item: Item) -> void:
 			vest_card.update_gear_ui(item)
 		PlayerInventory.BACKPACK:
 			backpack_card.update_gear_ui(item)
-		PlayerInventory.PLAYER_SLOT:
-			player_slot.update_item_ui(item.slots[0])
 		PlayerInventory.HELMET:
 			helmet_card_content.update_item_ui(item)
 		PlayerInventory.MAIN_WEAPON:
