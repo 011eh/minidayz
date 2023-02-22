@@ -13,8 +13,18 @@ script = ExtResource("1_mtblv")
 position = Vector2(24, 32)
 
 [node name="EquipmentPosition" type="Marker2D" parent="."]
-position = Vector2(16, 32)
+position = Vector2(24, 48)
+
+[node name="Pistol" type="Marker2D" parent="."]
+position = Vector2(24, 69)
+
+[node name="MainWeapon" type="Marker2D" parent="."]
+position = Vector2(24, 92)
+
+[node name="MeleeWeapon" type="Marker2D" parent="."]
+position = Vector2(24, 116)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_0pq3o")]
+visible = false
