@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjojl4cl56s5c"]
+
+[ext_resource type="Script" path="res://gui/item_ui_content.gd" id="1_rt30b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbpvk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7txg"]
+line_spacing = 0.0
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_l0sb8"]
+line_spacing = 0.0
+font_size = 8
+
+[node name="ItemCard" type="TextureRect"]
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_rt30b")
+
+[node name="ItemUI" type="Control" parent="."]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="ItemUI"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_kbpvk")
+
+[node name="ColorRect" type="ColorRect" parent="ItemUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 0.207843)
+
+[node name="NumberOrDurability" type="Label" parent="ItemUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_x7txg")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="BulletNumber" type="Label" parent="ItemUI/ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -6.5
+offset_bottom = 5.5
+grow_horizontal = 0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_l0sb8")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

@@ -1,0 +1,225 @@
+[gd_scene load_steps=17 format=3 uid="uid://c281ytk4we54e"]
+
+[ext_resource type="Texture2D" uid="uid://dvil1ok7epdck" path="res://asset/images/gui/inventory/gui_inventory_background.png" id="1_cydwi"]
+[ext_resource type="Script" path="res://gui/inventory_ui.gd" id="2_ff5uu"]
+[ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="3_dp4i5"]
+[ext_resource type="PackedScene" uid="uid://ccjdtkn3p76m2" path="res://gui/inv_gear_card_content.tscn" id="4_cf12j"]
+[ext_resource type="PackedScene" uid="uid://cjojl4cl56s5c" path="res://gui/item_ui_content_new.tscn" id="5_vwfwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqu7u"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(179, 134, 48, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3cpn"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(179, 184, 46, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smpb1"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(228, 197, 40, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5uxh"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(128, 185, 39, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37get"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(128, 134, 47, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4l3f"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(0, 231, 169, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttmnv"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(178, 245, 45, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6kn2"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(227, 133, 43, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgb8t"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(62, 66, 97, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad1hj"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(0, 0, 227, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ldii"]
+atlas = ExtResource("3_dp4i5")
+region = Rect2(160, 66, 66, 65)
+
+[node name="InventoryUI" type="TextureRect"]
+offset_right = 362.0
+offset_bottom = 283.0
+texture = ExtResource("1_cydwi")
+script = ExtResource("2_ff5uu")
+metadata/_edit_vertical_guides_ = [339.0]
+
+[node name="Icons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClothesBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 149.0
+offset_top = 84.0
+offset_right = 197.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_qqu7u")
+
+[node name="PantsBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 149.0
+offset_top = 148.0
+offset_right = 195.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_a3cpn")
+
+[node name="HelmetBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 235.0
+offset_top = 17.0
+offset_right = 275.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_smpb1")
+
+[node name="VestBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 150.0
+offset_top = 16.0
+offset_right = 193.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_i5uxh")
+
+[node name="BackpackBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 214.0
+offset_top = 213.5
+offset_right = 261.0
+offset_bottom = 260.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_37get")
+
+[node name="MainWeaponBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+offset_left = 299.0
+offset_top = 196.0
+offset_right = 428.0
+offset_bottom = 239.0
+rotation = -1.5708
+texture = SubResource("AtlasTexture_a4l3f")
+expand_mode = 1
+
+[node name="PistolBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 301.0
+offset_top = 20.0
+offset_right = 340.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ttmnv")
+expand_mode = 1
+
+[node name="MeleeWeaponBgIcon" type="TextureRect" parent="Icons"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 236.0
+offset_top = 149.0
+offset_right = 273.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_e6kn2")
+expand_mode = 1
+
+[node name="Cards" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClothesCard" parent="Cards" instance=ExtResource("4_cf12j")]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 75.0
+offset_right = 221.0
+offset_bottom = 140.0
+texture = SubResource("AtlasTexture_wgb8t")
+max_slot_number = 3
+
+[node name="PantsCard" parent="Cards" instance=ExtResource("4_cf12j")]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 140.0
+offset_right = 221.0
+offset_bottom = 205.0
+texture = SubResource("AtlasTexture_wgb8t")
+max_slot_number = 3
+
+[node name="VestCard" parent="Cards" instance=ExtResource("4_cf12j")]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 8.0
+offset_right = 221.0
+offset_bottom = 73.0
+texture = SubResource("AtlasTexture_wgb8t")
+max_slot_number = 3
+
+[node name="BackpackCard" parent="Cards" instance=ExtResource("4_cf12j")]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 204.0
+offset_right = 350.0
+offset_bottom = 270.0
+texture = SubResource("AtlasTexture_ad1hj")
+max_slot_number = 7
+
+[node name="HelmetCard" parent="Cards" instance=ExtResource("5_vwfwx")]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 7.0
+offset_right = 288.0
+offset_bottom = 72.0
+texture = SubResource("AtlasTexture_4ldii")
+
+[node name="ColorRect" parent="Cards/HelmetCard/ItemUI" index="1"]
+offset_top = -19.0
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="HelmetCard2" parent="Cards" instance=ExtResource("5_vwfwx")]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 140.0
+offset_right = 288.0
+offset_bottom = 205.0
+texture = SubResource("AtlasTexture_4ldii")
+
+[node name="ColorRect" parent="Cards/HelmetCard2/ItemUI" index="1"]
+offset_top = -19.0
+offset_right = -2.0
+offset_bottom = -2.0
+
+[editable path="Cards/HelmetCard"]
+[editable path="Cards/HelmetCard2"]
