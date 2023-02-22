@@ -25,7 +25,6 @@ script = ExtResource("2_o60qm")
 
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_xv6yy")
-parameters/Run/Seek/seek_position = 1.0
 
 [node name="StateMachine" parent="." index="4"]
 script = ExtResource("3_qn0rk")
@@ -76,5 +75,4 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_v81y3")
 
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
-current = true
 zoom = Vector2(1.5, 1.5)
