@@ -12,3 +12,6 @@ static func create_item(item_script: GDScript, item_id: int) -> Item:
 	item.resource = item_script.get_item_resource(item_id)
 	var res := item.resource as ItemResource
 	return item
+
+static func create_random(item_script: GDScript) -> Item:
+	return create_item(item_script, item_script.RES_TABLE.keys().pick_random())
