@@ -25,6 +25,7 @@ func _ready():
 func update_gear_ui(gear: Gear) -> void:
 	if not is_instance_valid(gear):
 		visible = false
+		return
 	
 	var resource := gear.resource as GearResource
 	var atlas := AtlasTexture.new()

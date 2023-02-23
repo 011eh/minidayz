@@ -19,6 +19,8 @@ var column_number := 5
 @export
 var icon_size := Vector2(32, 32)
 
+var item: Item
+
 func _ready():
 	var atlas := AtlasTexture.new()
 	icon.texture = atlas
@@ -49,12 +51,21 @@ var update_helmet_ui = func update_item_ui(gear: Gear) -> void:
 
 func update_item_ui(item: Item) -> void:
 	if not is_instance_valid(item):
-		visible = false
+		get_parent().visible = false
 		return
-	
+	self.item = item
 	if item is Gear and item.get_resource().type == GearResource.GearType.HELMET:
 		update_helmet_ui.call(item)
 	elif item is Knife:
 		update_general_ui.call(item, 84)
 	else:
 		update_general_ui.call(item)
+	visible = true
+
+func _get_drag_data(at_position):
+	var rect := TextureRect.new()
+	rect.texture = icon.texture
+	set_drag_preview(rect)
+	return self
+
+func _
