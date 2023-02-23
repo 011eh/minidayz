@@ -1,9 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://75idi11r5lmw"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
-[ext_resource type="PackedScene" uid="uid://c00ecivngyaml" path="res://gui/inventory_ui.tscn" id="2_s3nru"]
+[ext_resource type="PackedScene" uid="uid://c0a3bc5wsv514" path="res://gui/item_ui_content.tscn" id="2_ldpjr"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_ekwsy")
 
-[node name="InventoryUI" parent="." instance=ExtResource("2_s3nru")]
+[node name="Items" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ItemIcon" parent="Items" instance=ExtResource("2_ldpjr")]
+layout_mode = 2
+
+[node name="ItemIcon2" parent="Items" instance=ExtResource("2_ldpjr")]
+layout_mode = 2
