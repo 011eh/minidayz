@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0a3bc5wsv514"]
+[gd_scene load_steps=5 format=3 uid="uid://cyye1q4c7bg6x"]
 
-[ext_resource type="Script" path="res://gui/item_ui_content.gd" id="1_ly8wf"]
+[ext_resource type="Script" path="res://gui/item_ui.gd" id="1_ly8wf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbpvk"]
 
@@ -12,7 +12,7 @@ font_size = 8
 line_spacing = 0.0
 font_size = 8
 
-[node name="ItemIcon" type="Control"]
+[node name="ItemUI" type="Control"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3
 anchors_preset = 0

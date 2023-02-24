@@ -1,16 +1,18 @@
 extends TextureRect
 
 
-const ItemIcon := preload('res://gui/item_ui_content.tscn')
+const ItemIcon := preload('res://gui/item_ui.tscn')
 const SlotTexture := preload('res://asset/images/gui/inventory/gui_inv_slot_shadow.png')
-const ItemUIContent := preload('res://gui/item_ui_content.tscn')
+const ItemUIContent := preload('res://gui/item_ui.tscn')
 const GEAR_ICON_REGION := Rect2(0, 320, 32, 32)
 const DURABILITY_LABEL_OFFSET := 8
+
 
 @export_range(1, 7)
 var max_slot_number: int
 @onready
 var slots := $Slots
+
 
 func _ready():
 	for i in range(max_slot_number):
@@ -44,10 +46,10 @@ func update_gear_ui(gear: Gear) -> void:
 		var item_ui := $Items.get_child(i)
 		if i < resource.slot_number:
 			slot.visible = true
+			item_ui.visible = true
 			var item := gear.slots[i] as Item
-			if is_instance_valid(item):
-				item_ui.update_item_ui(gear.slots[i])
-				item_ui.visible = true
+			item_ui.update_item_ui(gear.slots[i])
 		else:
 			item_ui.visible = false
 			slot.visible = false
+	visible = true

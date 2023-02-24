@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccjdtkn3p76m2"]
+[gd_scene load_steps=3 format=3 uid="uid://rcw4wnrlmx6u"]
 
-[ext_resource type="Script" path="res://gui/inv_gear_card_content.gd" id="2_a8k1g"]
+[ext_resource type="Script" path="res://gui/inv_gear_ui.gd" id="1_ay1m6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1u6gu"]
 line_spacing = -2.0
@@ -10,7 +10,7 @@ font_size = 8
 offset_right = 97.0
 offset_bottom = 66.0
 rotation = -0.00150832
-script = ExtResource("2_a8k1g")
+script = ExtResource("1_ay1m6")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0
