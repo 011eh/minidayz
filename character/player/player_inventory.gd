@@ -6,6 +6,7 @@ class_name PlayerInventory
 signal equipment_changed
 signal slot_item_changed
 
+
 enum {
 	PLAYER_SLOT,
 	CLOTHES,
