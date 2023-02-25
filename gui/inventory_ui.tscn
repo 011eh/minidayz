@@ -1,75 +1,79 @@
-[gd_scene load_steps=23 format=3 uid="uid://badykomhfyv75"]
+[gd_scene load_steps=28 format=3 uid="uid://dai086rmd3g3s"]
 
-[ext_resource type="Texture2D" uid="uid://dvil1ok7epdck" path="res://asset/images/gui/inventory/gui_inventory_background.png" id="1_nil65"]
-[ext_resource type="Script" path="res://gui/inventory_ui.gd" id="2_nqdqm"]
-[ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="3_loxy1"]
-[ext_resource type="PackedScene" uid="uid://rcw4wnrlmx6u" path="res://gui/inv_gear_ui.tscn" id="4_kg2l0"]
-[ext_resource type="PackedScene" uid="uid://cyye1q4c7bg6x" path="res://gui/item_ui.tscn" id="5_2i4el"]
-[ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="6_cs0jb"]
-[ext_resource type="Texture2D" uid="uid://bb5h2ev7gk3ua" path="res://asset/images/equipment/weapon/main/gui_main_weapon.png" id="6_rscyh"]
-[ext_resource type="Texture2D" uid="uid://3amhjsr2gevu" path="res://asset/images/equipment/weapon/pistol/gui_pistol.png" id="7_0iod2"]
+[ext_resource type="Texture2D" uid="uid://dvil1ok7epdck" path="res://asset/images/gui/inventory/gui_inventory_background.png" id="1_2f75n"]
+[ext_resource type="Script" path="res://gui/inventory_ui.gd" id="2_oohwf"]
+[ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="3_48v0v"]
+[ext_resource type="PackedScene" uid="uid://rcw4wnrlmx6u" path="res://gui/inv_gear_ui.tscn" id="4_06f47"]
+[ext_resource type="PackedScene" uid="uid://cyye1q4c7bg6x" path="res://gui/item_ui.tscn" id="5_ichne"]
+[ext_resource type="PackedScene" uid="uid://brklqbmf4n8bi" path="res://gui/item_card_ui.tscn" id="6_ylots"]
+[ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="7_umora"]
+[ext_resource type="Script" path="res://item/melee_weapon.gd" id="8_y4pxd"]
+[ext_resource type="Script" path="res://item/knife.gd" id="9_ssm47"]
+[ext_resource type="Texture2D" uid="uid://3amhjsr2gevu" path="res://asset/images/equipment/weapon/pistol/gui_pistol.png" id="10_0hhn8"]
+[ext_resource type="Script" path="res://item/pistol.gd" id="11_vsdny"]
+[ext_resource type="Texture2D" uid="uid://bb5h2ev7gk3ua" path="res://asset/images/equipment/weapon/main/gui_main_weapon.png" id="12_um7jk"]
+[ext_resource type="Script" path="res://item/main_weapon.gd" id="13_780d3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqu7u"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(179, 134, 48, 46)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3cpn"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(179, 184, 46, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smpb1"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(228, 197, 40, 45)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i5uxh"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(128, 185, 39, 42)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37get"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(128, 134, 47, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a4l3f"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(0, 231, 169, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttmnv"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(178, 245, 45, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e6kn2"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(227, 133, 43, 52)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wgb8t"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(62, 66, 97, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ad1hj"]
-atlas = ExtResource("3_loxy1")
+atlas = ExtResource("3_48v0v")
 region = Rect2(0, 0, 227, 66)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ex76l"]
-atlas = ExtResource("3_loxy1")
-region = Rect2(160, 66, 66, 65)
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgpf6"]
+load_path = "res://.godot/imported/gui_inventory_card_cover.png-30a661c9030f823e11d01e8f5bf10b84.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3jh2b"]
-region = Rect2(0, 320, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tr5p"]
+atlas = SubResource("CompressedTexture2D_bgpf6")
+region = Rect2(160, 66, 65, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyopq"]
-atlas = ExtResource("3_loxy1")
-region = Rect2(0, 66, 61, 144)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap3ss"]
+atlas = SubResource("CompressedTexture2D_bgpf6")
+region = Rect2(62, 132, 62, 55)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6w0b"]
-atlas = ExtResource("3_loxy1")
-region = Rect2(62, 132, 63, 56)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjj1a"]
+atlas = SubResource("CompressedTexture2D_bgpf6")
+region = Rect2(0, 66, 60, 143)
 
 [node name="InventoryUI" type="TextureRect"]
 offset_right = 362.0
 offset_bottom = 283.0
-texture = ExtResource("1_nil65")
-script = ExtResource("2_nqdqm")
-metadata/_edit_vertical_guides_ = [339.0]
+texture = ExtResource("1_2f75n")
+script = ExtResource("2_oohwf")
 
 [node name="Icons" type="Control" parent="."]
 anchors_preset = 0
@@ -173,7 +177,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ClothesCard" parent="Cards" instance=ExtResource("4_kg2l0")]
+[node name="ClothesCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 75.0
@@ -182,7 +186,7 @@ offset_bottom = 140.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 
-[node name="PantsCard" parent="Cards" instance=ExtResource("4_kg2l0")]
+[node name="PantsCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 140.0
@@ -191,7 +195,7 @@ offset_bottom = 205.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 
-[node name="VestCard" parent="Cards" instance=ExtResource("4_kg2l0")]
+[node name="VestCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
 offset_left = 124.0
 offset_top = 8.0
@@ -200,7 +204,7 @@ offset_bottom = 73.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 
-[node name="BackpackCard" parent="Cards" instance=ExtResource("4_kg2l0")]
+[node name="BackpackCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
 offset_left = 123.0
 offset_top = 204.0
@@ -209,162 +213,145 @@ offset_bottom = 270.0
 texture = SubResource("AtlasTexture_ad1hj")
 max_slot_number = 7
 
-[node name="HelmetCard" type="TextureRect" parent="Cards"]
-layout_mode = 0
-offset_left = 222.0
-offset_top = 8.0
-offset_right = 288.0
-offset_bottom = 73.0
-texture = SubResource("AtlasTexture_ex76l")
-
-[node name="HelmetContent" parent="Cards/HelmetCard" instance=ExtResource("5_2i4el")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-column_number = 4
-item_ui_type = 1
-
-[node name="Icon" parent="Cards/HelmetCard/HelmetContent" index="0"]
-offset_left = 16.0
-offset_top = 11.0
-offset_right = 48.0
-offset_bottom = 43.0
-texture = SubResource("AtlasTexture_3jh2b")
-
-[node name="ColorRect" parent="Cards/HelmetCard/HelmetContent" index="1"]
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-
-[node name="MainWeaponCard" type="TextureRect" parent="Cards"]
-layout_mode = 0
-offset_left = 290.0
-offset_top = 61.0
-offset_right = 351.0
-offset_bottom = 205.0
-texture = SubResource("AtlasTexture_kyopq")
-
-[node name="MainWeaponContent" parent="Cards/MainWeaponCard" instance=ExtResource("5_2i4el")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-atlas_texture = ExtResource("6_rscyh")
-icon_size = Vector2(68, 185)
-item_ui_type = 1
-
-[node name="Icon" parent="Cards/MainWeaponCard/MainWeaponContent" index="0"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -34.0
-offset_top = -95.5
-offset_right = 34.0
-offset_bottom = 89.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.72, 0.72)
-pivot_offset = Vector2(34, 92)
-
-[node name="ColorRect" parent="Cards/MainWeaponCard/MainWeaponContent" index="1"]
-offset_top = -19.0
-offset_right = -2.0
-
-[node name="BulletNumber" parent="Cards/MainWeaponCard/MainWeaponContent/ColorRect" index="1"]
-offset_left = -21.0
-offset_right = -1.0
-
-[node name="PistolCard" type="TextureRect" parent="Cards"]
-layout_mode = 0
-offset_left = 289.0
-offset_top = 5.0
-offset_right = 352.0
-offset_bottom = 61.0
-texture = SubResource("AtlasTexture_o6w0b")
-
-[node name="PistolContent" parent="Cards/PistolCard" instance=ExtResource("5_2i4el")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-atlas_texture = ExtResource("7_0iod2")
-atlas_texture_id_offset = -25
-column_number = 4
-icon_size = Vector2(82, 82)
-item_ui_type = 1
-
-[node name="Icon" parent="Cards/PistolCard/PistolContent" index="0"]
-offset_left = 4.0
-offset_top = -1.0
-offset_right = 86.0
-offset_bottom = 81.0
-scale = Vector2(0.7, 0.7)
-
-[node name="ColorRect" parent="Cards/PistolCard/PistolContent" index="1"]
-offset_top = -19.0
-offset_right = -3.0
-offset_bottom = -2.0
-
-[node name="BulletNumber" parent="Cards/PistolCard/PistolContent/ColorRect" index="1"]
-offset_left = -21.0
-offset_right = -1.0
-
-[node name="MeleeWeaponCard" type="TextureRect" parent="Cards"]
-layout_mode = 0
-offset_left = 222.0
-offset_top = 140.0
-offset_right = 288.0
-offset_bottom = 205.0
-texture = SubResource("AtlasTexture_ex76l")
-
-[node name="MeleeWeaponContent" parent="Cards/MeleeWeaponCard" instance=ExtResource("5_2i4el")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-atlas_texture = ExtResource("6_cs0jb")
-column_number = 7
-icon_size = Vector2(44, 44)
-
-[node name="Icon" parent="Cards/MeleeWeaponCard/MeleeWeaponContent" index="0"]
-offset_left = 11.0
-offset_top = 9.0
-offset_right = 55.0
-offset_bottom = 53.0
-
-[node name="ColorRect" parent="Cards/MeleeWeaponCard/MeleeWeaponContent" index="1"]
-offset_top = -20.0
-offset_right = -3.0
-offset_bottom = -2.0
-
-[node name="PlayerSlot" parent="Cards" instance=ExtResource("5_2i4el")]
+[node name="PlayerSlot" parent="Cards" instance=ExtResource("5_ichne")]
 offset_left = 239.0
 offset_top = 91.0
 offset_right = 269.0
 offset_bottom = 121.0
 scale = Vector2(0.938, 0.938)
+atlas_texture = null
+atlas_texture_id_offset = null
+column_number = null
+icon_size = null
 
-[editable path="Cards/HelmetCard/HelmetContent"]
-[editable path="Cards/MainWeaponCard/MainWeaponContent"]
-[editable path="Cards/PistolCard/PistolContent"]
-[editable path="Cards/MeleeWeaponCard/MeleeWeaponContent"]
+[node name="HelmetCard" parent="Cards" instance=ExtResource("6_ylots")]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 8.0
+offset_right = 287.0
+offset_bottom = 72.0
+texture = SubResource("AtlasTexture_6tr5p")
+column_number = 4
+
+[node name="Icon" parent="Cards/HelmetCard" index="0"]
+offset_left = -15.5
+offset_top = -22.0
+offset_right = 16.5
+offset_bottom = 10.0
+
+[node name="Info" parent="Cards/HelmetCard" index="1"]
+offset_top = -20.0
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="NumberOrDurability" parent="Cards/HelmetCard/Info" index="0"]
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="MeleeWeaponCard" parent="Cards" instance=ExtResource("6_ylots")]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 140.0
+offset_right = 287.0
+offset_bottom = 204.0
+texture = SubResource("AtlasTexture_6tr5p")
+atlas_texture = ExtResource("7_umora")
+column_number = 7
+icon_size = Vector2(44, 44)
+can_drop_item_list = Array[GDScript]([ExtResource("8_y4pxd"), ExtResource("9_ssm47")])
+
+[node name="Info" parent="Cards/MeleeWeaponCard" index="1"]
+offset_top = -20.0
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="NumberOrDurability" parent="Cards/MeleeWeaponCard/Info" index="0"]
+offset_right = -2.0
+offset_bottom = -2.0
+
+[node name="PistolCard" parent="Cards" instance=ExtResource("6_ylots")]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 6.0
+offset_right = 351.0
+offset_bottom = 61.0
+texture = SubResource("AtlasTexture_ap3ss")
+atlas_texture = ExtResource("10_0hhn8")
+atlas_texture_id_offset = -25
+column_number = 4
+icon_size = Vector2(82, 82)
+can_drop_item_list = Array[GDScript]([ExtResource("11_vsdny")])
+
+[node name="Icon" parent="Cards/PistolCard" index="0"]
+offset_left = -28.0
+offset_top = -27.5
+offset_right = 28.0
+offset_bottom = 28.5
+expand_mode = 1
+
+[node name="Info" parent="Cards/PistolCard" index="1"]
+offset_top = -20.0
+offset_right = -1.0
+offset_bottom = -1.0
+
+[node name="NumberOrDurability" parent="Cards/PistolCard/Info" index="0"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -5.5
+offset_right = 29.0
+offset_bottom = 6.5
+grow_horizontal = 1
+
+[node name="BulletNumber" parent="Cards/PistolCard/Info" index="1"]
+offset_left = -24.0
+offset_top = -5.5
+offset_right = -4.0
+offset_bottom = 6.5
+
+[node name="MainWeaponCard" parent="Cards" instance=ExtResource("6_ylots")]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 62.0
+offset_right = 350.0
+offset_bottom = 205.0
+texture = SubResource("AtlasTexture_sjj1a")
+atlas_texture = ExtResource("12_um7jk")
+icon_size = Vector2(68, 185)
+can_drop_item_list = Array[GDScript]([ExtResource("13_780d3")])
+
+[node name="Icon" parent="Cards/MainWeaponCard" index="0"]
+offset_left = -23.0
+offset_top = -62.5
+offset_right = 23.0
+offset_bottom = 62.5
+expand_mode = 1
+
+[node name="Info" parent="Cards/MainWeaponCard" index="1"]
+offset_top = -20.0
+offset_right = -1.0
+offset_bottom = -1.0
+
+[node name="NumberOrDurability" parent="Cards/MainWeaponCard/Info" index="0"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 7.0
+offset_top = -5.5
+offset_right = 29.0
+offset_bottom = 6.5
+grow_horizontal = 1
+
+[node name="BulletNumber" parent="Cards/MainWeaponCard/Info" index="1"]
+offset_left = -23.0
+offset_top = -5.5
+offset_right = -3.0
+offset_bottom = 6.5
+
+[editable path="Cards/HelmetCard"]
+[editable path="Cards/MeleeWeaponCard"]
+[editable path="Cards/PistolCard"]
+[editable path="Cards/MainWeaponCard"]

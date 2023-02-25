@@ -10,13 +10,13 @@ var vest_card := $Cards/VestCard
 @onready
 var backpack_card := $Cards/BackpackCard
 @onready
-var helmet_card_content := $Cards/HelmetCard/HelmetContent
+var helmet_card_content := $Cards/HelmetCard
 @onready
-var main_wepaon_content := $Cards/MainWeaponCard/MainWeaponContent
+var main_wepaon_content := $Cards/MainWeaponCard
 @onready
-var pistol_content := $Cards/PistolCard/PistolContent
+var pistol_content := $Cards/PistolCard
 @onready
-var melee_weapon_content := $Cards/MeleeWeaponCard/MeleeWeaponContent
+var melee_weapon_content := $Cards/MeleeWeaponCard
 @onready
 var player_slot := $Cards/PlayerSlot
 

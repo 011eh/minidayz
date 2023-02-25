@@ -6,7 +6,7 @@
 line_spacing = -2.0
 font_size = 8
 
-[node name="GearCardInfo" type="TextureRect"]
+[node name="GearCardUI" type="TextureRect"]
 offset_right = 97.0
 offset_bottom = 66.0
 rotation = -0.00150832
