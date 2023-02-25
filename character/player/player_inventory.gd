@@ -7,7 +7,7 @@ signal equipment_changed
 signal slot_item_changed
 
 
-enum {
+enum EQUIPMENT_TYPE {
 	PLAYER_SLOT,
 	CLOTHES,
 	PANTS,
@@ -110,10 +110,10 @@ func get_equipment_slot_index(item: Item) -> int:
 	if item is Gear:
 		return item.resource.type
 	if item is MainWeapon:
-		return MAIN_WEAPON
+		return EQUIPMENT_TYPE.MAIN_WEAPON
 	if item is Pistol:
-		return PISTOL
-	return MELEE_WEAPON
+		return EQUIPMENT_TYPE.PISTOL
+	return EQUIPMENT_TYPE.MELEE_WEAPON
 
 func update_inventory_ui() -> void:
 	for i in range(equipment_slots.size()):

@@ -27,21 +27,21 @@ func _unhandled_input(event):
 
 func update_inventory_ui(equipment_type: int, item: Item) -> void:
 	match equipment_type:
-		PlayerInventory.PLAYER_SLOT:
+		PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT:
 			player_slot.update_item_ui(item.slots[0])
-		PlayerInventory.CLOTHES:
+		PlayerInventory.EQUIPMENT_TYPE.CLOTHES:
 			clothes_card.update_gear_ui(item)
-		PlayerInventory.PANTS:
+		PlayerInventory.EQUIPMENT_TYPE.PANTS:
 			pants_card.update_gear_ui(item)
-		PlayerInventory.VEST:
+		PlayerInventory.EQUIPMENT_TYPE.VEST:
 			vest_card.update_gear_ui(item)
-		PlayerInventory.BACKPACK:
+		PlayerInventory.EQUIPMENT_TYPE.BACKPACK:
 			backpack_card.update_gear_ui(item)
-		PlayerInventory.HELMET:
+		PlayerInventory.EQUIPMENT_TYPE.HELMET:
 			helmet_card_content.update_item_ui(item)
-		PlayerInventory.MAIN_WEAPON:
+		PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON:
 			main_wepaon_content.update_item_ui(item)
-		PlayerInventory.PISTOL:
+		PlayerInventory.EQUIPMENT_TYPE.PISTOL:
 			pistol_content.update_item_ui(item)
-		PlayerInventory.MELEE_WEAPON:
+		PlayerInventory.EQUIPMENT_TYPE.MELEE_WEAPON:
 			melee_weapon_content.update_item_ui(item)

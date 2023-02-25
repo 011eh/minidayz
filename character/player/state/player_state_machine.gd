@@ -25,14 +25,14 @@ func _ready() -> void:
 
 func setup() -> void:
 	inventory = owner.get_inventory()
-	
+
 	for state_name in states:
 		var state := get_node(state_name) as State
 		state.finished.connect(set_state)
 
 func set_state(state_name: String) -> void:
 	assert(has_node(state_name), '状态机没有 %s 状态！' % state_name)
-	
+
 	if state_name == 'MeleeAttack':
 		if attack_timer.is_stopped():
 			attack_timer.start()
@@ -45,10 +45,10 @@ func set_state(state_name: String) -> void:
 
 func run() -> void:
 	current_state.run()
-	if is_instance_valid(inventory[PlayerInventory.MAIN_WEAPON])\
+	if is_instance_valid(inventory[PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON])\
 		and Input.is_action_just_pressed('with_rifle'):
 		switch_weapon(WeaponState.MAIN_WEAPON)
-	elif is_instance_valid(inventory[PlayerInventory.PISTOL])\
+	elif is_instance_valid(inventory[PlayerInventory.EQUIPMENT_TYPE.PISTOL])\
 		and Input.is_action_just_pressed('with_pistol'):
 		switch_weapon(WeaponState.PISTOL)
 	elif Input.is_action_just_pressed('with_melee'):
