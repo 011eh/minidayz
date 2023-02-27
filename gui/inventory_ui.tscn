@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://dai086rmd3g3s"]
+[gd_scene load_steps=27 format=3 uid="uid://dai086rmd3g3s"]
 
 [ext_resource type="Texture2D" uid="uid://dvil1ok7epdck" path="res://asset/images/gui/inventory/gui_inventory_background.png" id="1_2f75n"]
 [ext_resource type="Script" path="res://gui/inventory_ui.gd" id="2_oohwf"]
 [ext_resource type="Texture2D" uid="uid://lhsw50w1nwyd" path="res://asset/images/gui/inventory/gui_inventory_card_cover.png" id="3_48v0v"]
 [ext_resource type="PackedScene" uid="uid://rcw4wnrlmx6u" path="res://gui/inv_gear_ui.tscn" id="4_06f47"]
-[ext_resource type="PackedScene" uid="uid://cyye1q4c7bg6x" path="res://gui/item_ui.tscn" id="5_ichne"]
 [ext_resource type="PackedScene" uid="uid://brklqbmf4n8bi" path="res://gui/item_card_ui.tscn" id="6_ylots"]
 [ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="7_umora"]
 [ext_resource type="Script" path="res://item/melee_weapon.gd" id="8_y4pxd"]
@@ -177,6 +176,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PlayerSlot" parent="Cards" instance=ExtResource("4_06f47")]
+layout_mode = 0
+offset_left = 239.0
+offset_top = 92.0
+offset_right = 269.0
+offset_bottom = 122.0
+max_slot_number = 3
+
+[node name="Icon" parent="Cards/PlayerSlot" index="0"]
+visible = false
+
+[node name="Name" parent="Cards/PlayerSlot" index="1"]
+visible = false
+
+[node name="Durability" parent="Cards/PlayerSlot" index="2"]
+visible = false
+
+[node name="Slots" parent="Cards/PlayerSlot" index="3"]
+visible = false
+
+[node name="Items" parent="Cards/PlayerSlot" index="4"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 32.0
+offset_bottom = 31.0
+
 [node name="ClothesCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
 offset_left = 124.0
@@ -185,6 +210,7 @@ offset_right = 221.0
 offset_bottom = 140.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
+equipment_type = 1
 
 [node name="PantsCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
@@ -194,6 +220,7 @@ offset_right = 221.0
 offset_bottom = 205.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
+equipment_type = 2
 
 [node name="VestCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
@@ -203,6 +230,7 @@ offset_right = 221.0
 offset_bottom = 73.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
+equipment_type = 4
 
 [node name="BackpackCard" parent="Cards" instance=ExtResource("4_06f47")]
 layout_mode = 0
@@ -212,26 +240,18 @@ offset_right = 350.0
 offset_bottom = 270.0
 texture = SubResource("AtlasTexture_ad1hj")
 max_slot_number = 7
+equipment_type = 5
 
-[node name="PlayerSlot" parent="Cards" instance=ExtResource("5_ichne")]
-offset_left = 239.0
-offset_top = 91.0
-offset_right = 269.0
-offset_bottom = 121.0
-scale = Vector2(0.938, 0.938)
-atlas_texture = null
-atlas_texture_id_offset = null
-column_number = null
-icon_size = null
-
-[node name="HelmetCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="HelmetCard" parent="Cards" groups=["item_ui_group"] instance=ExtResource("6_ylots")]
 layout_mode = 0
 offset_left = 222.0
 offset_top = 8.0
 offset_right = 287.0
 offset_bottom = 72.0
 texture = SubResource("AtlasTexture_6tr5p")
+slot_index = 3
 column_number = 4
+equipment_type = 3
 
 [node name="Icon" parent="Cards/HelmetCard" index="0"]
 offset_left = -15.5
@@ -248,17 +268,19 @@ offset_bottom = -2.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="MeleeWeaponCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="MeleeWeaponCard" parent="Cards" groups=["item_ui_groups"] instance=ExtResource("6_ylots")]
 layout_mode = 0
 offset_left = 222.0
 offset_top = 140.0
 offset_right = 287.0
 offset_bottom = 204.0
 texture = SubResource("AtlasTexture_6tr5p")
+slot_index = 8
 atlas_texture = ExtResource("7_umora")
 column_number = 7
 icon_size = Vector2(44, 44)
 can_drop_item_list = Array[GDScript]([ExtResource("8_y4pxd"), ExtResource("9_ssm47")])
+equipment_type = 8
 
 [node name="Info" parent="Cards/MeleeWeaponCard" index="1"]
 offset_top = -20.0
@@ -269,18 +291,20 @@ offset_bottom = -2.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="PistolCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="PistolCard" parent="Cards" groups=["item_ui_groups"] instance=ExtResource("6_ylots")]
 layout_mode = 0
 offset_left = 289.0
 offset_top = 6.0
 offset_right = 351.0
 offset_bottom = 61.0
 texture = SubResource("AtlasTexture_ap3ss")
+slot_index = 7
 atlas_texture = ExtResource("10_0hhn8")
 atlas_texture_id_offset = -25
 column_number = 4
 icon_size = Vector2(82, 82)
 can_drop_item_list = Array[GDScript]([ExtResource("11_vsdny")])
+equipment_type = 7
 
 [node name="Icon" parent="Cards/PistolCard" index="0"]
 offset_left = -28.0
@@ -311,16 +335,18 @@ offset_top = -5.5
 offset_right = -4.0
 offset_bottom = 6.5
 
-[node name="MainWeaponCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="MainWeaponCard" parent="Cards" groups=["item_ui_groups"] instance=ExtResource("6_ylots")]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 62.0
 offset_right = 350.0
 offset_bottom = 205.0
 texture = SubResource("AtlasTexture_sjj1a")
+slot_index = 6
 atlas_texture = ExtResource("12_um7jk")
 icon_size = Vector2(68, 185)
 can_drop_item_list = Array[GDScript]([ExtResource("13_780d3")])
+equipment_type = 6
 
 [node name="Icon" parent="Cards/MainWeaponCard" index="0"]
 offset_left = -23.0
@@ -351,6 +377,7 @@ offset_top = -5.5
 offset_right = -3.0
 offset_bottom = 6.5
 
+[editable path="Cards/PlayerSlot"]
 [editable path="Cards/HelmetCard"]
 [editable path="Cards/MeleeWeaponCard"]
 [editable path="Cards/PistolCard"]

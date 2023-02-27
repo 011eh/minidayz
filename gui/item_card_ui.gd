@@ -1,5 +1,12 @@
 extends ItemUI
 
+class_name ItemCardUI
+
+
+var equipment_slots: Array[Item]
+@export
+var slot_index: PlayerInventory.EQUIPMENT_TYPE
+
 
 var update_helmet_ui = func(gear: Gear) -> void:
 	icon.texture.atlas = gear.get_resource().texture
@@ -8,7 +15,9 @@ var update_helmet_ui = func(gear: Gear) -> void:
 
 
 func update_item_ui(item: Item) -> void:
-	if not is_instance_valid(item):
+	var valid := is_instance_valid(item)
+	item_id = item.get_instance_id() if valid else 0
+	if not valid:
 		change_ui_visible(false)
 		return
 
@@ -21,3 +30,4 @@ func update_item_ui(item: Item) -> void:
 func change_ui_visible(visible: bool) -> void:
 	has_data = visible
 	self.visible = visible
+

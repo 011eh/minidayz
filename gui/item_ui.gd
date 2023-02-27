@@ -1,9 +1,9 @@
-extends Control
+extends 'res://gui/inventory_card.gd'
 
 class_name ItemUI
 
 
-signal item_dropped
+signal item_ui_dropped
 
 
 const NUMBER_FORMAT = '%d'
@@ -74,13 +74,20 @@ func _get_drag_data(at_position):
 		var rect := TextureRect.new()
 		rect.texture = icon.texture
 		set_drag_preview(rect)
+		icon.visible = false
+		$Info.visible = false
 		return self
 
 func _can_drop_data(at_position, data):
 	var id := data.item_id as int
-	return is_instance_id_valid(id) and instance_from_id(id).get_script() in can_drop_item_list
+	return is_instance_id_valid(id)\
+		and instance_from_id(id).get_script() in can_drop_item_list
 
-func _drop_data(at_position, data):
-#	data.update_item_ui(drop_item)
-#	update_item_ui(drop_item)
-	emit_signal('item_dropped',data, self)
+func _drop_data(at_position, drop_ui):
+	var temp := instance_from_id(item_id) as Item
+	sync_to_slot(instance_from_id(drop_ui.item_id))
+	drop_ui.sync_to_slot(temp)
+
+func sync_to_slot(item: Item) -> void:
+	item_owner.gear.slots[get_index()] = item
+	update_item_ui(item)

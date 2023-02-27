@@ -9,7 +9,6 @@ font_size = 8
 [node name="GearCardUI" type="TextureRect"]
 offset_right = 97.0
 offset_bottom = 66.0
-rotation = -0.00150832
 script = ExtResource("1_ay1m6")
 
 [node name="Icon" type="TextureRect" parent="."]

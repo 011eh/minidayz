@@ -1,4 +1,4 @@
-extends TextureRect
+extends 'res://gui/inventory_card.gd'
 
 class_name GearUI
 
@@ -26,8 +26,8 @@ func _ready():
 		slots.add_child(slot)
 		var item_ui := ItemUIContent.instantiate() as ItemUI
 		item_ui.item_owner = self
-		item_ui.item_dropped.connect(swap_item)
 		item_ui.visible = false
+		item_ui.add_to_group('item_ui_group')
 		$Items.add_child(item_ui)
 
 func update_gear_ui(gear: Gear) -> void:
@@ -59,14 +59,3 @@ func update_gear_ui(gear: Gear) -> void:
 			item_ui.visible = false
 			slot.visible = false
 	visible = true
-
-func swap_item(ui_dropped: ItemUI, ui_replaced: ItemUI) -> void:
-	var d_slots := ui_dropped.item_owner.gear.slots
-	var r_slots := ui_replaced.item_owner.gear.slots
-	var d_index := ui_dropped.get_index()
-	var r_index := ui_replaced.get_index()
-	var temp := r_slots[r_index]
-	r_slots[r_index] = d_slots[d_index]
-	d_slots[d_index] = temp
-	ui_dropped.update_item_ui(temp)
-	ui_replaced.update_item_ui(r_slots[r_index])
