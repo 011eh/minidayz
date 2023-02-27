@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8r61urm8jmrs"]
+[gd_scene load_steps=3 format=3 uid="uid://btpijdybpwiuv"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
-[ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="3_fn4s5"]
+[ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="2_pnydb"]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 112.0
+offset_bottom = 71.0
 script = ExtResource("1_ekwsy")
 
-[node name="InventoryUI" parent="." instance=ExtResource("3_fn4s5")]
+[node name="InventoryUI" parent="." instance=ExtResource("2_pnydb")]
+layout_mode = 0

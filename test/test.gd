@@ -1,48 +1,31 @@
-extends Node2D
+extends Control
 
 
-var array :=[NumberItem]
+signal test
 
+
+var equipment_slots: Array[Item]
+@onready
+var inventory_ui = $InventoryUI
 
 func _ready():
-#	$Items/ItemIcon.update_item_ui(ItemCreator.create_random(NumberItem))
-#	$Items/ItemIcon2.update_item_ui(ItemCreator.create_random(NumberItem))
 	ui_test()
+	pass
 
+func ui_test():
+	inventory_ui.setup(equipment_slots)
+	equipment_slots.resize(9)
+	test.connect(inventory_ui.update_inventory_ui)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.CLOTHES)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.PANTS)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.HELMET)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.VEST)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.BACKPACK)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.PISTOL)
+	set_item(PlayerInventory.EQUIPMENT_TYPE.MELEE_WEAPON)
 
-func ui_test() -> void:
-	var gear: Gear
-	gear = ItemCreator.create_item(Gear, 6) as Gear
-	gear.slots[1] = ItemCreator.create_item(Craft, 92)
-	gear.slots[2] = ItemCreator.create_item(Knife, 11)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT, gear)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.CLOTHES, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.PANTS, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.VEST, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.BACKPACK, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.HELMET, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.PISTOL, null)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.MELEE_WEAPON, null)
-
-	gear = ItemCreator.create_item(Gear, 6) as Gear
-	gear.slots[1] = ItemCreator.create_random(NumberItem)
-	gear.slots[2] = ItemCreator.create_random(NumberItem)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT, gear)
-	gear = ItemCreator.create_item(Gear, 6) as Gear
-	gear.slots[1] = ItemCreator.create_random(NumberItem)
-	gear.slots[2] = ItemCreator.create_random(NumberItem)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.CLOTHES, gear)
-	gear = ItemCreator.create_item(Gear, 6) as Gear
-	gear.slots[1] = ItemCreator.create_random(NumberItem)
-	gear.slots[2] = ItemCreator.create_random(NumberItem)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.PANTS, gear)
-	gear = ItemCreator.create_item(Gear, 6) as Gear
-	gear.slots[1] = ItemCreator.create_random(NumberItem)
-	gear.slots[2] = ItemCreator.create_random(NumberItem)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.VEST, gear)
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.BACKPACK, ItemCreator.create_item(Gear, 51))
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.HELMET, ItemCreator.create_item(Gear, 25))
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON, ItemCreator.create_item(MainWeapon, 2))
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.PISTOL, ItemCreator.create_item(Pistol, 26))
-	$InventoryUI.update_inventory_ui(PlayerInventory.EQUIPMENT_TYPE.MELEE_WEAPON, ItemCreator.create_random(Knife))
+func set_item(type: PlayerInventory.EQUIPMENT_TYPE):
+	equipment_slots[type] = ItemCreator.create_equipment_random(type)
+	emit_signal('test', type, equipment_slots[type])
