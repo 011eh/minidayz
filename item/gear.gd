@@ -87,6 +87,9 @@ func has_empty_slot() -> bool:
 func is_equipment() -> bool:
 	return true
 
+func get_resource() -> GearResource:
+	return resource
+
 func set_resource(resource: ItemResource) -> void:
 	super.set_resource(resource)
 	slots.resize(resource.slot_number)
