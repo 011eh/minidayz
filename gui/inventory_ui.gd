@@ -24,7 +24,8 @@ var player_slot:= $Cards/PlayerSlot as GearUI
 
 func setup(equipment_slots: Array[Item]) -> void:
 	self.equipment_slots = equipment_slots
-	print(get_tree().get_nodes_in_group('item_ui_group'))
+	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
+		item_ui.item_ui_placed.connect(swap_item)
 
 func _unhandled_input(event):
 	if event.is_action_pressed('open_inventory'):
@@ -51,23 +52,27 @@ func update_inventory_ui(equipment_type: int, item: Item) -> void:
 		PlayerInventory.EQUIPMENT_TYPE.MELEE_WEAPON:
 			melee_weapon_card.update_item_ui(item)
 
-func swap_item(dropped_ui:ItemUI, replaced_ui: ItemUI) ->void:
-	var d_type := replaced_ui.item_owner.equipment_type
-	var r_type := replaced_ui.item_owner.equipment_type
-	
-	match d_type:
-		PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT,\
-		PlayerInventory.EQUIPMENT_TYPE.CLOTHES,\
-		PlayerInventory.EQUIPMENT_TYPE.PANTS,\
-		PlayerInventory.EQUIPMENT_TYPE.VEST,\
-		PlayerInventory.EQUIPMENT_TYPE.BACKPACK:
-			var r_index := replaced_ui.get_index()
-			var r_slots := equipment_slots[r_type].slots as Array[Item]
-			var r_before := r_slots[r_index] as Item
-			var d_index := dropped_ui.get_index()
-			var d_slots := equipment_slots[d_type].slots as Array[Item]
-			var d_before := d_slots[d_index] as Item
-			r_slots[r_index] = d_before
-			d_slots[d_index] = r_before
-			dropped_ui.update_item_ui(r_before)
-			replaced_ui.update_item_ui(d_before)
+func swap_item(dropped_equipment: PlayerInventory.EQUIPMENT_TYPE,
+	dropped_item_index: int,
+	replaced_equipment: PlayerInventory.EQUIPMENT_TYPE,
+	replaced_index: int) ->void:
+	pass
+#	var d_type := replaced_ui.item_owner.equipment_type
+#	var r_type := replaced_ui.item_owner.equipment_type
+#
+#	match d_type:
+#		PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT,\
+#		PlayerInventory.EQUIPMENT_TYPE.CLOTHES,\
+#		PlayerInventory.EQUIPMENT_TYPE.PANTS,\
+#		PlayerInventory.EQUIPMENT_TYPE.VEST,\
+#		PlayerInventory.EQUIPMENT_TYPE.BACKPACK:
+#			var r_index := replaced_ui.get_index()
+#			var r_slots := equipment_slots[r_type].slots as Array[Item]
+#			var r_before := r_slots[r_index] as Item
+#			var d_index := dropped_ui.get_index()
+#			var d_slots := equipment_slots[d_type].slots as Array[Item]
+#			var d_before := d_slots[d_index] as Item
+#			r_slots[r_index] = d_before
+#			d_slots[d_index] = r_before
+#			dropped_ui.update_item_ui(r_before)
+#			replaced_ui.update_item_ui(d_before)

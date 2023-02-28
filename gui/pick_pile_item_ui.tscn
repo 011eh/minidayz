@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://cedqln17eotwh"]
+
+[ext_resource type="Texture2D" uid="uid://dpgmy5gfjginb" path="res://asset/images/gui/inventory/gui_pickpile_panel-sheet0.png" id="1_hee1h"]
+[ext_resource type="Script" path="res://gui/pick_pile_item_ui.gd" id="2_f1xw3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7txg"]
+line_spacing = -3.0
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_l0sb8"]
+line_spacing = 0.0
+font_size = 8
+
+[node name="PickPileItemUI" type="TextureRect"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 108.0
+offset_bottom = 33.0
+texture = ExtResource("1_hee1h")
+script = ExtResource("2_f1xw3")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 31.0
+expand_mode = 1
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.981
+anchor_bottom = 0.134
+offset_left = 31.0
+offset_right = 0.0519943
+offset_bottom = 20.578
+label_settings = SubResource("LabelSettings_x7txg")
+autowrap_mode = 3
+text_overrun_behavior = 2
+
+[node name="Info" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="NumberOrDurability" type="Label" parent="Info"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 10.0
+offset_right = 51.0
+offset_bottom = 22.0
+label_settings = SubResource("LabelSettings_x7txg")
+vertical_alignment = 1
+clip_text = true
+
+[node name="BulletNumber" type="Label" parent="Info"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_right = 1.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_l0sb8")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

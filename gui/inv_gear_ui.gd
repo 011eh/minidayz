@@ -3,11 +3,10 @@ extends 'res://gui/inventory_card.gd'
 class_name GearUI
 
 
-const ItemIcon := preload('res://gui/item_ui.tscn')
-const SlotTexture := preload('res://asset/images/gui/inventory/gui_inv_slot_shadow.png')
-const ItemUIContent := preload('res://gui/item_ui.tscn')
+const SLOT_TEXTURE := preload('res://asset/images/gui/inventory/gui_inv_slot_shadow.png')
 const GEAR_ICON_REGION := Rect2(0, 320, 32, 32)
 const DURABILITY_LABEL_OFFSET := 8
+const ItemUISence := preload('res://gui/item_ui.tscn')
 
 
 var atlas := AtlasTexture.new()
@@ -21,13 +20,14 @@ var slots := $Slots
 func _ready():
 	for i in range(max_slot_number):
 		var slot := TextureRect.new()
-		slot.texture = SlotTexture
+		slot.texture = SLOT_TEXTURE
 		slot.visible = false
 		slots.add_child(slot)
-		var item_ui := ItemUIContent.instantiate() as ItemUI
+		var item_ui := ItemUISence.instantiate() as ItemUI
 		item_ui.item_owner = self
 		item_ui.visible = false
 		item_ui.add_to_group('item_ui_group')
+		item_ui.equipment_type = equipment_type
 		$Items.add_child(item_ui)
 
 func update_gear_ui(gear: Gear) -> void:

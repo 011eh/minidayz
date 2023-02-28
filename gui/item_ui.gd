@@ -3,7 +3,7 @@ extends 'res://gui/inventory_card.gd'
 class_name ItemUI
 
 
-signal item_ui_dropped
+signal item_ui_placed
 
 
 const NUMBER_FORMAT = '%d'
@@ -12,7 +12,7 @@ const ATLAS_REGION := Rect2(0, 320, 32, 32)
 
 var item_id: int
 var has_data := true
-var item_owner: GearUI
+var item_owner
 @export
 var atlas_texture:= preload('res://asset/images/item/gui_slot_item.png')
 @export
@@ -29,7 +29,24 @@ var icon := $Icon
 var number_or_durability := $Info/NumberOrDurability
 
 
-var update_general_ui = func(item: Item, offset: int = 0) -> void:
+func _ready():
+	var atlas := AtlasTexture.new()
+	icon.texture = atlas
+	atlas.atlas = atlas_texture
+
+func update_item_ui(item: Item) -> void:
+	var valid := is_instance_valid(item)
+	item_id = item.get_instance_id() if valid else 0
+	if not valid:
+		change_ui_visible(false)
+		return
+	if item is Knife:
+		update_general_ui(item, 84)
+	else:
+		update_general_ui(item)
+	change_ui_visible(true)
+
+func update_general_ui(item: Item, offset: int = 0) -> void:
 	var index := item.resource.id + offset
 	icon.texture.region = Rect2(
 		(index + atlas_texture_id_offset) % column_number * icon_size.x,
@@ -45,24 +62,6 @@ var update_general_ui = func(item: Item, offset: int = 0) -> void:
 	number_or_durability.text = label_text
 	if item is RangedWeapon:
 		$Info/BulletNumber.text = NUMBER_FORMAT % item.get_bullet_number()
-
-
-func _ready():
-	var atlas := AtlasTexture.new()
-	icon.texture = atlas
-	atlas.atlas = atlas_texture
-
-func update_item_ui(item: Item) -> void:
-	var valid := is_instance_valid(item)
-	item_id = item.get_instance_id() if valid else 0
-	if not valid:
-		change_ui_visible(false)
-		return
-	if item is Knife:
-		update_general_ui.call(item, 84)
-	else:
-		update_general_ui.call(item)
-	change_ui_visible(true)
 
 func change_ui_visible(visible: bool) -> void:
 	has_data = visible
@@ -80,13 +79,10 @@ func _get_drag_data(at_position):
 
 func _can_drop_data(at_position, data):
 	var id := data.item_id as int
-	return is_instance_id_valid(id)\
-		and instance_from_id(id).get_script() in can_drop_item_list
+	return is_instance_id_valid(id) and instance_from_id(id).get_script() in can_drop_item_list
 
 func _drop_data(at_position, drop_ui):
-	var temp := instance_from_id(item_id) as Item
-	sync_to_slot(instance_from_id(drop_ui.item_id))
-	drop_ui.sync_to_slot(temp)
+	emit_signal('item_ui_placed', drop_ui.get_index(), drop_ui.equipment_type, get_index(), equipment_type)
 
 func sync_to_slot(item: Item) -> void:
 	item_owner.gear.slots[get_index()] = item
