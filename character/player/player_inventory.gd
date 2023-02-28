@@ -51,13 +51,13 @@ func pickup(area: Area2D) -> void:
 		return
 	pickup_area.set_deferred('monitoring', false)
 	owner.target_position = Vector2.ZERO
+	put_to_inventory(item)
 
+func put_to_inventory(item: Item):
 	if item.is_equipment():
 		var index := get_equipment_slot_index(item)
 		var item_in_equment_slot := equipment_slots[index]
-		if is_instance_valid(item_in_equment_slot):
-			item_in_equment_slot.position = owner.global_position
-			owner.get_parent().call_deferred('add_child', item_in_equment_slot)
+		drop_item(item_in_equment_slot)
 		equipment_slots[index] = item
 		item.get_parent().remove_child(item)
 		emit_signal('equipment_changed', index, item)
@@ -114,6 +114,11 @@ func get_equipment_slot_index(item: Item) -> int:
 	if item is Pistol:
 		return EQUIPMENT_TYPE.PISTOL
 	return EQUIPMENT_TYPE.MELEE_WEAPON
+
+func drop_item(item: Item) -> void:
+	if is_instance_valid(item):
+		item.position = owner.global_position
+		owner.get_parent().call_deferred('add_child', item)
 
 func update_inventory_ui() -> void:
 	for i in range(equipment_slots.size()):
