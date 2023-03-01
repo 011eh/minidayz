@@ -2,4 +2,4 @@ extends Control
 
 
 @export
-var equipment_type: PlayerInventory.EQUIPMENT_TYPE
+var equipment_type: PlayerInventory.EquipmentType

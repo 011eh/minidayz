@@ -10,7 +10,6 @@ const ItemUISence := preload('res://gui/item_ui.tscn')
 
 
 var atlas := AtlasTexture.new()
-var gear: Gear
 @export_range(1, 7)
 var max_slot_number: int
 @onready
@@ -24,14 +23,13 @@ func _ready():
 		slot.visible = false
 		slots.add_child(slot)
 		var item_ui := ItemUISence.instantiate() as ItemUI
-		item_ui.item_owner = self
 		item_ui.visible = false
 		item_ui.add_to_group('item_ui_group')
-		item_ui.equipment_type = equipment_type
+		item_ui.equipment_type = PlayerInventory.EquipmentType.SIMPLE_ITEM
+		item_ui.owning_gear_equipment_type = equipment_type
 		$Items.add_child(item_ui)
 
 func update_gear_ui(gear: Gear) -> void:
-	self.gear = gear
 	if not is_instance_valid(gear):
 		visible = false
 		return
@@ -59,3 +57,11 @@ func update_gear_ui(gear: Gear) -> void:
 			item_ui.visible = false
 			slot.visible = false
 	visible = true
+
+func _get_drag_data(at_position):
+	var icon := $Icon as TextureRect
+	if Rect2(icon.position, icon.size).has_point(at_position):
+		var rect := TextureRect.new()
+		rect.texture = $Icon.texture
+		set_drag_preview(rect)
+		return self

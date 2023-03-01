@@ -4,12 +4,11 @@ class_name ItemCardUI
 
 
 func update_item_ui(item: Item) -> void:
-	var valid := is_instance_valid(item)
-	item_id = item.get_instance_id() if valid else 0
-	if not valid:
+	if not is_instance_valid(item):
 		change_ui_visible(false)
 		return
-	if item is Gear and item.resource.type == GearResource.GearType.HELMET:
+	item_id = item.get_instance_id()
+	if item is Gear:
 		update_helmet_ui(item)
 	else:
 		update_general_ui(item)
@@ -24,5 +23,5 @@ func change_ui_visible(visible: bool) -> void:
 	has_data = visible
 	self.visible = visible
 
-func _can_drop_data(at_position, data):
+func _can_drop_data(at_position, ui):
 	return false

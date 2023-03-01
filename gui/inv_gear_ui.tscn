@@ -17,6 +17,8 @@ offset_left = 3.99698
 offset_top = 2.00603
 offset_right = 35.997
 offset_bottom = 34.0061
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Name" type="Label" parent="."]
 layout_mode = 1
@@ -53,6 +55,5 @@ layout_mode = 0
 offset_left = 4.94871
 offset_top = 34.0075
 offset_right = 102.949
-offset_bottom = 66.0075
-scale = Vector2(0.938, 0.938)
+offset_bottom = 64.0075
 theme_override_constants/separation = 1

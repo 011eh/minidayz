@@ -1,31 +1,55 @@
 extends TextureRect
 
 
-var equipment_slots: Array[Item]
-@onready
-var clothes_card := $Cards/ClothesCard
-@onready
-var pants_card := $Cards/PantsCard
-@onready
-var vest_card := $Cards/VestCard
-@onready
-var backpack_card := $Cards/BackpackCard
-@onready
-var helmet_card_card := $Cards/HelmetCard
-@onready
-var main_wepaon_card := $Cards/MainWeaponCard
-@onready
-var pistol_card := $Cards/PistolCard
-@onready
-var melee_weapon_card := $Cards/MeleeWeaponCard
-@onready
-var player_slot:= $Cards/PlayerSlot as GearUI
+signal item_dropped
+signal item_slotted
+signal equipment_changed
 
 
-func setup(equipment_slots: Array[Item]) -> void:
-	self.equipment_slots = equipment_slots
+const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
+const PickPileUI = preload('res://gui/pick_pile_item_ui.tscn')
+const GEAR_TYPES = [
+		PlayerInventory.EquipmentType.PLAYER_SLOT,
+		PlayerInventory.EquipmentType.CLOTHES,
+		PlayerInventory.EquipmentType.PANTS,
+		PlayerInventory.EquipmentType.VEST,
+		PlayerInventory.EquipmentType.BACKPACK,
+	]
+
+
+@onready
+var player_slot := $Cards/PlayerSlot as GearUI
+@onready
+var clothes_card :GearUI= $Cards/ClothesCard as GearUI
+@onready
+var pants_card := $Cards/PantsCard as GearUI
+@onready
+var vest_card := $Cards/VestCard as GearUI
+@onready
+var backpack_card := $Cards/BackpackCard as GearUI
+@onready
+var helmet_card_card := $Cards/HelmetCard as ItemCardUI
+@onready
+var main_wepaon_card := $Cards/MainWeaponCard as ItemCardUI
+@onready
+var pistol_card := $Cards/PistolCard as ItemCardUI
+@onready
+var melee_weapon_card := $Cards/MeleeWeaponCard as ItemCardUI
+@onready
+var pick_pile_item_ui := $ItemOnGround/PickPileItems
+@onready
+var equip_area := Rect2($EquipArea.get_global_rect())
+@onready
+var knife_equip_area := Rect2($Cards/MeleeWeaponCard.get_global_rect())
+
+
+func setup(inventory: PlayerInventory) -> void:
+	inventory.slot_item_changed.connect(update_inventory_ui)
+	item_dropped.connect(inventory.drop_item)
+	equipment_changed.connect(inventory.equip_item)
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
-		item_ui.item_ui_placed.connect(swap_item)
+		item_ui.pick_pile_item_slotted.connect(inventory.put_item_to_slot)
+		item_ui.item_index_changed.connect(inventory.swap_item)
 
 func _unhandled_input(event):
 	if event.is_action_pressed('open_inventory'):
@@ -33,46 +57,54 @@ func _unhandled_input(event):
 
 func update_inventory_ui(equipment_type: int, item: Item) -> void:
 	match equipment_type:
-		PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT:
+		EQUIPMENT_TYPE.PLAYER_SLOT:
 			player_slot.update_gear_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.CLOTHES:
+		EQUIPMENT_TYPE.CLOTHES:
 			clothes_card.update_gear_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.PANTS:
+		EQUIPMENT_TYPE.PANTS:
 			pants_card.update_gear_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.VEST:
+		EQUIPMENT_TYPE.VEST:
 			vest_card.update_gear_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.BACKPACK:
+		EQUIPMENT_TYPE.BACKPACK:
 			backpack_card.update_gear_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.HELMET:
+		EQUIPMENT_TYPE.HELMET:
 			helmet_card_card.update_item_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON:
+		EQUIPMENT_TYPE.MAIN_WEAPON:
 			main_wepaon_card.update_item_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.PISTOL:
+		EQUIPMENT_TYPE.PISTOL:
 			pistol_card.update_item_ui(item)
-		PlayerInventory.EQUIPMENT_TYPE.MELEE_WEAPON:
+		EQUIPMENT_TYPE.MELEE_WEAPON:
 			melee_weapon_card.update_item_ui(item)
 
-func swap_item(dropped_equipment: PlayerInventory.EQUIPMENT_TYPE,
-	dropped_item_index: int,
-	replaced_equipment: PlayerInventory.EQUIPMENT_TYPE,
-	replaced_index: int) ->void:
-	pass
-#	var d_type := replaced_ui.item_owner.equipment_type
-#	var r_type := replaced_ui.item_owner.equipment_type
-#
-#	match d_type:
-#		PlayerInventory.EQUIPMENT_TYPE.PLAYER_SLOT,\
-#		PlayerInventory.EQUIPMENT_TYPE.CLOTHES,\
-#		PlayerInventory.EQUIPMENT_TYPE.PANTS,\
-#		PlayerInventory.EQUIPMENT_TYPE.VEST,\
-#		PlayerInventory.EQUIPMENT_TYPE.BACKPACK:
-#			var r_index := replaced_ui.get_index()
-#			var r_slots := equipment_slots[r_type].slots as Array[Item]
-#			var r_before := r_slots[r_index] as Item
-#			var d_index := dropped_ui.get_index()
-#			var d_slots := equipment_slots[d_type].slots as Array[Item]
-#			var d_before := d_slots[d_index] as Item
-#			r_slots[r_index] = d_before
-#			d_slots[d_index] = r_before
-#			dropped_ui.update_item_ui(r_before)
-#			replaced_ui.update_item_ui(d_before)
+func update_pick_pile_ui(items: Array[Item]) -> void:
+	for item in items:
+		var ui := PickPileUI.instantiate()
+		pick_pile_item_ui.add_child(ui)
+		ui.update_item_ui(item)
+
+func _can_drop_data(at_position, ui):
+	return (ui is PickPileItemUI and ui.equipment_type != PlayerInventory.EquipmentType.SIMPLE_ITEM) \
+		or not equip_area.has_point(at_position) \
+		or not ui is GearUI and knife_equip_area.has_point(at_position) and instance_from_id(ui.item_id) is Knife
+
+func _drop_data(at_position, ui):
+	if ui is PickPileItemUI and ui.equipment_type != PlayerInventory.EquipmentType.SIMPLE_ITEM \
+		and equip_area.has_point(at_position):
+		emit_signal('equipment_changed',ui.equipment_type, ui.item_id)
+		return 
+	if knife_equip_area.has_point(at_position) and instance_from_id(ui.item_id) is Knife:
+		emit_signal('equipment_changed',EQUIPMENT_TYPE.MELEE_WEAPON, ui.item_id)
+		return
+	if not ui is PickPileItemUI:
+		var slot_index: int
+		var type: PlayerInventory.EquipmentType
+		if is_slot_item_ui(ui):
+			slot_index = ui.get_index()
+			type = ui.owning_gear_equipment_type
+		else:
+			slot_index = -1
+			type = ui.equipment_type
+		emit_signal('item_dropped', type, slot_index, true)
+
+func is_slot_item_ui(ui: Variant) -> bool:
+	return ui is ItemUI and ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM

@@ -3,16 +3,18 @@ extends 'res://gui/inventory_card.gd'
 class_name ItemUI
 
 
-signal item_ui_placed
+signal pick_pile_item_slotted
+signal item_index_changed
 
 
+const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
 const NUMBER_FORMAT = '%d'
-const ATLAS_REGION := Rect2(0, 320, 32, 32)
+const ATLAS_REGION = Rect2(0, 320, 32, 32)
 
 
 var item_id: int
 var has_data := true
-var item_owner
+var owning_gear_equipment_type: PlayerInventory.EquipmentType
 @export
 var atlas_texture:= preload('res://asset/images/item/gui_slot_item.png')
 @export
@@ -35,11 +37,10 @@ func _ready():
 	atlas.atlas = atlas_texture
 
 func update_item_ui(item: Item) -> void:
-	var valid := is_instance_valid(item)
-	item_id = item.get_instance_id() if valid else 0
-	if not valid:
+	if not is_instance_valid(item):
 		change_ui_visible(false)
 		return
+	item_id = item.get_instance_id()
 	if item is Knife:
 		update_general_ui(item, 84)
 	else:
@@ -73,17 +74,22 @@ func _get_drag_data(at_position):
 		var rect := TextureRect.new()
 		rect.texture = icon.texture
 		set_drag_preview(rect)
-		icon.visible = false
-		$Info.visible = false
+#		icon.visible = false
+#		$Info.visible = false
 		return self
 
-func _can_drop_data(at_position, data):
-	var id := data.item_id as int
-	return is_instance_id_valid(id) and instance_from_id(id).get_script() in can_drop_item_list
+func _can_drop_data(at_position, ui):
+	return ui is ItemUI \
+		and (ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
+		or ui.equipment_type == EQUIPMENT_TYPE.MELEE_WEAPON \
+		and not has_data
+		and instance_from_id(ui.item_id) is Knife)
 
-func _drop_data(at_position, drop_ui):
-	emit_signal('item_ui_placed', drop_ui.get_index(), drop_ui.equipment_type, get_index(), equipment_type)
-
-func sync_to_slot(item: Item) -> void:
-	item_owner.gear.slots[get_index()] = item
-	update_item_ui(item)
+func _drop_data(at_position, ui):
+	if ui is PickPileItemUI and not has_data:
+		emit_signal('pick_pile_item_slotted', owning_gear_equipment_type, get_index(), ui.item_id)
+	else:
+		var ui_type := ui.owning_gear_equipment_type if ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
+		else ui.equipment_type as EQUIPMENT_TYPE
+		var slot_index := ui.get_index() if not ui is ItemCardUI else -1 as int
+		emit_signal('item_index_changed', owning_gear_equipment_type, get_index(), ui_type, slot_index)
