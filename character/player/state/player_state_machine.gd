@@ -45,10 +45,10 @@ func set_state(state_name: String) -> void:
 
 func run() -> void:
 	current_state.run()
-	if is_instance_valid(inventory[PlayerInventory.EQUIPMENT_TYPE.MAIN_WEAPON])\
+	if is_instance_valid(inventory[PlayerInventory.EquipmentType.MAIN_WEAPON])\
 		and Input.is_action_just_pressed('with_rifle'):
 		switch_weapon(WeaponState.MAIN_WEAPON)
-	elif is_instance_valid(inventory[PlayerInventory.EQUIPMENT_TYPE.PISTOL])\
+	elif is_instance_valid(inventory[PlayerInventory.EquipmentType.PISTOL])\
 		and Input.is_action_just_pressed('with_pistol'):
 		switch_weapon(WeaponState.PISTOL)
 	elif Input.is_action_just_pressed('with_melee'):
