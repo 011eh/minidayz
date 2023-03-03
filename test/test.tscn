@@ -1,14 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://btpijdybpwiuv"]
+[gd_scene load_steps=7 format=3 uid="uid://btpijdybpwiuv"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_ekwsy"]
-[ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="2_pnydb"]
+[ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="2_ly2pt"]
+[ext_resource type="Script" path="res://character/player/inventory.gd" id="3_clmj2"]
+[ext_resource type="Script" path="res://character/player/item_pick.gd" id="4_my7su"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4r1fq"]
+radius = 31.0
+height = 88.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fm7tp"]
+radius = 4.0
+height = 12.0
 
 [node name="Test" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 112.0
-offset_bottom = 71.0
 script = ExtResource("1_ekwsy")
 
-[node name="InventoryUI" parent="." instance=ExtResource("2_pnydb")]
+[node name="InventoryUI" parent="." instance=ExtResource("2_ly2pt")]
 layout_mode = 0
+
+[node name="Inventory" type="Node2D" parent="."]
+script = ExtResource("3_clmj2")
+
+[node name="DetectionArea" type="Area2D" parent="Inventory"]
+collision_layer = 0
+monitorable = false
+script = ExtResource("4_my7su")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inventory/DetectionArea"]
+position = Vector2(0, -5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4r1fq")
+
+[node name="Timer" type="Timer" parent="Inventory/DetectionArea"]
+wait_time = 0.2
+
+[node name="PickupArea" type="Area2D" parent="Inventory"]
+collision_layer = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/PickupArea"]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fm7tp")
