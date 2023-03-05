@@ -77,10 +77,10 @@ script = ExtResource("2_oohwf")
 
 [node name="EquipArea" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 124.0
-offset_top = 4.0
-offset_right = 351.0
-offset_bottom = 271.0
+offset_left = 122.0
+offset_top = 1.0
+offset_right = 355.0
+offset_bottom = 274.0
 
 [node name="Icons" type="Control" parent="."]
 layout_mode = 2

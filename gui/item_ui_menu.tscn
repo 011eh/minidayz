@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://fnar7n70jx5f"]
+
+[ext_resource type="Texture2D" uid="uid://fbqhtcq1eued" path="res://asset/images/gui/inventory/item_menu_title.png" id="1_7gdi8"]
+[ext_resource type="Texture2D" uid="uid://bfmvw3omni2rc" path="res://asset/images/gui/inventory/item_menu_option.png" id="2_cyyb0"]
+[ext_resource type="Script" path="res://gui/item_ui_menu.gd" id="2_pgj40"]
+
+[node name="ItemUIMenu" type="TextureRect"]
+offset_right = 122.0
+offset_bottom = 13.0
+texture = ExtResource("1_7gdi8")
+script = ExtResource("2_pgj40")
+
+[node name="Options" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 19.0
+offset_right = 122.0
+offset_bottom = 45.0
+theme_override_constants/separation = -1
+
+[node name="TextureButton" type="TextureButton" parent="Options"]
+layout_mode = 2
+texture_normal = ExtResource("2_cyyb0")

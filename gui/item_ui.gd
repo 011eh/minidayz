@@ -79,17 +79,22 @@ func _get_drag_data(at_position):
 		return self
 
 func _can_drop_data(at_position, ui):
-	return ui is ItemUI \
-		and (ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
-		or ui.equipment_type == EQUIPMENT_TYPE.MELEE_WEAPON \
-		and not has_data
-		and instance_from_id(ui.item_id) is Knife)
+	if ui is PickPileItemUI:
+		return not has_data and ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM
+	else:
+		return ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM or not has_data \
+			and ui.equipment_type == EQUIPMENT_TYPE.MELEE_WEAPON \
+			and instance_from_id(ui.item_id) is Knife
 
 func _drop_data(at_position, ui):
-	if ui is PickPileItemUI and not has_data:
+	if ui is PickPileItemUI:
 		emit_signal('pick_pile_item_slotted', owning_gear_equipment_type, get_index(), ui.item_id)
-	else:
+	elif ui != self:
 		var ui_type := ui.owning_gear_equipment_type if ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
 		else ui.equipment_type as EQUIPMENT_TYPE
 		var slot_index := ui.get_index() if not ui is ItemCardUI else -1 as int
 		emit_signal('item_index_changed', owning_gear_equipment_type, get_index(), ui_type, slot_index)
+
+func _gui_input(event):
+	if  has_data and event.is_action_pressed('open_item_menu') and not self is PickPileItemUI:
+		print(name, ' ', event.get_instance_id())

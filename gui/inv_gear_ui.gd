@@ -3,11 +3,11 @@ extends 'res://gui/inventory_card.gd'
 class_name GearUI
 
 
-const SLOT_TEXTURE := preload('res://asset/images/gui/inventory/gui_inv_slot_shadow.png')
-const GEAR_ICON_REGION := Rect2(0, 320, 32, 32)
-const DURABILITY_LABEL_OFFSET := 8
-const ItemUISence := preload('res://gui/item_ui.tscn')
-
+const SLOT_TEXTURE = preload('res://asset/images/gui/inventory/gui_inv_slot_shadow.png')
+const GEAR_ICON_REGION = Rect2(0, 320, 32, 32)
+const DURABILITY_LABEL_OFFSET = 8
+const ItemUISence = preload('res://gui/item_ui.tscn')
+const DURABILITY_Y = 14
 
 var atlas := AtlasTexture.new()
 @export_range(1, 7)
@@ -39,11 +39,10 @@ func update_gear_ui(gear: Gear) -> void:
 	atlas.region = GEAR_ICON_REGION
 	$Icon.texture = atlas
 	var name := $Name
-	var durability := $Durability
+	var durability := $Durability as Label
 	name.text = resource.item_name
 	durability.text = '%.0f%%' % gear.durability
-	if name.get_line_count() > 1:
-		durability.offset_top += DURABILITY_LABEL_OFFSET
+	durability.position.y = DURABILITY_Y if not name.get_line_count() > 1 else DURABILITY_Y + DURABILITY_LABEL_OFFSET
 
 	for i in range(max_slot_number):
 		var slot := $Slots.get_child(i)

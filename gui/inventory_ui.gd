@@ -18,9 +18,11 @@ const GEAR_TYPES = [
 
 
 @onready
+var item_menu := preload('res://gui/item_ui_menu.tscn').instantiate()
+@onready
 var player_slot := $Cards/PlayerSlot as GearUI
 @onready
-var clothes_card :GearUI= $Cards/ClothesCard as GearUI
+var clothes_card := $Cards/ClothesCard as GearUI
 @onready
 var pants_card := $Cards/PantsCard as GearUI
 @onready
@@ -40,16 +42,18 @@ var pick_pile_item_ui := $ItemOnGround/PickPileItems
 @onready
 var equip_area := Rect2($EquipArea.get_global_rect())
 @onready
-var knife_equip_area := Rect2($Cards/MeleeWeaponCard.get_global_rect())
-
+var knife_equip_area := Rect2(melee_weapon_card.get_global_rect())
 
 func setup(inventory: PlayerInventory) -> void:
-	inventory.slot_item_changed.connect(update_inventory_ui)
 	item_dropped.connect(inventory.drop_item)
 	equipment_changed.connect(inventory.equip_item)
+	inventory.slot_item_changed.connect(update_inventory_ui)
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
 		item_ui.pick_pile_item_slotted.connect(inventory.put_item_to_slot)
 		item_ui.item_index_changed.connect(inventory.swap_item)
+	
+	item_menu.visible = false
+	add_child(item_menu)
 
 func _unhandled_input(event):
 	if event.is_action_pressed('open_inventory'):
@@ -93,7 +97,7 @@ func _drop_data(at_position, ui):
 		emit_signal('equipment_changed',ui.equipment_type, ui.item_id)
 		return 
 	if knife_equip_area.has_point(at_position) and instance_from_id(ui.item_id) is Knife:
-		emit_signal('equipment_changed',EQUIPMENT_TYPE.MELEE_WEAPON, ui.item_id)
+		print('刀具处理')
 		return
 	if not ui is PickPileItemUI:
 		var slot_index: int
@@ -108,3 +112,7 @@ func _drop_data(at_position, ui):
 
 func is_slot_item_ui(ui: Variant) -> bool:
 	return ui is ItemUI and ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM
+
+func _gui_input(event):
+	if event.is_action_pressed('open_item_menu'):
+		print(name, ' ', event.get_instance_id())
