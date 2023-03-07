@@ -5,6 +5,7 @@ class_name ItemUI
 
 signal pick_pile_item_slotted
 signal item_index_changed
+signal item_clicked
 
 
 const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
@@ -88,13 +89,14 @@ func _can_drop_data(at_position, ui):
 
 func _drop_data(at_position, ui):
 	if ui is PickPileItemUI:
-		emit_signal('pick_pile_item_slotted', owning_gear_equipment_type, get_index(), ui.item_id)
+		pick_pile_item_slotted.emit( owning_gear_equipment_type, get_index(), ui.item_id)
 	elif ui != self:
 		var ui_type := ui.owning_gear_equipment_type if ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
 		else ui.equipment_type as EQUIPMENT_TYPE
 		var slot_index := ui.get_index() if not ui is ItemCardUI else -1 as int
-		emit_signal('item_index_changed', owning_gear_equipment_type, get_index(), ui_type, slot_index)
+		item_index_changed.emit( owning_gear_equipment_type, get_index(), ui_type, slot_index)
 
 func _gui_input(event):
-	if  has_data and event.is_action_pressed('open_item_menu') and not self is PickPileItemUI:
-		print(name, ' ', event.get_instance_id())
+	if  has_data and event.is_action_pressed('toggle_item_menu') and not self is PickPileItemUI:
+		item_clicked.emit(get_instance_id(), item_id, get_global_mouse_position())
+		accept_event()

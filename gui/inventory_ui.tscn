@@ -76,6 +76,7 @@ stretch_mode = 2
 script = ExtResource("2_oohwf")
 
 [node name="EquipArea" type="Control" parent="."]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 122.0
 offset_top = 1.0
@@ -185,6 +186,7 @@ offset_bottom = 270.0
 mouse_filter = 1
 
 [node name="PlayerSlot" parent="Cards" instance=ExtResource("4_06f47")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 117.0
 offset_top = 88.0
@@ -211,6 +213,7 @@ offset_right = 30.0
 offset_bottom = 30.0
 
 [node name="ClothesCard" parent="Cards" instance=ExtResource("4_06f47")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 72.0
@@ -221,6 +224,7 @@ max_slot_number = 3
 equipment_type = 1
 
 [node name="PantsCard" parent="Cards" instance=ExtResource("4_06f47")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 137.0
@@ -231,6 +235,7 @@ max_slot_number = 3
 equipment_type = 2
 
 [node name="VestCard" parent="Cards" instance=ExtResource("4_06f47")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 5.0
@@ -241,6 +246,7 @@ max_slot_number = 3
 equipment_type = 4
 
 [node name="BackpackCard" parent="Cards" instance=ExtResource("4_06f47")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 2.0
 offset_top = 202.0
@@ -250,7 +256,8 @@ texture = SubResource("AtlasTexture_ad1hj")
 max_slot_number = 7
 equipment_type = 5
 
-[node name="HelmetCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="HelmetCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 100.0
 offset_top = 5.0
@@ -276,7 +283,8 @@ offset_bottom = -2.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="MeleeWeaponCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="MeleeWeaponCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 100.0
 offset_top = 137.0
@@ -298,7 +306,8 @@ offset_bottom = -2.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="PistolCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="PistolCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 167.0
 offset_top = 3.0
@@ -342,7 +351,8 @@ offset_top = -5.5
 offset_right = -4.0
 offset_bottom = 6.5
 
-[node name="MainWeaponCard" parent="Cards" instance=ExtResource("6_ylots")]
+[node name="MainWeaponCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 168.0
 offset_top = 59.0
@@ -394,6 +404,7 @@ horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
 [node name="PickPileItems" type="VBoxContainer" parent="ItemOnGround"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0

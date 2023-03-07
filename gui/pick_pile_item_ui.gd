@@ -32,7 +32,7 @@ func update_item_ui(item: Item) -> void:
 		number_or_durability.position.y += LABEL_OFFSET
 	super.update_item_ui(item)
 
-func get_equipment_type(item: Item) -> int:
+func get_equipment_type(item: Item) -> PlayerInventory.EquipmentType:
 	if item is Gear:
 		return item.resource.type
 	if item is MainWeapon:

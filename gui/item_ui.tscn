@@ -16,6 +16,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 30.0
 offset_bottom = 30.0
+mouse_filter = 1
 script = ExtResource("1_ly8wf")
 
 [node name="Icon" type="TextureRect" parent="."]
@@ -26,8 +27,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Info" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 12
+layout_mode = 0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,8 +38,7 @@ mouse_filter = 1
 color = Color(0, 0, 0, 0.207843)
 
 [node name="NumberOrDurability" type="Label" parent="Info"]
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -50,8 +49,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="BulletNumber" type="Label" parent="Info"]
-layout_mode = 1
-anchors_preset = 6
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0

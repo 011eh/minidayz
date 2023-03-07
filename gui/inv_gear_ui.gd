@@ -50,7 +50,6 @@ func update_gear_ui(gear: Gear) -> void:
 		if i < resource.slot_number:
 			slot.visible = true
 			item_ui.visible = true
-			var item := gear.slots[i] as Item
 			item_ui.update_item_ui(gear.slots[i])
 		else:
 			item_ui.visible = false
