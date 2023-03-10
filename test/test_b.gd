@@ -44,8 +44,7 @@ signal test
 #	print_info()
 
 func _gui_input(event):
-	if event.is_action_pressed('open_item_menu'):
-		print_info()
-
+	print('event global_position: ', event.global_position)
+	print('canvasItem get_global_mouse_position: ', get_global_mouse_position())
 func print_info():
 	print(name, ' ', get_stack()[1]['function'])

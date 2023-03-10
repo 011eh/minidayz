@@ -1,29 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://btpijdybpwiuv"]
+[gd_scene load_steps=2 format=3 uid="uid://btpijdybpwiuv"]
 
-[ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="2_5xdem"]
-[ext_resource type="Script" path="res://test/test_b.gd" id="2_ly5gx"]
-[ext_resource type="PackedScene" uid="uid://cyye1q4c7bg6x" path="res://gui/item_ui.tscn" id="3_ecybt"]
-[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="4_wjm38"]
+[ext_resource type="Script" path="res://test/test.gd" id="1_om7j8"]
 
-[node name="A" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 120.0
-offset_top = 69.0
-offset_right = 322.0
-offset_bottom = 175.0
-script = ExtResource("2_ly5gx")
-
-[node name="InventoryUI" parent="." instance=ExtResource("2_5xdem")]
-layout_mode = 0
-
-[node name="ItemUI" parent="InventoryUI" instance=ExtResource("3_ecybt")]
-offset_left = 86.0
-offset_top = 31.0
-offset_right = 116.0
-offset_bottom = 61.0
-
-[node name="Icon" parent="InventoryUI/ItemUI" index="0"]
-texture = ExtResource("4_wjm38")
-
-[editable path="InventoryUI/ItemUI"]
+[node name="Test" type="Node2D"]
+script = ExtResource("1_om7j8")
