@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdhqi2jjctohy"]
+
+[ext_resource type="PackedScene" uid="uid://b0cxyvtmu0pmo" path="res://gui/dialog/dialog.tscn" id="1_m1uw1"]
+[ext_resource type="Script" path="res://gui/dialog/split_item_dialog.gd" id="2_aenoh"]
+[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_kg1l0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6x7r"]
+atlas = ExtResource("2_kg1l0")
+
+[node name="Dialog" instance=ExtResource("1_m1uw1")]
+offset_right = 140.0
+offset_bottom = 175.0
+script = ExtResource("2_aenoh")
+
+[node name="DialogText" parent="." index="0"]
+offset_left = -37.0
+offset_right = 37.0
+offset_bottom = 33.0
+text = "Split Item"
+
+[node name="Button" parent="." index="1"]
+offset_top = -37.0
+offset_bottom = -18.0
+
+[node name="ButtonLabel" parent="Button" index="0"]
+text = "Split"
+
+[node name="SpinBox" type="SpinBox" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.5313
+offset_top = -70.0
+offset_right = 41.5313
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ItemIcon" type="TextureRect" parent="." index="3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -55.0
+offset_right = 35.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_o6x7r")
+expand_mode = 1
+stretch_mode = 4
