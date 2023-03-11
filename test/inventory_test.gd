@@ -6,7 +6,7 @@ signal test
 
 var equipment_slots: Array[Item]
 @onready
-var inventory_ui := $InventoryUI
+var inventory_ui := $CanvasLayer/Control/InventoryUI
 @onready
 var inventory := $Inventory as PlayerInventory
 

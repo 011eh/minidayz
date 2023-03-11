@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://btpijdybpwiuv"]
+[gd_scene load_steps=3 format=3 uid="uid://btpijdybpwiuv"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_om7j8"]
+[ext_resource type="PackedScene" uid="uid://diwjucd62rja3" path="res://gui/dialog/dialog_background.tscn" id="2_37pmm"]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_om7j8")
+
+[node name="NinePatchRect" parent="." instance=ExtResource("2_37pmm")]
+layout_mode = 0

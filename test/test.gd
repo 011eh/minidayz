@@ -1,14 +1,9 @@
-extends Node2D
+extends Node
 
 var o:=[]
 
 func _ready():
-	pass
+	$NinePatchRect/Panel.set_button_action(print33.bind(3))
 
-func _unhandled_input(event):
-	if event.is_action_pressed('move_left'):
-		for i in range(100):
-			o.append(Label.new())
-	if event.is_action_pressed('move_right'):
-		for i in o:
-			i.queue_free()
+func print33(n):
+	print(n)
