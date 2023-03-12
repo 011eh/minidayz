@@ -1,28 +1,35 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvwcuqqutjq4r"]
 
 [ext_resource type="Script" path="res://test/pick_test.gd" id="1_mtblv"]
-[ext_resource type="PackedScene" uid="uid://dcw2u1wjgyjt7" path="res://character/player/player.tscn" id="2_chdy4"]
-[ext_resource type="PackedScene" uid="uid://c00ecivngyaml" path="res://gui/inventory_ui.tscn" id="3_0pq3o"]
+[ext_resource type="PackedScene" path="res://character/player/player.tscn" id="2_chdy4"]
+[ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="3_0pq3o"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_mtblv")
 
 [node name="Player" parent="." instance=ExtResource("2_chdy4")]
+position = Vector2(37, 34)
 
-[node name="ItemPosition" type="Marker2D" parent="."]
+[node name="NumberItem" type="Marker2D" parent="."]
 position = Vector2(24, 32)
 
-[node name="EquipmentPosition" type="Marker2D" parent="."]
+[node name="Craft" type="Marker2D" parent="."]
 position = Vector2(24, 48)
 
-[node name="Pistol" type="Marker2D" parent="."]
-position = Vector2(24, 69)
+[node name="Gear" type="Marker2D" parent="."]
+position = Vector2(24, 64)
 
-[node name="MainWeapon" type="Marker2D" parent="."]
-position = Vector2(24, 92)
+[node name="Knife" type="Marker2D" parent="."]
+position = Vector2(24, 80)
 
 [node name="MeleeWeapon" type="Marker2D" parent="."]
-position = Vector2(24, 116)
+position = Vector2(24, 96)
+
+[node name="Pistol" type="Marker2D" parent="."]
+position = Vector2(24, 112)
+
+[node name="MainWeapon" type="Marker2D" parent="."]
+position = Vector2(24, 128)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

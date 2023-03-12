@@ -45,25 +45,4 @@ shape = SubResource("CapsuleShape2D_fm7tp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InventoryUI" parent="CanvasLayer/Control" instance=ExtResource("2_gkbq1")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -181.0
-offset_top = -141.5
-offset_right = 332.0
-offset_bottom = 277.5
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 0
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("2_gkbq1")]

@@ -1,9 +1,8 @@
-extends Node
+extends Control
 
-var o:=[]
 
 func _ready():
-	$NinePatchRect/Panel.set_button_action(print33.bind(3))
+	pass
 
-func print33(n):
-	print(n)
+func _gui_input(event):
+	print(Rect2($Control/ColorRect.get_rect()).has_point(event.position))

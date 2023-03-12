@@ -2,39 +2,42 @@ extends Node2D
 
 func _ready():
 	var inventory_ui := $CanvasLayer/InventoryUI
-	$Player/Inventory.slot_item_changed.connect(inventory_ui.update_inventory_ui)
+	inventory_ui.setup($Player/Inventory)
 	
-	var item: Item
-	for i in range(200):
-		item = ItemCreator.create_random(NumberItem)
-		$ItemPosition.position.x += 20
-		item.position = $ItemPosition.position
+	for item in ItemCreator.create_all(NumberItem):
+		$NumberItem.position.x += 25
+		item.position = $NumberItem.position
 		add_child(item)
 	
-	var equip: Item
-	for i in range(20):
-		equip = ItemCreator.create_random(Gear)
-		$EquipmentPosition.position.x += 20
-		equip.position = $EquipmentPosition.position
-		add_child(equip)
+	for item in ItemCreator.create_all(Craft):
+		$Craft.position.x += 25
+		item.position = $Craft.position
+		add_child(item)
 	
-	for i in range(20):
-		equip = ItemCreator.create_random(Pistol)
-		$Pistol.position.x += 20
-		equip.position = $Pistol.position
-		add_child(equip)
+	for item in ItemCreator.create_all(Gear):
+		$Gear.position.x += 25
+		item.position = $Gear.position
+		add_child(item)
 	
-	for i in range(20):
-		equip = ItemCreator.create_random(MainWeapon)
-		$MainWeapon.position.x += 20
-		equip.position = $MainWeapon.position
-		add_child(equip)
+	for item in ItemCreator.create_all(Knife):
+		$Knife.position.x += 25
+		item.position = $Knife.position
+		add_child(item)
 	
-	for i in range(20):
-		equip = ItemCreator.create_random(MeleeWeapon)
-		$MeleeWeapon.position.x += 20
-		equip.position = $MeleeWeapon.position
-		add_child(equip)
+	for item in ItemCreator.create_all(MeleeWeapon):
+		$MeleeWeapon.position.x += 25
+		item.position = $MeleeWeapon.position
+		add_child(item)
+	
+	for item in ItemCreator.create_all(Pistol):
+		$Pistol.position.x += 25
+		item.position = $Pistol.position
+		add_child(item)
+	
+	for item in ItemCreator.create_all(MainWeapon):
+		$MainWeapon.position.x += 25
+		item.position = $MainWeapon.position
+		add_child(item)
 
 func stack_test():
 	var item: Item

@@ -6,7 +6,7 @@ signal test
 
 var equipment_slots: Array[Item]
 @onready
-var inventory_ui := $CanvasLayer/Control/InventoryUI
+var inventory_ui := $CanvasLayer/InventoryUI
 @onready
 var inventory := $Inventory as PlayerInventory
 
@@ -24,7 +24,6 @@ func ui_test():
 	set_item(PlayerInventory.EquipmentType.CLOTHES)
 	set_item(PlayerInventory.EquipmentType.PANTS)
 	set_item(PlayerInventory.EquipmentType.HELMET)
-	set_item(PlayerInventory.EquipmentType.VEST)
 	set_item(PlayerInventory.EquipmentType.BACKPACK)
 	set_item(PlayerInventory.EquipmentType.MAIN_WEAPON)
 	set_item(PlayerInventory.EquipmentType.PISTOL)
