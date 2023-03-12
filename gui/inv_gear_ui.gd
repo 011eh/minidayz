@@ -58,7 +58,8 @@ func update_gear_ui(gear: Gear) -> void:
 
 func _get_drag_data(at_position):
 	var icon := $Icon as TextureRect
-	if Rect2(icon.position, icon.size).has_point(at_position):
+	if equipment_type != PlayerInventory.EquipmentType.PLAYER_SLOT and \
+		Rect2(icon.position, icon.size).has_point(at_position):
 		var rect := TextureRect.new()
 		rect.texture = $Icon.texture
 		set_drag_preview(rect)

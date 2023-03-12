@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dai086rmd3g3s"]
+[gd_scene load_steps=28 format=3 uid="uid://dai086rmd3g3s"]
 
 [ext_resource type="Texture2D" uid="uid://dvil1ok7epdck" path="res://asset/images/gui/inventory/gui_inventory_background.png" id="1_2f75n"]
 [ext_resource type="Script" path="res://gui/inventory_ui.gd" id="2_oohwf"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://item/pistol.gd" id="11_vsdny"]
 [ext_resource type="Texture2D" uid="uid://bb5h2ev7gk3ua" path="res://asset/images/equipment/weapon/main/gui_main_weapon.png" id="12_um7jk"]
 [ext_resource type="Script" path="res://item/main_weapon.gd" id="13_780d3"]
+[ext_resource type="PackedScene" uid="uid://cdhqi2jjctohy" path="res://gui/dialog/split_item_dialog.tscn" id="13_bepnh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqu7u"]
 atlas = ExtResource("3_48v0v")
@@ -68,26 +69,43 @@ region = Rect2(62, 132, 62, 55)
 atlas = SubResource("CompressedTexture2D_bgpf6")
 region = Rect2(0, 66, 60, 143)
 
-[node name="InventoryUI" type="TextureRect"]
-offset_right = 513.0
-offset_bottom = 419.0
-texture = ExtResource("1_2f75n")
-stretch_mode = 2
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_oohwf")
 
-[node name="EquipArea" type="Control" parent="."]
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -181.0
+offset_top = -141.0
+offset_right = 181.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2f75n")
+
+[node name="EquipArea" type="Control" parent="Panel"]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 122.0
-offset_top = 1.0
+offset_top = 0.5
 offset_right = 355.0
-offset_bottom = 274.0
+offset_bottom = 273.5
 
-[node name="Icons" type="Control" parent="."]
+[node name="Icons" type="Control" parent="Panel"]
 layout_mode = 2
 anchors_preset = 0
 
-[node name="ClothesBgIcon" type="TextureRect" parent="Icons"]
+[node name="ClothesBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 149.0
@@ -98,7 +116,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_qqu7u")
 
-[node name="PantsBgIcon" type="TextureRect" parent="Icons"]
+[node name="PantsBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 149.0
@@ -109,7 +127,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_a3cpn")
 
-[node name="HelmetBgIcon" type="TextureRect" parent="Icons"]
+[node name="HelmetBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 235.0
@@ -120,7 +138,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_smpb1")
 
-[node name="VestBgIcon" type="TextureRect" parent="Icons"]
+[node name="VestBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 150.0
@@ -131,7 +149,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_i5uxh")
 
-[node name="BackpackBgIcon" type="TextureRect" parent="Icons"]
+[node name="BackpackBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 214.0
@@ -142,7 +160,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_37get")
 
-[node name="MainWeaponBgIcon" type="TextureRect" parent="Icons"]
+[node name="MainWeaponBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 offset_left = 299.0
 offset_top = 196.0
@@ -152,7 +170,7 @@ rotation = -1.5708
 texture = SubResource("AtlasTexture_a4l3f")
 expand_mode = 1
 
-[node name="PistolBgIcon" type="TextureRect" parent="Icons"]
+[node name="PistolBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 301.0
@@ -164,7 +182,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_ttmnv")
 expand_mode = 1
 
-[node name="MeleeWeaponBgIcon" type="TextureRect" parent="Icons"]
+[node name="MeleeWeaponBgIcon" type="TextureRect" parent="Panel/Icons"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 236.0
@@ -176,120 +194,127 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_e6kn2")
 expand_mode = 1
 
-[node name="Cards" type="Control" parent="."]
+[node name="Cards" type="Control" parent="Panel"]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 122.0
-offset_top = 3.0
+offset_top = 1.0
 offset_right = 352.0
 offset_bottom = 270.0
 mouse_filter = 1
 
-[node name="PlayerSlot" parent="Cards" instance=ExtResource("4_06f47")]
+[node name="PlayerSlot" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 117.0
-offset_top = 88.0
+offset_top = 90.0
 offset_right = 147.0
-offset_bottom = 118.0
+offset_bottom = 120.0
 max_slot_number = 1
 
-[node name="Icon" parent="Cards/PlayerSlot" index="0"]
+[node name="Icon" parent="Panel/Cards/PlayerSlot" index="0"]
 visible = false
 
-[node name="Name" parent="Cards/PlayerSlot" index="1"]
+[node name="Name" parent="Panel/Cards/PlayerSlot" index="1"]
 visible = false
 
-[node name="Durability" parent="Cards/PlayerSlot" index="2"]
+[node name="Durability" parent="Panel/Cards/PlayerSlot" index="2"]
 visible = false
 
-[node name="Slots" parent="Cards/PlayerSlot" index="3"]
+[node name="Slots" parent="Panel/Cards/PlayerSlot" index="3"]
 visible = false
 
-[node name="Items" parent="Cards/PlayerSlot" index="4"]
+[node name="Items" parent="Panel/Cards/PlayerSlot" index="4"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 30.0
 offset_bottom = 30.0
 
-[node name="ClothesCard" parent="Cards" instance=ExtResource("4_06f47")]
+[node name="ClothesCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 72.0
+offset_top = 74.0
 offset_right = 99.0
-offset_bottom = 137.0
+offset_bottom = 139.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 equipment_type = 1
 
-[node name="PantsCard" parent="Cards" instance=ExtResource("4_06f47")]
+[node name="PantsCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 137.0
+offset_top = 139.0
 offset_right = 99.0
-offset_bottom = 202.0
+offset_bottom = 204.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 equipment_type = 2
 
-[node name="VestCard" parent="Cards" instance=ExtResource("4_06f47")]
+[node name="VestCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 5.0
+offset_top = 7.0
 offset_right = 99.0
-offset_bottom = 70.0
+offset_bottom = 72.0
 texture = SubResource("AtlasTexture_wgb8t")
 max_slot_number = 3
 equipment_type = 4
 
-[node name="BackpackCard" parent="Cards" instance=ExtResource("4_06f47")]
+[node name="BackpackCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 2.0
-offset_top = 202.0
+offset_top = 204.0
 offset_right = 229.0
-offset_bottom = 268.0
+offset_bottom = 270.0
 texture = SubResource("AtlasTexture_ad1hj")
 max_slot_number = 7
 equipment_type = 5
 
-[node name="HelmetCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+[node name="HelmetCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 100.0
-offset_top = 5.0
+offset_top = 7.0
 offset_right = 165.0
-offset_bottom = 69.0
+offset_bottom = 71.0
 texture = SubResource("AtlasTexture_6tr5p")
 column_number = 4
 can_drop_item_list = Array[GDScript]([])
 equipment_type = 3
 
-[node name="Icon" parent="Cards/HelmetCard" index="0"]
+[node name="Icon" parent="Panel/Cards/HelmetCard" index="0"]
 offset_left = -16.5
 offset_top = -23.0
 offset_right = 15.5
 offset_bottom = 9.0
 
-[node name="Info" parent="Cards/HelmetCard" index="1"]
+[node name="Info" parent="Panel/Cards/HelmetCard" index="1"]
 offset_top = -20.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="NumberOrDurability" parent="Cards/HelmetCard/Info" index="0"]
+[node name="NumberOrDurability" parent="Panel/Cards/HelmetCard/Info" index="0"]
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="MeleeWeaponCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+[node name="MeleeWeaponCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 100.0
-offset_top = 137.0
+offset_top = 139.0
 offset_right = 165.0
-offset_bottom = 201.0
+offset_bottom = 203.0
 texture = SubResource("AtlasTexture_6tr5p")
 atlas_texture = ExtResource("7_umora")
 column_number = 7
@@ -297,22 +322,23 @@ icon_size = Vector2(44, 44)
 can_drop_item_list = Array[GDScript]([ExtResource("8_y4pxd"), ExtResource("9_ssm47")])
 equipment_type = 8
 
-[node name="Info" parent="Cards/MeleeWeaponCard" index="1"]
+[node name="Info" parent="Panel/Cards/MeleeWeaponCard" index="1"]
 offset_top = -20.0
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="NumberOrDurability" parent="Cards/MeleeWeaponCard/Info" index="0"]
+[node name="NumberOrDurability" parent="Panel/Cards/MeleeWeaponCard/Info" index="0"]
 offset_right = -2.0
 offset_bottom = -2.0
 
-[node name="PistolCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+[node name="PistolCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 167.0
-offset_top = 3.0
+offset_top = 5.0
 offset_right = 229.0
-offset_bottom = 58.0
+offset_bottom = 60.0
 texture = SubResource("AtlasTexture_ap3ss")
 atlas_texture = ExtResource("10_0hhn8")
 atlas_texture_id_offset = -25
@@ -321,7 +347,7 @@ icon_size = Vector2(82, 82)
 can_drop_item_list = Array[GDScript]([ExtResource("11_vsdny")])
 equipment_type = 7
 
-[node name="Icon" parent="Cards/PistolCard" index="0"]
+[node name="Icon" parent="Panel/Cards/PistolCard" index="0"]
 offset_left = -28.0
 offset_top = -27.5
 offset_right = 28.0
@@ -329,12 +355,12 @@ offset_bottom = 28.5
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Info" parent="Cards/PistolCard" index="1"]
+[node name="Info" parent="Panel/Cards/PistolCard" index="1"]
 offset_top = -20.0
 offset_right = -1.0
 offset_bottom = -1.0
 
-[node name="NumberOrDurability" parent="Cards/PistolCard/Info" index="0"]
+[node name="NumberOrDurability" parent="Panel/Cards/PistolCard/Info" index="0"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
@@ -345,26 +371,27 @@ offset_right = 29.0
 offset_bottom = 6.5
 grow_horizontal = 1
 
-[node name="BulletNumber" parent="Cards/PistolCard/Info" index="1"]
+[node name="BulletNumber" parent="Panel/Cards/PistolCard/Info" index="1"]
 offset_left = -24.0
 offset_top = -5.5
 offset_right = -4.0
 offset_bottom = 6.5
 
-[node name="MainWeaponCard" parent="Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
+[node name="MainWeaponCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 168.0
-offset_top = 59.0
+offset_top = 61.0
 offset_right = 228.0
-offset_bottom = 202.0
+offset_bottom = 204.0
 texture = SubResource("AtlasTexture_sjj1a")
 atlas_texture = ExtResource("12_um7jk")
 icon_size = Vector2(68, 185)
 can_drop_item_list = Array[GDScript]([ExtResource("13_780d3")])
 equipment_type = 6
 
-[node name="Icon" parent="Cards/MainWeaponCard" index="0"]
+[node name="Icon" parent="Panel/Cards/MainWeaponCard" index="0"]
 offset_left = -23.0
 offset_top = -62.5
 offset_right = 23.0
@@ -372,12 +399,12 @@ offset_bottom = 62.5
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Info" parent="Cards/MainWeaponCard" index="1"]
+[node name="Info" parent="Panel/Cards/MainWeaponCard" index="1"]
 offset_top = -20.0
 offset_right = -1.0
 offset_bottom = -1.0
 
-[node name="NumberOrDurability" parent="Cards/MainWeaponCard/Info" index="0"]
+[node name="NumberOrDurability" parent="Panel/Cards/MainWeaponCard/Info" index="0"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
@@ -388,13 +415,13 @@ offset_right = 29.0
 offset_bottom = 6.5
 grow_horizontal = 1
 
-[node name="BulletNumber" parent="Cards/MainWeaponCard/Info" index="1"]
+[node name="BulletNumber" parent="Panel/Cards/MainWeaponCard/Info" index="1"]
 offset_left = -23.0
 offset_top = -5.5
 offset_right = -3.0
 offset_bottom = 6.5
 
-[node name="ItemOnGround" type="ScrollContainer" parent="."]
+[node name="ItemOnGround" type="ScrollContainer" parent="Panel"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 6.0
@@ -403,14 +430,19 @@ offset_bottom = 270.0
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="PickPileItems" type="VBoxContainer" parent="ItemOnGround"]
+[node name="PickPileItems" type="VBoxContainer" parent="Panel/ItemOnGround"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[editable path="Cards/PlayerSlot"]
-[editable path="Cards/HelmetCard"]
-[editable path="Cards/MeleeWeaponCard"]
-[editable path="Cards/PistolCard"]
-[editable path="Cards/MainWeaponCard"]
+[node name="SplitItemDialog" parent="." instance=ExtResource("13_bepnh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[editable path="Panel/Cards/PlayerSlot"]
+[editable path="Panel/Cards/HelmetCard"]
+[editable path="Panel/Cards/MeleeWeaponCard"]
+[editable path="Panel/Cards/PistolCard"]
+[editable path="Panel/Cards/MainWeaponCard"]

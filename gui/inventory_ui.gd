@@ -1,8 +1,8 @@
-extends TextureRect
+extends Control
 
 
 signal item_dropped
-signal item_slotted
+signal split_action_finished
 signal equipment_changed
 
 
@@ -47,13 +47,14 @@ var knife_equip_area := Rect2(melee_weapon_card.get_global_rect())
 
 func setup(inventory: PlayerInventory) -> void:
 	item_dropped.connect(inventory.drop_item)
-	equipment_changed.connect(inventory.equip_item)
+	split_action_finished.connect(inventory.ui_split_item)
+	equipment_changed.connect(inventory.ui_equip_item)
 	inventory.slot_item_changed.connect(update_inventory_ui)
 	ItemActionTable.setup(inventory, show_spin_box)
 	
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
-		item_ui.pick_pile_item_slotted.connect(inventory.put_item_to_slot)
-		item_ui.item_index_changed.connect(inventory.swap_item)
+		item_ui.pick_pile_item_slotted.connect(inventory.ui_put_item_to_slot)
+		item_ui.item_index_changed.connect(inventory.ui_swap_item)
 		item_ui.item_clicked.connect(toggle_item_menu)
 	
 	for item_card in get_tree().get_nodes_in_group('item_cards'):
@@ -124,12 +125,16 @@ func toggle_item_menu(ui_id: int, item_id: int, g_position: Vector2) -> void:
 	else:
 		item_menu.visible = false
 
-func show_spin_box() -> void:
-	print('show_spin_box')
+func show_spin_box(item: NumberItem) -> void:
+	var item_splitted := await %SplitItemDialog.get_dialog_result(item) as NumberItem
+	split_action_finished.emit(item_splitted)
 
-func _gui_input(event):
+func _input(event):
 	if event.is_action_pressed('toggle_inventory'):
 		visible = not visible
 		return
-	if item_menu.visible and event.is_action_pressed('toggle_item_menu'):
+
+func _gui_input(event):
+	if item_menu.visible and event.is_pressed():
 		item_menu.visible = false
+	

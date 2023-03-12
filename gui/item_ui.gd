@@ -97,6 +97,7 @@ func _drop_data(at_position, ui):
 		item_index_changed.emit( owning_gear_equipment_type, get_index(), ui_type, slot_index)
 
 func _gui_input(event):
-	if  has_data and event.is_action_pressed('toggle_item_menu') and not self is PickPileItemUI:
+	if  has_data and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT \
+	and event.is_pressed() and not self is PickPileItemUI:
 		item_clicked.emit(get_instance_id(), item_id, get_global_mouse_position())
 		accept_event()
