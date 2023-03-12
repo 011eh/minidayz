@@ -10,10 +10,13 @@ static func create_item(item_script: GDScript, item_id: int) -> Item:
 	var item := ItemScene.instantiate()
 	item.set_script(item_script)
 	item.resource = item_script.get_item_resource(item_id)
+	if item is NumberItem:
+		item.number = randi_range(1, item.resource.stack_limit)
 	return item
 
 static func create_random(item_script: GDScript) -> Item:
-	return create_item(item_script, item_script.RES_TABLE.keys().pick_random())
+	var item := create_item(item_script, item_script.RES_TABLE.keys().pick_random())
+	return item
 
 static func create_equipment_random(type: PlayerInventory.EquipmentType) -> Item:
 	match type:
@@ -54,3 +57,9 @@ static func create_slot_item_list(size := 1) -> Array[Item]:
 	for i in range(size):
 		list.append(create_slot_item_random())
 	return list
+
+static func create_all(script: GDScript) -> Array[Item]:
+	var items: Array[Item]
+	for id in script.RES_TABLE.keys():
+		items.append(create_item(script, id))
+	return items

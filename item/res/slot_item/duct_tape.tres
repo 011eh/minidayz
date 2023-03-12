@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://djsn1804eupa2"]
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://b0o3tiweo7ifp"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_q8upq"]
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_q8upq"]
 [ext_resource type="Texture2D" uid="uid://dn0sg7hgbtquv" path="res://asset/images/item/duct_tape.png" id="2_iwip3"]
 
 [resource]

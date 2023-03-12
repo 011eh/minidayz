@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://chgf260sctd40"]
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://dda1dmyqbjjes"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_i2d5r"]
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_i2d5r"]
 [ext_resource type="Texture2D" uid="uid://bloewkhykee1f" path="res://asset/images/item/9x18_ammo.png" id="2_5pxqy"]
 
 [resource]

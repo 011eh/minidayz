@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://hdwcqqvf6kt7"]
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://dw7l0hh8v3f3n"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_tr1y1"]
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_tr1y1"]
 [ext_resource type="Texture2D" uid="uid://cr1jn000x87cb" path="res://asset/images/item/burlap_sack.png" id="2_rovi3"]
 
 [resource]

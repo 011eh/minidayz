@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c46bwn77j4442"]
+[gd_resource type="Resource" script_class="StateItemResource" load_steps=3 format=3 uid="uid://c46bwn77j4442"]
 
 [ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_5m7nk"]
 [ext_resource type="Texture2D" uid="uid://bweqkbjrr5tih" path="res://asset/images/item/saline_bag.png" id="2_gwym5"]
@@ -9,7 +9,7 @@ health = 20
 hunger = 0
 drink = 5
 heat = 0
-stackable = true
+stackable = false
 stack_limit = 5
 id = 80
 item_name = &"Saline Bag"

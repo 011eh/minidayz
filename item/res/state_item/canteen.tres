@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcwaj5v8nurs7"]
+[gd_resource type="Resource" script_class="StateItemResource" load_steps=3 format=3 uid="uid://bcwaj5v8nurs7"]
 
 [ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_706wn"]
 [ext_resource type="Texture2D" uid="uid://c3adnirokkdv8" path="res://asset/images/item/canteen.png" id="2_up6wj"]
@@ -9,7 +9,7 @@ health = 0
 hunger = 0
 drink = 15
 heat = 0
-stackable = true
+stackable = false
 stack_limit = 5
 id = 83
 item_name = &"Canteen"

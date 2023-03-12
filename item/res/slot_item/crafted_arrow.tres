@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://xkh716lf00l6"]
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://dvmv7y2p8q5vj"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_vg4vw"]
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_vg4vw"]
 [ext_resource type="Texture2D" uid="uid://dv45udrdodia6" path="res://asset/images/item/crafted_arrow.png" id="2_nsxia"]
 
 [resource]

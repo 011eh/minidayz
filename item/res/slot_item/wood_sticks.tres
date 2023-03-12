@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqdhfcvhw80mu"]
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://c3lxpyymjh6wg"]
 
-[ext_resource type="Script" path="res://item/res/script/slot_item_resource.gd" id="1_20ude"]
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_20ude"]
 [ext_resource type="Texture2D" uid="uid://i587qkrfuklj" path="res://asset/images/item/wood_sticks.png" id="2_3v41l"]
 
 [resource]

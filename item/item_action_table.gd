@@ -22,6 +22,6 @@ func setup(inventory, show_spin_box: Callable) -> void:
 
 func create_options(item: Item) -> Array[ItemAction]:
 	var options: Array[ItemAction]
-	if item is NumberItem:
-		options.append(ItemAction.new('split', show_spin_box))
+	if item is NumberItem and item.resource.stackable and item.number > 1:
+		options.append(ItemAction.new('split', show_spin_box.bind(item)))
 	return options

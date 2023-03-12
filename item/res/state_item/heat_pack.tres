@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dsoetrulyp4tu"]
+[gd_resource type="Resource" script_class="StateItemResource" load_steps=3 format=3 uid="uid://dsoetrulyp4tu"]
 
 [ext_resource type="Script" path="res://item/res/script/state_resource.gd" id="1_cwfxa"]
 [ext_resource type="Texture2D" uid="uid://cgs15bvge6tem" path="res://asset/images/item/heat_pack.png" id="2_yt02s"]
@@ -9,7 +9,7 @@ health = 0
 hunger = 0
 drink = 0
 heat = 40
-stackable = true
+stackable = false
 stack_limit = 5
 id = 84
 item_name = &"Heat Pack"
