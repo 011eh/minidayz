@@ -52,6 +52,7 @@ func pickup(area: Area2D) -> void:
 		return
 	pickup_area.set_deferred('monitoring', false)
 	owner.target_position = Vector2.ZERO
+	put_to_inventory(item)
 
 func put_to_inventory(item: Item, from_world: bool = true) -> bool:
 	if item.is_equipment():
@@ -65,36 +66,52 @@ func put_to_inventory(item: Item, from_world: bool = true) -> bool:
 		item.get_parent().remove_child(item)
 		emit_signal('equipment_changed', type, item)
 		emit_signal('slot_item_changed', type, item)
+		return true
 	else:
-		var gears = equipment_slots.slice(0, WEPAON_OFFSET)\
-		.filter(func(gear: Gear) -> bool: return is_instance_valid(gear))
-		gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
+		var gears = get_gear_sort_by_durability()
 		
 		# 尝试进行堆叠
 		if item is NumberItem:
-			var inventory_items:Array[NumberItem] = []
-			for gear in gears:
-				var same_item := func(inventory_item):
-					if is_instance_valid(inventory_item) and item.get_item_id() == inventory_item.get_item_id()\
-					and inventory_item.number < inventory_item.get_resource().stack_limit:
-						return inventory_item
-					else:
-						return null
-				inventory_items.append_array(gear.slots.map(same_item))
-				inventory_items = inventory_items.filter(func(item: Item) -> bool: return is_instance_valid(item))
-			
+			var inventory_items := find_stackable_items(item, gears)
 			if not inventory_items.is_empty() and stack_item(item, inventory_items):
 				update_inventory_ui()
 				return true
 		
 		# 需要放到背包空槽位上
-		gears = gears.filter(func(gear: Gear): return gear.has_empty_slot())
-		if not gears.is_empty():
-			gears.pop_front().add_to_slot(item)
-			if from_world:
-				item.get_parent().remove_child(item)
+		var success := put_to_slot(item, from_world, gears)
+		if success:
 			update_inventory_ui()
-			return true
+		return success
+
+func get_gear_sort_by_durability() -> Array[Gear]:
+	var gears: Array[Gear] = []
+	for gear in equipment_slots.slice(0, WEPAON_OFFSET):
+		if is_instance_valid(gear):
+			gears.append(gear)
+	gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
+	return gears
+
+func find_stackable_items(item: Item, gears: Array[Gear]) -> Array[NumberItem]:
+	var inventory_items:Array[NumberItem] = []
+	for gear in gears:
+		var same_item := func(inventory_item):
+			if is_instance_valid(inventory_item) and item.get_item_id() == inventory_item.get_item_id()\
+			and inventory_item.number < inventory_item.get_resource().stack_limit:
+				return inventory_item
+			else:
+				return null
+		inventory_items.append_array(gear.slots.map(same_item))
+	return inventory_items.filter(func(item: Item) -> bool: return is_instance_valid(item))
+
+func put_to_slot(item: Item, from_world: bool = false, gears: Array[Gear] = []) -> bool:
+	if gears == []:
+		gears = get_gear_sort_by_durability()
+	gears = gears.filter(func(gear: Gear): return gear.has_empty_slot())
+	if not gears.is_empty():
+		gears.pop_front().add_to_slot(item)
+		if from_world:
+			item.get_parent().remove_child(item)
+		return true
 	return false
 
 func stack_item(item: NumberItem,inventory_items: Array[NumberItem]) -> bool:
@@ -121,7 +138,7 @@ func get_equipment_type(item: Item) -> int:
 		return EquipmentType.PISTOL
 	return EquipmentType.MELEE_WEAPON
 
-func equip_item(type: EquipmentType, item_id: int) -> void:
+func ui_equip_item(type: EquipmentType, item_id: int) -> void:
 	var item_in_slot := equipment_slots[type]
 	if is_instance_valid(item_in_slot):
 		if item_in_slot is Knife:
@@ -129,8 +146,8 @@ func equip_item(type: EquipmentType, item_id: int) -> void:
 				drop_item(type)
 	var item := instance_from_id(item_id)
 	equipment_slots[type] = item
-	emit_signal('equipment_changed', type, item)
-	emit_signal('slot_item_changed', type, item)
+	equipment_changed.emit(type, item)
+	slot_item_changed.emit(type, item)
 
 func drop_item(type: EquipmentType, slot_index: int = -1, update_ui: bool = false) -> void:
 	var item: Item
@@ -144,14 +161,15 @@ func drop_item(type: EquipmentType, slot_index: int = -1, update_ui: bool = fals
 	item.position = owner.global_position
 	owner.get_parent().call_deferred('add_child', item)
 	if update_ui:
-		emit_signal('slot_item_changed', type, equipment_slots[type])
+		slot_item_changed.emit(type, equipment_slots[type])
+		equipment_changed.emit(type, equipment_slots[type])
 
-func put_item_to_slot(type: EquipmentType, index: int, item_id: int) -> void:
+func ui_put_item_to_slot(type: EquipmentType, index: int, item_id: int) -> void:
 	var gear := equipment_slots[type] as Gear
 	gear.slots[index] = instance_from_id(item_id)
 	emit_signal('slot_item_changed', type, gear)
 
-func swap_item(type: EquipmentType, index: int, from_type: EquipmentType, from_index: int = -1) -> void:
+func ui_swap_item(type: EquipmentType, index: int, from_type: EquipmentType, from_index: int = -1) -> void:
 	var gear = equipment_slots[type] as Gear
 	if from_index == -1:
 		gear.slots[index] = equipment_slots[from_type]
@@ -165,6 +183,12 @@ func swap_item(type: EquipmentType, index: int, from_type: EquipmentType, from_i
 		from_gear.slots[from_index] = temp
 		emit_signal('slot_item_changed', from_type, from_gear)
 	emit_signal('slot_item_changed', type, gear)
+
+func ui_split_item(item: NumberItem) -> void:
+	if not put_to_slot(item):
+		item.position = owner.global_position
+		owner.get_parent().call_deferred('add_child', item)
+	update_inventory_ui()
 
 func update_inventory_ui() -> void:
 	for i in range(equipment_slots.size()):
