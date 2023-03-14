@@ -28,29 +28,35 @@ const WEPAON_OFFSET = 6
 var target_item: Item
 var equipment_slots: Array[Item]
 @onready
-var pickup_area := $PickupArea
+var pickup_area := %PickupArea
 @onready
-var detection_area := $DetectionArea
+var detection_area := %DetectionArea
+@onready
+var target_pickup_area := %TargetPickupArea
 
 
 func _ready():
-	pickup_area.area_entered.connect(pickup)
+	target_pickup_area.area_entered.connect(pickup)
 	equipment_slots.resize(EQUIPMENT_SLOT_NUMBER)
 	var player_slot := Gear.create_player_slot()
 	equipment_slots[0] = player_slot
+	update_inventory_ui()
 
-func _process(delta):
-	if Input.is_action_pressed('pickup'):
-		var item:Item = detection_area.nearest_item
-		if is_instance_valid(item):
-			pickup_area.set_deferred('monitoring', true)
-			owner.target_position = item.global_position
+func _unhandled_input(event):
+	if event.is_action_pressed('pickup'):
+		if pickup_area.has_overlapping_areas():
+			put_to_inventory(pickup_area.get_overlapping_areas().front().owner)
+		else:
+			var item: Item = detection_area.nearest_item
+			if is_instance_valid(item):
+				target_pickup_area.monitoring = true
+				owner.target_position = item.global_position
 
 func pickup(area: Area2D) -> void:
 	var item := area.owner as Item
 	if item != detection_area.nearest_item:
 		return
-	pickup_area.set_deferred('monitoring', false)
+	target_pickup_area.set_deferred('monitoring', false)
 	owner.target_position = Vector2.ZERO
 	put_to_inventory(item)
 
@@ -64,19 +70,19 @@ func put_to_inventory(item: Item, from_world: bool = true) -> bool:
 			drop_item(type)
 		equipment_slots[type] = item
 		item.get_parent().remove_child(item)
-		emit_signal('equipment_changed', type, item)
-		emit_signal('slot_item_changed', type, item)
+		equipment_changed.emit(type, item)
+		slot_item_changed.emit(type, item)
 		return true
 	else:
 		var gears = get_gear_sort_by_durability()
-		
+
 		# 尝试进行堆叠
 		if item is NumberItem:
 			var inventory_items := find_stackable_items(item, gears)
 			if not inventory_items.is_empty() and stack_item(item, inventory_items):
 				update_inventory_ui()
 				return true
-		
+
 		# 需要放到背包空槽位上
 		var success := put_to_slot(item, from_world, gears)
 		if success:
@@ -117,43 +123,43 @@ func put_to_slot(item: Item, from_world: bool = false, gears: Array[Gear] = []) 
 func stack_item(item: NumberItem,inventory_items: Array[NumberItem]) -> bool:
 	while not inventory_items.is_empty():
 		var inventory_item := inventory_items.pop_front() as NumberItem
-		var item_number := item.number
-		var inventory_item_number := inventory_item.number
-		var stack_limit := inventory_item.get_resource().stack_limit
-		var residual_capacity := stack_limit - inventory_item_number
-		inventory_item.number = clamp(inventory_item_number + item_number, inventory_item_number + 1, stack_limit)
-		item.number = clamp(item_number - residual_capacity, 0, item_number - 1)
+		var number_can_stack = min(item.number, inventory_item.get_resource().stack_limit - inventory_item.number)
+		inventory_item.number += number_can_stack
+		item.number -= number_can_stack
 		if item.number == 0:
-			# 释放物品实例
-			item.queue_free()
 			return true
 	return false
 
 func get_equipment_type(item: Item) -> int:
-	if item is Gear:
-		return item.resource.type
-	if item is MainWeapon:
-		return EquipmentType.MAIN_WEAPON
-	if item is Pistol:
-		return EquipmentType.PISTOL
-	return EquipmentType.MELEE_WEAPON
+	match item.get_script():
+		Gear:
+			return item.resource.type
+		MainWeapon:
+			return EquipmentType.MAIN_WEAPON
+		Pistol:
+			return EquipmentType.PISTOL
+		_:
+			return EquipmentType.MELEE_WEAPON
 
 func ui_equip_item(type: EquipmentType, item_id: int) -> void:
 	var item_in_slot := equipment_slots[type]
-	if is_instance_valid(item_in_slot):
-		if item_in_slot is Knife:
-			if not put_to_inventory(item_in_slot, false):
-				drop_item(type)
-	var item := instance_from_id(item_id)
+	if is_instance_valid(item_in_slot) and (not item_in_slot is Knife or not put_to_inventory(item_in_slot, false)):
+			drop_item(type)
+	var item := instance_from_id(item_id) as Item
 	equipment_slots[type] = item
 	equipment_changed.emit(type, item)
 	slot_item_changed.emit(type, item)
+	
+	var item_parent := item.get_parent()
+	if is_instance_valid(item_parent):
+		item_parent.remove_child(item)
 
 func drop_item(type: EquipmentType, slot_index: int = -1, update_ui: bool = false) -> void:
 	var item: Item
 	if slot_index == -1:
 		item = equipment_slots[type]
 		equipment_slots[type] = null
+		equipment_changed.emit(type, equipment_slots[type])
 	else:
 		var slots := equipment_slots[type].slots as Array[Item]
 		item = slots[slot_index]
@@ -162,27 +168,28 @@ func drop_item(type: EquipmentType, slot_index: int = -1, update_ui: bool = fals
 	owner.get_parent().call_deferred('add_child', item)
 	if update_ui:
 		slot_item_changed.emit(type, equipment_slots[type])
-		equipment_changed.emit(type, equipment_slots[type])
 
 func ui_put_item_to_slot(type: EquipmentType, index: int, item_id: int) -> void:
 	var gear := equipment_slots[type] as Gear
-	gear.slots[index] = instance_from_id(item_id)
-	emit_signal('slot_item_changed', type, gear)
+	var item := instance_from_id(item_id) as Item
+	gear.slots[index] = item
+	slot_item_changed.emit(type, gear)
+	item.get_parent().remove_child(item)
 
 func ui_swap_item(type: EquipmentType, index: int, from_type: EquipmentType, from_index: int = -1) -> void:
 	var gear = equipment_slots[type] as Gear
 	if from_index == -1:
 		gear.slots[index] = equipment_slots[from_type]
 		equipment_slots[from_type] = null
-		emit_signal('equipment_changed', from_type, null)
-		emit_signal('slot_item_changed', from_type, null)
+		equipment_changed.emit(from_type, null)
+		slot_item_changed.emit(from_type, null)
 	else:
 		var temp := gear.slots[index] as Item
 		var from_gear = equipment_slots[from_type]
 		gear.slots[index] = from_gear.slots[from_index]
 		from_gear.slots[from_index] = temp
-		emit_signal('slot_item_changed', from_type, from_gear)
-	emit_signal('slot_item_changed', type, gear)
+		slot_item_changed.emit(from_type, from_gear)
+	slot_item_changed.emit(type, gear)
 
 func ui_split_item(item: NumberItem) -> void:
 	if not put_to_slot(item):
@@ -190,8 +197,14 @@ func ui_split_item(item: NumberItem) -> void:
 		owner.get_parent().call_deferred('add_child', item)
 	update_inventory_ui()
 
+func ui_equip_knife(item_id: int, from_type: EquipmentType, from_index: int = -1) -> void:
+	if from_index != -1:
+		equipment_slots[from_type].slots[from_index] = null
+	ui_equip_item(EquipmentType.MELEE_WEAPON, item_id)
+	update_inventory_ui()
+
 func update_inventory_ui() -> void:
 	for i in range(equipment_slots.size()):
 		var item := equipment_slots[i] as Item
 		if is_instance_valid(item):
-			emit_signal('slot_item_changed', i, item)
+			slot_item_changed.emit(i, item)
