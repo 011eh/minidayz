@@ -1,14 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdhqi2jjctohy"]
+[gd_scene load_steps=7 format=3 uid="uid://cdhqi2jjctohy"]
 
 [ext_resource type="PackedScene" uid="uid://b0cxyvtmu0pmo" path="res://gui/dialog/dialog.tscn" id="1_m1uw1"]
 [ext_resource type="Script" path="res://gui/dialog/split_item_dialog.gd" id="2_aenoh"]
 [ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_kg1l0"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_167en"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_im3bl"]
+events = [SubResource("InputEventKey_167en")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6x7r"]
 atlas = ExtResource("2_kg1l0")
 
 [node name="SplitItemDialog" instance=ExtResource("1_m1uw1")]
 script = ExtResource("2_aenoh")
+
+[node name="Button" parent="Background" index="1"]
+shortcut = SubResource("Shortcut_im3bl")
 
 [node name="ButtonLabel" parent="Background/Button" index="0"]
 text = "Split"

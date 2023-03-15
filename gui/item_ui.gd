@@ -75,8 +75,6 @@ func _get_drag_data(at_position):
 		var rect := TextureRect.new()
 		rect.texture = icon.texture
 		set_drag_preview(rect)
-#		icon.visible = false
-#		$Info.visible = false
 		return self
 
 func _can_drop_data(at_position, ui):
@@ -89,15 +87,16 @@ func _can_drop_data(at_position, ui):
 
 func _drop_data(at_position, ui):
 	if ui is PickPileItemUI:
-		pick_pile_item_slotted.emit( owning_gear_equipment_type, get_index(), ui.item_id)
+		pick_pile_item_slotted.emit(owning_gear_equipment_type, get_index(), ui.item_id)
 	elif ui != self:
 		var ui_type := ui.owning_gear_equipment_type if ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
 		else ui.equipment_type as EQUIPMENT_TYPE
 		var slot_index := ui.get_index() if not ui is ItemCardUI else -1 as int
-		item_index_changed.emit( owning_gear_equipment_type, get_index(), ui_type, slot_index)
+		item_index_changed.emit(owning_gear_equipment_type, get_index(), ui_type, slot_index)
 
 func _gui_input(event):
 	if  has_data and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT \
 	and event.is_pressed() and not self is PickPileItemUI:
+		print(event.position)
 		item_clicked.emit(get_instance_id(), item_id, get_global_mouse_position())
 		accept_event()

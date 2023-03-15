@@ -199,13 +199,12 @@ layout_mode = 1
 anchors_preset = 0
 offset_left = 122.0
 offset_top = 1.0
-offset_right = 352.0
-offset_bottom = 270.0
+offset_right = 357.0
+offset_bottom = 276.0
 mouse_filter = 1
 
 [node name="PlayerSlot" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 117.0
 offset_top = 90.0
@@ -233,7 +232,6 @@ offset_bottom = 30.0
 
 [node name="ClothesCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 74.0
@@ -245,7 +243,6 @@ equipment_type = 1
 
 [node name="PantsCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 139.0
@@ -257,7 +254,6 @@ equipment_type = 2
 
 [node name="VestCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 7.0
@@ -269,7 +265,6 @@ equipment_type = 4
 
 [node name="BackpackCard" parent="Panel/Cards" instance=ExtResource("4_06f47")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_top = 204.0
@@ -281,7 +276,6 @@ equipment_type = 5
 
 [node name="HelmetCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 100.0
 offset_top = 7.0
@@ -309,7 +303,6 @@ offset_bottom = -2.0
 
 [node name="MeleeWeaponCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 100.0
 offset_top = 139.0
@@ -333,7 +326,6 @@ offset_bottom = -2.0
 
 [node name="PistolCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 167.0
 offset_top = 5.0
@@ -379,7 +371,6 @@ offset_bottom = 6.5
 
 [node name="MainWeaponCard" parent="Panel/Cards" groups=["item_cards"] instance=ExtResource("6_ylots")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 168.0
 offset_top = 61.0

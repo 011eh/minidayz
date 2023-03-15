@@ -23,11 +23,11 @@ func _ready():
 		slot.visible = false
 		slots.add_child(slot)
 		var item_ui := ItemUISence.instantiate() as ItemUI
-		item_ui.visible = false
+		$Items.add_child(item_ui)
+		item_ui.change_ui_visible(false)
 		item_ui.add_to_group('item_ui_group')
 		item_ui.equipment_type = PlayerInventory.EquipmentType.SIMPLE_ITEM
 		item_ui.owning_gear_equipment_type = equipment_type
-		$Items.add_child(item_ui)
 
 func update_gear_ui(gear: Gear) -> void:
 	if not is_instance_valid(gear):
