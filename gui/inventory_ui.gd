@@ -3,6 +3,7 @@ extends Control
 
 signal item_dropped
 signal equipment_changed
+signal knife_dropped
 
 
 const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
@@ -16,6 +17,7 @@ const GEAR_TYPES = [
 	]
 
 
+var action_table := ItemActionTable.new()
 var pick_pile_ui_dict = {}
 @onready
 var item_menu := preload('res://gui/item_ui_menu.tscn').instantiate() as TextureRect
@@ -71,10 +73,12 @@ func setup(inventory: PlayerInventory) -> void:
 		pick_pile_ui_dict.get(area.get_instance_id()).queue_free()
 		pick_pile_ui_dict.erase(area.get_instance_id())
 	)
+	
 	item_dropped.connect(inventory.drop_item)
+	knife_dropped.connect(inventory.ui_equip_knife)
 	%SplitItemDialog.item_splitted.connect(inventory.ui_split_item)
 	equipment_changed.connect(inventory.ui_equip_item)
-	ItemActionTable.setup(inventory, show_spin_box)
+	action_table.setup(inventory, show_spin_box)
 
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
 		item_ui.pick_pile_item_slotted.connect(inventory.ui_put_item_to_slot)
@@ -119,7 +123,8 @@ func _drop_data(at_position, ui):
 		equipment_changed.emit(ui.equipment_type, ui.item_id)
 		return
 	if knife_equip_area.has_point(at_position) and instance_from_id(ui.item_id) is Knife:
-		print('刀具处理')
+		var index := ui.get_index() if not ui is PickPileItemUI else -1 as int
+		knife_dropped.emit(ui.item_id, ui.owning_gear_equipment_type, index)
 		return
 	if not ui is PickPileItemUI:
 		var slot_index: int
@@ -138,7 +143,7 @@ func is_slot_item_ui(ui: Variant) -> bool:
 func toggle_item_menu(ui_id: int, item_id: int, g_position: Vector2) -> void:
 	if not item_menu.visible or item_menu.get_meta('ui_id', -1) != ui_id:
 		var item := instance_from_id(item_id) as Item
-		item_menu.set_active(ui_id, g_position, item.get_item_name(), ItemActionTable.create_options(item))
+		item_menu.set_active(ui_id, g_position, item.get_item_name(), action_table.create_options(item))
 		item_menu.visible = true
 	else:
 		item_menu.visible = false
@@ -149,6 +154,9 @@ func show_spin_box(item: NumberItem) -> void:
 func _input(event):
 	if event.is_action_pressed('toggle_inventory'):
 		visible = not visible
+		if visible:
+			item_menu.visible = false
+			%SplitItemDialog.visible = false
 		return
 
 func _gui_input(event):

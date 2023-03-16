@@ -8,7 +8,7 @@ var button := %Button
 
 
 func set_active(ui_id: int, g_position: Vector2,item_name: StringName, options: Array[ItemActionTable.ItemAction]) -> void:
-	get_tree().call_group('menu_options', 'queue_free')
+	get_tree().call_group('menu_options', 'free')
 	%Label.text = item_name
 	for option in options:
 		var button := self.button.duplicate()

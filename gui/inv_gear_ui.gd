@@ -30,6 +30,7 @@ func _ready():
 		item_ui.owning_gear_equipment_type = equipment_type
 
 func update_gear_ui(gear: Gear) -> void:
+	await get_tree().process_frame
 	if not is_instance_valid(gear):
 		visible = false
 		return
@@ -50,7 +51,9 @@ func update_gear_ui(gear: Gear) -> void:
 		if i < resource.slot_number:
 			slot.visible = true
 			item_ui.visible = true
-			item_ui.update_item_ui(gear.slots[i])
+			item_ui = item_ui as ItemUI
+			var item := gear.slots[i]
+			item_ui.update_item_ui(item if is_instance_valid(item) else null)
 		else:
 			item_ui.visible = false
 			slot.visible = false

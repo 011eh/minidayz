@@ -63,7 +63,7 @@ func update_general_ui(item: Item, offset: int = 0) -> void:
 		label_text = (NUMBER_FORMAT + '%%') % item.durability
 	number_or_durability.text = label_text
 	if item is RangedWeapon:
-		$Info/BulletNumber.text = NUMBER_FORMAT % item.get_bullet_number()
+		$Info/BulletNumber.text = NUMBER_FORMAT % item.get_round_count()
 
 func change_ui_visible(visible: bool) -> void:
 	has_data = visible
@@ -97,6 +97,5 @@ func _drop_data(at_position, ui):
 func _gui_input(event):
 	if  has_data and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT \
 	and event.is_pressed() and not self is PickPileItemUI:
-		print(event.position)
 		item_clicked.emit(get_instance_id(), item_id, get_global_mouse_position())
 		accept_event()
