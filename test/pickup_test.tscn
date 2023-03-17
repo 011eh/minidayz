@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cvwcuqqutjq4r"]
 
 [ext_resource type="Script" path="res://test/pick_test.gd" id="1_mtblv"]
-[ext_resource type="PackedScene" path="res://character/player/player.tscn" id="2_chdy4"]
+[ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="2_chdy4"]
 [ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="3_0pq3o"]
 
 [node name="Test" type="Node2D"]
@@ -9,6 +9,13 @@ script = ExtResource("1_mtblv")
 
 [node name="Player" parent="." instance=ExtResource("2_chdy4")]
 position = Vector2(37, 34)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_0pq3o")]
+visible = false
 
 [node name="NumberItem" type="Marker2D" parent="."]
 position = Vector2(24, 32)
@@ -30,8 +37,3 @@ position = Vector2(24, 112)
 
 [node name="MainWeapon" type="Marker2D" parent="."]
 position = Vector2(24, 128)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_0pq3o")]
-visible = false
