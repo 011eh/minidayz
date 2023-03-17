@@ -25,7 +25,7 @@ var dict := {
 	ItemType.CRAFT: {
 		'csv_dir': 'res://dev_res/data/工具.CSV',
 		'res_dir': 'res://item/res/craft/',
-		'resource_class': CraftResource.new()
+		'resource_class': DurabilityItemResource.new()
 	},
 	ItemType.MELEE_WEAPON: {
 		'csv_dir': 'res://dev_res/data/近战武器.CSV',
@@ -73,7 +73,7 @@ func create_res_file_by_csv(item_type: ItemType):
 				# 加载 Texture
 				if properties[i] == 'texture':
 					value = load(value)
-				
+
 				# 远程武器弹药类型
 				if properties[i] == 'ammo_type':
 					value = JSON.parse_string(value) as PackedInt32Array
