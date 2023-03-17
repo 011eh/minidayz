@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bi2tdghv2qjyr"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bi2tdghv2qjyr"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_1o0j8"]
 [ext_resource type="Texture2D" uid="uid://cw6pgb7ctqvrf" path="res://asset/images/equipment/weapon/main/vss.png" id="2_i4820"]
@@ -18,6 +18,6 @@ max_damage = 62
 run_penalty = 2
 attack_rate = 450.0
 wear_per_use = 0.4
-id = 24
+id = 189
 item_name = &"VSS"
 texture = ExtResource("2_i4820")

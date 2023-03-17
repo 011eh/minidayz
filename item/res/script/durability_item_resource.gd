@@ -1,6 +1,6 @@
 extends ItemResource
 
-class_name CraftResource
+class_name DurabilityItemResource
 
 
 @export

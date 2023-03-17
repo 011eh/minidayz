@@ -3,10 +3,10 @@ extends DurabilityItem
 class_name Knife
 
 
-const RES_TABLE := {
-	11: preload('res://item/res/melee_weapon/army_knife.tres'),
-	12: preload('res://item/res/melee_weapon/butcher_knife.tres'),
-	13: preload('res://item/res/melee_weapon/hunter_knife.tres'),
+const RES_TABLE = {
+	162: preload('res://item/res/melee_weapon/army_knife.tres'),
+	163: preload('res://item/res/melee_weapon/butcher_knife.tres'),
+	164: preload('res://item/res/melee_weapon/hunter_knife.tres'),
 }
 
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bxq7ac2p1w1yv"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://bxq7ac2p1w1yv"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_mq50q"]
 [ext_resource type="Texture2D" uid="uid://cqty20bubxuih" path="res://asset/images/equipment/clothes/shirt_gray.png" id="2_yx6rq"]
@@ -9,6 +9,6 @@ type = 1
 slot_number = 1
 heat = 3.0
 armor = 0.0
-id = 12
+id = 107
 item_name = &"Shirt Gray"
 texture = ExtResource("2_yx6rq")

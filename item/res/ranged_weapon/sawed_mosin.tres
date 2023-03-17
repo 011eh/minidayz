@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bc4kvn1ce6r4w"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bc4kvn1ce6r4w"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_2oeau"]
 [ext_resource type="Texture2D" uid="uid://cmgp2lpdnglw1" path="res://asset/images/equipment/weapon/pistol/sawed_mosin.png" id="2_3qtvv"]
@@ -18,6 +18,6 @@ max_damage = 113
 run_penalty = 1
 attack_rate = 1.0
 wear_per_use = 0.8
-id = 36
+id = 201
 item_name = &"Sawed Mosin"
 texture = ExtResource("2_3qtvv")

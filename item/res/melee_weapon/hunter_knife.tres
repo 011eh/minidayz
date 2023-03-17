@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://cxro081nfbnft"]
 
 [ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_m1sxe"]
 [ext_resource type="Texture2D" uid="uid://ulcigs3jc07e" path="res://asset/images/equipment/weapon/melee/hunter_knife.png" id="2_u77m3"]
@@ -12,6 +12,6 @@ max_damage = 22
 run_penalty = 1
 attack_rate = 0.8
 wear_per_use = 0.4
-id = 13
+id = 164
 item_name = &"Hunter Knife"
 texture = ExtResource("2_u77m3")

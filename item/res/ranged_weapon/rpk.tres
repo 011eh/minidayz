@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcstybrix0l4l"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bcstybrix0l4l"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_s1qc2"]
 [ext_resource type="Texture2D" uid="uid://buftlir48y54x" path="res://asset/images/equipment/weapon/main/rpk.png" id="2_fr265"]
@@ -18,6 +18,6 @@ max_damage = 44
 run_penalty = 2
 attack_rate = 600.0
 wear_per_use = 0.3
-id = 17
+id = 182
 item_name = &"RPK"
 texture = ExtResource("2_fr265")

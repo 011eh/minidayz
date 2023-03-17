@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c503oo8qh51wh"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://c503oo8qh51wh"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ulbvy"]
 [ext_resource type="Texture2D" uid="uid://cbuj8qnfylkeu" path="res://asset/images/equipment/weapon/main/sv-98.png" id="2_wl7jf"]
@@ -18,6 +18,6 @@ max_damage = 106
 run_penalty = 5
 attack_rate = 0.9
 wear_per_use = 0.6
-id = 21
+id = 186
 item_name = &"SV-98"
 texture = ExtResource("2_wl7jf")

@@ -12,6 +12,6 @@ max_damage = 37
 run_penalty = 2
 attack_rate = 1.0
 wear_per_use = 0.2
-id = 1
+id = 152
 item_name = &"Baseball bat"
 texture = ExtResource("2_6ai23")

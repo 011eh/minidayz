@@ -17,6 +17,6 @@ const RES_TABLE := {
 }
 
 
-static func get_item_resource(id: int) -> CraftResource:
+static func get_item_resource(id: int) -> DurabilityItemResource:
 	assert_id_exists(id, RES_TABLE)
 	return RES_TABLE.get(id)

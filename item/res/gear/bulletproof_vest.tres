@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cge4lgbocv378"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://cge4lgbocv378"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_pfum4"]
 [ext_resource type="Texture2D" uid="uid://dimphsmet42vh" path="res://asset/images/equipment/vest/bulletproof_vest.png" id="2_ppqkj"]
@@ -9,6 +9,6 @@ type = 4
 slot_number = 0
 heat = 0.0
 armor = 3.0
-id = 43
+id = 138
 item_name = &"Bulletproof Vest"
 texture = ExtResource("2_ppqkj")

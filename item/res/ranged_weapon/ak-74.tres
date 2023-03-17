@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://7slenw2m3t43"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://7slenw2m3t43"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_2o3o1"]
 [ext_resource type="Texture2D" uid="uid://cx625rn6vchp6" path="res://asset/images/equipment/weapon/main/ak-74.png" id="2_0vd0y"]
@@ -18,6 +18,6 @@ max_damage = 32
 run_penalty = 2
 attack_rate = 600.0
 wear_per_use = 0.3
-id = 2
+id = 167
 item_name = &"AK-74"
 texture = ExtResource("2_0vd0y")

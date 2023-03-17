@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cinn7bb3hdkvm"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://cinn7bb3hdkvm"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_fbcyt"]
 [ext_resource type="Texture2D" uid="uid://bcd8iwcogwak" path="res://asset/images/equipment/backpack/hunter_backpack.png" id="2_hxs24"]
@@ -9,6 +9,6 @@ type = 5
 slot_number = 5
 heat = 0.0
 armor = 0.0
-id = 50
+id = 145
 item_name = &"Hunter Backpack"
 texture = ExtResource("2_hxs24")

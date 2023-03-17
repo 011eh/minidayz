@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cqthirsxf2na8"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://cqthirsxf2na8"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_fq5mc"]
 [ext_resource type="Texture2D" uid="uid://cxoso24t7papu" path="res://asset/images/equipment/weapon/main/repeater.png" id="2_k2rid"]
@@ -18,6 +18,6 @@ max_damage = 50
 run_penalty = 3
 attack_rate = 0.0
 wear_per_use = 0.4
-id = 16
+id = 181
 item_name = &"Repeater"
 texture = ExtResource("2_k2rid")

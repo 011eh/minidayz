@@ -8,5 +8,5 @@ script = ExtResource("1_wmspo")
 stackable = true
 stack_limit = 60
 id = 8
-item_name = &".22lr Ammo"
+item_name = &"a.22lr Ammo"
 texture = ExtResource("2_sdhwg")

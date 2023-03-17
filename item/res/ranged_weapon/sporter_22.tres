@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dk5bw08fjve2c"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://dk5bw08fjve2c"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_3qnpy"]
 [ext_resource type="Texture2D" uid="uid://cmevaffkak21p" path="res://asset/images/equipment/weapon/main/sporter_22.png" id="2_km2nw"]
@@ -18,6 +18,6 @@ max_damage = 25
 run_penalty = 3
 attack_rate = 0.0
 wear_per_use = 0.4
-id = 20
+id = 185
 item_name = &"Sporter 22"
 texture = ExtResource("2_km2nw")

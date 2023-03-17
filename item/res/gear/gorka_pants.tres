@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dq5s58xie14ov"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://dq5s58xie14ov"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_bt17s"]
 [ext_resource type="Texture2D" uid="uid://py7s00ka5egu" path="res://asset/images/equipment/pants/gorka_pants.png" id="2_nvct7"]
@@ -9,6 +9,6 @@ type = 2
 slot_number = 3
 heat = 5.0
 armor = 0.0
-id = 17
+id = 112
 item_name = &"Gorka Pants"
 texture = ExtResource("2_nvct7")

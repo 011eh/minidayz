@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bjogm2myr41kd"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_8dlvr"]
+[ext_resource type="Script" path="res://item/res/script/durability_item_resource.gd" id="1_8dlvr"]
 [ext_resource type="Texture2D" uid="uid://3rmb0of34dul" path="res://asset/images/item/zucchini_seeds_pack.png" id="2_8erow"]
 
 [resource]

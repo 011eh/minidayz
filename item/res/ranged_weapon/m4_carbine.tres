@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://6lu1edj0vqtv"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://6lu1edj0vqtv"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_jov3p"]
 [ext_resource type="Texture2D" uid="uid://biiiva8l8ybte" path="res://asset/images/equipment/weapon/main/m4_carbine.png" id="2_1rgvg"]
@@ -18,6 +18,6 @@ max_damage = 30
 run_penalty = 2
 attack_rate = 600.0
 wear_per_use = 0.4
-id = 11
+id = 176
 item_name = &"M4 Carbine"
 texture = ExtResource("2_1rgvg")

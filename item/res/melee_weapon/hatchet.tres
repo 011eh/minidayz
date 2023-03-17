@@ -12,6 +12,6 @@ max_damage = 52
 run_penalty = 2
 attack_rate = 1.5
 wear_per_use = 0.2
-id = 0
+id = 151
 item_name = &"Hatchet"
 texture = ExtResource("2_nhy6c")

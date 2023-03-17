@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://lf7ugf43kexk"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://lf7ugf43kexk"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_v16xd"]
 [ext_resource type="Texture2D" uid="uid://bqak8emwbmig6" path="res://asset/images/equipment/weapon/main/crossbow.png" id="2_jl70g"]
@@ -18,6 +18,6 @@ max_damage = 63
 run_penalty = 3
 attack_rate = 2.0
 wear_per_use = 0.8
-id = 1
+id = 166
 item_name = &"Crossbow"
 texture = ExtResource("2_jl70g")
