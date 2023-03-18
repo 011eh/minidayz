@@ -1,19 +1,17 @@
 extends Node
 
-class_name ItemActionTable
-
 
 class ItemAction:
 	
 	
 	var name: StringName
 	var action: Callable
-
-
+	
+	
 	func _init(name: StringName,action: Callable):
 		self.name = name
 		self.action = action
-
+	
 class CraftingRecipe:
 	
 	
@@ -32,18 +30,32 @@ class CraftingRecipe:
 	
 	
 	var components: Array[Component]
-	var result: int
+	var result: ItemResource
+	var is_number_item: bool
 	
 	
 	func add_component(item_id: int, quantitiy: int = 1, consumed: bool = true) -> CraftingRecipe:
 		components.append(Component.new(item_id, quantitiy, consumed))
 		return self
 	
-	func set_result(item_id: int):
-		result = item_id
-
-
-const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
+	func get_component(item: Item) -> Component:
+		return components.filter(func(c: Component) -> bool: return c.item_id == item.get_item_id()).front()
+	
+	func set_result(res: ItemResource, is_number_item: bool = true):
+		result = res
+		self.is_number_item = is_number_item
+		return self
+	
+	func is_components(item: Item) -> bool:
+		return components.any(func(component: Component) -> bool: return item.get_item_id() == component.item_id)
+	
+	func can_craft(item1: Item, item2: Item) -> bool:
+		if is_components(item1) and is_components(item2):
+			var c1 := get_component(item1)
+			var c2 := get_component(item2)
+			return (not c1.consumed or item1.number >= c1.quantitiy) \
+				and (not c2.consumed or item2.number >= c2.quantitiy)
+		return false
 
 
 var crafting_recipes: Array[CraftingRecipe]
@@ -63,11 +75,24 @@ var eject_ammo_to_inventory = func(weapon: RangedWeapon):
 
 func _init():
 	crafting_recipes = [
-		CraftingRecipe.new().add_component(17).add_component(19).set_result(143),
-		CraftingRecipe.new().add_component(14).add_component(143).set_result(146),
-		CraftingRecipe.new().add_component(15).add_component(22).set_result(16),
-		CraftingRecipe.new().add_component(15).add_component(18).set_result(16),
-		CraftingRecipe.new().add_component(15).add_component(14, 3).set_result(16),
+		CraftingRecipe.new().add_component(17).add_component(19)
+		.set_result(Gear.RES_TABLE.get(143)),
+		CraftingRecipe.new().add_component(14, 3).add_component(143, 1, false)
+		.set_result(Gear.RES_TABLE.get(146)),
+		CraftingRecipe.new().add_component(15).add_component(22)
+		.set_result(NumberItem.RES_TABLE.get(16)),
+		CraftingRecipe.new().add_component(15).add_component(18)
+		.set_result(NumberItem.RES_TABLE.get(16)),
+		CraftingRecipe.new().add_component(15).add_component(14, 3)
+		.set_result(NumberItem.RES_TABLE.get(16)),
+		CraftingRecipe.new().add_component(14).add_component(162, 1, false)
+		.set_result(NumberItem.RES_TABLE.get(11)),
+		CraftingRecipe.new().add_component(14).add_component(163, 1, false)
+		.set_result(NumberItem.RES_TABLE.get(11)),
+		CraftingRecipe.new().add_component(14).add_component(164, 1, false)
+		.set_result(NumberItem.RES_TABLE.get(11)),
+		CraftingRecipe.new().add_component(13).add_component(17)
+		.set_result(MainWeapon.RES_TABLE.get(165)),
 	]
 
 func setup(inventory: PlayerInventory, show_spin_box: Callable) -> void:
@@ -91,12 +116,30 @@ func create_options(item: Item) -> Array[ItemAction]:
 
 func create_reload_options(ammo: NumberItem) -> Array[ItemAction]:
 	var options: Array[ItemAction]
-	var weapon := equipment_slots[EQUIPMENT_TYPE.MAIN_WEAPON] as RangedWeapon
+	var weapon := equipment_slots[PlayerInventory.EquipmentType.MAIN_WEAPON]
 	var ammo_id := ammo.get_item_id()
 	if is_instance_valid(weapon) and ammo_id in weapon.resource.ammo_type:
 		options.append(ItemAction.new('Load into main', weapon_reload.bind(weapon, ammo)))
-	
-	weapon = equipment_slots[EQUIPMENT_TYPE.PISTOL]
+
+	weapon = equipment_slots[PlayerInventory.EquipmentType.PISTOL]
 	if is_instance_valid(weapon) and ammo_id in weapon.resource.ammo_type:
 		options.append(ItemAction.new('Load into sidearm', weapon_reload.bind(weapon, ammo)))
+	return options
+
+func get_recipes(item1: Item, item2: Item) -> Array[CraftingRecipe]:
+	return crafting_recipes.filter(func(c: CraftingRecipe) -> bool: return c.can_craft(item1, item2))
+
+func create_crafting_options(item1: Item, item2: Item) -> Array[ItemAction]:
+	var options: Array[ItemAction]
+	for recipe in get_recipes(item1, item2):
+		options.append(ItemAction.new('Craft %s' % recipe.result.item_name, func() -> void:
+			var c1 := recipe.get_component(item1)
+			var c2 := recipe.get_component(item2)
+			if c1.consumed:
+				item1.number -= c1.quantitiy
+			if c2.consumed:
+				item2.number -= c2.quantitiy
+			var item := ItemCreator.create_item_from_id(recipe.result.id)
+			get_tree().root.get_node('Control').add_child.call_deferred(item)
+		))
 	return options

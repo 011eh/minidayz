@@ -6,6 +6,22 @@ class_name ItemCreator
 const ItemScene := preload('res://item/item.tscn')
 
 
+static func create_item_from_id(item_id: int) -> Item:
+	if item_id in range(0, 85):
+		return create_item(NumberItem, item_id)
+	elif item_id in range(85, 95):
+		return create_item(Craft, item_id)
+	elif item_id in range(95, 151):
+		return create_item(Gear, item_id)
+	elif item_id in range(151, 162):
+		return create_item(MeleeWeapon, item_id)
+	elif item_id in range(162, 165):
+		return create_item(Knife, item_id)
+	elif item_id in range(165, 190):
+		return create_item(MainWeapon, item_id)
+	assert(false, '无此物品ID：' % item_id)
+	return null
+
 static func create_item(item_script: GDScript, item_id: int) -> Item:
 	var item := ItemScene.instantiate()
 	item.set_script(item_script)
