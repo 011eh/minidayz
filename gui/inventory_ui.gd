@@ -17,7 +17,6 @@ const GEAR_TYPES = [
 	]
 
 
-var action_table := ItemActionTable.new()
 var pick_pile_ui_dict = {}
 @onready
 var item_menu := preload('res://gui/item_ui_menu.tscn').instantiate() as TextureRect
@@ -78,7 +77,7 @@ func setup(inventory: PlayerInventory) -> void:
 	knife_dropped.connect(inventory.ui_equip_knife)
 	%SplitItemDialog.item_splitted.connect(inventory.ui_split_item)
 	equipment_changed.connect(inventory.ui_equip_item)
-	action_table.setup(inventory, show_spin_box)
+	ItemActionTable.setup(inventory, show_spin_box)
 
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
 		item_ui.pick_pile_item_slotted.connect(inventory.ui_put_item_to_slot)
@@ -143,7 +142,7 @@ func is_slot_item_ui(ui: Variant) -> bool:
 func toggle_item_menu(ui_id: int, item_id: int, g_position: Vector2) -> void:
 	if not item_menu.visible or item_menu.get_meta('ui_id', -1) != ui_id:
 		var item := instance_from_id(item_id) as Item
-		item_menu.set_active(ui_id, g_position, item.get_item_name(), action_table.create_options(item))
+		item_menu.set_active(ui_id, g_position, item.get_item_name(), ItemActionTable.create_options(item))
 		item_menu.visible = true
 	else:
 		item_menu.visible = false

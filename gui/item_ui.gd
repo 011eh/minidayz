@@ -43,13 +43,13 @@ func update_item_ui(item: Item) -> void:
 		return
 	item_id = item.get_instance_id()
 	if item is Knife:
-		update_general_ui(item, 84)
+		update_general_ui(item, -67)
 	else:
 		update_general_ui(item)
 	change_ui_visible(true)
 
 func update_general_ui(item: Item, offset: int = 0) -> void:
-	var index := item.resource.id + offset
+	var index := item.get_item_id() + offset
 	icon.texture.region = Rect2(
 		(index + atlas_texture_id_offset) % column_number * icon_size.x,
 		(index + atlas_texture_id_offset) / column_number * icon_size.y,
