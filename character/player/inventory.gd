@@ -65,9 +65,8 @@ func put_to_inventory(item: Item, from_world: bool = true) -> bool:
 		var type := get_equipment_type(item)
 		var item_in_slot := equipment_slots[type]
 		if is_instance_valid(item_in_slot):
-			if type == EquipmentType.MELEE_WEAPON and item_in_slot is Knife:
-				put_to_inventory(item_in_slot, false)
-			drop_item(type)
+			if not (item_in_slot is Knife and put_to_inventory(item_in_slot, false)):
+					drop_item(type)
 		equipment_slots[type] = item
 		item.get_parent().remove_child(item)
 		equipment_changed.emit(type, item)
@@ -97,7 +96,7 @@ func get_gear_sort_by_durability() -> Array[Gear]:
 	gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
 	return gears
 
-func find_stackable_items(item: Item, gears: Array[Gear]) -> Array[NumberItem]:
+func find_stackable_items(item: NumberItem, gears: Array[Gear]) -> Array[NumberItem]:
 	var inventory_items:Array[NumberItem] = []
 	for gear in gears:
 		var same_item := func(inventory_item):
@@ -107,7 +106,7 @@ func find_stackable_items(item: Item, gears: Array[Gear]) -> Array[NumberItem]:
 			else:
 				return null
 		inventory_items.append_array(gear.slots.map(same_item))
-	return inventory_items.filter(func(item: Item) -> bool: return is_instance_valid(item))
+	return inventory_items.filter(func(item: NumberItem) -> bool: return is_instance_valid(item))
 
 func put_to_slot(item: Item, from_world: bool = false, gears: Array[Gear] = []) -> bool:
 	if gears == []:
@@ -129,6 +128,9 @@ func stack_item(item: NumberItem,inventory_items: Array[NumberItem]) -> bool:
 		if item.number == 0:
 			return true
 	return false
+
+func find_item(item_id: int) -> Item:
+	return null
 
 func get_equipment_type(item: Item) -> int:
 	match item.get_script():
