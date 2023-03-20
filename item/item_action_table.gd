@@ -38,8 +38,8 @@ class CraftingRecipe:
 		components.append(Component.new(item_id, quantitiy, consumed))
 		return self
 	
-	func get_component(item: Item) -> Component:
-		return components.filter(func(c: Component) -> bool: return c.item_id == item.get_item_id()).front()
+	func get_component(item_id: int) -> Component:
+		return components.filter(func(c: Component) -> bool: return c.item_id == item_id).front()
 	
 	func set_result(res: ItemResource, is_number_item: bool = true):
 		result = res
@@ -51,10 +51,10 @@ class CraftingRecipe:
 	
 	func can_craft(item1: Item, item2: Item) -> bool:
 		if is_components(item1) and is_components(item2):
-			var c1 := get_component(item1)
-			var c2 := get_component(item2)
-			return (not c1.consumed or item1.number >= c1.quantitiy) \
-				and (not c2.consumed or item2.number >= c2.quantitiy)
+			var c1 := get_component(item1.get_item_id())
+			var c2 := get_component(item2.get_item_id())
+			return (not (c1.consumed and item1 is NumberItem) or item1.number >= c1.quantitiy) \
+				and (not (c2.consumed and item2 is NumberItem) or item2.number >= c2.quantitiy)
 		return false
 
 
@@ -77,7 +77,7 @@ func _init():
 	crafting_recipes = [
 		CraftingRecipe.new().add_component(17).add_component(19)
 		.set_result(Gear.RES_TABLE.get(143)),
-		CraftingRecipe.new().add_component(14, 3).add_component(143, 1, false)
+		CraftingRecipe.new().add_component(14, 3).add_component(143, 1)
 		.set_result(Gear.RES_TABLE.get(146)),
 		CraftingRecipe.new().add_component(15).add_component(22)
 		.set_result(NumberItem.RES_TABLE.get(16)),
@@ -129,17 +129,27 @@ func create_reload_options(ammo: NumberItem) -> Array[ItemAction]:
 func get_recipes(item1: Item, item2: Item) -> Array[CraftingRecipe]:
 	return crafting_recipes.filter(func(c: CraftingRecipe) -> bool: return c.can_craft(item1, item2))
 
-func create_crafting_options(item1: Item, item2: Item) -> Array[ItemAction]:
+func create_crafting_options(intance1_id: int, intance2_id: int) -> Array[ItemAction]:
 	var options: Array[ItemAction]
+	var item1 := instance_from_id(intance1_id)
+	var item2 := instance_from_id(intance2_id)
 	for recipe in get_recipes(item1, item2):
 		options.append(ItemAction.new('Craft %s' % recipe.result.item_name, func() -> void:
-			var c1 := recipe.get_component(item1)
-			var c2 := recipe.get_component(item2)
+			var c1 := recipe.get_component(item1.get_item_id())
+			var c2 := recipe.get_component(item2.get_item_id())
 			if c1.consumed:
-				item1.number -= c1.quantitiy
+				if item1 is NumberItem:
+					item1.number -= c1.quantitiy
+				else:
+					item1.queue_free()
 			if c2.consumed:
-				item2.number -= c2.quantitiy
+				if item2 is NumberItem:
+					item2.number -= c2.quantitiy
+				else:
+					item2.queue_free()
 			var item := ItemCreator.create_item_from_id(recipe.result.id)
-			get_tree().root.get_node('Control').add_child.call_deferred(item)
+			item.global_position = get_tree().root.get_node('World/Player').global_position
+			get_tree().root.get_node('World').add_child.call_deferred(item)
+			update_inventory_ui.call()
 		))
 	return options
