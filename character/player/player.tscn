@@ -23,33 +23,6 @@ height = 28.0
 [node name="Player" instance=ExtResource("1_kl3tb")]
 script = ExtResource("2_o60qm")
 
-[node name="Skin" parent="Sprites" index="0"]
-frame = 29
-
-[node name="Clothes" parent="Sprites" index="1"]
-frame = 29
-
-[node name="Pants" parent="Sprites" index="2"]
-frame = 29
-
-[node name="Helmet" parent="Sprites" index="3"]
-frame = 29
-
-[node name="Vest" parent="Sprites" index="4"]
-frame = 29
-
-[node name="Backpack" parent="Sprites" index="5"]
-frame = 29
-
-[node name="MainWeapon" parent="Sprites" index="6"]
-frame = 29
-
-[node name="Pistol" parent="Sprites" index="7"]
-frame = 17
-
-[node name="MeleeWeapon" parent="Sprites" index="8"]
-frame = 29
-
 [node name="AnimationTree" parent="." index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_xv6yy")
 

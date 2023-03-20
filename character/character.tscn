@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ch2rssv03o2ak"]
+[gd_scene load_steps=68 format=3 uid="uid://ch2rssv03o2ak"]
 
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
 [ext_resource type="Texture2D" uid="uid://pqlbc4otpf82" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="3_qxl6g"]
@@ -4295,12 +4295,29 @@ max_space = 3.0
 snap = 1.0
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4lvu4"]
-graph_offset = Vector2(-446.165, 86.9787)
+graph_offset = Vector2(-598.108, 26.8267)
 nodes/Seek/node = SubResource("AnimationNodeTimeSeek_873jm")
 nodes/Seek/position = Vector2(100, 180)
 nodes/WeaponState/node = SubResource("AnimationNodeBlendSpace1D_1f3bu")
 nodes/WeaponState/position = Vector2(-148.998, 244.774)
 node_connections = [&"output", 0, &"Seek", &"Seek", 0, &"WeaponState"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dd7pp"]
+animation = &"work"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_506tu"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_wn3k2"]
+graph_offset = Vector2(-182.145, 126.68)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_dd7pp")
+nodes/Animation/position = Vector2(220, 160)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_506tu")
+nodes/TimeScale/position = Vector2(419, 166)
+nodes/output/position = Vector2(600, 200)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ay1x"]
+animation = &"dead"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_25lx7"]
 states/Aim/node = SubResource("AnimationNodeBlendSpace1D_l4qe8")
@@ -4313,6 +4330,10 @@ states/MeleeAttack/position = Vector2(192, 181)
 states/Run/node = SubResource("AnimationNodeBlendTree_4lvu4")
 states/Run/position = Vector2(521, 122)
 states/Start/position = Vector2(229, 100)
+states/Work/node = SubResource("AnimationNodeBlendTree_wn3k2")
+states/Work/position = Vector2(760, 235)
+states/dead/node = SubResource("AnimationNodeAnimation_6ay1x")
+states/dead/position = Vector2(373, 186)
 graph_offset = Vector2(-13, 43)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
@@ -4390,5 +4411,6 @@ parameters/Run/WeaponState/blend_position = 2.0
 parameters/Run/WeaponState/0/blend_position = Vector2(0, 1)
 parameters/Run/WeaponState/1/blend_position = Vector2(0, 1)
 parameters/Run/WeaponState/2/blend_position = Vector2(0, 1)
+parameters/Work/TimeScale/scale = 1.0
 
 [node name="StateMachine" parent="." instance=ExtResource("12_gpkti")]
