@@ -9,6 +9,7 @@ const DURABILITY_LABEL_OFFSET = 8
 const ItemUISence = preload('res://gui/item_ui.tscn')
 const DURABILITY_Y = 14
 
+
 var atlas := AtlasTexture.new()
 @export_range(1, 7)
 var max_slot_number: int
@@ -32,9 +33,12 @@ func _ready():
 func update_gear_ui(gear: Gear) -> void:
 	await get_tree().process_frame
 	if not is_instance_valid(gear):
+		has_data = false
 		visible = false
 		return
-
+	
+	has_data = true
+	item_id = gear.get_instance_id()
 	var resource := gear.resource as GearResource
 	atlas.atlas = resource.texture
 	atlas.region = GEAR_ICON_REGION
@@ -67,3 +71,10 @@ func _get_drag_data(at_position):
 		rect.texture = $Icon.texture
 		set_drag_preview(rect)
 		return self
+
+func _can_drop_data(at_position, ui):
+	return $Icon.get_rect().has_point(at_position) and \
+		not ItemActionTable.get_recipes(instance_from_id(item_id), instance_from_id(ui.item_id)).is_empty()
+
+func _drop_data(at_position, ui):
+	item_ui_dropped.emit(self, ui)

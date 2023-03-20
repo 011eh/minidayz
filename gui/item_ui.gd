@@ -4,8 +4,8 @@ class_name ItemUI
 
 
 signal pick_pile_item_slotted
-signal item_index_changed
 signal item_clicked
+
 
 
 const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
@@ -13,8 +13,6 @@ const NUMBER_FORMAT = '%d'
 const ATLAS_REGION = Rect2(0, 320, 32, 32)
 
 
-var item_id: int
-var has_data := true
 var owning_gear_equipment_type: PlayerInventory.EquipmentType
 @export
 var atlas_texture:= preload('res://asset/images/item/gui_slot_item.png')
@@ -89,13 +87,12 @@ func _drop_data(at_position, ui):
 	if ui is PickPileItemUI:
 		pick_pile_item_slotted.emit(owning_gear_equipment_type, get_index(), ui.item_id)
 	elif ui != self:
-		var ui_type := ui.owning_gear_equipment_type if ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
-		else ui.equipment_type as EQUIPMENT_TYPE
-		var slot_index := ui.get_index() if not ui is ItemCardUI else -1 as int
-		item_index_changed.emit(owning_gear_equipment_type, get_index(), ui_type, slot_index)
+		item_ui_dropped.emit(self, ui)
 
 func _gui_input(event):
 	if  has_data and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT \
 	and event.is_pressed() and not self is PickPileItemUI:
-		item_clicked.emit(get_instance_id(), item_id, get_global_mouse_position())
+		var item := instance_from_id(item_id) as Item
+		item_clicked.emit(get_instance_id(), get_global_mouse_position(), item.get_item_name(), \
+			ItemActionTable.create_options(item))
 		accept_event()

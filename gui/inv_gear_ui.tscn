@@ -10,6 +10,8 @@ font_size = 8
 offset_right = 97.0
 offset_bottom = 66.0
 script = ExtResource("1_ay1m6")
+max_slot_number = null
+equipment_type = null
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0

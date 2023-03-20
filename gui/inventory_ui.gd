@@ -4,6 +4,7 @@ extends Control
 signal item_dropped
 signal equipment_changed
 signal knife_dropped
+signal item_index_changed
 
 
 const EQUIPMENT_TYPE = PlayerInventory.EquipmentType
@@ -43,7 +44,7 @@ var pick_pile_item_ui := %PickPileItems
 @onready
 var equip_area := %EquipArea.get_global_rect() as Rect2
 @onready
-var knife_equip_area := %EquipArea.get_global_rect() as Rect2
+var knife_equip_area := %MeleeWeaponCard.get_global_rect() as Rect2
 
 
 func _ready():
@@ -75,17 +76,20 @@ func setup(inventory: PlayerInventory) -> void:
 	
 	item_dropped.connect(inventory.drop_item)
 	knife_dropped.connect(inventory.ui_equip_knife)
+	item_index_changed.connect(inventory.ui_swap_item)
 	%SplitItemDialog.item_splitted.connect(inventory.ui_split_item)
 	equipment_changed.connect(inventory.ui_equip_item)
 	ItemActionTable.setup(inventory, show_spin_box)
 
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
 		item_ui.pick_pile_item_slotted.connect(inventory.ui_put_item_to_slot)
-		item_ui.item_index_changed.connect(inventory.ui_swap_item)
 		item_ui.item_clicked.connect(toggle_item_menu)
+		item_ui.item_ui_dropped.connect(handle_item_ui_dropped)
 
 	for item_card in get_tree().get_nodes_in_group('item_cards'):
 		item_card.item_clicked.connect(toggle_item_menu)
+	
+	%BackpackCard.item_ui_dropped.connect(handle_item_ui_dropped)
 
 	item_menu.visible = false
 	add_child(item_menu)
@@ -136,13 +140,22 @@ func _drop_data(at_position, ui):
 			type = ui.equipment_type
 		item_dropped.emit(type, slot_index, true)
 
+func handle_item_ui_dropped(ui_replaced, ui_from) -> void:
+	if ui_replaced.has_data:
+		var options := ItemActionTable.create_crafting_options(ui_replaced.item_id, ui_from.item_id)
+		toggle_item_menu(ui_replaced.get_instance_id(), ui_replaced.global_position, 'Craft', options)
+	else:
+		var ui_type := ui_from.owning_gear_equipment_type if ui_from.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM \
+		else ui_from.equipment_type as EQUIPMENT_TYPE
+		var slot_index := ui_from.get_index() if not ui_from is ItemCardUI else -1 as int
+		item_index_changed.emit(ui_replaced.owning_gear_equipment_type, ui_replaced.get_index(), ui_type, slot_index)
+
 func is_slot_item_ui(ui: Variant) -> bool:
 	return ui is ItemUI and ui.equipment_type == EQUIPMENT_TYPE.SIMPLE_ITEM
 
-func toggle_item_menu(ui_id: int, item_id: int, g_position: Vector2) -> void:
+func toggle_item_menu(ui_id: int, g_position: Vector2, title: StringName, options: Array[ItemActionTable.ItemAction]) -> void:
 	if not item_menu.visible or item_menu.get_meta('ui_id', -1) != ui_id:
-		var item := instance_from_id(item_id) as Item
-		item_menu.set_active(ui_id, g_position, item.get_item_name(), ItemActionTable.create_options(item))
+		item_menu.set_active(ui_id, g_position, title, options)
 		item_menu.visible = true
 	else:
 		item_menu.visible = false
@@ -161,4 +174,3 @@ func _input(event):
 func _gui_input(event):
 	if item_menu.visible and event.is_pressed():
 		item_menu.visible = false
-
