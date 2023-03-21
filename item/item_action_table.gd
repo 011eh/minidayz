@@ -109,7 +109,18 @@ func create_options(item: Item) -> Array[ItemAction]:
 
 		if item.get_item_id() in range(12):
 			options.append_array(create_reload_options(item))
-		return options
+		if item.get_resource() is StatusItemResource:
+			options.append(ItemAction.new('Consume', func() -> void:
+				PlayerStatus.health += item.get_resource().health
+				PlayerStatus.hunger += item.get_resource().hunger
+				PlayerStatus.thirst += item.get_resource().drink
+				PlayerStatus.temperature += item.get_resource().heat
+				if item.get_resource().stackable:
+					item.number -= 1
+				else:
+					item.queue()
+				update_inventory_ui.call()
+			))
 	if item is RangedWeapon and item.get_round_count() > 0:
 		options.append(ItemAction.new('Eject', eject_ammo_to_inventory.bind(item)))
 	return options

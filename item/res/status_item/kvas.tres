@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_rq3p5"]
+[ext_resource type="Texture2D" uid="uid://c8gqvuxlbv7jq" path="res://asset/images/item/kvas.png" id="2_b7pk1"]
+
+[resource]
+script = ExtResource("1_rq3p5")
+health = 0
+hunger = 3
+drink = 40
+heat = 0
+stackable = true
+stack_limit = 3
+id = 48
+item_name = &"Kvas"
+texture = ExtResource("2_b7pk1")

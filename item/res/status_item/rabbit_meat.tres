@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_khjgp"]
+[ext_resource type="Texture2D" uid="uid://cm4452bgf2r5p" path="res://asset/images/item/rabbit_meat.png" id="2_tbibe"]
+
+[resource]
+script = ExtResource("1_khjgp")
+health = 0
+hunger = 15
+drink = 3
+heat = 0
+stackable = true
+stack_limit = 5
+id = 68
+item_name = &"Rabbit Meat"
+texture = ExtResource("2_tbibe")

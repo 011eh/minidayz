@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_v2yvi"]
+[ext_resource type="Texture2D" uid="uid://d2dns5boa33qn" path="res://asset/images/item/orange.png" id="2_4qdyb"]
+
+[resource]
+script = ExtResource("1_v2yvi")
+health = 0
+hunger = 5
+drink = 10
+heat = 0
+stackable = true
+stack_limit = 5
+id = 60
+item_name = &"Orange"
+texture = ExtResource("2_4qdyb")

@@ -7,7 +7,7 @@ signal died
 var max_health: float
 var health: float: 
 	set(value):
-		health = clamp(value, 0, max_health)
+		health = min(value, max_health)
 		if health < 0:
 			died.emit()
 
