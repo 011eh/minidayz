@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vetr0g6kqtjn"
-path="res://.godot/imported/friend_hp_background-sheet0.png-412fae7b7b51d1642c1b8f875d1a3bc9.ctex"
+uid="uid://cpw63lts0d7ox"
+path="res://.godot/imported/gui_panel.png-a7886a9a9b274a8c04385a11cac0d1a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/gui/status/friend_hp_background-sheet0.png"
-dest_files=["res://.godot/imported/friend_hp_background-sheet0.png-412fae7b7b51d1642c1b8f875d1a3bc9.ctex"]
+source_file="res://asset/images/gui/status/gui_panel.png"
+dest_files=["res://.godot/imported/gui_panel.png-a7886a9a9b274a8c04385a11cac0d1a0.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
