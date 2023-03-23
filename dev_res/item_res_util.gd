@@ -20,8 +20,8 @@ var dict := {
 	ItemType.STATE_ITEM: {
 		'csv_dir': 'res://dev_res/data/状态物品.CSV',
 		'res_dir': 'res://item/res/state_item/',
-		'resource_class': StateItemResource.new()
-	},
+	'resource_class': StatusItemResource.new()
+},
 	ItemType.CRAFT: {
 		'csv_dir': 'res://dev_res/data/工具.CSV',
 		'res_dir': 'res://item/res/craft/',
