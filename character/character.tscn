@@ -4329,16 +4329,22 @@ states/MeleeAttack/node = ExtResource("16_5d887")
 states/MeleeAttack/position = Vector2(192, 181)
 states/Run/node = SubResource("AnimationNodeBlendTree_4lvu4")
 states/Run/position = Vector2(521, 122)
-states/Start/position = Vector2(229, 100)
+states/Start/position = Vector2(163, 93)
 states/Work/node = SubResource("AnimationNodeBlendTree_wn3k2")
 states/Work/position = Vector2(760, 235)
 states/dead/node = SubResource("AnimationNodeAnimation_6ay1x")
 states/dead/position = Vector2(373, 186)
-graph_offset = Vector2(-13, 43)
+graph_offset = Vector2(-198.176, 42.9996)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
 
 [node name="Character" type="CharacterBody2D"]
+position = Vector2(35, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s1fp6")
 
 [node name="Sprites" type="Node2D" parent="."]
 position = Vector2(0, -14)
@@ -4382,11 +4388,6 @@ frame = 4
 hframes = 4
 vframes = 17
 frame = 40
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_s1fp6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

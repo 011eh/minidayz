@@ -77,3 +77,15 @@ position = Vector2(24, 112)
 
 [node name="MainWeapon" type="Marker2D" parent="."]
 position = Vector2(24, 128)
+
+[node name="Player" parent="." instance=ExtResource("2_chdy4")]
+position = Vector2(1394, 33)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StatusUI" parent="CanvasLayer" instance=ExtResource("4_1vvb4")]
+
+[node name="InventoryUI" parent="CanvasLayer" instance=ExtResource("3_0pq3o")]
+visible = false

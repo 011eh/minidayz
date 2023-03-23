@@ -3,20 +3,17 @@ extends CharacterBody2D
 class_name Player
 
 
-const SPEED := 130
-
-
+var status := PlayerStatus
 @onready
 var state_machine := $StateMachine as PlayerStateMachine
 @onready
 var animation_tree := $AnimationTree as AnimationTree
 @onready
 var playback := animation_tree.get('parameters/playback') as AnimationNodeStateMachinePlayback
-var current_state: State
 var last_direction := Vector2.ZERO
 var direction :Vector2
-var weapon_state := PlayerStateMachine.WeaponState.MELEE_WEAPON
 var target_position: Vector2
+var weapon_state := PlayerStateMachine.WeaponState.MELEE_WEAPON
 
 
 func _ready() -> void:
@@ -31,9 +28,9 @@ func _physics_process(delta) -> void:
 		target_position = Vector2.ZERO
 	if direction:
 		last_direction = direction
-		velocity = velocity.move_toward(direction * SPEED, SPEED * 5 * delta)
+		velocity = velocity.move_toward(direction * status.speed, status.speed * 5 * delta)
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, SPEED * 4 * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, status.speed * 4 * delta)
 	move_and_slide()
 
 func get_input_diretion() -> void:
