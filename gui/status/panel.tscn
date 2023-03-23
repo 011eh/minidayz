@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsvhudtuui5rd"]
+
+[ext_resource type="Texture2D" uid="uid://cpw63lts0d7ox" path="res://asset/images/gui/status/gui_panel.png" id="1_6kl23"]
+[ext_resource type="Script" path="res://gui/status/panel.gd" id="2_eicb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk1ug"]
+atlas = ExtResource("1_6kl23")
+region = Rect2(15, 0, 58, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5780q"]
+atlas = ExtResource("1_6kl23")
+region = Rect2(111, 91, 1, 5)
+
+[node name="Panel" type="TextureRect"]
+offset_right = 58.0
+offset_bottom = 18.0
+scale = Vector2(1, 1.00885)
+texture = SubResource("AtlasTexture_qk1ug")
+script = ExtResource("2_eicb1")
+
+[node name="Bar" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 5.0
+offset_right = 56.0
+offset_bottom = 10.0
+step = 0.01
+value = 50.0
+nine_patch_stretch = true
+texture_progress = SubResource("AtlasTexture_5780q")
