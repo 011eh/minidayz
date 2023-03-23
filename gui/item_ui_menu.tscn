@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://fnar7n70jx5f"]
+
+[ext_resource type="Texture2D" uid="uid://fbqhtcq1eued" path="res://asset/images/gui/inventory/item_menu_title.png" id="1_7gdi8"]
+[ext_resource type="Script" path="res://gui/item_ui_menu.gd" id="2_pgj40"]
+[ext_resource type="Texture2D" uid="uid://bfmvw3omni2rc" path="res://asset/images/gui/inventory/item_menu_option.png" id="3_iu2h0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tctgy"]
+line_spacing = -2.0
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_whk0v"]
+line_spacing = -2.0
+font_size = 8
+
+[node name="ItemUIMenu" type="TextureRect"]
+offset_right = 122.0
+offset_bottom = 13.0
+texture = ExtResource("1_7gdi8")
+script = ExtResource("2_pgj40")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_tctgy")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Options" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+offset_top = 19.0
+offset_right = 122.0
+offset_bottom = 45.0
+theme_override_constants/separation = -1
+
+[node name="Button" type="TextureButton" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 19.0
+offset_right = 122.0
+offset_bottom = 45.0
+mouse_filter = 1
+texture_normal = ExtResource("3_iu2h0")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_whk0v")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3

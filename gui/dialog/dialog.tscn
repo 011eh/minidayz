@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0cxyvtmu0pmo"]
+
+[ext_resource type="Script" path="res://gui/dialog/dialog.gd" id="1_5umiq"]
+[ext_resource type="Texture2D" uid="uid://dkprfwvmprclv" path="res://asset/images/gui/portrait/bg_rust.png" id="1_qtp2u"]
+[ext_resource type="Texture2D" uid="uid://cr5l1xw6nrv6u" path="res://asset/images/gui/control/menu_btn_wood-sheet0.png" id="2_2yq56"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6isdm"]
+atlas = ExtResource("2_2yq56")
+region = Rect2(2, 4, 158, 29)
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5umiq")
+
+[node name="Background" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -110.5
+offset_right = 101.5
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qtp2u")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 17
+patch_margin_top = 17
+patch_margin_right = 15
+patch_margin_bottom = 16
+
+[node name="Title" type="Label" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -79.5
+offset_top = 8.0
+offset_right = 79.5
+offset_bottom = 31.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3
+
+[node name="Button" type="TextureButton" parent="Background"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -51.5
+offset_top = -35.0
+offset_right = 51.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_6isdm")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ButtonLabel" type="Label" parent="Background/Button"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3

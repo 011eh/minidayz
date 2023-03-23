@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdhqi2jjctohy"]
+
+[ext_resource type="PackedScene" uid="uid://b0cxyvtmu0pmo" path="res://gui/dialog/dialog.tscn" id="1_m1uw1"]
+[ext_resource type="Script" path="res://gui/dialog/split_item_dialog.gd" id="2_aenoh"]
+[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_kg1l0"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_167en"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_im3bl"]
+events = [SubResource("InputEventKey_167en")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6x7r"]
+atlas = ExtResource("2_kg1l0")
+
+[node name="SplitItemDialog" instance=ExtResource("1_m1uw1")]
+script = ExtResource("2_aenoh")
+
+[node name="Button" parent="Background" index="1"]
+shortcut = SubResource("Shortcut_im3bl")
+
+[node name="ButtonLabel" parent="Background/Button" index="0"]
+text = "Split"
+
+[node name="SpinBox" type="SpinBox" parent="Background" index="2"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.5313
+offset_top = -68.0
+offset_right = 41.5313
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+min_value = 1.0
+value = 1.0
+
+[node name="ItemIcon" type="TextureRect" parent="Background" index="3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -39.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_o6x7r")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ItemLabel" type="Label" parent="Background" index="4"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.5
+offset_top = 42.0
+offset_right = 83.5
+offset_bottom = 65.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3

@@ -1,12 +1,14 @@
 extends Node
 
-class_name StateMachine
+class_name PlayerStateMachine
 
 
-const RIFLE := 0
-const PISTOL := 1
-const MELEE := 2
 const states := ['Idle', 'Run', 'MeleeAttack', 'Aim']
+
+
+enum WeaponState {
+	MAIN_WEAPON, PISTOL, MELEE_WEAPON
+}
 
 
 @onready
@@ -14,6 +16,7 @@ var weapon_switch_timer := $WeaponSwitchTimer
 @onready
 var attack_timer := $AttackTimer
 var current_state: State
+var inventory: Array[Item]
 
 
 func _ready() -> void:
@@ -21,13 +24,15 @@ func _ready() -> void:
 	attack_timer.timeout.connect($MeleeAttack.end)
 
 func setup() -> void:
+	inventory = owner.get_inventory()
+
 	for state_name in states:
 		var state := get_node(state_name) as State
 		state.finished.connect(set_state)
 
 func set_state(state_name: String) -> void:
 	assert(has_node(state_name), '状态机没有 %s 状态！' % state_name)
-	
+
 	if state_name == 'MeleeAttack':
 		if attack_timer.is_stopped():
 			attack_timer.start()
@@ -40,12 +45,14 @@ func set_state(state_name: String) -> void:
 
 func run() -> void:
 	current_state.run()
-	if Input.is_action_just_pressed('with_rifle'):
-		switch_weapon(RIFLE)
-	elif Input.is_action_just_pressed('with_pistol'):
-		switch_weapon(PISTOL)
+	if is_instance_valid(inventory[PlayerInventory.EquipmentType.MAIN_WEAPON])\
+		and Input.is_action_just_pressed('with_rifle'):
+		switch_weapon(WeaponState.MAIN_WEAPON)
+	elif is_instance_valid(inventory[PlayerInventory.EquipmentType.PISTOL])\
+		and Input.is_action_just_pressed('with_pistol'):
+		switch_weapon(WeaponState.PISTOL)
 	elif Input.is_action_just_pressed('with_melee'):
-		switch_weapon(MELEE)
+		switch_weapon(WeaponState.MELEE_WEAPON)
 
 func switch_weapon(weapon: int) -> void:
 	if weapon_switch_timer.is_stopped():
@@ -53,11 +60,8 @@ func switch_weapon(weapon: int) -> void:
 		owner.weapon_state = weapon
 		owner.animation_tree.set('parameters/Idle/blend_position', weapon)
 		owner.animation_tree.set('parameters/Run/WeaponState/blend_position', weapon)
-		var param := 'parameters/Idle/%d/blend_position' % weapon as String
-		owner.animation_tree.set(param, owner.last_direction)
-		if weapon != MELEE:
+		owner.animation_tree.set('parameters/Idle/%d/blend_position' % weapon, owner.last_direction)
+		if weapon != WeaponState.MELEE_WEAPON:
 			owner.animation_tree.set('parameters/Aim/blend_position', weapon)
-
 		if owner.is_moving():
-			var pos = owner.playback.get_current_play_position() as float
-			owner.animation_tree.set('parameters/Run/Seek/seek_position', pos)
+			owner.animation_tree.set('parameters/Run/Seek/seek_position', owner.playback.get_current_play_position())

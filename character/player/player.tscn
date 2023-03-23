@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://dclitc703i6l3"]
+
+[ext_resource type="PackedScene" uid="uid://ch2rssv03o2ak" path="res://character/character.tscn" id="1_kl3tb"]
+[ext_resource type="Script" path="res://character/player/player.gd" id="2_o60qm"]
+[ext_resource type="Script" path="res://character/player/state/player_state_machine.gd" id="3_qn0rk"]
+[ext_resource type="Script" path="res://character/player/state/idle_state.gd" id="4_ydxwn"]
+[ext_resource type="Script" path="res://character/player/state/run_state.gd" id="5_0nf70"]
+[ext_resource type="Script" path="res://character/player/state/melee_attack_state.gd" id="6_4gw2q"]
+[ext_resource type="Script" path="res://character/player/state/aim_state.gd" id="7_ek7gw"]
+[ext_resource type="Script" path="res://character/player/inventory.gd" id="8_j31m2"]
+[ext_resource type="Script" path="res://character/player/item_pick.gd" id="9_w5kyu"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_xv6yy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbmrn"]
+radius = 31.0
+height = 88.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v81y3"]
+radius = 9.0
+height = 28.0
+
+[node name="Player" instance=ExtResource("1_kl3tb")]
+script = ExtResource("2_o60qm")
+
+[node name="AnimationTree" parent="." index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_xv6yy")
+
+[node name="StateMachine" parent="." index="4"]
+script = ExtResource("3_qn0rk")
+
+[node name="Idle" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("4_ydxwn")
+
+[node name="Run" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("5_0nf70")
+
+[node name="MeleeAttack" type="Node" parent="StateMachine" index="2"]
+script = ExtResource("6_4gw2q")
+
+[node name="Aim" type="Node" parent="StateMachine" index="3"]
+script = ExtResource("7_ek7gw")
+
+[node name="AttackTimer" type="Timer" parent="StateMachine" index="4"]
+wait_time = 0.3
+one_shot = true
+
+[node name="WeaponSwitchTimer" type="Timer" parent="StateMachine" index="5"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Inventory" type="Node2D" parent="." index="5"]
+script = ExtResource("8_j31m2")
+
+[node name="DetectionArea" type="Area2D" parent="Inventory" index="0"]
+unique_name_in_owner = true
+collision_layer = 0
+monitorable = false
+script = ExtResource("9_w5kyu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inventory/DetectionArea" index="0"]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kbmrn")
+
+[node name="Timer" type="Timer" parent="Inventory/DetectionArea" index="1"]
+wait_time = 0.2
+
+[node name="PickupArea" type="Area2D" parent="Inventory" index="1"]
+unique_name_in_owner = true
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/PickupArea" index="0"]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v81y3")
+
+[node name="TargetPickupArea" type="Area2D" parent="Inventory" index="2"]
+unique_name_in_owner = true
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/TargetPickupArea" index="0"]
+position = Vector2(0, -4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_v81y3")
+
+[node name="Camera2D" type="Camera2D" parent="." index="6"]
+zoom = Vector2(1.5, 1.5)
