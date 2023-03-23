@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://ymeqht24b720"]
+
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_tx8sa"]
+[ext_resource type="Texture2D" uid="uid://cmqjms5sie3j2" path="res://asset/images/item/barbed_wire.png" id="2_syder"]
+
+[resource]
+script = ExtResource("1_tx8sa")
+stackable = true
+stack_limit = 3
+id = 43
+item_name = &"Barbed Wire"
+texture = ExtResource("2_syder")

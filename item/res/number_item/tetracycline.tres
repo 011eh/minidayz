@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://d1eppwfns4j8t"]
+
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_hptbw"]
+[ext_resource type="Texture2D" uid="uid://dq2qh5pkb5xj6" path="res://asset/images/item/tetracycline.png" id="2_nhx6n"]
+
+[resource]
+script = ExtResource("1_hptbw")
+stackable = true
+stack_limit = 3
+id = 25
+item_name = &"Tetracycline"
+texture = ExtResource("2_nhx6n")

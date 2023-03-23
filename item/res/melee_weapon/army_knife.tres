@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://di744athq5mxh"]
+[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://dypmul66qwo1y"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_mi2h6"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_mi2h6"]
 [ext_resource type="Texture2D" uid="uid://bq3h701cqmdmc" path="res://asset/images/equipment/weapon/melee/army_knife.png" id="2_l21on"]
 
 [resource]
@@ -12,6 +12,6 @@ max_damage = 24
 run_penalty = 1
 attack_rate = 0.8
 wear_per_use = 0.4
-id = 11
+id = 162
 item_name = &"Army Knife"
 texture = ExtResource("2_l21on")

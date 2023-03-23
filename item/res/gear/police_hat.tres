@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://2eu0lh1sp6dh"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://2eu0lh1sp6dh"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_juxwy"]
 [ext_resource type="Texture2D" uid="uid://byl3qfiib3yyf" path="res://asset/images/equipment/helmet/police_hat.png" id="2_nykqi"]
 
 [resource]
 script = ExtResource("1_juxwy")
-type = 2
+type = 3
 slot_number = 0
 heat = 2.0
 armor = 0.0
-id = 38
+id = 133
 item_name = &"Police Hat"
 texture = ExtResource("2_nykqi")

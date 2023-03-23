@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c44jryrq4qwco"]
+[gd_resource type="Resource" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://item/res/script/craft_resource.gd" id="1_xr2tm"]
+[ext_resource type="Script" path="res://item/res/script/durability_item_resource.gd" id="1_xr2tm"]
 [ext_resource type="Texture2D" uid="uid://cmjdebkobwo06" path="res://asset/images/item/sewing_kit.png" id="2_06hfp"]
 
 [resource]

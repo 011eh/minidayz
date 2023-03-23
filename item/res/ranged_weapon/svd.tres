@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://camkxlfij60f2"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://camkxlfij60f2"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_tnsym"]
 [ext_resource type="Texture2D" uid="uid://dc0f6ur24xqc4" path="res://asset/images/equipment/weapon/main/svd.png" id="2_e0as2"]
@@ -18,6 +18,6 @@ max_damage = 100
 run_penalty = 5
 attack_rate = 0.4
 wear_per_use = 0.8
-id = 22
+id = 187
 item_name = &"SVD"
 texture = ExtResource("2_e0as2")

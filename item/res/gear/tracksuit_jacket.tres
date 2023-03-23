@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://byn02n6nblk7q"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://byn02n6nblk7q"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_7an6t"]
 [ext_resource type="Texture2D" uid="uid://4ea5rtl4pv5d" path="res://asset/images/equipment/clothes/tracksuit_jacket.png" id="2_j1kcs"]
 
 [resource]
 script = ExtResource("1_7an6t")
-type = 0
+type = 1
 slot_number = 1
 heat = 4.0
 armor = 0.0
-id = 15
+id = 110
 item_name = &"Tracksuit Jacket"
 texture = ExtResource("2_j1kcs")

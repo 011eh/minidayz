@@ -1,12 +1,12 @@
-extends 'durability_item.gd'
+extends DurabilityItem
 
 class_name Knife
 
 
-const RES_TABLE := {
-	11: preload('res://item/res/melee_weapon/army_knife.tres'),
-	12: preload('res://item/res/melee_weapon/butcher_knife.tres'),
-	13: preload('res://item/res/melee_weapon/hunter_knife.tres'),
+const RES_TABLE = {
+	162: preload('res://item/res/melee_weapon/army_knife.tres'),
+	163: preload('res://item/res/melee_weapon/butcher_knife.tres'),
+	164: preload('res://item/res/melee_weapon/hunter_knife.tres'),
 }
 
 
@@ -16,8 +16,6 @@ func _ready():
 	frame = SPRITE_INIT_FRAME
 	texture = resource.texture
 
-static func create_item(id: int) -> Knife:
+static func get_item_resource(id: int) -> MeleeWeaponResource:
 	assert_id_exists(id, RES_TABLE)
-	var weapon := Knife.new()
-	weapon.resource = RES_TABLE.get(id) as MeleeWeaponResource
-	return weapon
+	return RES_TABLE.get(id)

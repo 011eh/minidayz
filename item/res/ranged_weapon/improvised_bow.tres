@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bgwq2iym0g0u8"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bgwq2iym0g0u8"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_acwl3"]
 [ext_resource type="Texture2D" uid="uid://3i86tnm84se0" path="res://asset/images/equipment/weapon/main/improvised_bow.png" id="2_le7df"]
@@ -18,6 +18,6 @@ max_damage = 63
 run_penalty = 3
 attack_rate = 2.0
 wear_per_use = 1.0
-id = 9
+id = 165
 item_name = &"Improvised Bow"
 texture = ExtResource("2_le7df")

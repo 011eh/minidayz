@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwk1r1ou8750n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mtdfk"]
+radius = 3.0
+height = 12.0
+
+[node name="Item" type="Sprite2D"]
+z_index = -1
+
+[node name="ItemArea2D" type="Area2D" parent="."]
+collision_mask = 0
+input_pickable = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemArea2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mtdfk")

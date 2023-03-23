@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://jr5ixhbvlf06"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://jr5ixhbvlf06"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_bh4w3"]
 [ext_resource type="Texture2D" uid="uid://dk8xdihoeh7w" path="res://asset/images/equipment/clothes/raider_jacket.png" id="2_wn1pi"]
 
 [resource]
 script = ExtResource("1_bh4w3")
-type = 0
+type = 1
 slot_number = 1
 heat = 4.0
 armor = 0.0
-id = 10
+id = 105
 item_name = &"Raider Jacket"
 texture = ExtResource("2_wn1pi")

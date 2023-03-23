@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_f51af"]
+[ext_resource type="Texture2D" uid="uid://py84xpr7c828" path="res://asset/images/item/bilberry.png" id="2_06fvj"]
+
+[resource]
+script = ExtResource("1_f51af")
+health = 0
+hunger = 5
+drink = 10
+heat = 0
+stackable = true
+stack_limit = 5
+id = 64
+item_name = &"Bilberry"
+texture = ExtResource("2_06fvj")

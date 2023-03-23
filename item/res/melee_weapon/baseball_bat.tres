@@ -1,7 +1,7 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://ctf2p1djjffsn"]
+[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://dj1l8i76qmn4v"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_aaykb"]
-[ext_resource type="Texture2D" uid="uid://ct57wuigxfkic" path="res://asset/images/equipment/weapon/melee/hatchet.png" id="2_7k6ko"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_aaykb"]
+[ext_resource type="Texture2D" uid="uid://cnl33e7onom36" path="res://asset/images/equipment/weapon/melee/baseball_bat.png" id="2_6ai23"]
 
 [resource]
 script = ExtResource("1_aaykb")
@@ -12,6 +12,6 @@ max_damage = 37
 run_penalty = 2
 attack_rate = 1.0
 wear_per_use = 0.2
-id = 1
+id = 152
 item_name = &"Baseball bat"
-texture = ExtResource("2_7k6ko")
+texture = ExtResource("2_6ai23")

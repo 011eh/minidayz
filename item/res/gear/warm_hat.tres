@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bsqe2k6u063vy"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://bsqe2k6u063vy"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_kpt7y"]
 [ext_resource type="Texture2D" uid="uid://bi35gtvdeqq3i" path="res://asset/images/equipment/helmet/warm_hat.png" id="2_x1eip"]
 
 [resource]
 script = ExtResource("1_kpt7y")
-type = 2
+type = 3
 slot_number = 0
 heat = 4.0
 armor = 0.0
-id = 40
+id = 135
 item_name = &"Warm Hat"
 texture = ExtResource("2_x1eip")

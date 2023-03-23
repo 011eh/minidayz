@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bcy5l8tkfd6ak"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bcy5l8tkfd6ak"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_gfqoh"]
 [ext_resource type="Texture2D" uid="uid://cjbl67c603cx3" path="res://asset/images/equipment/weapon/main/saiga-12.png" id="2_tuuoq"]
@@ -18,6 +18,6 @@ max_damage = 25
 run_penalty = 2
 attack_rate = 200.0
 wear_per_use = 0.5
-id = 18
+id = 183
 item_name = &"Saiga-12"
 texture = ExtResource("2_tuuoq")

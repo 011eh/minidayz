@@ -1,4 +1,4 @@
-extends CraftResource
+extends DurabilityItemResource
 
 class_name WeaponResource
 

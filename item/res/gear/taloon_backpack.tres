@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cdny4qejbw4hf"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://cdny4qejbw4hf"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_fa00k"]
 [ext_resource type="Texture2D" uid="uid://j1r5moswvqlo" path="res://asset/images/equipment/backpack/taloon_backpack.png" id="2_i6805"]
 
 [resource]
 script = ExtResource("1_fa00k")
-type = 4
+type = 5
 slot_number = 3
 heat = 0.0
 armor = 0.0
-id = 54
+id = 149
 item_name = &"Taloon Backpack"
 texture = ExtResource("2_i6805")

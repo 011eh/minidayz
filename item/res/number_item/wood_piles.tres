@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://b3q70lndlc5nc"]
+
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_objvn"]
+[ext_resource type="Texture2D" uid="uid://dfjjdykcdv0i1" path="res://asset/images/item/wood_piles.png" id="2_xgng4"]
+
+[resource]
+script = ExtResource("1_objvn")
+stackable = true
+stack_limit = 3
+id = 15
+item_name = &"Wood Piles"
+texture = ExtResource("2_xgng4")

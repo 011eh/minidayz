@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://pcopsjr3il3d"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://pcopsjr3il3d"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_t5ovt"]
 [ext_resource type="Texture2D" uid="uid://cv78t1qavh417" path="res://asset/images/equipment/helmet/baseball_cap.png" id="2_i3bjn"]
 
 [resource]
 script = ExtResource("1_t5ovt")
-type = 2
+type = 3
 slot_number = 0
 heat = 2.0
 armor = 0.0
-id = 27
+id = 122
 item_name = &"Baseball Cap"
 texture = ExtResource("2_i3bjn")

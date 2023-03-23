@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://cb88hpiyv7rpw"]
+
+[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_pcmcm"]
+[ext_resource type="Texture2D" uid="uid://cfqhg36trw6mb" path="res://asset/images/item/7.62_ammo.png" id="2_20vqx"]
+
+[resource]
+script = ExtResource("1_pcmcm")
+stackable = true
+stack_limit = 40
+id = 2
+item_name = &"7.62 Ammo"
+texture = ExtResource("2_20vqx")

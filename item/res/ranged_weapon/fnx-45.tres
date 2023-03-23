@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://co6l0ibfh2x1g"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://co6l0ibfh2x1g"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_1uf27"]
 [ext_resource type="Texture2D" uid="uid://b4hwgg5ngeygt" path="res://asset/images/equipment/weapon/pistol/fnx-45.png" id="2_dm3dd"]
@@ -18,6 +18,6 @@ max_damage = 25
 run_penalty = 0
 attack_rate = 450.0
 wear_per_use = 0.8
-id = 27
+id = 192
 item_name = &"FNX-45"
 texture = ExtResource("2_dm3dd")

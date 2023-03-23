@@ -1,4 +1,6 @@
-extends Item
+extends SlotItem
+
+class_name DurabilityItem
 
 
 const SPRITE_HFRAMES = 4

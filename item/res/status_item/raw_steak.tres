@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_rty87"]
+[ext_resource type="Texture2D" uid="uid://dkvxdqb0bb612" path="res://asset/images/item/raw_steak.png" id="2_rokc5"]
+
+[resource]
+script = ExtResource("1_rty87")
+health = 0
+hunger = 30
+drink = 5
+heat = 0
+stackable = true
+stack_limit = 3
+id = 70
+item_name = &"Raw Steak"
+texture = ExtResource("2_rokc5")

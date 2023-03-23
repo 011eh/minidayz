@@ -1,14 +1,14 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://drbrr8qgasdup"]
+[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://drbrr8qgasdup"]
 
 [ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_yom04"]
 [ext_resource type="Texture2D" uid="uid://bm8mbkn62o8fq" path="res://asset/images/equipment/helmet/balaklava.png" id="2_bkcf7"]
 
 [resource]
 script = ExtResource("1_yom04")
-type = 2
+type = 3
 slot_number = 0
 heat = 3.0
 armor = 0.0
-id = 25
+id = 120
 item_name = &"Balaklava"
 texture = ExtResource("2_bkcf7")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_ivfox"]
+[ext_resource type="Texture2D" uid="uid://c36qcbahxxg7w" path="res://asset/images/item/perch.png" id="2_edpij"]
+
+[resource]
+script = ExtResource("1_ivfox")
+health = 0
+hunger = 25
+drink = 3
+heat = 0
+stackable = true
+stack_limit = 5
+id = 73
+item_name = &"Perch"
+texture = ExtResource("2_edpij")

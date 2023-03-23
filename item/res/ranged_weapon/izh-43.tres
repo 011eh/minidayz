@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bml6hmtkpq1jr"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bml6hmtkpq1jr"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ptjy6"]
 [ext_resource type="Texture2D" uid="uid://w0kyy43ejjno" path="res://asset/images/equipment/weapon/main/izh-43.png" id="2_2vg2f"]
@@ -18,6 +18,6 @@ max_damage = 25
 run_penalty = 2
 attack_rate = 0.0
 wear_per_use = 1.0
-id = 5
+id = 172
 item_name = &"IZH-43"
 texture = ExtResource("2_2vg2f")

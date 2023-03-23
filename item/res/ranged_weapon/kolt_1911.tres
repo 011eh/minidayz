@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bjb0gju1oyncv"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bjb0gju1oyncv"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_4g04h"]
 [ext_resource type="Texture2D" uid="uid://caci46wm26myk" path="res://asset/images/equipment/weapon/pistol/kolt_1911.png" id="2_mkh1x"]
@@ -18,6 +18,6 @@ max_damage = 32
 run_penalty = 0
 attack_rate = 450.0
 wear_per_use = 0.8
-id = 26
+id = 191
 item_name = &"Kolt 1911"
 texture = ExtResource("2_mkh1x")

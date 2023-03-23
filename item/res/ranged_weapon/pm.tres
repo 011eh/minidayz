@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://0w8y0fr6rpdj"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://0w8y0fr6rpdj"]
 
 [ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_cfsbo"]
 [ext_resource type="Texture2D" uid="uid://rwsmuel8mkpx" path="res://asset/images/equipment/weapon/pistol/pm.png" id="2_s02jw"]
@@ -18,6 +18,6 @@ max_damage = 30
 run_penalty = 0
 attack_rate = 450.0
 wear_per_use = 0.8
-id = 32
+id = 197
 item_name = &"PM"
 texture = ExtResource("2_s02jw")

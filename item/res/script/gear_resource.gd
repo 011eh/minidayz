@@ -3,6 +3,7 @@ extends ItemResource
 class_name GearResource
 
 enum GearType {
+	PLAYER_SLOT,
 	CLOTHES,
 	PANTS,
 	HELMET,

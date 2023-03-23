@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d07lkhf82tylb"]
+[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://dl6jwxk2cldix"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon.gd" id="1_mkq6i"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_mkq6i"]
 [ext_resource type="Texture2D" uid="uid://cdhyy2jc2qh6" path="res://asset/images/equipment/weapon/melee/pitchfork.png" id="2_u3brb"]
 
 [resource]
@@ -12,6 +12,6 @@ max_damage = 42
 run_penalty = 3
 attack_rate = 1.2
 wear_per_use = 0.3
-id = 7
+id = 158
 item_name = &"Pitchfork"
 texture = ExtResource("2_u3brb")
