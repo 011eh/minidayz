@@ -41,6 +41,74 @@ func _ready():
 		item.position = $MainWeapon.position
 		add_child(item)
 
+func _draw():
+	PlayerStatus.hunger = 40
+	PlayerStatus.thirst = 40
+	draw_circle($Area1.position, $Area1/CollisionShape2D.shape.radius, Color.html('4ef4441d'))
+	draw_circle($Area2.position, $Area2/CollisionShape2D.shape.radius,Color.html('64d8645e'))
+	draw_circle($Area3.position, $Area3/CollisionShape2D.shape.radius,Color.html('da484927'))
+	draw_circle($Area4.position, $Area4/CollisionShape2D.shape.radius,Color.html('426a2e'))
+	draw_circle($Area5.position, $Area5/CollisionShape2D.shape.radius,Color.html('acbfc46a'))
+	
+	var restore_old_rate := PlayerStatus.health_restore_rate
+	$Area1.body_entered.connect(func(body: Node2D) -> void:
+		PlayerStatus.to_restore(PlayerStatus.health_restore_rate, 9999)
+		print('enter area1')
+	)
+	$Area1.body_exited.connect(func(body: Node2D) -> void:
+		PlayerStatus.restoring = false
+		PlayerStatus.restore_timer.stop()
+		PlayerStatus.restore_timer.timeout.emit()
+		print('exit area1')
+	)
+	
+	$Area2.body_entered.connect(func(body: Node2D) -> void:
+		PlayerStatus.to_restore(20, 9999)
+		print('enter area2')
+	)
+	$Area2.body_exited.connect(func(body: Node2D) -> void:
+		PlayerStatus.restoring = false
+		PlayerStatus.restore_timer.stop()
+		PlayerStatus.restore_timer.timeout.emit()
+		print('exit area2')
+	)
+	
+	
+	$Area3.body_entered.connect(func(body: Node2D) -> void:
+		PlayerStatus.is_bleeding = true
+		PlayerStatus.bleed_rate = 20
+		print('enter area3')
+	)
+	$Area3.body_exited.connect(func(body: Node2D) -> void:
+		PlayerStatus.is_bleeding = false
+		print('exit area3')
+	)
+	
+	$Area4.body_entered.connect(func(body: Node2D) -> void:
+		PlayerStatus.is_sick = true
+		print('enter area4')
+	)
+	$Area4.body_exited.connect(func(body: Node2D) -> void:
+		PlayerStatus.is_sick = false
+		print('exit area4')
+	)
+	
+	$Area4.body_entered.connect(func(body: Node2D) -> void:
+		PlayerStatus.is_sick = true
+		print('enter area4')
+	)
+	
+	var old_rate := PlayerStatus.hunger_decrease_rate
+	$Area5.body_entered.connect(func(body: Node2D) -> void:
+		PlayerStatus.thirst_decrease_rate = 10
+		PlayerStatus.hunger_decrease_rate = 10
+		
+	)
+	$Area5.body_exited.connect(func(body: Node2D) -> void:
+		PlayerStatus.hunger_decrease_rate = old_rate
+		PlayerStatus.thirst_decrease_rate = old_rate
+	)
+	
 func stack_test():
 	var item: Item
 	item = ItemCreator.create_item(NumberItem, 0)
