@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3wlprwtpho2n"
-path="res://.godot/imported/gui_heat_text.png-bed39f9d8e4fd40b5f56a2c233b1b741.ctex"
+uid="uid://fbqhtcq1eued"
+path="res://.godot/imported/item_menu_title.png-ccf3e507cd60165fd3f659dc793c1ebd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/gui/status/gui_heat_text.png"
-dest_files=["res://.godot/imported/gui_heat_text.png-bed39f9d8e4fd40b5f56a2c233b1b741.ctex"]
+source_file="res://asset/images/gui/inventory/item_menu_title.png"
+dest_files=["res://.godot/imported/item_menu_title.png-ccf3e507cd60165fd3f659dc793c1ebd.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

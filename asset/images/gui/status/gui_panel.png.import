@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1gq4i8upawu1"
-path="res://.godot/imported/gui_bleeding-sheet0.png-26da05867d1a4920cd75ef0f47d317c2.ctex"
+uid="uid://cpw63lts0d7ox"
+path="res://.godot/imported/gui_panel.png-a7886a9a9b274a8c04385a11cac0d1a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/gui/status/gui_bleeding-sheet0.png"
-dest_files=["res://.godot/imported/gui_bleeding-sheet0.png-26da05867d1a4920cd75ef0f47d317c2.ctex"]
+source_file="res://asset/images/gui/status/gui_panel.png"
+dest_files=["res://.godot/imported/gui_panel.png-a7886a9a9b274a8c04385a11cac0d1a0.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
