@@ -1,171 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://beijsknfy5l56"]
+[gd_scene load_steps=5 format=3 uid="uid://beijsknfy5l56"]
 
 [ext_resource type="Script" path="res://test/tilemap_test.gd" id="1_60unu"]
-[ext_resource type="TileSet" uid="uid://rhlox203ltec" path="res://test/tileset.tres" id="2_45u7x"]
-[ext_resource type="Texture2D" uid="uid://b3f0scsnwg434" path="res://asset/images/environment/bunker/tilemap_bunker.png" id="4_7rpi3"]
-[ext_resource type="Texture2D" uid="uid://pqlbc4otpf82" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="6_fpkbw"]
+[ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="3_8rlot"]
+[ext_resource type="PackedScene" uid="uid://jj06ilhifwco" path="res://test/ground.tscn" id="3_8taqb"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6hwm6"]
-texture = ExtResource("4_7rpi3")
-texture_region_size = Vector2i(30, 30)
-1:1/0 = 0
-1:1/0/terrain_set = 0
-0:1/0 = 0
-0:1/0/terrain_set = 0
-0:1/0/terrains_peering_bit/bottom_left_corner = 0
-0:1/0/terrains_peering_bit/left_side = 0
-0:1/0/terrains_peering_bit/top_left_corner = 0
-1:0/0 = 0
-1:0/0/terrain_set = 0
-1:0/0/terrain = 0
-1:0/0/terrains_peering_bit/right_side = 0
-1:0/0/terrains_peering_bit/left_side = 0
-1:0/0/terrains_peering_bit/top_left_corner = 0
-1:0/0/terrains_peering_bit/top_side = 0
-1:0/0/terrains_peering_bit/top_right_corner = 0
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/terrains_peering_bit/right_side = 0
-0:0/0/terrains_peering_bit/bottom_left_corner = 0
-0:0/0/terrains_peering_bit/left_side = 0
-0:0/0/terrains_peering_bit/top_left_corner = 0
-0:0/0/terrains_peering_bit/top_side = 0
-0:0/0/terrains_peering_bit/top_right_corner = 0
-2:0/0 = 0
-2:0/0/terrain_set = 0
-2:0/0/terrain = 0
-2:0/0/terrains_peering_bit/right_side = 0
-2:0/0/terrains_peering_bit/bottom_right_corner = 0
-2:0/0/terrains_peering_bit/left_side = 0
-2:0/0/terrains_peering_bit/top_left_corner = 0
-2:0/0/terrains_peering_bit/top_side = 0
-2:0/0/terrains_peering_bit/top_right_corner = 0
-2:1/0 = 0
-2:1/0/terrain_set = 0
-2:1/0/terrains_peering_bit/right_side = 0
-2:1/0/terrains_peering_bit/bottom_right_corner = 0
-2:1/0/terrains_peering_bit/top_right_corner = 0
-2:2/0 = 0
-2:2/0/terrain_set = 0
-2:2/0/terrains_peering_bit/right_side = 0
-2:2/0/terrains_peering_bit/bottom_right_corner = 0
-2:2/0/terrains_peering_bit/top_right_corner = 0
-1:2/0 = 0
-1:2/0/terrain_set = 0
-0:2/0 = 0
-0:2/0/terrain_set = 0
-0:2/0/terrains_peering_bit/bottom_left_corner = 0
-0:2/0/terrains_peering_bit/left_side = 0
-0:2/0/terrains_peering_bit/top_left_corner = 0
-0:3/0 = 0
-0:3/0/terrain_set = 0
-0:3/0/terrains_peering_bit/bottom_left_corner = 0
-0:3/0/terrains_peering_bit/left_side = 0
-0:3/0/terrains_peering_bit/top_left_corner = 0
-1:3/0 = 0
-1:3/0/terrain_set = 0
-2:3/0 = 0
-2:3/0/terrain_set = 0
-2:3/0/terrains_peering_bit/right_side = 0
-2:3/0/terrains_peering_bit/bottom_right_corner = 0
-2:3/0/terrains_peering_bit/top_right_corner = 0
-0:4/0 = 0
-0:4/0/terrain_set = 0
-1:4/0 = 0
-1:4/0/terrain_set = 0
-2:4/0 = 0
-2:4/0/terrain_set = 0
-3:4/0 = 0
-3:4/0/terrain_set = 0
-3:1/0 = 0
-3:1/0/terrain_set = 0
-3:0/0 = 0
-3:0/0/terrain_set = 0
-3:0/0/terrains_peering_bit/right_side = 0
-3:0/0/terrains_peering_bit/top_right_corner = 0
-3:2/0 = 0
-3:2/0/terrain_set = 0
-3:3/0 = 0
-3:3/0/terrain_set = 0
-3:5/0 = 0
-3:6/0 = 0
-2:6/0 = 0
-2:7/0 = 0
-1:7/0 = 0
-1:6/0 = 0
-0:6/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-3:7/0 = 0
-0:7/0 = 0
-2:5/0 = 0
-4:0/0 = 0
-4:0/0/terrain_set = 0
-4:0/0/terrains_peering_bit/left_side = 0
-4:0/0/terrains_peering_bit/top_left_corner = 0
-4:2/0 = 0
-4:3/0 = 0
-4:1/0 = 0
-4:1/0/terrain_set = 0
-4:6/0 = 0
-4:7/0 = 0
-4:5/0 = 0
-4:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_qicsv"]
-tile_size = Vector2i(30, 30)
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Terrain 0"
-terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
-terrain_set_0/terrain_1/name = "Terrain 1"
-terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
-sources/0 = SubResource("TileSetAtlasSource_6hwm6")
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_2swsa"]
 
 [node name="Test" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_60unu")
-metadata/_edit_vertical_guides_ = [-969.0]
-metadata/_edit_horizontal_guides_ = [485.0]
 
-[node name="Ground" type="TileMap" parent="."]
-visible = false
-rotation = -0.000529595
-tile_set = ExtResource("2_45u7x")
-format = 2
-layer_0/name = "grass"
-layer_0/tile_data = PackedInt32Array(2293783, 131072, 4, 2293782, 65536, 1, 2293781, 131072, 3, 2293780, 131072, 4, 2293779, 65536, 1, 2293778, 131072, 4, 2293777, 131072, 3, 2293776, 65536, 1, 2293775, 131072, 3, 2293774, 131072, 3, 2293771, 65536, 1, 2293770, 65536, 4, 2293773, 131072, 3, 1, 196608, 1, 524301, 65536, 4, 458765, 65536, 4, 393229, 65536, 4, 327693, 65536, 4, 262157, 65536, 4, 196621, 131072, 4, 524300, 131072, 4, 458764, 65536, 4, 393228, 131072, 4, 327692, 131072, 3, 262156, 65536, 4, 196620, 65536, 4, 524299, 65536, 1, 458763, 131072, 4, 393227, 131072, 3, 327691, 65536, 1, 262155, 131072, 4, 196619, 65536, 1, 524298, 65536, 4, 458762, 131072, 4, 393226, 131072, 3, 327690, 131072, 4, 262154, 131072, 3, 196618, 131072, 3, 524297, 65536, 4, 458761, 65536, 4, 393225, 131072, 3, 327689, 65536, 1, 262153, 131072, 3, 196617, 131072, 3, 524296, 65536, 4, 458760, 65536, 4, 393224, 65536, 1, 327688, 196608, 1, 262152, 65536, 1, 196616, 65536, 1, 524295, 65536, 1, 458759, 131072, 3, 393223, 131072, 4, 327687, 131072, 4, 262151, 131072, 4, 196615, 65536, 4, 524294, 131072, 3, 458758, 131072, 3, 393222, 65536, 4, 327686, 131072, 3, 262150, 65536, 1, 196614, 65536, 1, 524293, 65536, 1, 458757, 65536, 4, 393221, 131072, 4, 327685, 65536, 1, 262149, 65536, 4, 196613, 196608, 1, 524292, 131072, 3, 458756, 131072, 3, 393220, 131072, 3, 327684, 131072, 3, 262148, 131072, 3, 196612, 131072, 4)
-layer_1/name = "path"
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = "sand"
-layer_2/enabled = true
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
-layer_3/name = "water"
-layer_3/enabled = true
-layer_3/modulate = Color(1, 1, 1, 1)
-layer_3/y_sort_enabled = false
-layer_3/y_sort_origin = 0
-layer_3/z_index = 0
-layer_3/tile_data = PackedInt32Array()
+[node name="Player" parent="." instance=ExtResource("3_8rlot")]
 
-[node name="Skin" type="Sprite2D" parent="."]
-position = Vector2(-576, -324)
-texture = ExtResource("6_fpkbw")
-offset = Vector2(16, 16)
-hframes = 4
-vframes = 11
+[node name="AnimationTree" parent="Player" index="3"]
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_2swsa")
 
-[node name="Camera2D" type="Camera2D" parent="Skin"]
+[node name="Camera2D" parent="Player" index="6"]
+zoom = Vector2(1, 1)
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_qicsv")
-format = 2
+[node name="Ground" parent="." instance=ExtResource("3_8taqb")]
+
+[editable path="Player"]
