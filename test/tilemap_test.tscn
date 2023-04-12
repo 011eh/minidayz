@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" path="res://test/tilemap_test.gd" id="1_60unu"]
 [ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="3_8rlot"]
-[ext_resource type="PackedScene" uid="uid://jj06ilhifwco" path="res://test/ground.tscn" id="3_8taqb"]
+[ext_resource type="PackedScene" uid="uid://cywk0pv5panlr" path="res://test/ground.tscn" id="3_8taqb"]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_2swsa"]
 
 [node name="Test" type="Node2D"]
 y_sort_enabled = true
+scale = Vector2(0.05, 0.05)
 script = ExtResource("1_60unu")
 
 [node name="Player" parent="." instance=ExtResource("3_8rlot")]
@@ -19,5 +20,6 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_2swsa")
 zoom = Vector2(1, 1)
 
 [node name="Ground" parent="." instance=ExtResource("3_8taqb")]
+z_index = -1
 
 [editable path="Player"]
