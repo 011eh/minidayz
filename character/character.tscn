@@ -4339,7 +4339,6 @@ graph_offset = Vector2(-198.176, 42.9996)
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
 
 [node name="Character" type="CharacterBody2D"]
-position = Vector2(35, 35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
