@@ -8,18 +8,17 @@
 
 [node name="Test" type="Node2D"]
 y_sort_enabled = true
-scale = Vector2(0.05, 0.05)
 script = ExtResource("1_60unu")
 
 [node name="Player" parent="." instance=ExtResource("3_8rlot")]
+position = Vector2(6660, 6660)
 
 [node name="AnimationTree" parent="Player" index="3"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_2swsa")
 
 [node name="Camera2D" parent="Player" index="6"]
-zoom = Vector2(1, 1)
+zoom = Vector2(0.02, 0.02)
 
 [node name="Ground" parent="." instance=ExtResource("3_8taqb")]
-z_index = -1
 
 [editable path="Player"]

@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://8wl48ohu72in"]
+[gd_scene load_steps=2 format=3 uid="uid://8wl48ohu72in"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_om7j8"]
-[ext_resource type="PackedScene" uid="uid://jj06ilhifwco" path="res://test/ground.tscn" id="2_t2ynn"]
-[ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="3_xmmu5"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_om7j8")
-
-[node name="Ground" parent="." instance=ExtResource("2_t2ynn")]
-
-[node name="Player" parent="." instance=ExtResource("3_xmmu5")]
-position = Vector2(350, 310)
