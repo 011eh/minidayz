@@ -15,68 +15,60 @@ var noise := FastNoiseLite.new()
 var terrain := %Terrain
 @onready
 var decoration := %Decoration
+@onready
+var tilemap := $TileMap
 
 
 func _ready():
 #	init()
-	init_area()
+	seed(1)
+	init_area(25)
 	pass
 
-func init_area():
-	var number := 25
-	var map_size_in_area := ceil(sqrt(number)) as int
-	var area_size := MAP_AREA_SIZE / float(map_size_in_area)
-	var points: Array[Vector2i]
-	var areas: Array[Vector2]
-	
-	for x in range(map_size_in_area):
-		for y in range(map_size_in_area):
-			areas.append(Vector2(x * area_size, y * area_size))
-	
-	areas.shuffle()
-	for i in range(areas.size() - number):
-		areas.pop_back()
-	
+func init_area(location_number: int):
 	var i := 0
-	while i < number:
-		var p := Vector2i(areas[i].x + randi() % int(area_size), areas[i].y +  randi() % int(area_size))
+	var location_block: Array[Vector2i]
+	while i < location_number:
+		var p := Vector2i(randi() % MAP_AREA_SIZE, randi() % MAP_AREA_SIZE)
 		var rect := Rect2i(p - Vector2i.ONE, Vector2i.ONE * 3)
-		if points.any(func(v) -> bool: return rect.has_point(v)):
+		if location_block.any(func(v) -> bool: return rect.has_point(v)):
 			continue
 		i += 1
-		points.append(p)
-	terr_set_terrain(2, get_cells_in_blocks(points, BLOCK_AREA_SIZE_IN_TERRAIN_CELLS), 0, 3)
-	create_path(points)
+		location_block.append(p)
+	var paths_block_dict := create_path(location_block)
+#	terr_set_terrain(2, get_cells_in_blocks(location_block, BLOCK_AREA_SIZE_IN_TERRAIN_CELLS), 0, 3)
+#	terr_set_terrain(1, get_cells_in_blocks(paths_block_dict.keys(), BLOCK_AREA_SIZE_IN_TERRAIN_CELLS), 0, 2)
 
-func create_path(location_coord: Array[Vector2i]):
-	var path_blocks: Array[Vector2i]
-	var dict: Dictionary
-	for p in location_coord:
-		var k:= 'x-%d' % p.x
-		if not dict.has(k):
-			dict[k] = [p.x]
+func create_path(location_coords: Array[Vector2i]) -> Dictionary:
+	var path_dict: Dictionary
+	var axis_dict: Dictionary
+	for p in location_coords:
+		var axis := 'x-%d' % p.x
+		if not axis_dict.has(axis):
+			axis_dict[axis] = PackedInt32Array([p.y])
 		else:
-			dict[k].append(p.x)
+			axis_dict[axis].append(p.y)
 		
-		k = 'y-%d' % p.y
-		if not dict.has(k):
-			dict[k] =[p.y]
+		axis = 'y-%d' % p.y
+		if not axis_dict.has(axis):
+			axis_dict[axis] = PackedInt32Array([p.x])
 		else:
-			dict[k].append(p.y)
-	var keys := dict.keys()
-	keys.sort()
-	for key in keys:
-		var array := dict.get(key) as Array
+			axis_dict[axis].append(p.x)
+	for key in axis_dict.keys():
+		var array := axis_dict.get(key) as PackedInt32Array
 		if array.size() > 1:
-			var s := array.pop_back() as int
-			var e := array.pop_back() as int
+			array.sort()
+			var index := randi() % (array.size() - 1)
+			var axis_value := int(key.substr(2))
 			if key[0] == 'x':
-				for n in range(s, e, 1 if s > e else -1):
-					path_blocks.append(Vector2i(n, int(key[2])))
-			else:
-				for n in range(s, e, 1 if s > e else -1):
-					path_blocks.append(Vector2i(int(key[2]), n))
-	print(path_blocks)
+				for n in range(array[index] + 1, array[index + 1]):
+					var p := Vector2i(axis_value, n)
+					path_dict[p] = terr_get_path_type('x', p, path_dict, location_coords)
+			else: 
+				for n in range(array[index] + 1, array[index + 1]):
+					var p := Vector2i(n, axis_value)
+					path_dict[p] = terr_get_path_type('y', p, path_dict, location_coords)
+	return path_dict
 
 func init() -> void:
 	noise.seed = randi()
@@ -102,7 +94,7 @@ func init() -> void:
 	for v in get_cells_in_blocks(grass,BLOCK_AREA_SIZE_IN_TERRAIN_CELLS * 2):
 		decoration.set_cell(0, v, 0, deco_pick_random_tile(DecoPattern.GRASS, 5))
 
-func get_cells_in_blocks(blocks: Array[Vector2i], area_size: int) -> Array[Vector2i]:
+func get_cells_in_blocks(blocks: Array, area_size: int) -> Array[Vector2i]:
 	var cells: Array[Vector2i]
 	for array in blocks.map(func(v):
 		var cells_in_block: Array[Vector2i]
@@ -118,6 +110,25 @@ func terr_set_terrain(layer: int, cells: Array[Vector2i], terrain_set: int, terr
 	terrain.set_cells_terrain_connect(layer, cells, terrain_set, terr, false)
 	if with_grass_layer:
 		terr_set_terrain(0, cells, 0, 0, false)
+
+func terr_get_path_type(axis: String, coord: Vector2i, paths: Dictionary, locations: Array[Vector2i]) -> Vector2i:
+	if paths.has(coord):
+		return Vector2i(2, 2)
+	else:
+		var v: Vector2
+		if axis == 'x':
+			v = Vector2i(0, 2)
+			if locations.has(Vector2i(coord.x - 1, coord.y)):
+					v.x = -1
+			if locations.has(Vector2i(coord.x + 1, coord.y)):
+					v.x = 1 if v.x == 0 else 2
+		else:
+			v = Vector2i(2, 0)
+			if locations.has(Vector2i(coord.x, coord.y - 1)):
+					v.y = -1
+			if locations.has(Vector2i(coord.x, coord.y + 1)):
+					v.y = 1 if v.y == 0 else 2
+		return v
 
 # https://github.com/godotengine/godot/blob/b1c18f807bfa3ad2e807ad920bc5f55b5e4061bd/editor/plugins/tiles/tile_map_editor.cpp
 func deco_pick_random_tile(pattern: DecoPattern, scattering: float) -> Vector2i:
