@@ -22,7 +22,10 @@ PlayerStatus="*res://status/player_status.gd"
 
 [display]
 
-window/stretch/scale=2.3
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/assert_always_false=0
+gdscript/warnings/shadowed_global_identifier=0
 
 [input]
 
