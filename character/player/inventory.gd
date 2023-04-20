@@ -93,7 +93,7 @@ func get_gear_sort_by_durability() -> Array[Gear]:
 	for gear in equipment_slots.slice(0, WEPAON_OFFSET):
 		if is_instance_valid(gear):
 			gears.append(gear)
-	gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
+	gears.sort_custom(func(g1: Gear, g2: Gear) -> bool: return g1.durability > g2.durability)
 	return gears
 
 func find_stackable_items(item: NumberItem, gears: Array[Gear]) -> Array[NumberItem]:
