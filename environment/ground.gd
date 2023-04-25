@@ -37,6 +37,9 @@ var decoration := %Decoration
 
 
 func _ready():
+	var s := randi()
+	print(s)
+	seed(s)
 	init()
 	pass
 
@@ -52,15 +55,8 @@ func init():
 		i += 1
 		location_block.append(p)
 	var block_dict := create_path_block(location_block)
-	
-#	for x in range(MAP_AREA_SIZE * SIZE_IN_CELLS):
-#		for y in range(MAP_AREA_SIZE * SIZE_IN_CELLS):
-#			terrain.set_cell(0, Vector2i(x, y), 0, pick_random_tile(Tile.TERRAIN, 0))
-	
-	var cells := get_cells_in_path_block({Vector2i(1,1):BlockType.ROAD_X_POS_Y})
-	print(cells)
-	terr_set_terrain(0, cells, 0, 1, false)
-#	terr_set_terrain(2, get_cells_in_blocks(location_block, SIZE_IN_CELLS), 0, 3)
+	terr_set_terrain(0, get_cells_in_blocks(location_block, SIZE_IN_CELLS), 0, 0,false)
+	terr_set_terrain(0, get_cells_in_path_blocks(block_dict), 0, 1, false)
 #	terr_set_terrain(1, get_cells_in_blocks(paths_block_dict.keys(), SIZE_IN_CELLS), 0, 2)
 
 func create_path_block(location_coords: Array[Vector2i]) -> Dictionary:
@@ -80,7 +76,7 @@ func create_path_block(location_coords: Array[Vector2i]) -> Dictionary:
 			axis_dict[axis].append(p.x)
 	for key in axis_dict.keys():
 		var array := axis_dict.get(key) as PackedInt32Array
-		if array.size() > 1 and randf() > 0.9:
+		if array.size() > 1 and randf() < 0.9:
 			array.sort()
 			var index := randi() % (array.size() - 1)
 			var axis_value := int(key.substr(2))
@@ -106,26 +102,35 @@ func get_cells_in_blocks(blocks: Array, area_size: int) -> Array[Vector2i]:
 		cells.append_array(array)
 	return cells
 
-func get_cells_in_path_block(path_block_dict: Dictionary) -> Array[Vector2i]:
+func get_cells_in_path_blocks(path_block_dict: Dictionary) -> Array[Vector2i]:
 	var cells: Array[Vector2i]
 	for v in path_block_dict.keys():
 		var type := path_block_dict.get(v) as BlockType
 		if type == BlockType.CROSSROAD:
-			pass
-		elif type in range(BlockType.ROAD_X, BlockType.ROAD_X_POS_Y + 1):
-			for x in range(SIZE_IN_CELLS):
-				for y in range(4):
-					cells.append(v * SIZE_IN_CELLS + Vector2i(x, y + 5))
-			if type == BlockType.ROAD_X:
-				continue
-			
-			var offset := 0 if type == BlockType.ROAD_X_NEG_Y else 9
-			for x in range(4):
-				for y in range(5):
-					cells.append(v * SIZE_IN_CELLS + Vector2i(x + 5, y + offset))
-			return cells
-		else:
-			return cells
+			cells.append_array(terr_get_crossroad_cells(v, Rect2i(v.x * SIZE_IN_CELLS , v.y * SIZE_IN_CELLS + 5, 14, 4)))
+			cells.append_array(terr_get_crossroad_cells(v, Rect2i(v.x * SIZE_IN_CELLS + 5, v.y * SIZE_IN_CELLS, 4, 14)))
+			continue
+		
+		var direction := 'x' if type in [BlockType.ROAD_X, BlockType.ROAD_X_NEG_Y, BlockType.ROAD_X_POS_Y] else 'y'
+		var rect := Rect2i(v.x * SIZE_IN_CELLS , v.y * SIZE_IN_CELLS + 5, 14, 4) if direction == 'x' \
+			else Rect2i(v.x * SIZE_IN_CELLS + 5, v.y * SIZE_IN_CELLS, 4, 14)
+		cells.append_array(terr_get_crossroad_cells(v, rect))
+		if type in [BlockType.ROAD_X, BlockType.ROAD_Y]:
+			continue
+		
+		var offset := 0 if type in [BlockType.ROAD_X_NEG_Y, BlockType.ROAD_Y_NEG_X] else 9
+		rect = Rect2i(v.x * SIZE_IN_CELLS + 5, v.y * SIZE_IN_CELLS + offset, 4, 5) if direction == 'x' \
+			else Rect2i(v.x * SIZE_IN_CELLS + offset, v.y * SIZE_IN_CELLS + 5, 5, 4)
+		for x in range(rect.position.x, rect.position.x + rect.size.x):
+			for y in range(rect.position.y, rect.position.y + rect.size.y):
+				cells.append(Vector2i(x, y))
+	return cells
+
+func terr_get_crossroad_cells(block_coords: Vector2i, road_rect: Rect2i) -> Array[Vector2i]:
+	var cells: Array[Vector2i]
+	for x in range(road_rect.position.x, road_rect.position.x + road_rect.size.x):
+			for y in range(road_rect.position.y, road_rect.position.y + road_rect.size.y):
+				cells.append(Vector2i(x, y))
 	return cells
 
 func terr_set_terrain(layer: int, cells: Array[Vector2i], terrain_set: int, terr: int, with_grass_layer: bool = true):
@@ -144,13 +149,13 @@ func terr_get_path_block_type(axis: String, coords: Vector2i, paths: Dictionary,
 			if locations.has(Vector2i(coords.x - 1, coords.y)):
 					type = BlockType.ROAD_Y_NEG_X
 			if locations.has(Vector2i(coords.x + 1, coords.y)):
-					type = BlockType.ROAD_Y_POS_X
+					type = BlockType.CROSSROAD if type == BlockType.ROAD_Y_NEG_X else BlockType.ROAD_Y_POS_X
 		else:
 			type = BlockType.ROAD_X
 			if locations.has(Vector2i(coords.x, coords.y - 1)):
 					type = BlockType.ROAD_X_NEG_Y
 			if locations.has(Vector2i(coords.x, coords.y + 1)):
-					type = BlockType.ROAD_X_POS_Y
+					type = BlockType.CROSSROAD if type == BlockType.ROAD_X_NEG_Y else BlockType.ROAD_X_POS_Y
 		return type
 
 # https://github.com/godotengine/godot/blob/b1c18f807bfa3ad2e807ad920bc5f55b5e4061bd/editor/plugins/tiles/tile_map_editor.cpp
