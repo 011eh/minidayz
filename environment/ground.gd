@@ -25,7 +25,7 @@ enum BlockType {
 }
 
 
-const SIZE_IN_CELLS := 14
+const SIZE_IN_CELLS := 17
 const MAP_AREA_SIZE := 16
 
 
@@ -37,9 +37,6 @@ var decoration := %Decoration
 
 
 func _ready():
-	var s := randi()
-	print(s)
-	seed(s)
 	init()
 	pass
 
@@ -55,6 +52,11 @@ func init():
 		i += 1
 		location_block.append(p)
 	var block_dict := create_path_block(location_block)
+	var pick_random_tile := create_pick_random_tile_callable(terrain, 0)
+	for x in range(MAP_AREA_SIZE * SIZE_IN_CELLS):
+		for y in range(MAP_AREA_SIZE * SIZE_IN_CELLS):
+			terrain.set_cell(0, Vector2i(x, y), 0, pick_random_tile.call())
+	
 	terr_set_terrain(0, get_cells_in_blocks(location_block, SIZE_IN_CELLS), 0, 0,false)
 	terr_set_terrain(0, get_cells_in_path_blocks(block_dict), 0, 1, false)
 #	terr_set_terrain(1, get_cells_in_blocks(paths_block_dict.keys(), SIZE_IN_CELLS), 0, 2)
@@ -159,19 +161,19 @@ func terr_get_path_block_type(axis: String, coords: Vector2i, paths: Dictionary,
 		return type
 
 # https://github.com/godotengine/godot/blob/b1c18f807bfa3ad2e807ad920bc5f55b5e4061bd/editor/plugins/tiles/tile_map_editor.cpp
-func pick_random_tile(tile: Tile, pattern: int, scattering: float = 0) -> Vector2i:
-	var tile_map := terrain if tile == Tile.TERRAIN else decoration
+func create_pick_random_tile_callable(tile_map: TileMap, pattern: int, scattering: float = 0) -> Callable:
 	var p := tile_map.tile_set.get_pattern(pattern) as TileMapPattern
 	var source := tile_map.tile_set.get_source(0) as TileSetAtlasSource
 	var sum := 0.0
 	for coords in p.get_used_cells().map(func(c) -> Vector2i: return p.get_cell_atlas_coords(c)):
 		sum += source.get_tile_data(coords, 0).probability
 	
-	var current := 0.0
-	var rand = randf_range(0, sum + sum * scattering)
-	for cell in p.get_used_cells():
-		var coords := p.get_cell_atlas_coords(cell)
-		current += source.get_tile_data(coords, 0).probability
-		if current >= rand:
-			return coords
-	return Vector2i(-1, -1)
+	return func() -> Vector2i:
+		var current := 0.0
+		var rand = randf_range(0, sum + sum * scattering)
+		for cell in p.get_used_cells():
+			var coords := p.get_cell_atlas_coords(cell)
+			current += source.get_tile_data(coords, 0).probability
+			if current >= rand:
+				return coords
+		return Vector2i(-1, -1)
