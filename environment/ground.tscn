@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dki55m34v67wp"]
+[gd_scene load_steps=4 format=3 uid="uid://dki55m34v67wp"]
 
 [ext_resource type="Script" path="res://environment/ground.gd" id="1_hpqh3"]
 [ext_resource type="TileSet" uid="uid://rhlox203ltec" path="res://environment/ground_terrain.tres" id="2_6cd8i"]
 [ext_resource type="TileSet" uid="uid://dy13cibxixk7g" path="res://environment/ground_decoration.tres" id="3_jbh0a"]
-[ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="4_j68pw"]
 
 [node name="Ground" type="Node2D"]
 script = ExtResource("1_hpqh3")
@@ -35,5 +34,3 @@ rotation = -0.00108804
 tile_set = ExtResource("3_jbh0a")
 format = 2
 layer_0/name = "Decoration"
-
-[node name="Player" parent="." instance=ExtResource("4_j68pw")]

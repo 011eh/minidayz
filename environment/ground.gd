@@ -1,7 +1,6 @@
 extends Node2D
 
 
-enum Tile {TERRAIN, DECORATION}
 enum BlockType {
 	GRASSLAND,
 	LAKE,
@@ -27,6 +26,8 @@ enum BlockType {
 
 const SIZE_IN_CELLS := 17
 const MAP_AREA_SIZE := 16
+const PATH_AXIS_OFFSET := 7
+const PATH_WIDTH := 4
 
 
 var noise := FastNoiseLite.new()
@@ -64,43 +65,37 @@ func init():
 func create_path_block(location_coords: Array[Vector2i]) -> Dictionary:
 	var path_dict: Dictionary
 	var axis_dict: Dictionary
+	var add_block_data := func(axis: String, value: int) -> void:
+		if not axis_dict.has(axis):
+			axis_dict[axis] = PackedInt32Array([value])
+		else:
+			axis_dict[axis].append(value)
+	
 	for p in location_coords:
-		var axis := 'x-%d' % p.x
-		if not axis_dict.has(axis):
-			axis_dict[axis] = PackedInt32Array([p.y])
-		else:
-			axis_dict[axis].append(p.y)
-		
-		axis = 'y-%d' % p.y
-		if not axis_dict.has(axis):
-			axis_dict[axis] = PackedInt32Array([p.x])
-		else:
-			axis_dict[axis].append(p.x)
+		add_block_data.call('x-%d' % p.x, p.y)
+		add_block_data.call('y-%d' % p.y, p.x)
+	
 	for key in axis_dict.keys():
-		var array := axis_dict.get(key) as PackedInt32Array
-		if array.size() > 1 and randf() < 0.9:
-			array.sort()
-			var index := randi() % (array.size() - 1)
-			var axis_value := int(key.substr(2))
-			if key[0] == 'x':
-				for n in range(array[index] + 1, array[index + 1]):
-					var p := Vector2i(axis_value, n)
-					path_dict[p] = terr_get_path_block_type('x', p, path_dict, location_coords)
-			else:
-				for n in range(array[index] + 1, array[index + 1]):
-					var p := Vector2i(n, axis_value)
-					path_dict[p] = terr_get_path_block_type('y', p, path_dict, location_coords)
+		var value_arr := axis_dict.get(key) as PackedInt32Array
+		if value_arr.size() > 1 and randf() < 0.9:
+			value_arr.sort()
+			var index := randi() % (value_arr.size() - 1)
+			var axis_index := int(key.substr(2))
+			for value in range(value_arr[index] + 1, value_arr[index + 1]):
+				var p := Vector2i(axis_index, value) if key[0] == 'x' else Vector2i(value, axis_index)
+				path_dict[p] = terr_get_path_block_type(key[0], p, path_dict, location_coords)
 	return path_dict
 
 func get_cells_in_blocks(blocks: Array, area_size: int) -> Array[Vector2i]:
 	var cells: Array[Vector2i]
-	for array in blocks.map(func(v):
+	var cells_in_block = blocks.map(func(v):
 		var cells_in_block: Array[Vector2i]
 		for x in range(area_size):
 			for y in range(area_size):
 				cells_in_block.append(v * area_size + Vector2i(x, y))
 		return cells_in_block
-	):
+	)
+	for array in cells_in_block:
 		cells.append_array(array)
 	return cells
 
@@ -109,13 +104,29 @@ func get_cells_in_path_blocks(path_block_dict: Dictionary) -> Array[Vector2i]:
 	for v in path_block_dict.keys():
 		var type := path_block_dict.get(v) as BlockType
 		if type == BlockType.CROSSROAD:
-			cells.append_array(terr_get_crossroad_cells(v, Rect2i(v.x * SIZE_IN_CELLS , v.y * SIZE_IN_CELLS + 5, 14, 4)))
-			cells.append_array(terr_get_crossroad_cells(v, Rect2i(v.x * SIZE_IN_CELLS + 5, v.y * SIZE_IN_CELLS, 4, 14)))
+			cells.append_array(terr_get_crossroad_cells(v, Rect2i(
+				v.x * SIZE_IN_CELLS,
+				v.y * SIZE_IN_CELLS + PATH_AXIS_OFFSET,
+				SIZE_IN_CELLS,
+				PATH_WIDTH)))
+			cells.append_array(terr_get_crossroad_cells(v, Rect2i(
+				v.x * SIZE_IN_CELLS + PATH_AXIS_OFFSET,
+				v.y * SIZE_IN_CELLS,
+				PATH_WIDTH,
+				SIZE_IN_CELLS)))
 			continue
 		
-		var direction := 'x' if type in [BlockType.ROAD_X, BlockType.ROAD_X_NEG_Y, BlockType.ROAD_X_POS_Y] else 'y'
-		var rect := Rect2i(v.x * SIZE_IN_CELLS , v.y * SIZE_IN_CELLS + 5, 14, 4) if direction == 'x' \
-			else Rect2i(v.x * SIZE_IN_CELLS + 5, v.y * SIZE_IN_CELLS, 4, 14)
+		var axis := 'x' if type in [BlockType.ROAD_X, BlockType.ROAD_X_NEG_Y, BlockType.ROAD_X_POS_Y] else 'y'
+		var rect := Rect2i(
+			v.x * SIZE_IN_CELLS,
+			v.y * SIZE_IN_CELLS + PATH_AXIS_OFFSET,
+			SIZE_IN_CELLS,
+			PATH_WIDTH) if axis == 'x' else \
+			Rect2i(
+				v.x * SIZE_IN_CELLS + PATH_AXIS_OFFSET,
+				v.y * SIZE_IN_CELLS,
+				PATH_WIDTH,
+				SIZE_IN_CELLS)
 		cells.append_array(terr_get_crossroad_cells(v, rect))
 		if type in [BlockType.ROAD_X, BlockType.ROAD_Y]:
 			continue
