@@ -52,15 +52,16 @@ func init():
 			continue
 		i += 1
 		location_block.append(p)
-	var block_dict := create_path_block(location_block)
-	var pick_random_tile := create_pick_random_tile_callable(terrain, 0)
+	
+	var path_block_dict := create_path_block(location_block)
+	var path_cells := get_cells_in_path_blocks(path_block_dict)
+	
+	var terr_pick_random_tile := create_pick_random_tile_callable(terrain, 0)
 	for x in range(MAP_AREA_SIZE * SIZE_IN_CELLS):
 		for y in range(MAP_AREA_SIZE * SIZE_IN_CELLS):
-			terrain.set_cell(0, Vector2i(x, y), 0, pick_random_tile.call())
+			terrain.set_cell(0, Vector2i(x, y), 0, terr_pick_random_tile.call())
 	
-	terr_set_terrain(0, get_cells_in_blocks(location_block, SIZE_IN_CELLS), 0, 0,false)
-	terr_set_terrain(0, get_cells_in_path_blocks(block_dict), 0, 1, false)
-#	terr_set_terrain(1, get_cells_in_blocks(paths_block_dict.keys(), SIZE_IN_CELLS), 0, 2)
+	terrain.set_cells_terrain_connect(0, path_cells, 0, 1, false)
 
 func create_path_block(location_coords: Array[Vector2i]) -> Dictionary:
 	var path_dict: Dictionary
@@ -131,9 +132,17 @@ func get_cells_in_path_blocks(path_block_dict: Dictionary) -> Array[Vector2i]:
 		if type in [BlockType.ROAD_X, BlockType.ROAD_Y]:
 			continue
 		
-		var offset := 0 if type in [BlockType.ROAD_X_NEG_Y, BlockType.ROAD_Y_NEG_X] else 9
-		rect = Rect2i(v.x * SIZE_IN_CELLS + 5, v.y * SIZE_IN_CELLS + offset, 4, 5) if direction == 'x' \
-			else Rect2i(v.x * SIZE_IN_CELLS + offset, v.y * SIZE_IN_CELLS + 5, 5, 4)
+		var offset := 0 if type in [BlockType.ROAD_X_NEG_Y, BlockType.ROAD_Y_NEG_X] else 10
+		rect = Rect2i(
+			v.x * SIZE_IN_CELLS + PATH_AXIS_OFFSET,
+			v.y * SIZE_IN_CELLS + offset,
+			PATH_WIDTH, PATH_AXIS_OFFSET
+			) if axis == 'x' \
+			else Rect2i(v.x * SIZE_IN_CELLS + offset,
+			v.y * SIZE_IN_CELLS + PATH_AXIS_OFFSET,
+			PATH_AXIS_OFFSET,
+			PATH_WIDTH
+			)
 		for x in range(rect.position.x, rect.position.x + rect.size.x):
 			for y in range(rect.position.y, rect.position.y + rect.size.y):
 				cells.append(Vector2i(x, y))
