@@ -16,5 +16,9 @@ func _ready():
 
 func _process(delta):
 	var v := terrain.local_to_map(player.global_position)
-	$Player/Label.text = '%s' % (v / 14)
-	
+	queue_redraw()
+
+func _draw():
+	var p := player.global_position / 16 / 60 as Vector2i
+	print(p)
+	draw_rect(Rect2(p.x,p.y, 60 * 17, 60 * 17),Color.RED)
