@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://c3b37timrm1yf"]
 
 [ext_resource type="Script" path="res://test/buliding_test.gd" id="1_40pox"]
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/hospital.tscn" id="2_osiav"]
