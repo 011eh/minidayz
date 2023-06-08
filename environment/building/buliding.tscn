@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://uxjobfrdh14c"]
+
+[node name="Buliding" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Inside" type="Sprite2D" parent="."]
+centered = false
+
+[node name="Outside" type="Sprite2D" parent="."]
+position = Vector2(1, -176)
+centered = false

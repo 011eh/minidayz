@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbyenvpqhx353"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_b4uu4"]
+[ext_resource type="Texture2D" uid="uid://b2pw38v3xn4wo" path="res://asset/images/building/b_hospital_int-sheet0.png" id="2_vt65v"]
+[ext_resource type="Texture2D" uid="uid://dttxdelo7bopi" path="res://asset/images/building/b_hospital-sheet0.png" id="3_5poet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycc88"]
+atlas = ExtResource("2_vt65v")
+region = Rect2(237, 150, 110, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odx35"]
+size = Vector2(110, 16)
+
+[node name="Buliding" instance=ExtResource("1_b4uu4")]
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_vt65v")
+
+[node name="Counter" type="Sprite2D" parent="." index="1"]
+position = Vector2(292, 164)
+texture = SubResource("AtlasTexture_ycc88")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Counter" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/StaticBody2D" index="0"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_odx35")
+
+[node name="Outside" parent="." index="2"]
+visible = false
+texture = ExtResource("3_5poet")
