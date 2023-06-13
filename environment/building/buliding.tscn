@@ -1,11 +1,15 @@
-[gd_scene format=3 uid="uid://uxjobfrdh14c"]
+[gd_scene load_steps=2 format=3 uid="uid://uxjobfrdh14c"]
+
+[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_8uotd"]
 
 [node name="Buliding" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_8uotd")
 
 [node name="Inside" type="Sprite2D" parent="."]
 centered = false
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
+
 [node name="Outside" type="Sprite2D" parent="."]
-position = Vector2(1, -176)
 centered = false

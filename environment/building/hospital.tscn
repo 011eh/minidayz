@@ -1,31 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbyenvpqhx353"]
+[gd_scene load_steps=8 format=3 uid="uid://bbyenvpqhx353"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_b4uu4"]
 [ext_resource type="Texture2D" uid="uid://b2pw38v3xn4wo" path="res://asset/images/building/b_hospital_int-sheet0.png" id="2_vt65v"]
 [ext_resource type="Texture2D" uid="uid://dttxdelo7bopi" path="res://asset/images/building/b_hospital-sheet0.png" id="3_5poet"]
+[ext_resource type="Texture2D" uid="uid://dwm7xl4n5q7y4" path="res://asset/images/building/b_hospital_counter.png" id="3_a8y4b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ycc88"]
-atlas = ExtResource("2_vt65v")
-region = Rect2(237, 150, 110, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym8o0"]
+size = Vector2(21, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_odx35"]
-size = Vector2(110, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hm86t"]
+size = Vector2(22, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnvsp"]
+size = Vector2(108, 14)
 
 [node name="Buliding" instance=ExtResource("1_b4uu4")]
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(0, 107)
 texture = ExtResource("2_vt65v")
+offset = Vector2(0, -107)
 
-[node name="Counter" type="Sprite2D" parent="." index="1"]
-position = Vector2(292, 164)
-texture = SubResource("AtlasTexture_ycc88")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+position = Vector2(7, 0)
+polygon = PackedVector2Array(-6, -8, -6, 102, 11, 102, 11, 96, 0, 96, 0, 2, 33.0448, 2, 33, 13, 49, 13, 49, 61, 69, 61, 69, 3, 122, 2, 122, 60, 168, 60, 168, 2, 382, 2, 382, 60, 413, 60, 413, 2, 467, 2, 467, 49, 498, 49, 498, 96, 489, 96, 489, 102, 503, 102, 503, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
+position = Vector2(331.5, 99)
+shape = SubResource("RectangleShape2D_ym8o0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="2"]
+position = Vector2(222, 99)
+shape = SubResource("RectangleShape2D_hm86t")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(1, 209)
+texture = ExtResource("3_5poet")
+offset = Vector2(0, -385)
+
+[node name="Counter" type="Sprite2D" parent="." index="2"]
+position = Vector2(236, 178)
+texture = ExtResource("3_a8y4b")
+offset = Vector2(55, -14)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Counter" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/StaticBody2D" index="0"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_odx35")
-
-[node name="Outside" parent="." index="2"]
-visible = false
-texture = ExtResource("3_5poet")
+position = Vector2(55, -10)
+shape = SubResource("RectangleShape2D_nnvsp")
