@@ -3,13 +3,18 @@
 [ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_8uotd"]
 
 [node name="Buliding" type="Node2D"]
-y_sort_enabled = true
 script = ExtResource("1_8uotd")
 
-[node name="Inside" type="Sprite2D" parent="."]
+[node name="Inside" type="Sprite2D" parent="." groups=["building_sprites"]]
+unique_name_in_owner = true
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
 
-[node name="Outside" type="Sprite2D" parent="."]
+[node name="Outside" type="Sprite2D" parent="." groups=["building_sprites"]]
+unique_name_in_owner = true
 centered = false
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4

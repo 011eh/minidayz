@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbyenvpqhx353"]
+[gd_scene load_steps=9 format=3 uid="uid://bbyenvpqhx353"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_b4uu4"]
 [ext_resource type="Texture2D" uid="uid://b2pw38v3xn4wo" path="res://asset/images/building/b_hospital_int-sheet0.png" id="2_vt65v"]
@@ -14,32 +14,37 @@ size = Vector2(22, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnvsp"]
 size = Vector2(108, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5qr1"]
+size = Vector2(1664, 1052)
+
 [node name="Buliding" instance=ExtResource("1_b4uu4")]
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(0, 107)
+position = Vector2(0, 106)
 texture = ExtResource("2_vt65v")
-offset = Vector2(0, -107)
+offset = Vector2(0, -106)
+region_rect = Rect2(1, 1, 509, 208)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
-position = Vector2(7, 0)
+position = Vector2(7, 1)
 polygon = PackedVector2Array(-6, -8, -6, 102, 11, 102, 11, 96, 0, 96, 0, 2, 33.0448, 2, 33, 13, 49, 13, 49, 61, 69, 61, 69, 3, 122, 2, 122, 60, 168, 60, 168, 2, 382, 2, 382, 60, 413, 60, 413, 2, 467, 2, 467, 49, 498, 49, 498, 96, 489, 96, 489, 102, 503, 102, 503, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
-position = Vector2(331.5, 99)
+position = Vector2(331.5, 100)
 shape = SubResource("RectangleShape2D_ym8o0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="2"]
-position = Vector2(222, 99)
+position = Vector2(222, 100)
 shape = SubResource("RectangleShape2D_hm86t")
 
 [node name="Outside" parent="." index="1"]
 position = Vector2(1, 209)
 texture = ExtResource("3_5poet")
 offset = Vector2(0, -385)
+region_rect = Rect2(0, 1, 510, 402)
 
-[node name="Counter" type="Sprite2D" parent="." index="2"]
-position = Vector2(236, 178)
+[node name="Counter" type="Sprite2D" parent="." index="2" groups=["building_sprites"]]
+position = Vector2(237, 178)
 texture = ExtResource("3_a8y4b")
 offset = Vector2(55, -14)
 
@@ -48,3 +53,10 @@ offset = Vector2(55, -14)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Counter/StaticBody2D" index="0"]
 position = Vector2(55, -10)
 shape = SubResource("RectangleShape2D_nnvsp")
+
+[node name="DetectionArea" parent="." index="3"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" index="0"]
+position = Vector2(256, 17)
+shape = SubResource("RectangleShape2D_q5qr1")
