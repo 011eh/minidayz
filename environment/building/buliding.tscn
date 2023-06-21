@@ -11,10 +11,15 @@ centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+
 [node name="Outside" type="Sprite2D" parent="." groups=["building_sprites"]]
 unique_name_in_owner = true
 centered = false
 
 [node name="DetectionArea" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 4
 collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]

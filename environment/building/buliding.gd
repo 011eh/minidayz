@@ -4,13 +4,21 @@ class_name Building
 
 
 var player: Player
-var interior_zone: Rect2
+@onready
+var interior_zone := Rect2(%Inside.global_position, %Inside.get_rect().size + %Inside.offset)
 
 func _ready():
 	y_sort_enabled = true
 	
-	var origin_size := %Inside.get_rect().size as Vector2
-	interior_zone = Rect2(%Inside.position, origin_size + %Inside.offset)
+	var outside_rect := Rect2(%Outside.global_position + %Outside.offset, %Outside.get_rect().size)
+	%DetectionArea/CollisionShape2D.shape.size = outside_rect.size + Vector2(
+		ProjectSettings.get_setting('display/window/size/viewport_width'),
+		ProjectSettings.get_setting('display/window/size/viewport_height') / 2
+	)
+	%DetectionArea/CollisionShape2D.position = Vector2(
+		outside_rect.get_center().x,
+		# todo
+		outside_rect.get_center().y - %DetectionArea/CollisionShape2D.shape.size.y / 2)
 	
 	%DetectionArea.body_entered.connect(func(player: Node2D) -> void:
 		self.player = player
@@ -22,12 +30,12 @@ func _ready():
 
 func _process(delta):
 	if is_instance_valid(player):
-		if in_building(player.position):
+		if in_building(player.global_position):
 			change_transparent(0, true)
 			return
 		
-		var player_y := player.position.y
-		if player_y < %Inside.position.y:
+		var player_y := player.global_position.y
+		if player_y < %Inside.global_position.y:
 			change_transparent(0.2)
 			return
 		change_transparent(1)
