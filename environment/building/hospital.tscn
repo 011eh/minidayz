@@ -11,8 +11,7 @@ size = Vector2(22, 6)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym8o0"]
 size = Vector2(21, 6)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5qr1"]
-size = Vector2(1664, 728)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6l08"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnvsp"]
 size = Vector2(108, 14)
@@ -44,8 +43,8 @@ offset = Vector2(0, -385)
 region_rect = Rect2(0, 1, 510, 402)
 
 [node name="CollisionShape2D" parent="DetectionArea" index="0"]
-position = Vector2(293, -143)
-shape = SubResource("RectangleShape2D_q5qr1")
+position = Vector2(257, -145.5)
+shape = SubResource("RectangleShape2D_y6l08")
 
 [node name="Counter" type="Sprite2D" parent="." index="3" groups=["building_sprites"]]
 position = Vector2(237, 178)
