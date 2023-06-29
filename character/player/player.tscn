@@ -20,7 +20,8 @@ height = 88.0
 radius = 9.0
 height = 28.0
 
-[node name="Player" instance=ExtResource("1_kl3tb")]
+[node name="Player" groups=["player"] instance=ExtResource("1_kl3tb")]
+collision_layer = 5
 script = ExtResource("2_o60qm")
 
 [node name="AnimationTree" parent="." index="3"]
