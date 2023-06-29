@@ -4,22 +4,23 @@
 
 [node name="Buliding" type="Node2D"]
 script = ExtResource("1_8uotd")
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside")])
 
-[node name="Inside" type="Sprite2D" parent="." groups=["building_sprites"]]
+[node name="Inside" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+[node name="InteriorArea" type="Area2D" parent="Inside"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
 
-[node name="Outside" type="Sprite2D" parent="." groups=["building_sprites"]]
+[node name="Outside" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 centered = false
 
-[node name="DetectionArea" type="Area2D" parent="."]
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+rect = Rect2(0, 0, 20, 20)
