@@ -23,6 +23,7 @@ func _ready():
 		global_visiable_rect = %VisibleNotifier.rect
 		global_visiable_rect.size *= %VisibleNotifier.scale
 		global_visiable_rect.position = to_global(%VisibleNotifier.position)
+		
 		%VisibleNotifier.screen_entered.connect(func()-> void:
 			set_process(true)
 		)
@@ -31,15 +32,18 @@ func _ready():
 		)
 
 func _process(delta):
-	var player_pos := get_tree().get_first_node_in_group('player').global_position as Vector2
-	if global_visiable_rect.has_point(player_pos):
-		change_transparent(0.2)
-	elif %InteriorArea.get_overlapping_bodies().is_empty():
-		change_transparent(1)
+	if %InteriorArea.get_overlapping_bodies().is_empty():
+		var player_pos := get_tree().get_first_node_in_group('player').global_position as Vector2
+		if global_visiable_rect.has_point(player_pos):
+			change_transparent(0.2)
+		else:
+			change_transparent(1)
 
 func change_transparent(value: float, only_outside: bool = false) -> void:
 	if only_outside:
-		%Outside.modulate.a = value
+		for name in building_sprites:
+			var sprite := get_node(name) as Sprite2D
+			sprite.modulate.a = value if sprite == %Outside else 1
 		return
 	
 	for sprite in building_sprites:

@@ -29,10 +29,10 @@ texture = ExtResource("3_p4i4h")
 offset = Vector2(0, -107)
 
 [node name="Counter" type="Sprite2D" parent="." index="2"]
-position = Vector2(3, 65)
+position = Vector2(3, 76)
 texture = ExtResource("4_5obai")
 centered = false
-offset = Vector2(0, -11)
+offset = Vector2(0, -22)
 
 [node name="VisibleNotifier" parent="." index="3"]
 scale = Vector2(4.05, 2.65)

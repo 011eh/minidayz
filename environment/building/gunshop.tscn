@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://qi00hijp8nw1"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_5a3fv"]
+[ext_resource type="Texture2D" uid="uid://bnsr5h7xnvhon" path="res://asset/images/building/b_gunshop_int-sheet0.png" id="2_naslf"]
+[ext_resource type="Texture2D" uid="uid://dy7w22vpykmq5" path="res://asset/images/building/b_gunshop-sheet0.png" id="3_6x6eg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b42r"]
+size = Vector2(199, 76)
+
+[node name="Buliding" instance=ExtResource("1_5a3fv")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 44)
+texture = ExtResource("2_naslf")
+offset = Vector2(0, -44)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, -7, 207, -7, 207, 78, 112, 78, 112, 74, 203, 74, 203, 9, 179, 9, 179, 1, 162, 1, 162, 13, 151, 24, 44, 24, 44, 1, 4, 1, 4, 74, 87, 74, 87.205, 78, 0, 78)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(103.5, 39)
+shape = SubResource("RectangleShape2D_0b42r")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(0, 127)
+texture = ExtResource("3_6x6eg")
+offset = Vector2(0, -127)
+
+[node name="VisibleNotifier" parent="." index="2"]
+scale = Vector2(10.35, 2.2)

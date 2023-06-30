@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://duwg73mg6k76t"]
+
+[ext_resource type="PackedScene" uid="uid://d3s28cr1fdatq" path="res://environment/building/door_buliding.tscn" id="1_0ixv6"]
+[ext_resource type="Texture2D" uid="uid://cptvsqs77w358" path="res://asset/images/building/b_church_int-sheet0.png" id="2_lwrh3"]
+[ext_resource type="Texture2D" uid="uid://dsaqxlrely3uh" path="res://asset/images/building/b_church-sheet0.png" id="3_1qr3b"]
+
+[node name="Buliding" instance=ExtResource("1_0ixv6")]
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_lwrh3")
+offset = Vector2(0, -82)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, -5, 291, -5, 291, 105, 266, 105, 266, 166, 257, 166, 257, 198, 180, 198, 180, 196, 172, 196, 172, 188, 185, 188, 185, 161, 227, 161, 227, 92, 279, 92, 279, 2, 279, 26, 222, 26, 222.02, 1.72737, 70, 1, 70, 26, 13, 26, 13, 92, 65, 92, 65, 161, 107, 161, 107, 188, 120, 188, 120, 196, 112, 196, 112.091, 198, 35, 198, 35, 166, 26, 166, 26, 105, 1, 105)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(30, -43)
+polygon = PackedVector2Array(40, 44, 192, 45, 249, 69, 249, 135, 197, 204, 142, 239, 89, 239, 35, 204, -17, 134, -17, 69)
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-2, 200)
+texture = ExtResource("3_1qr3b")
+offset = Vector2(0, -531)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-1, -333)
