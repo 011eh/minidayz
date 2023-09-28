@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://301fkbk1t1ky"]
+
+[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_mgf8o"]
+[ext_resource type="Texture2D" uid="uid://dhr6v8ey3mryl" path="res://asset/images/building/b_city_house_1_int-sheet0.png" id="2_cjewc"]
+[ext_resource type="Texture2D" uid="uid://ch0v2spp5fra" path="res://asset/images/building/b_city_house_1-sheet0.png" id="3_pcrbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aul5x"]
+size = Vector2(215, 102)
+
+[node name="Buliding" type="Node2D"]
+script = ExtResource("1_mgf8o")
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside")])
+
+[node name="Inside" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_cjewc")
+centered = false
+offset = Vector2(-1, -69)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+polygon = PackedVector2Array(0, 104, 0, -6, 225, -6, 225, 104, 124.967, 104, 125, 98, 137, 98, 137, 82, 144, 82, 144, 98, 220, 98, 220, 59.149, 137, 59, 137, 52, 220, 52.0779, 220, 21, 194, 21, 194, 23, 191, 23, 191, 22, 177, 22, 177, 23, 174, 23, 174, 21, 144, 21, 144, 2, 81.8592, 2, 82, 12, 75, 7, 61, 7, 61, 3, 50, 3, 50, 6, 5, 6, 5, 47, 23, 47, 23, 83, 5, 83, 5, 98, 81.0615, 98, 81.0467, 82.0622, 66, 82, 66, 59, 81, 59, 81, 32, 88, 32, 88.0217, 98, 100, 98, 99.8712, 104)
+
+[node name="InteriorArea" type="Area2D" parent="Inside"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea"]
+position = Vector2(112.5, 53)
+shape = SubResource("RectangleShape2D_aul5x")
+
+[node name="Outside" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, -185)
+texture = ExtResource("3_pcrbs")
+centered = false
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-1, -185)
+scale = Vector2(11.35, 9.25)
+rect = Rect2(0, 0, 20, 20)

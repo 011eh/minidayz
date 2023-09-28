@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8cjokc6bhr8r"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lgq40"]
+load_path = "res://.godot/imported/door-sheet0.png-42fc83fdb056e7b0cfe2fef1f358fddf.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w540n"]
+atlas = SubResource("CompressedTexture2D_lgq40")
+region = Rect2(154, 0, 54, 70)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_db555"]
+b = Vector2(26, 0)
+
+[node name="Door" type="Sprite2D"]
+position = Vector2(146, 162)
+texture = SubResource("AtlasTexture_w540n")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-27, 32)
+shape = SubResource("SegmentShape2D_db555")
