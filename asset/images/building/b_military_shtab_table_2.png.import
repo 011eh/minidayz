@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc6efm0bv4jok"
-path="res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"
+uid="uid://nnverfmqgv2r"
+path="res://.godot/imported/b_military_shtab_table_2.png-2f9d61ffa071e88fa628a5d9509161ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_police_station_int-sheet0.png"
-dest_files=["res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"]
+source_file="res://asset/images/building/b_military_shtab_table_2.png"
+dest_files=["res://.godot/imported/b_military_shtab_table_2.png-2f9d61ffa071e88fa628a5d9509161ef.ctex"]
 
 [params]
 

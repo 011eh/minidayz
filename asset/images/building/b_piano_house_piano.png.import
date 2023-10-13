@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc6efm0bv4jok"
-path="res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"
+uid="uid://heqf013jljs6"
+path="res://.godot/imported/b_piano_house_piano.png-3f771631b6569220de6d517872f7058b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_police_station_int-sheet0.png"
-dest_files=["res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"]
+source_file="res://asset/images/building/b_piano_house_piano.png"
+dest_files=["res://.godot/imported/b_piano_house_piano.png-3f771631b6569220de6d517872f7058b.ctex"]
 
 [params]
 
