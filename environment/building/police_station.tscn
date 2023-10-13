@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8cx6oqwu38n"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_vt3m2"]
+[ext_resource type="Texture2D" uid="uid://cc6efm0bv4jok" path="res://asset/images/building/b_police_station_int-sheet0.png" id="2_31rus"]
+[ext_resource type="Texture2D" uid="uid://ve0ib04je6nv" path="res://asset/images/building/b_police_station-sheet0.png" id="3_uwfv8"]
+[ext_resource type="Texture2D" uid="uid://cbpy52u65cvbc" path="res://asset/images/building/b_police_station_chest.png" id="4_tud8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wonm"]
+size = Vector2(193, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3r65"]
+atlas = ExtResource("3_uwfv8")
+region = Rect2(0, 0, 203, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad85s"]
+atlas = ExtResource("3_uwfv8")
+region = Rect2(203, 79, 20, 95)
+
+[node name="Buliding" instance=ExtResource("1_vt3m2")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Wall"), NodePath("Chest")])
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_31rus")
+offset = Vector2(0, -54)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, -6, 203, -6, 203, 19, 223, 19, 223, 44, 203, 44.1446, 203, 93, 114, 93, 114, 88, 126, 88, 126, 69, 131, 69, 131, 88, 169, 88, 169, 66, 198, 66, 198, 48, 131, 48, 131, 50, 126, 50, 126, 41, 131, 41, 131, 43, 198, 43, 198, 10, 169, 10, 169, 2, 147, 2, 147, 9, 127, 9, 127, 18, 100, 22, 73, 18, 73, 2, 60, 2, 57, 6, 5, 6, 5, 43, 73, 43, 73, 41, 78, 41, 78, 50, 73, 50, 73, 48, 15, 48, 15, 72, 5, 72, 5, 88, 73, 88, 73, 69, 78, 69, 78, 88, 94, 88, 94, 93, 1, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(101.5, 47.5)
+shape = SubResource("RectangleShape2D_4wonm")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(0, 93)
+texture = SubResource("AtlasTexture_c3r65")
+offset = Vector2(0, -223)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(0, -130)
+scale = Vector2(11.25, 7.55)
+
+[node name="Wall" type="Sprite2D" parent="." index="3"]
+position = Vector2(203, 44)
+texture = SubResource("AtlasTexture_ad85s")
+centered = false
+offset = Vector2(0, -95)
+
+[node name="Chest" type="Sprite2D" parent="." index="4"]
+position = Vector2(169, 88)
+texture = ExtResource("4_tud8g")
+centered = false
+offset = Vector2(0, -28)

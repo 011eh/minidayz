@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://jfm75d1ni65g"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_t3o5u"]
+[ext_resource type="Texture2D" uid="uid://clputy2pkmuf1" path="res://asset/images/building/b_school_int-sheet0.png" id="2_tpml5"]
+[ext_resource type="Texture2D" uid="uid://ci76tvqv75ndl" path="res://asset/images/building/b_school-sheet0.png" id="3_8ook4"]
+
+[node name="Buliding" instance=ExtResource("1_t3o5u")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(12, -52)
+texture = ExtResource("2_tpml5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+position = Vector2(0, 1)
+polygon = PackedVector2Array(1, 49, 208, 49, 208, 42, 357, 42, 357, 49, 412.035, 49, 575, 49, 575, 172, 415.58, 172, 413, 172, 413, 176, 363, 176, 363, 169, 358, 169, 358, 164, 413, 164, 413, 166, 570, 166, 570, 128.125, 545, 128, 545, 123, 570, 123.063, 570, 57, 529, 57, 529, 128, 438, 128, 438, 123, 524, 123, 524, 57, 413, 57, 413, 133, 408, 133, 408, 95, 387, 95, 387, 112, 385, 112, 385.004, 95, 362, 95, 362, 112, 357, 112, 357, 96, 330, 96, 330, 91, 357, 91, 357, 54, 213, 54, 213, 91, 311, 91, 311, 96, 213, 96, 213, 136, 208, 136, 208, 64, 154, 64, 154, 89, 110, 89, 110, 106, 151, 106, 151, 128, 190, 128, 190, 133, 105, 133, 105.038, 64, 78.9407, 64, 79, 91, 69, 91, 69, 64, 56.9826, 64, 57, 88, 47, 88, 47.0909, 64, 34.1176, 64, 34, 90, 24, 90, 23.8168, 64, 5, 64, 5, 128, 24, 128, 23.9187, 108, 68, 108, 68, 128, 86, 128, 86, 133, 5, 133, 5, 166, 208, 166, 208, 164, 221, 164, 221, 169, 216, 169, 216, 176, 208, 176, 208, 172, 1, 172)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
+visible = false
+polygon = PackedVector2Array(5, 73, 208, 73, 208.037, 55, 570, 55, 570, 173, 413, 173, 413, 177, 216, 177, 216, 173, 4, 173)
+
+[node name="Outside" parent="." index="1"]
+visible = false
+position = Vector2(0, -208)
+texture = ExtResource("3_8ook4")
+
+[node name="VisibleNotifier" parent="." index="2"]
+visible = false
+position = Vector2(0, -207)
+scale = Vector2(28.75, 11.35)
