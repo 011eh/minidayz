@@ -8,6 +8,7 @@ building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside")])
 
 [node name="Inside" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+y_sort_enabled = true
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Inside"]

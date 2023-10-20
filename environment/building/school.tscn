@@ -1,29 +1,119 @@
-[gd_scene load_steps=4 format=3 uid="uid://jfm75d1ni65g"]
+[gd_scene load_steps=14 format=3 uid="uid://jfm75d1ni65g"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_t3o5u"]
 [ext_resource type="Texture2D" uid="uid://clputy2pkmuf1" path="res://asset/images/building/b_school_int-sheet0.png" id="2_tpml5"]
 [ext_resource type="Texture2D" uid="uid://ci76tvqv75ndl" path="res://asset/images/building/b_school-sheet0.png" id="3_8ook4"]
+[ext_resource type="Texture2D" uid="uid://d3a64owdohl3h" path="res://asset/images/building/b_school_tables.png" id="4_nciy3"]
+[ext_resource type="Texture2D" uid="uid://tl6wna1t1xgc" path="res://asset/images/building/b_school_rack.png" id="5_agn1q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xco4u"]
+size = Vector2(19, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3b8vq"]
+size = Vector2(54.5, 4.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6ywt"]
+atlas = ExtResource("4_nciy3")
+region = Rect2(0, 1, 10, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j45e0"]
+atlas = ExtResource("4_nciy3")
+region = Rect2(19, 0, 14, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqh4g"]
+atlas = ExtResource("4_nciy3")
+region = Rect2(34, 1, 10, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvrt4"]
+atlas = ExtResource("4_nciy3")
+region = Rect2(45, 1, 12, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bj85"]
+atlas = ExtResource("4_nciy3")
+region = Rect2(57, 0, 14, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6agb"]
+atlas = ExtResource("4_nciy3")
+region = Rect2(71, 1, 12, 24)
 
 [node name="Buliding" instance=ExtResource("1_t3o5u")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Tables"), NodePath("Rack")])
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(12, -52)
 texture = ExtResource("2_tpml5")
+offset = Vector2(0, -49)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
-position = Vector2(0, 1)
-polygon = PackedVector2Array(1, 49, 208, 49, 208, 42, 357, 42, 357, 49, 412.035, 49, 575, 49, 575, 172, 415.58, 172, 413, 172, 413, 176, 363, 176, 363, 169, 358, 169, 358, 164, 413, 164, 413, 166, 570, 166, 570, 128.125, 545, 128, 545, 123, 570, 123.063, 570, 57, 529, 57, 529, 128, 438, 128, 438, 123, 524, 123, 524, 57, 413, 57, 413, 133, 408, 133, 408, 95, 387, 95, 387, 112, 385, 112, 385.004, 95, 362, 95, 362, 112, 357, 112, 357, 96, 330, 96, 330, 91, 357, 91, 357, 54, 213, 54, 213, 91, 311, 91, 311, 96, 213, 96, 213, 136, 208, 136, 208, 64, 154, 64, 154, 89, 110, 89, 110, 106, 151, 106, 151, 128, 190, 128, 190, 133, 105, 133, 105.038, 64, 78.9407, 64, 79, 91, 69, 91, 69, 64, 56.9826, 64, 57, 88, 47, 88, 47.0909, 64, 34.1176, 64, 34, 90, 24, 90, 23.8168, 64, 5, 64, 5, 128, 24, 128, 23.9187, 108, 68, 108, 68, 128, 86, 128, 86, 133, 5, 133, 5, 166, 208, 166, 208, 164, 221, 164, 221, 169, 216, 169, 216, 176, 208, 176, 208, 172, 1, 172)
+position = Vector2(0, -48)
+polygon = PackedVector2Array(1, 64, 208, 64, 208, 42, 357, 42, 357, 49, 412.035, 49, 575, 49, 575, 172, 415.58, 172, 413, 172, 413, 176, 363, 176, 363, 169, 358, 169, 358, 164, 413, 164, 413, 166, 570, 166, 570, 128.125, 545, 128, 545, 123, 570, 123.063, 570, 57, 529, 57, 529, 128, 438, 128, 438, 123, 524, 123, 524, 57, 413, 57, 413, 133, 408, 133, 408, 95, 387, 95, 387, 112, 385, 112, 385.004, 95, 362, 95, 362, 112, 357, 112, 357, 96, 330, 96, 330, 91, 357, 91, 357, 54, 213, 54, 213, 91, 311, 91, 311, 96, 213, 96, 213, 136, 208, 136, 208, 71, 154, 72, 154, 89, 110, 89, 110, 106, 151, 106, 151, 128, 190, 128, 190, 133, 105, 133, 105, 72, 79, 72, 79, 91, 69, 91, 69, 72, 57, 72, 57, 88, 47, 88, 47, 72, 34, 72, 34, 90, 24, 90, 24, 72, 5, 72, 5, 128, 24, 128, 23.9187, 108, 68, 108, 68, 128, 86, 128, 86, 133, 5, 133, 5, 166, 208, 166, 208, 164, 221, 164, 221, 169, 216, 169, 216, 176, 208, 176, 208, 172, 1, 172)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
+position = Vector2(262.5, 118.5)
+shape = SubResource("RectangleShape2D_xco4u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="2"]
+position = Vector2(482.75, 45.25)
+shape = SubResource("RectangleShape2D_3b8vq")
+
+[node name="InteriorArea" parent="Inside" index="1"]
+visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
-visible = false
-polygon = PackedVector2Array(5, 73, 208, 73, 208.037, 55, 570, 55, 570, 173, 413, 173, 413, 177, 216, 177, 216, 173, 4, 173)
+position = Vector2(0, -49)
+polygon = PackedVector2Array(5, 73, 208, 65, 208.037, 55, 570, 55, 570, 173, 413, 173, 413, 177, 216, 177, 216, 173, 4, 173)
 
 [node name="Outside" parent="." index="1"]
-visible = false
-position = Vector2(0, -208)
+position = Vector2(0, 128)
 texture = ExtResource("3_8ook4")
+offset = Vector2(0, -329)
 
 [node name="VisibleNotifier" parent="." index="2"]
 visible = false
-position = Vector2(0, -207)
-scale = Vector2(28.75, 11.35)
+position = Vector2(1, -200)
+scale = Vector2(28.7, 11.15)
+
+[node name="Tables" type="Sprite2D" parent="." index="3"]
+position = Vector2(0, 79)
+offset = Vector2(0, -79)
+
+[node name="Table" type="Sprite2D" parent="Tables" index="0"]
+position = Vector2(24, 0)
+texture = SubResource("AtlasTexture_t6ywt")
+centered = false
+offset = Vector2(0, -23)
+
+[node name="Table2" type="Sprite2D" parent="Tables" index="1"]
+position = Vector2(43, -1)
+texture = SubResource("AtlasTexture_j45e0")
+centered = false
+offset = Vector2(0, -23)
+
+[node name="Table3" type="Sprite2D" parent="Tables" index="2"]
+position = Vector2(58, 0)
+texture = SubResource("AtlasTexture_vqh4g")
+centered = false
+offset = Vector2(0, -23)
+
+[node name="Table4" type="Sprite2D" parent="Tables" index="3"]
+position = Vector2(113, -1)
+texture = SubResource("AtlasTexture_gvrt4")
+centered = false
+offset = Vector2(0, -23)
+
+[node name="Table5" type="Sprite2D" parent="Tables" index="4"]
+position = Vector2(125, -2)
+texture = SubResource("AtlasTexture_4bj85")
+centered = false
+offset = Vector2(0, -23)
+
+[node name="Table6" type="Sprite2D" parent="Tables" index="5"]
+position = Vector2(139, -1)
+texture = SubResource("AtlasTexture_r6agb")
+centered = false
+offset = Vector2(0, -23)
+
+[node name="Rack" type="Sprite2D" parent="." index="4"]
+position = Vector2(455, 48)
+texture = ExtResource("5_agn1q")
+centered = false
+offset = Vector2(0, -28)
