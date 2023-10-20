@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvgln3w2s6gmc"
-path="res://.godot/imported/b_village_red2_int-sheet0.png-e4afba2bd2850aacaea618985f26f477.ctex"
+uid="uid://d3a64owdohl3h"
+path="res://.godot/imported/b_school_tables.png-d89695a1a86041ad9353548a591485fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_village_red2_int-sheet0.png"
-dest_files=["res://.godot/imported/b_village_red2_int-sheet0.png-e4afba2bd2850aacaea618985f26f477.ctex"]
+source_file="res://asset/images/building/b_school_tables.png"
+dest_files=["res://.godot/imported/b_school_tables.png-d89695a1a86041ad9353548a591485fd.ctex"]
 
 [params]
 

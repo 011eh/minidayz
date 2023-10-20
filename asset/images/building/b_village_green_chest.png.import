@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvgln3w2s6gmc"
-path="res://.godot/imported/b_village_red2_int-sheet0.png-e4afba2bd2850aacaea618985f26f477.ctex"
+uid="uid://donjsejsgay0j"
+path="res://.godot/imported/b_village_green_chest.png-cc0fbd89a9879ac00ba9aa9862e2f19a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_village_red2_int-sheet0.png"
-dest_files=["res://.godot/imported/b_village_red2_int-sheet0.png-e4afba2bd2850aacaea618985f26f477.ctex"]
+source_file="res://asset/images/building/b_village_green_chest.png"
+dest_files=["res://.godot/imported/b_village_green_chest.png-cc0fbd89a9879ac00ba9aa9862e2f19a.ctex"]
 
 [params]
 

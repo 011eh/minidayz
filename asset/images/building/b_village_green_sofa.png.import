@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvgln3w2s6gmc"
-path="res://.godot/imported/b_village_red2_int-sheet0.png-e4afba2bd2850aacaea618985f26f477.ctex"
+uid="uid://bfe7pbofybrna"
+path="res://.godot/imported/b_village_green_sofa.png-5ad95ea6f6ffbdd2e0aceb6d2e6356a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_village_red2_int-sheet0.png"
-dest_files=["res://.godot/imported/b_village_red2_int-sheet0.png-e4afba2bd2850aacaea618985f26f477.ctex"]
+source_file="res://asset/images/building/b_village_green_sofa.png"
+dest_files=["res://.godot/imported/b_village_green_sofa.png-5ad95ea6f6ffbdd2e0aceb6d2e6356a8.ctex"]
 
 [params]
 
