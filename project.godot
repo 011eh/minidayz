@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 ItemActionTable="*res://item/item_action_table.gd"
 PlayerStatus="*res://status/player_status.gd"
+InteractionManager="*res://mechanics/interaction_manager.gd"
 
 [display]
 
