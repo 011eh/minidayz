@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://8wl48ohu72in"]
+[gd_scene load_steps=5 format=3 uid="uid://s6ed4fofmkhq"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_om7j8"]
+[ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="2_823iu"]
+[ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="3_ty4ly"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdp5e"]
+radius = 28.3196
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_om7j8")
+
+[node name="Player" parent="." instance=ExtResource("2_823iu")]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Player")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_ty4ly")]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(29, 34)
+shape = SubResource("CircleShape2D_bdp5e")
