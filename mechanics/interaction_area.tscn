@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0g2x7l1jodnh"]
+
+[ext_resource type="Script" path="res://mechanics/interaction_area.gd" id="1_3sxdl"]
+
+[node name="InteractionArea" type="Area2D"]
+script = ExtResource("1_3sxdl")
