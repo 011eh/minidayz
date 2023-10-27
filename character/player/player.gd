@@ -3,6 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 
+var inventory := PlayerInventory.new()
 var status := PlayerStatus
 @onready
 var state_machine := $StateMachine as PlayerStateMachine
@@ -18,7 +19,7 @@ var weapon_state := PlayerStateMachine.WeaponState.MELEE_WEAPON
 
 func _ready() -> void:
 	state_machine.set_state('Idle')
-	$Inventory.equipment_changed.connect($Sprites.set_texture)
+	inventory.equipment_changed.connect($Sprites.set_texture)
 
 func _physics_process(delta) -> void:
 	state_machine.run()
@@ -44,4 +45,4 @@ func direction_to_mouse() -> Vector2:
 	return last_direction
 
 func get_inventory() -> Array:
-	return $Inventory.equipment_slots
+	return inventory.equipment_slots
