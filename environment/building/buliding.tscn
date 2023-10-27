@@ -12,6 +12,8 @@ y_sort_enabled = true
 centered = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
+collision_layer = 2
+collision_mask = 2
 
 [node name="InteriorArea" type="Area2D" parent="Inside"]
 unique_name_in_owner = true
