@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8yhj20b1btro"]
+
+[ext_resource type="Script" path="res://test/detection_area.gd" id="1_du55q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yhmh6"]
+radius = 336.013
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ykj31"]
+radius = 23.7697
+
+[node name="DetectionArea" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_du55q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yhmh6")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_ykj31")

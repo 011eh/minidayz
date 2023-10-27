@@ -1,26 +1,19 @@
 [gd_scene load_steps=5 format=3 uid="uid://m833wwd4xoqo"]
 
 [ext_resource type="Script" path="res://test/buliding_test.gd" id="1_40pox"]
-[ext_resource type="PackedScene" uid="uid://bbyenvpqhx353" path="res://environment/building/hospital.tscn" id="3_3q7l1"]
 [ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="3_54yjx"]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_k3byy"]
+[ext_resource type="PackedScene" uid="uid://rfx8tjp36m3i" path="res://environment/building/village_yard.tscn" id="3_qwbos"]
+[ext_resource type="PackedScene" uid="uid://b8tbvw8w7j1mc" path="res://environment/building/village_yellow.tscn" id="4_p5g6e"]
 
 [node name="BulidingTest" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_40pox")
 
 [node name="Player" parent="." instance=ExtResource("3_54yjx")]
-position = Vector2(23, -325)
+position = Vector2(359, 208)
 collision_layer = 7
 
-[node name="AnimationTree" parent="Player" index="3"]
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_k3byy")
+[node name="Buliding" parent="." instance=ExtResource("3_qwbos")]
 
-[node name="Camera2D" parent="Player" index="6"]
-zoom = Vector2(1, 1)
-
-[node name="Buliding" parent="." instance=ExtResource("3_3q7l1")]
-position = Vector2(0, -106)
-
-[editable path="Player"]
+[node name="Buliding" parent="Buliding" instance=ExtResource("4_p5g6e")]
+position = Vector2(231, 133)
