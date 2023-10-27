@@ -3,13 +3,17 @@ extends Area2D
 class_name InteractionArea
 
 
-signal interact_inputted
+signal interaction_inputted
 
 
 func _ready():
-	body_entered.connect(func(body) -> void:
-		print('p')
+	area_entered.connect(func(area):
+		print('enter')
 	)
-	body_exited.connect(func(body) -> void:
-		InteractionManager
+	area_exited.connect(func(area):
+		print('exit')
+	)
+	interaction_inputted.connect(func():
+		print('interact')
+		queue_free()
 	)
