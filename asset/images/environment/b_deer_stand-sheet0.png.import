@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8wpwj4y800w3"
-path="res://.godot/imported/b_deer_stand-sheet0.png-d70b3426602814e3d3bdba20f81fe1a2.ctex"
+path="res://.godot/imported/b_deer_stand-sheet0.png-7989c892222dd00ff72098dad53a3c27.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_deer_stand-sheet0.png"
-dest_files=["res://.godot/imported/b_deer_stand-sheet0.png-d70b3426602814e3d3bdba20f81fe1a2.ctex"]
+source_file="res://asset/images/environment/b_deer_stand-sheet0.png"
+dest_files=["res://.godot/imported/b_deer_stand-sheet0.png-7989c892222dd00ff72098dad53a3c27.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
