@@ -98,7 +98,8 @@ interact={
 
 [layer_names]
 
-2d_physics/layer_1="物品拾取"
+2d_physics/layer_1="交互检测"
+2d_physics/layer_2="玩家交互"
 
 [rendering]
 
