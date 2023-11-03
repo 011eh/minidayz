@@ -6,14 +6,11 @@ class_name InteractionArea
 signal interaction_inputted
 
 
-func _ready():
-	area_entered.connect(func(area):
-		print('enter')
-	)
-	area_exited.connect(func(area):
-		print('exit')
-	)
-	interaction_inputted.connect(func():
-		print('interact')
-		queue_free()
-	)
+enum OwnerType {
+	ITEM,
+	OTHER
+}
+
+
+@export
+var owner_type := OwnerType.OTHER
