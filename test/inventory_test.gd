@@ -17,7 +17,7 @@ func _ready():
 
 func ui_test():
 	equipment_slots = inventory.equipment_slots
-	inventory_ui.setup(inventory)
+	inventory_ui.setup()
 	equipment_slots[PlayerInventory.EquipmentType.PLAYER_SLOT] = Gear.create_player_slot()
 	equipment_slots[PlayerInventory.EquipmentType.PLAYER_SLOT].slots[0] = ItemCreator.create_item(NumberItem, 26)
 	inventory.emit_signal('slot_item_changed', PlayerInventory.EquipmentType.PLAYER_SLOT, equipment_slots[PlayerInventory.EquipmentType.PLAYER_SLOT])
@@ -34,7 +34,7 @@ func ui_test():
 			NumberItem,
 			Craft,
 			Gear,
-			MainWeapon,
+			MainWeapon,	
 			Pistol,
 			MeleeWeapon
 			].pick_random()))

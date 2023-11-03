@@ -2,9 +2,8 @@ extends Node2D
 
 
 func _ready():
-	var inventory := $Player/Inventory as PlayerInventory
 	var inventory_ui := $CanvasLayer/InventoryUI
-	inventory_ui.setup(inventory)
+	inventory_ui.setup($Player)
 
 	for item in ItemCreator.create_all(NumberItem):
 		$NumberItem.position.x += 25
