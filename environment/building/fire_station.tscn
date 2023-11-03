@@ -1,74 +1,59 @@
-[gd_scene load_steps=8 format=3 uid="uid://dosyyvrmtpvbl"]
+[gd_scene load_steps=8 format=3 uid="uid://cxaaepbxwisjm"]
 
-[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_k6pwd"]
-[ext_resource type="Texture2D" uid="uid://xbiloo1yjo6w" path="res://asset/images/building/b_fire_station_int-sheet0.png" id="2_7yvjw"]
-[ext_resource type="Texture2D" uid="uid://uss1pt40tjh4" path="res://asset/images/building/b_fire_station-sheet0.png" id="3_33idt"]
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_28e0y"]
+[ext_resource type="Texture2D" uid="uid://xbiloo1yjo6w" path="res://asset/images/building/b_fire_station_int-sheet0.png" id="2_2yrnq"]
+[ext_resource type="Texture2D" uid="uid://uss1pt40tjh4" path="res://asset/images/building/b_fire_station-sheet0.png" id="3_ucp1f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnhhk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0hwl"]
 size = Vector2(20, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_woh5v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di3x8"]
 size = Vector2(18, 5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hbivt"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5yvx8"]
 radius = 2.0
 height = 4.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dv7dd"]
-atlas = ExtResource("2_7yvjw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cbk2"]
+atlas = ExtResource("2_2yrnq")
 region = Rect2(255, 24, 4, 68)
 
-[node name="Buliding" type="Node2D"]
-script = ExtResource("1_k6pwd")
-building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Pillar")])
+[node name="Buliding" instance=ExtResource("1_28e0y")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Pillar")])
 
-[node name="Inside" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-texture = ExtResource("2_7yvjw")
-centered = false
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_2yrnq")
 offset = Vector2(0, -62)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
 polygon = PackedVector2Array(0, -6, 173.067, -6, 239.848, -6, 487, -6, 487, 91, 474, 91, 474, 86, 482, 86, 482, 13, 441.035, 13, 441, 15, 410, 15, 410.081, 13, 396, 13, 396, 17, 323, 17, 321, 16, 303, 16, 303, 13, 240, 13, 240, 56, 234, 56, 234, 31, 215, 31, 215, 28, 179, 28.0323, 179, 44, 208, 44, 208, 55, 179, 55, 179, 92, 234, 92, 234, 83, 240, 83, 240, 86, 254, 86, 254, 91, 239, 91, 239, 96, 174, 96, 174, 93, 111, 93, 111, 96, 105, 96, 105, 92, 107, 92, 107, 89, 173, 89, 173, 44, 170, 44, 170, 39, 173, 39, 173, 2, 125, 2, 125, 10, 110, 10, 110, 39, 148, 39, 148, 44, 109, 44, 109, 66, 103, 66, 103, 58, 69, 58, 69, 66, 63, 66, 63, 44, 32, 44, 32, 39, 62, 39, 62, 2, 15, 2, 15, 16, 5, 16, 5, 39, 9, 39, 9, 44, 5, 44, 5, 89, 66, 89, 66, 92, 69, 92, 69, 96, 61, 96, 61, 93, 1, 93)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
 position = Vector2(324, 88.5)
-shape = SubResource("RectangleShape2D_hnhhk")
+shape = SubResource("RectangleShape2D_c0hwl")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="2"]
 position = Vector2(404, 88.5)
-shape = SubResource("RectangleShape2D_woh5v")
+shape = SubResource("RectangleShape2D_di3x8")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Inside/StaticBody2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Inside/StaticBody2D" index="3"]
 position = Vector2(257, 31)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_hbivt")
+shape = SubResource("CapsuleShape2D_5yvx8")
 
-[node name="InteriorArea" type="Area2D" parent="Inside"]
-unique_name_in_owner = true
-position = Vector2(0, -1)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
 polygon = PackedVector2Array(173, 2, 179, 28, 215, 28, 234, 31, 240, 13, 482, 13, 482, 91, 179, 92, 173, 89, 111, 93, 105, 96, 69, 96, 62, 93, 5, 89, 5, 2)
 
-[node name="Outside" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="Pillar" type="Sprite2D" parent="Inside" index="2"]
+position = Vector2(257, 32)
+texture = SubResource("AtlasTexture_6cbk2")
+offset = Vector2(0, -33)
+
+[node name="Outside" parent="." index="1"]
 position = Vector2(-7, 91)
-texture = ExtResource("3_33idt")
-centered = false
+texture = ExtResource("3_ucp1f")
 offset = Vector2(0, -281)
 
-[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -189)
-scale = Vector2(26.85, 10.45)
-rect = Rect2(0, 0, 20, 20)
-
-[node name="Pillar" type="Sprite2D" parent="."]
-position = Vector2(257, 32)
-texture = SubResource("AtlasTexture_dv7dd")
-offset = Vector2(0, -33)
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-6, -189)
+scale = Vector2(27.15, 10.45)
