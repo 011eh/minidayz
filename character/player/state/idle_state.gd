@@ -7,7 +7,7 @@ func start() -> void:
 	owner.playback.start('Idle')
 
 func run() -> void:
-	owner.get_input_diretion()
+	owner.get_input_direction()
 	if owner.is_moving():
 		emit_signal('finished','Run')
 	if owner.weapon_state == PlayerStateMachine.WeaponState.MELEE_WEAPON and Input.is_action_pressed("attack"):

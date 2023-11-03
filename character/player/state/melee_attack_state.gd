@@ -7,7 +7,7 @@ func start() -> void:
 		owner.playback.start('MeleeAttack')
 
 func run() -> void:
-	owner.get_input_diretion()
+	owner.get_input_direction()
 	if owner.is_moving():
 		emit_signal('finished', 'Run')
 

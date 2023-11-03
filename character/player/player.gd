@@ -3,14 +3,17 @@ extends CharacterBody2D
 class_name Player
 
 
-var inventory := PlayerInventory.new()
 var status := PlayerStatus
+@onready
+var inventory := $Inventory as PlayerInventory
 @onready
 var state_machine := $StateMachine as PlayerStateMachine
 @onready
 var animation_tree := $AnimationTree as AnimationTree
 @onready
 var playback := animation_tree.get('parameters/playback') as AnimationNodeStateMachinePlayback
+@onready
+var detection_area := $DetectionArea
 var last_direction := Vector2.ZERO
 var direction :Vector2
 var target_position: Vector2
@@ -20,6 +23,7 @@ var weapon_state := PlayerStateMachine.WeaponState.MELEE_WEAPON
 func _ready() -> void:
 	state_machine.set_state('Idle')
 	inventory.equipment_changed.connect($Sprites.set_texture)
+	detection_area.inventory = inventory
 
 func _physics_process(delta) -> void:
 	state_machine.run()
@@ -34,7 +38,7 @@ func _physics_process(delta) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, status.speed * 4 * delta)
 	move_and_slide()
 
-func get_input_diretion() -> void:
+func get_input_direction() -> void:
 	direction = Input.get_vector('move_left', 'move_right', 'move_up', 'move_down')
 
 func is_moving() -> bool:
@@ -45,4 +49,4 @@ func direction_to_mouse() -> Vector2:
 	return last_direction
 
 func get_inventory() -> Array:
-	return inventory.equipment_slots
+	return $Inventory.equipment_slots
