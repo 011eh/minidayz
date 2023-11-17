@@ -1,92 +1,79 @@
 [gd_scene load_steps=11 format=3 uid="uid://cq5h148opi1li"]
 
-[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_vewob"]
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_cwk1u"]
 [ext_resource type="Texture2D" uid="uid://15maagm1rkj3" path="res://asset/images/building/b_city_house_4_int-sheet0.png" id="2_7avew"]
 [ext_resource type="Texture2D" uid="uid://c0807118gx7v8" path="res://asset/images/building/b_city_house_4-sheet0.png" id="3_npueu"]
 [ext_resource type="Texture2D" uid="uid://cbh8k5t0go6q1" path="res://asset/images/building/b_city_house_4_table_1.png" id="4_tn38b"]
 [ext_resource type="Texture2D" uid="uid://6iq4ksb0u3ss" path="res://asset/images/building/b_city_house_4_table_2.png" id="5_1akrr"]
 [ext_resource type="Texture2D" uid="uid://dkqi36xfqndwc" path="res://asset/images/building/b_city_house_4_table_3.png" id="6_v3kht"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbhla"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnj7j"]
 size = Vector2(16, 13)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7wcl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kevbp"]
 size = Vector2(17, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aul5x"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyw2m"]
 size = Vector2(217, 106)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1ym0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ux7k"]
 atlas = ExtResource("4_tn38b")
 region = Rect2(17, 0, 16, 14)
 
-[node name="Buliding" type="Node2D"]
-script = ExtResource("1_vewob")
-building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Table1"), NodePath("Table2"), NodePath("Table3"), NodePath("Table4")])
+[node name="Buliding" instance=ExtResource("1_cwk1u")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Table1"), NodePath("Inside/Table2"), NodePath("Inside/Table3"), NodePath("Inside/Table4")])
 
-[node name="Inside" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="Inside" parent="." index="0"]
 texture = ExtResource("2_7avew")
-centered = false
 offset = Vector2(-1, -62)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
 polygon = PackedVector2Array(0, -6, 226, -6, 226, 108, 201, 108, 201, 103, 221, 103, 221, 22, 187, 22, 187, 2, 119, 2, 119, 4, 114, 4, 114, 2, 99, 2, 99, 4, 98, 4, 97.9704, 2, 81.0591, 2, 81, 4, 80, 4, 80, 2, 49, 2, 49, 6, 4, 6, 4, 28.87, 119, 29, 119, 34, 4, 33.8253, 4, 103, 147, 103, 147, 29, 152, 29, 152.24, 103, 175, 103, 175, 108, 0, 108, 0, 7.9375)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
 position = Vector2(32, 83.5)
-shape = SubResource("RectangleShape2D_vbhla")
+shape = SubResource("RectangleShape2D_mnj7j")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="2"]
 position = Vector2(38.5, 58)
-shape = SubResource("RectangleShape2D_e7wcl")
+shape = SubResource("RectangleShape2D_kevbp")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="3"]
 polygon = PackedVector2Array(98, 54, 114, 54, 114, 67, 110, 67, 108, 68, 108, 78, 106, 81, 94, 81, 93, 79, 92.3482, 73.7859, 92, 71, 82, 71, 82, 59, 98, 59)
 
-[node name="InteriorArea" type="Area2D" parent="Inside"]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
 position = Vector2(112.5, 55)
-shape = SubResource("RectangleShape2D_aul5x")
+shape = SubResource("RectangleShape2D_gyw2m")
 
-[node name="Outside" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(-1, -181)
-texture = ExtResource("3_npueu")
-centered = false
-
-[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -180)
-scale = Vector2(11.35, 9)
-rect = Rect2(0, 0, 20, 20)
-
-[node name="Table1" type="Sprite2D" parent="."]
+[node name="Table1" type="Sprite2D" parent="Inside" index="2"]
 position = Vector2(81, 74)
 texture = ExtResource("4_tn38b")
 centered = false
 offset = Vector2(0, -20)
 
-[node name="Table2" type="Sprite2D" parent="."]
+[node name="Table2" type="Sprite2D" parent="Inside" index="3"]
 position = Vector2(98, 62)
-texture = SubResource("AtlasTexture_q1ym0")
+texture = SubResource("AtlasTexture_4ux7k")
 centered = false
 offset = Vector2(0, -8)
 
-[node name="Table3" type="Sprite2D" parent="."]
+[node name="Table3" type="Sprite2D" parent="Inside" index="4"]
 position = Vector2(29, 71)
 texture = ExtResource("5_1akrr")
 centered = false
 offset = Vector2(0, -20)
 
-[node name="Table4" type="Sprite2D" parent="."]
+[node name="Table4" type="Sprite2D" parent="Inside" index="5"]
 position = Vector2(24, 87)
 texture = ExtResource("6_v3kht")
 centered = false
 offset = Vector2(0, -10)
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-1, 108)
+texture = ExtResource("3_npueu")
+offset = Vector2(0, -289)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(0, -180)
+scale = Vector2(11.35, 9)

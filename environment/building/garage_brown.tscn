@@ -1,45 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://6mt3l175w2p1"]
+[gd_scene load_steps=5 format=3 uid="uid://d3gsxmnxq3ppa"]
 
-[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_36eru"]
-[ext_resource type="Texture2D" uid="uid://b6lj77vajsnv7" path="res://asset/images/building/b_garage_brown-sheet0.png" id="2_j8g7r"]
-[ext_resource type="Texture2D" uid="uid://b21jt0ydwg1qb" path="res://asset/images/building/b_garage_blue_int-sheet0.png" id="2_jx2b7"]
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_vs3o4"]
+[ext_resource type="Texture2D" uid="uid://b21jt0ydwg1qb" path="res://asset/images/building/b_garage_blue_int-sheet0.png" id="2_on7ou"]
+[ext_resource type="Texture2D" uid="uid://b6lj77vajsnv7" path="res://asset/images/building/b_garage_brown-sheet0.png" id="3_hmrgm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksria"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xu0hp"]
 size = Vector2(113, 49)
 
-[node name="Buliding" type="Node2D"]
-script = ExtResource("1_36eru")
-building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside")])
+[node name="Buliding" instance=ExtResource("1_vs3o4")]
 
-[node name="Inside" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-texture = ExtResource("2_jx2b7")
-centered = false
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_on7ou")
 offset = Vector2(0, -57)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
 polygon = PackedVector2Array(1, -6, 120, -6, 120, 51, 32.924, 51, 33, 48, 117, 48, 117, 6, 76, 6, 76, 9, 51, 9, 50.9063, 2, 4, 2, 4, 48, 18, 48, 18.0739, 51, 1, 51)
 
-[node name="InteriorArea" type="Area2D" parent="Inside"]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
 position = Vector2(60.5, 26.5)
-shape = SubResource("RectangleShape2D_ksria")
+shape = SubResource("RectangleShape2D_xu0hp")
 
-[node name="Outside" type="Sprite2D" parent="."]
-unique_name_in_owner = true
+[node name="Outside" parent="." index="1"]
 position = Vector2(-1, 51)
-texture = ExtResource("2_j8g7r")
-centered = false
+texture = ExtResource("3_hmrgm")
 offset = Vector2(0, -109)
 
-[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-unique_name_in_owner = true
+[node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(0, -57)
 scale = Vector2(6.05, 2.85)
-rect = Rect2(0, 0, 20, 20)
