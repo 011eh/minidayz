@@ -6,10 +6,10 @@ uid="uid://c1plmvnboc3dn"
 
 [deps]
 
-files=["res://dev_res/data/背包物品.item.translation", "res://dev_res/data/背包物品.texture.translation", "res://dev_res/data/背包物品.stackable.translation", "res://dev_res/data/背包物品.stack.translation", "res://dev_res/data/背包物品..translation", "res://dev_res/data/背包物品..translation"]
+files=["res://dev_res/data/背包物品.item.translation", "res://dev_res/data/背包物品.texture.translation", "res://dev_res/data/背包物品.stackable.translation", "res://dev_res/data/背包物品.stack.translation"]
 
 source_file="res://dev_res/data/背包物品.CSV"
-dest_files=["res://dev_res/data/背包物品.item.translation", "res://dev_res/data/背包物品.texture.translation", "res://dev_res/data/背包物品.stackable.translation", "res://dev_res/data/背包物品.stack.translation", "res://dev_res/data/背包物品..translation", "res://dev_res/data/背包物品..translation"]
+dest_files=["res://dev_res/data/背包物品.item.translation", "res://dev_res/data/背包物品.texture.translation", "res://dev_res/data/背包物品.stackable.translation", "res://dev_res/data/背包物品.stack.translation"]
 
 [params]
 
