@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6e3p0wrwuwoc"
-path="res://.godot/imported/door-sheet0.png-42fc83fdb056e7b0cfe2fef1f358fddf.ctex"
+uid="uid://brsensc2lmlhh"
+path="res://.godot/imported/door.png-13b3c1c5abb6be71f49fdbd3fa08341e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/door-sheet0.png"
-dest_files=["res://.godot/imported/door-sheet0.png-42fc83fdb056e7b0cfe2fef1f358fddf.ctex"]
+source_file="res://asset/images/building/door.png"
+dest_files=["res://.godot/imported/door.png-13b3c1c5abb6be71f49fdbd3fa08341e.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
