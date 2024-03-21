@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="2_fcrry"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_db555"]
-b = Vector2(27, 0)
+b = Vector2(15, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqiyc"]
-radius = 5.0
-height = 24.0
+radius = 3.0
+height = 16.0
 
 [node name="Door" type="Sprite2D"]
 centered = false

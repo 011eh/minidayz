@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3gsxmnxq3ppa"]
+[gd_scene load_steps=8 format=3 uid="uid://d3gsxmnxq3ppa"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_vs3o4"]
 [ext_resource type="Texture2D" uid="uid://b21jt0ydwg1qb" path="res://asset/images/building/b_garage_blue_int-sheet0.png" id="2_on7ou"]
 [ext_resource type="Texture2D" uid="uid://b6lj77vajsnv7" path="res://asset/images/building/b_garage_brown-sheet0.png" id="3_hmrgm"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="4_oyld3"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_qsk7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xu0hp"]
 size = Vector2(113, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lgx2"]
+atlas = ExtResource("5_qsk7u")
+region = Rect2(63, 194, 30, 44)
 
 [node name="Buliding" instance=ExtResource("1_vs3o4")]
 
@@ -25,6 +31,18 @@ position = Vector2(-1, 51)
 texture = ExtResource("3_hmrgm")
 offset = Vector2(0, -109)
 
+[node name="Door" parent="Outside" index="0" instance=ExtResource("4_oyld3")]
+position = Vector2(19, -30)
+texture = SubResource("AtlasTexture_3lgx2")
+
+[node name="StaticBody2D" parent="Outside/Door" index="0"]
+position = Vector2(0, 30)
+
+[node name="CollisionShape2D" parent="Outside/Door/InteractionArea" index="0"]
+position = Vector2(-5, 29)
+
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(0, -57)
 scale = Vector2(6.05, 2.85)
+
+[editable path="Outside/Door"]
