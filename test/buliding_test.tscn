@@ -1,19 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://m833wwd4xoqo"]
 
 [ext_resource type="Script" path="res://test/buliding_test.gd" id="1_40pox"]
-[ext_resource type="PackedScene" uid="uid://dclitc703i6l3" path="res://character/player/player.tscn" id="3_54yjx"]
-[ext_resource type="PackedScene" uid="uid://rfx8tjp36m3i" path="res://environment/building/village_yard.tscn" id="3_qwbos"]
-[ext_resource type="PackedScene" uid="uid://b8tbvw8w7j1mc" path="res://environment/building/village_yellow.tscn" id="4_p5g6e"]
+[ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="3_54yjx"]
+[ext_resource type="PackedScene" uid="uid://d3gsxmnxq3ppa" path="res://environment/building/garage_brown.tscn" id="3_jm7fu"]
+[ext_resource type="PackedScene" uid="uid://8jm6np07bgv7" path="res://environment/building/military_barrack_2.tscn" id="4_rxsuq"]
 
 [node name="BulidingTest" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_40pox")
 
-[node name="Player" parent="." instance=ExtResource("3_54yjx")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_54yjx")]
 position = Vector2(359, 208)
 collision_layer = 7
+collision_mask = 3
 
-[node name="Buliding" parent="." instance=ExtResource("3_qwbos")]
+[node name="Buliding" parent="." instance=ExtResource("3_jm7fu")]
+position = Vector2(381, 135)
 
-[node name="Buliding" parent="Buliding" instance=ExtResource("4_p5g6e")]
-position = Vector2(231, 133)
+[node name="Buliding2" parent="." instance=ExtResource("4_rxsuq")]
+position = Vector2(176, 109)
