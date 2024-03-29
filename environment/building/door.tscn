@@ -1,30 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmgm1i7qal0u"]
+[gd_scene load_steps=7 format=3 uid="uid://csmgm1i7qal0u"]
 
 [ext_resource type="Script" path="res://environment/building/door.gd" id="1_fcq6s"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="1_mnqc6"]
 [ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="2_fcrry"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_db555"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmtja"]
+atlas = ExtResource("1_mnqc6")
+region = Rect2(0, 0, 1, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i261x"]
 b = Vector2(15, 0)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqiyc"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arrwq"]
 radius = 3.0
 height = 16.0
 
 [node name="Door" type="Sprite2D"]
+texture = SubResource("AtlasTexture_nmtja")
 centered = false
 hframes = 2
 script = ExtResource("1_fcq6s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
+metadata/_edit_group_ = true
 
 [node name="Door1" type="CollisionShape2D" parent="StaticBody2D"]
 unique_name_in_owner = true
-shape = SubResource("SegmentShape2D_db555")
+shape = SubResource("SegmentShape2D_i261x")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_fcrry")]
-position = Vector2(13, 0)
+position = Vector2(8, 0)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_rqiyc")
+shape = SubResource("CapsuleShape2D_arrwq")

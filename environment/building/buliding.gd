@@ -2,6 +2,9 @@ extends Node2D
 
 class_name Building
 
+# 向 Door 发射的信号
+signal transparency_changed
+
 
 var global_visiable_rect: Rect2
 @export
@@ -12,10 +15,12 @@ func _ready():
 	y_sort_enabled = true
 	
 	%InteriorArea.body_entered.connect(func(player: Node2D) -> void:
-		change_transparent(0, true)
+		change_transparency(0, true)
+		transparency_changed.emit(0.2)
 	)
 	%InteriorArea.body_exited.connect(func(player: Node2D) -> void:
-		change_transparent(1)
+		change_transparency(1)
+		transparency_changed.emit(1)
 	)
 	
 	set_process(false)
@@ -35,16 +40,20 @@ func _process(delta):
 	if %InteriorArea.get_overlapping_bodies().is_empty():
 		var player_pos := get_tree().get_first_node_in_group('player').global_position as Vector2
 		if global_visiable_rect.has_point(player_pos):
-			change_transparent(0.2)
+			change_transparency(0.2)
+			transparency_changed.emit(0.2)
 		else:
-			change_transparent(1)
+			change_transparency(1)
+			transparency_changed.emit(1)
 
-func change_transparent(value: float, only_outside: bool = false) -> void:
+func change_transparency(value: float, only_outside: bool = false) -> void:
 	if only_outside:
 		for name in building_sprites:
 			var sprite := get_node(name) as Sprite2D
-			sprite.modulate.a = value if sprite == %Outside else 1
+			sprite.self_modulate.a = value if sprite == %Outside else 1
 		return
 	
 	for sprite in building_sprites:
-		get_node(sprite).modulate.a = value
+		get_node(sprite).self_modulate.a = value
+	
+	
