@@ -9,10 +9,10 @@ atlas = ExtResource("1_62x0c")
 region = Rect2(0, 0, 1, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_db555"]
-b = Vector2(27, 0)
+b = Vector2(14, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_f7ar5"]
-b = Vector2(-27, 0)
+b = Vector2(-14, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqiyc"]
 radius = 5.0
@@ -26,6 +26,7 @@ script = ExtResource("1_fcq6s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="Door1" type="CollisionShape2D" parent="StaticBody2D"]
 unique_name_in_owner = true
@@ -38,6 +39,7 @@ position = Vector2(27, 0)
 shape = SubResource("SegmentShape2D_f7ar5")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_fcrry")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 rotation = 1.5708

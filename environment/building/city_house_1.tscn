@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://301fkbk1t1ky"]
+[gd_scene load_steps=8 format=3 uid="uid://301fkbk1t1ky"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_wxcvp"]
 [ext_resource type="Texture2D" uid="uid://dhr6v8ey3mryl" path="res://asset/images/building/b_city_house_1_int-sheet0.png" id="2_cjewc"]
 [ext_resource type="Texture2D" uid="uid://ch0v2spp5fra" path="res://asset/images/building/b_city_house_1-sheet0.png" id="3_pcrbs"]
+[ext_resource type="PackedScene" uid="uid://c8cjokc6bhr8r" path="res://environment/building/door_double.tscn" id="4_umxsu"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_x6sn0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khqf1"]
 size = Vector2(215, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccerp"]
+atlas = ExtResource("5_x6sn0")
+region = Rect2(84, 263, 54, 48)
 
 [node name="Buliding" instance=ExtResource("1_wxcvp")]
 
@@ -27,3 +33,22 @@ texture = ExtResource("3_pcrbs")
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(-1, -185)
 scale = Vector2(11.35, 9.25)
+
+[node name="Door" parent="." index="3" instance=ExtResource("4_umxsu")]
+position = Vector2(112, 104)
+texture = SubResource("AtlasTexture_ccerp")
+offset = Vector2(-13, -34)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+position = Vector2(-13, 0)
+
+[node name="Door2" parent="Door/StaticBody2D" index="1"]
+position = Vector2(14, 0)
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
+
+[editable path="Door"]

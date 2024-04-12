@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdq7hupfk50xu"]
+[gd_scene load_steps=11 format=3 uid="uid://cdq7hupfk50xu"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_sy4l0"]
 [ext_resource type="Texture2D" uid="uid://c4b88xij307mu" path="res://asset/images/building/b_village_green_int-sheet0.png" id="2_oqo7x"]
 [ext_resource type="Texture2D" uid="uid://b3rfxh7x7qmuv" path="res://asset/images/building/b_village_green-sheet0.png" id="3_0nfn2"]
 [ext_resource type="Texture2D" uid="uid://donjsejsgay0j" path="res://asset/images/building/b_village_green_chest.png" id="3_fh6cf"]
 [ext_resource type="Texture2D" uid="uid://bfe7pbofybrna" path="res://asset/images/building/b_village_green_sofa.png" id="4_6b30h"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="6_qwuxg"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="7_obacj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xd2b"]
+atlas = ExtResource("7_obacj")
+region = Rect2(63, 2, 36, 48)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_qdtj4"]
+b = Vector2(18, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b13r5"]
+radius = 3.0
+height = 16.0
 
 [node name="Buliding" instance=ExtResource("1_sy4l0")]
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Chest"), NodePath("Inside/Sofa")])
@@ -45,3 +58,23 @@ offset = Vector2(0, -124)
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(-4, -56)
 scale = Vector2(6.85, 2.8)
+
+[node name="Door" parent="." index="3" instance=ExtResource("6_qwuxg")]
+position = Vector2(55, 72)
+texture = SubResource("AtlasTexture_3xd2b")
+offset = Vector2(0, -33)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = false
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_qdtj4")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = false
+position = Vector2(9, -1)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_b13r5")
+
+[editable path="Door"]

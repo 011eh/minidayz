@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8cx6oqwu38n"]
+[gd_scene load_steps=13 format=3 uid="uid://b8cx6oqwu38n"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_vt3m2"]
 [ext_resource type="Texture2D" uid="uid://cc6efm0bv4jok" path="res://asset/images/building/b_police_station_int-sheet0.png" id="2_31rus"]
 [ext_resource type="Texture2D" uid="uid://ve0ib04je6nv" path="res://asset/images/building/b_police_station-sheet0.png" id="3_uwfv8"]
 [ext_resource type="Texture2D" uid="uid://cbpy52u65cvbc" path="res://asset/images/building/b_police_station_chest.png" id="4_tud8g"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="5_wqgfo"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="6_foebx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wonm"]
 size = Vector2(193, 91)
@@ -15,6 +17,17 @@ region = Rect2(0, 0, 203, 223)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ad85s"]
 atlas = ExtResource("3_uwfv8")
 region = Rect2(203, 79, 20, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8p17"]
+atlas = ExtResource("6_foebx")
+region = Rect2(63, 66, 40, 51)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_14sb5"]
+b = Vector2(20, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_piv0b"]
+radius = 3.0
+height = 16.0
 
 [node name="Buliding" instance=ExtResource("1_vt3m2")]
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Wall"), NodePath("Chest")])
@@ -50,3 +63,24 @@ position = Vector2(169, 88)
 texture = ExtResource("4_tud8g")
 centered = false
 offset = Vector2(0, -28)
+
+[node name="Door" parent="." index="5" instance=ExtResource("5_wqgfo")]
+position = Vector2(104, 91)
+texture = SubResource("AtlasTexture_q8p17")
+offset = Vector2(-10, -33)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
+position = Vector2(-10, 0)
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_14sb5")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
+position = Vector2(0, 0)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_piv0b")
+
+[editable path="Door"]

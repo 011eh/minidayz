@@ -8,7 +8,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46yva"]
 atlas = ExtResource("5_ird2w")
-region = Rect2(112, 9, 118, 88)
+region = Rect2(115, 10, 110, 87)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_qd7xq"]
 b = Vector2(27, 0)
@@ -43,9 +43,10 @@ position = Vector2(-1, -333)
 scale = Vector2(14.65, 16.65)
 
 [node name="Door" parent="." index="3" instance=ExtResource("4_ej5vh")]
-position = Vector2(141, 209)
+position = Vector2(147, 197)
 texture = SubResource("AtlasTexture_46yva")
 offset = Vector2(-27, -69)
+frame = 1
 
 [node name="Door1" parent="Door/StaticBody2D" index="0"]
 shape = SubResource("SegmentShape2D_qd7xq")

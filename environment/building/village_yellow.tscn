@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8tbvw8w7j1mc"]
+[gd_scene load_steps=11 format=3 uid="uid://b8tbvw8w7j1mc"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_m65ys"]
 [ext_resource type="Texture2D" uid="uid://db7rpapsn4ber" path="res://asset/images/building/b_village_yellow_int-sheet0.png" id="2_gs1yv"]
 [ext_resource type="Texture2D" uid="uid://bo1pvuanxa776" path="res://asset/images/building/b_village_yellow-sheet0.png" id="3_embxr"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="4_bf4pb"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_1f06e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeca6"]
 size = Vector2(166, 62)
@@ -10,6 +12,17 @@ size = Vector2(166, 62)
 [sub_resource type="AtlasTexture" id="AtlasTexture_tva8f"]
 atlas = ExtResource("2_gs1yv")
 region = Rect2(80, 70, 16, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er773"]
+atlas = ExtResource("5_1f06e")
+region = Rect2(63, 2, 36, 48)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_iavce"]
+b = Vector2(15, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vjun7"]
+radius = 3.0
+height = 16.0
 
 [node name="Buliding" instance=ExtResource("1_m65ys")]
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Table")])
@@ -38,3 +51,21 @@ offset = Vector2(0, -117)
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(-5, -52)
 scale = Vector2(9.25, 2.6)
+
+[node name="Door" parent="." index="3" instance=ExtResource("4_bf4pb")]
+position = Vector2(131, 29)
+texture = SubResource("AtlasTexture_er773")
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = false
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_iavce")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_vjun7")
+
+[editable path="Door"]

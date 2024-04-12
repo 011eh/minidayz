@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq5h148opi1li"]
+[gd_scene load_steps=17 format=3 uid="uid://cq5h148opi1li"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_cwk1u"]
 [ext_resource type="Texture2D" uid="uid://15maagm1rkj3" path="res://asset/images/building/b_city_house_4_int-sheet0.png" id="2_7avew"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cbh8k5t0go6q1" path="res://asset/images/building/b_city_house_4_table_1.png" id="4_tn38b"]
 [ext_resource type="Texture2D" uid="uid://6iq4ksb0u3ss" path="res://asset/images/building/b_city_house_4_table_2.png" id="5_1akrr"]
 [ext_resource type="Texture2D" uid="uid://dkqi36xfqndwc" path="res://asset/images/building/b_city_house_4_table_3.png" id="6_v3kht"]
+[ext_resource type="PackedScene" uid="uid://c8cjokc6bhr8r" path="res://environment/building/door_double.tscn" id="7_gxycc"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="8_ytp3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mnj7j"]
 size = Vector2(16, 13)
@@ -19,6 +21,20 @@ size = Vector2(217, 106)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ux7k"]
 atlas = ExtResource("4_tn38b")
 region = Rect2(17, 0, 16, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olbg2"]
+atlas = ExtResource("8_ytp3t")
+region = Rect2(88, 323, 54, 53)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x1i3f"]
+b = Vector2(14, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2wyn5"]
+b = Vector2(-14, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o10g2"]
+radius = 5.0
+height = 24.0
 
 [node name="Buliding" instance=ExtResource("1_cwk1u")]
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Table1"), NodePath("Inside/Table2"), NodePath("Inside/Table3"), NodePath("Inside/Table4")])
@@ -77,3 +93,18 @@ offset = Vector2(0, -289)
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(0, -180)
 scale = Vector2(11.35, 9)
+
+[node name="Door" parent="." index="3" instance=ExtResource("7_gxycc")]
+position = Vector2(175, 69)
+texture = SubResource("AtlasTexture_olbg2")
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_x1i3f")
+
+[node name="Door2" parent="Door/StaticBody2D" index="1"]
+shape = SubResource("SegmentShape2D_2wyn5")
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_o10g2")
+
+[editable path="Door"]
