@@ -1,11 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://rfx8tjp36m3i"]
+[gd_scene load_steps=10 format=3 uid="uid://rfx8tjp36m3i"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_rhwd4"]
 [ext_resource type="Texture2D" uid="uid://chyq34jaeaqp" path="res://asset/images/building/b_village_yard_int-sheet0.png" id="2_8w34q"]
 [ext_resource type="Texture2D" uid="uid://dwjecqcrnsc05" path="res://asset/images/building/b_village_yard-sheet0.png" id="3_2vyxq"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="4_npq1s"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="5_3w1k0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d330f"]
 size = Vector2(191, 77)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol8f0"]
+atlas = ExtResource("5_3w1k0")
+region = Rect2(15, 292, 30, 47)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ogufn"]
+b = Vector2(14, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0v76y"]
+radius = 3.0
+height = 14.0
 
 [node name="Buliding" instance=ExtResource("1_rhwd4")]
 
@@ -29,3 +42,19 @@ offset = Vector2(0, -136)
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(-5, -56)
 scale = Vector2(10.6, 2.8)
+
+[node name="Door" parent="." index="3" instance=ExtResource("4_npq1s")]
+position = Vector2(94, 78)
+texture = SubResource("AtlasTexture_ol8f0")
+offset = Vector2(0, -30)
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_ogufn")
+
+[node name="InteractionArea" parent="Door" index="1"]
+position = Vector2(7, 0)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_0v76y")
+
+[editable path="Door"]
