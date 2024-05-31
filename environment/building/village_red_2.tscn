@@ -1,11 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dck7rnq3f8k74"]
+[gd_scene load_steps=10 format=3 uid="uid://dck7rnq3f8k74"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_w6o7a"]
 [ext_resource type="Texture2D" uid="uid://cvgln3w2s6gmc" path="res://asset/images/building/b_village_red2_int-sheet0.png" id="2_rf6p8"]
 [ext_resource type="Texture2D" uid="uid://d06fx2gynw7wk" path="res://asset/images/building/b_village_red2-sheet0.png" id="3_naolr"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="4_m4iye"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="5_f2vxc"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bbbwx"]
+a = Vector2(-3, 0)
 b = Vector2(11, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmnf5"]
+atlas = ExtResource("5_f2vxc")
+region = Rect2(1, 125, 50, 38)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mmt7g"]
+b = Vector2(17, -0.200001)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okywk"]
+radius = 2.85
+height = 14.0
 
 [node name="Buliding" instance=ExtResource("1_w6o7a")]
 metadata/_edit_horizontal_guides_ = [49.0]
@@ -20,20 +34,41 @@ position = Vector2(3, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
 position = Vector2(-3, 0)
-polygon = PackedVector2Array(1, -6, 198, -7, 198, 21, 220, 21, 220, 57, 93, 57, 93, 48.9733, 92, 49, 92, 37, 96, 37, 96, 53, 194, 53, 194, 8, 163, 8, 162.944, 2, 140, 2, 140, 13, 117, 13, 117, 18, 113, 18, 113, 11, 92, 11, 92, 2, 25, 2, 25, 7, 5, 7, 5, 27, 21, 27, 21, 53, 56, 53, 56, 19, 60, 19, 60, 57, 1, 57)
+polygon = PackedVector2Array(1, -6, 198, -7, 198, 21, 220, 21, 220, 59, 93, 59, 93, 48.9733, 92, 49, 92, 37, 96, 37, 96, 53, 194, 53, 194, 8, 163, 8, 162.944, 2, 140, 2, 140, 13, 117, 13, 117, 18, 113, 18, 113, 11, 92, 11, 92, 2, 25, 2, 25, 7, 5, 7, 5, 27, 21, 27, 21, 53, 56, 53, 56, 19, 60, 19, 60, 59, 1, 59)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
-position = Vector2(78, 49)
+position = Vector2(78, 51)
 shape = SubResource("SegmentShape2D_bbbwx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
 polygon = PackedVector2Array(5, 2, 5, 53, 60, 53, 60, 49, 93, 49, 92.9023, 53, 194, 53, 194, 2)
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-5, 49)
+position = Vector2(-5, 51)
 texture = ExtResource("3_naolr")
 offset = Vector2(0, -168)
 
 [node name="VisibleNotifier" parent="." index="2"]
 position = Vector2(-5, -119)
 scale = Vector2(11.3, 7.1)
+
+[node name="Door" parent="." index="3" instance=ExtResource("4_m4iye")]
+position = Vector2(52, 55)
+texture = SubResource("AtlasTexture_nmnf5")
+offset = Vector2(0, -29.45)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
+position = Vector2(6, -3.8)
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_mmt7g")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
+position = Vector2(14, -3.80001)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_okywk")
+
+[editable path="Door"]
