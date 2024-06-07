@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8cjokc6bhr8r"]
+
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="1_62x0c"]
+[ext_resource type="Script" path="res://environment/building/door.gd" id="1_fcq6s"]
+[ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="2_fcrry"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62bgn"]
+atlas = ExtResource("1_62x0c")
+region = Rect2(0, 0, 1, 1)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_db555"]
+b = Vector2(14, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_f7ar5"]
+b = Vector2(-14, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rqiyc"]
+radius = 5.0
+height = 24.0
+
+[node name="Door" type="Sprite2D"]
+texture = SubResource("AtlasTexture_62bgn")
+centered = false
+hframes = 2
+script = ExtResource("1_fcq6s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Door1" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+position = Vector2(-27, 0)
+shape = SubResource("SegmentShape2D_db555")
+
+[node name="Door2" type="CollisionShape2D" parent="StaticBody2D"]
+unique_name_in_owner = true
+position = Vector2(27, 0)
+shape = SubResource("SegmentShape2D_f7ar5")
+
+[node name="InteractionArea" parent="." instance=ExtResource("2_fcrry")]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rqiyc")

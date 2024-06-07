@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bvgy0awef5yt0"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_fu6nr"]
+[ext_resource type="Texture2D" uid="uid://bqt4brx28woc4" path="res://asset/images/building/b_militay_tent_east_int-sheet0.png" id="2_2cdad"]
+[ext_resource type="Texture2D" uid="uid://daqhtqq007b0y" path="res://asset/images/building/b_militay_tent_east-sheet0.png" id="3_iqac4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2axas"]
+size = Vector2(116, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1c0i0"]
+size = Vector2(116, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcg2n"]
+size = Vector2(116, 29)
+
+[node name="Buliding" instance=ExtResource("1_fu6nr")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 35)
+texture = ExtResource("2_2cdad")
+offset = Vector2(0, -35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="0"]
+position = Vector2(59, 3)
+shape = SubResource("RectangleShape2D_2axas")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
+position = Vector2(59, 40.5)
+shape = SubResource("RectangleShape2D_1c0i0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(59, 24.5)
+shape = SubResource("RectangleShape2D_pcg2n")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-19, 78)
+texture = ExtResource("3_iqac4")
+offset = Vector2(0, -94)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(0, -16)
+scale = Vector2(5.85, 2.55)

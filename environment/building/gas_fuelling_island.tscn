@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://c52ibhcojmefm"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_g1mhh"]
+[ext_resource type="Texture2D" uid="uid://bt56pcd4axdgb" path="res://asset/images/building/b_gas_station_fueling_int-sheet0.png" id="2_3k5jl"]
+[ext_resource type="Texture2D" uid="uid://bn1yrrc54lvfx" path="res://asset/images/building/b_gas_station_fueling-sheet0.png" id="3_kocsp"]
+[ext_resource type="Texture2D" uid="uid://qhboay2cwa0y" path="res://asset/images/building/b_gas_station_fueling_column.png" id="4_fa5vd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ta883"]
+radius = 5.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uid5h"]
+radius = 6.0
+height = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e54qh"]
+size = Vector2(11, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rok70"]
+atlas = ExtResource("3_kocsp")
+region = Rect2(0, 0, 284, 179)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ug6cg"]
+atlas = ExtResource("4_fa5vd")
+region = Rect2(0, 0, 14, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf6q0"]
+atlas = ExtResource("4_fa5vd")
+region = Rect2(15, 0, 14, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fac8f"]
+atlas = ExtResource("4_fa5vd")
+region = Rect2(30, 0, 14, 76)
+
+[node name="Buliding" instance=ExtResource("1_g1mhh")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Column"), NodePath("Column2"), NodePath("Column3")])
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 67)
+texture = ExtResource("2_3k5jl")
+offset = Vector2(0, -67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="0"]
+position = Vector2(29, 101)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ta883")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
+position = Vector2(142, 101)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ta883")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Inside/StaticBody2D" index="2"]
+position = Vector2(255, 101)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ta883")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Inside/StaticBody2D" index="3"]
+position = Vector2(28, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uid5h")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Inside/StaticBody2D" index="4"]
+position = Vector2(141, 4)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_uid5h")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Inside/StaticBody2D" index="5"]
+position = Vector2(254, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_uid5h")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Inside/StaticBody2D" index="6"]
+position = Vector2(26.5, 20)
+shape = SubResource("RectangleShape2D_e54qh")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Inside/StaticBody2D" index="7"]
+position = Vector2(26.5, 20)
+shape = SubResource("RectangleShape2D_e54qh")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Inside/StaticBody2D" index="8"]
+position = Vector2(139.5, 20)
+shape = SubResource("RectangleShape2D_e54qh")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Inside/StaticBody2D" index="9"]
+position = Vector2(252.5, 20)
+shape = SubResource("RectangleShape2D_e54qh")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(0, 179)
+texture = SubResource("AtlasTexture_rok70")
+offset = Vector2(0, -179)
+
+[node name="Column" type="Sprite2D" parent="." index="2"]
+position = Vector2(29, 173)
+texture = SubResource("AtlasTexture_ug6cg")
+offset = Vector2(0, -38)
+
+[node name="Column2" type="Sprite2D" parent="." index="3"]
+position = Vector2(142, 173)
+texture = SubResource("AtlasTexture_sf6q0")
+offset = Vector2(0, -38)
+
+[node name="Column3" type="Sprite2D" parent="." index="4"]
+position = Vector2(255, 173)
+texture = SubResource("AtlasTexture_fac8f")
+offset = Vector2(0, -38)
+
+[node name="VisibleNotifier" parent="." index="5"]
+scale = Vector2(14.15, 7.45)

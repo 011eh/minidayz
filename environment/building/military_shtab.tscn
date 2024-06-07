@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmarqqnh4wmtf"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_3c3xa"]
+[ext_resource type="Texture2D" uid="uid://dxgud8abnggn2" path="res://asset/images/building/b_military_shtab_int-sheet0.png" id="2_qf3yc"]
+[ext_resource type="Texture2D" uid="uid://ba2fxaodsb056" path="res://asset/images/building/b_military_shtab-sheet0.png" id="3_453yt"]
+[ext_resource type="Texture2D" uid="uid://c88p5wh3o47yk" path="res://asset/images/building/b_military_shtab_table_1.png" id="4_h5e1v"]
+[ext_resource type="Texture2D" uid="uid://nnverfmqgv2r" path="res://asset/images/building/b_military_shtab_table_2.png" id="5_gsjqa"]
+
+[node name="Buliding" instance=ExtResource("1_3c3xa")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Table1"), NodePath("Inside/Table2")])
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_qf3yc")
+offset = Vector2(0, -60)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+position = Vector2(164, 41)
+polygon = PackedVector2Array(-163, -47, 186, -47, 186, 52, 10, 52, 10, 46, -3, 46, -3, 41, 9, 41, 9, 32, 15, 32, 15, 47, 65, 47, 65, 27, 75, 27, 75, 1, 9, 1, 9, -5, 159, -5, 159, 1, 81, 1, 81, 47, 181, 47, 169, 47, 169, 29, 181, 29.0688, 181, -39, -39, -39, -39, 47, -27, 47, -27, 41, -22, 41, -21.9653, 52, -44, 52, -44, 43, -61, 43, -61, 30, -56, 30, -56, 38, -45, 38, -45, -30, -121, -30, -121, -26, -158, -26, -158, 38, -86, 38, -86, 30, -81, 30, -81, 43, -163, 43)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
+polygon = PackedVector2Array(6, 2, 345, 2, 345, 88, 179, 88, 161, 84, 142, 84, 137, 88, 125, 88, 120, 84, 108, 79, 102, 75, 83, 75, 83, 79, 6, 79)
+
+[node name="Table1" type="Sprite2D" parent="Inside" index="2"]
+position = Vector2(229, 83)
+texture = ExtResource("4_h5e1v")
+centered = false
+offset = Vector2(0, -18)
+
+[node name="Table2" type="Sprite2D" parent="Inside" index="3"]
+position = Vector2(331, 83)
+texture = ExtResource("5_gsjqa")
+centered = false
+offset = Vector2(0, -18)
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-1, 84)
+texture = ExtResource("3_453yt")
+offset = Vector2(0, -184)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(0, -99)
+scale = Vector2(17.55, 4.95)

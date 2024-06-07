@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://iyel8c81oquf"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_mued8"]
+[ext_resource type="Texture2D" uid="uid://bycdhua8s5uwy" path="res://asset/images/building/b_supermarket_int-sheet0.png" id="2_pb3o3"]
+[ext_resource type="Texture2D" uid="uid://cojqs7w6ei2a1" path="res://asset/images/building/b_supermarket-sheet0.png" id="3_ayf4h"]
+[ext_resource type="Texture2D" uid="uid://dkc3lb0oosac6" path="res://asset/images/building/supermarket_counter.png" id="4_02e17"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut8m2"]
+size = Vector2(232, 102)
+
+[node name="Buliding" instance=ExtResource("1_mued8")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Counter")])
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 59)
+texture = ExtResource("2_pb3o3")
+offset = Vector2(0, -59)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, -6, 238, -6, 238, 2, 238, 53, 233, 53, 233, 40, 190, 40, 190, 35, 233, 35, 233, 2, 6, 2, 6, 32, 13, 32, 13, 76, 6, 76, 6, 96, 233, 96, 233, 90, 238, 90, 238, 101, 1, 101)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(122, 45)
+shape = SubResource("RectangleShape2D_ut8m2")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(0, 160)
+texture = ExtResource("3_ayf4h")
+offset = Vector2(0, -160)
+
+[node name="VisibleNotifier" parent="." index="2"]
+scale = Vector2(13.7, 5.95)
+
+[node name="Counter" type="Sprite2D" parent="." index="3"]
+position = Vector2(212, 101)
+texture = ExtResource("4_02e17")
+offset = Vector2(0, -11)

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfkstqk3d25hn"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_iwhn1"]
+[ext_resource type="Texture2D" uid="uid://2dm13v5c7yq5" path="res://asset/images/building/b_shed_int-sheet0.png" id="2_8bybv"]
+[ext_resource type="Texture2D" uid="uid://b4xjnest5d8tn" path="res://asset/images/building/b_shed-sheet0.png" id="3_p42jw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhx70"]
+size = Vector2(233, 71)
+
+[node name="Buliding" instance=ExtResource("1_iwhn1")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(1, 52)
+texture = ExtResource("2_8bybv")
+offset = Vector2(-1, -52)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, 75, 237, 75, 237, -5, 0, -5, 0, 19, 4, 19, 4, -2, 38, -2, 38, 19, 201, 19, 201, -2, 233, -2, 233, 71, 201, 71, 201, 48, 38, 49, 38, 71, 4, 71, 4, 49, 0, 48.9843)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(116.5, 35.5)
+shape = SubResource("RectangleShape2D_mhx70")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-4, 128)
+texture = ExtResource("3_p42jw")
+offset = Vector2(0, -133)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-3, -4)
+scale = Vector2(12.25, 2.8)

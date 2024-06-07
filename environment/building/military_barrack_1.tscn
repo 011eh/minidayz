@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp6ar47c6ewr5"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_scv2d"]
+[ext_resource type="Texture2D" uid="uid://nqd2d6vqhjcg" path="res://asset/images/building/b_military_barrack_int-sheet0.png" id="2_rcmyq"]
+[ext_resource type="Texture2D" uid="uid://cl7eyknderx5c" path="res://asset/images/building/b_military_barrack-sheet0.png" id="3_b7ulb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gdlx"]
+size = Vector2(263, 82)
+
+[node name="Buliding" instance=ExtResource("1_scv2d")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 55)
+texture = ExtResource("2_rcmyq")
+offset = Vector2(0, -55)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(1, -8, 268, -8, 268, 59, 264, 59, 264, 49, 245, 49, 245, 44, 264, 44, 264, 0, 206, 0, 206, 44, 226, 44, 226, 49, 206, 49, 206, 54, 201, 54, 201, 49, 193, 49, 193, 44, 201, 44, 201, 7, 192, 7, 192, 0, 170, 0, 170, 44, 174, 44, 174, 49, 143, 49, 143, 44, 151, 44, 151, 7, 142, 7, 142, 0, 119, 0, 119, 44, 124, 44, 124, 49, 92, 49, 92, 44, 100, 44, 100, 6, 91, 6, 91, 0, 66, 0, 66, 44, 73, 44, 73, 49, 39, 49, 39, 44, 47, 44, 47, 6, 38, 6, 38, 0, 19, 0, 19, 49, 5, 49, 5, 82, 201, 82, 201, 77, 206, 77, 206, 82, 264, 82, 264, 80, 268, 80, 268, 86, 1, 86)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(136.5, 41)
+shape = SubResource("RectangleShape2D_5gdlx")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-7, 141)
+texture = ExtResource("3_b7ulb")
+offset = Vector2(0, -142)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-6, 0)
+scale = Vector2(14, 2.75)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://uxjobfrdh14c"]
+
+[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_8uotd"]
+
+[node name="Buliding" type="Node2D"]
+script = ExtResource("1_8uotd")
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside")])
+
+[node name="Inside" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+y_sort_enabled = true
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Inside"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="InteriorArea" type="Area2D" parent="Inside"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="Outside" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+centered = false
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+rect = Rect2(0, 0, 20, 20)

@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlfph631kco02"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_4tuho"]
+[ext_resource type="Texture2D" uid="uid://dqq22plrjeg4k" path="res://asset/images/building/b_piano_house_int-sheet0.png" id="2_mhjpm"]
+[ext_resource type="Texture2D" uid="uid://b2xm3c8fn6fx6" path="res://asset/images/building/b_piano_house-sheet0.png" id="3_8lknh"]
+[ext_resource type="Texture2D" uid="uid://heqf013jljs6" path="res://asset/images/building/b_piano_house_piano.png" id="4_y2em0"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="5_hdekc"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="6_gffg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyqc2"]
+size = Vector2(225, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51vgl"]
+atlas = ExtResource("6_gffg2")
+region = Rect2(63, 66, 40, 51)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vgnt7"]
+b = Vector2(19, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j05et"]
+radius = 3.0
+height = 16.0
+
+[node name="Buliding" instance=ExtResource("1_4tuho")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Piano")])
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_mhjpm")
+offset = Vector2(0, -72)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(234, 110, 234, -8, 1, -8, 1, 110, 109.006, 110, 109, 106, 85, 106, 85, 68, 37, 68, 37, 41, 5, 41, 5, 20, 73, 19, 73, 23, 100, 23, 100, 14, 138, 14, 138, 1, 152, 1, 152, 6, 173, 6, 173, 2, 210, 2, 210, 8, 230, 8, 230, 41, 156, 41, 168, 68, 152, 68, 152, 106, 129, 106, 128.974, 110)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(117.5, 54)
+shape = SubResource("RectangleShape2D_cyqc2")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-7, 110)
+texture = ExtResource("3_8lknh")
+offset = Vector2(0, -228)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-6, -117)
+scale = Vector2(12.3, 5.85)
+
+[node name="Piano" type="Sprite2D" parent="." index="3"]
+position = Vector2(156, 46)
+texture = ExtResource("4_y2em0")
+centered = false
+offset = Vector2(0, -9)
+
+[node name="Door" parent="." index="4" instance=ExtResource("5_hdekc")]
+position = Vector2(109, 108)
+texture = SubResource("AtlasTexture_51vgl")
+offset = Vector2(0, -33)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_vgnt7")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
+position = Vector2(10, 0)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_j05et")
+
+[editable path="Door"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn0yknjnnip5v"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_f56ay"]
+[ext_resource type="Texture2D" uid="uid://c1ig4aytak4ok" path="res://asset/images/building/b_gas_station_int-sheet0.png" id="2_vffa1"]
+[ext_resource type="Texture2D" uid="uid://bsnfyt3snws0b" path="res://asset/images/building/b_gas_station-sheet0.png" id="3_p4i4h"]
+[ext_resource type="Texture2D" uid="uid://bms656s7pyheu" path="res://asset/images/building/b_gas_station_counter.png" id="4_5obai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3s41h"]
+size = Vector2(75, 50)
+
+[node name="Buliding" instance=ExtResource("1_f56ay")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Counter")])
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 53)
+texture = ExtResource("2_vffa1")
+offset = Vector2(0, -53)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, 54, 33.0656, 54, 33, 51, 3, 51, 3, 22.9087, 28, 23, 28, 15, 3, 15, 3, 1, 78, 1, 78, 51, 47, 51, 47, 54, 81, 54, 81, -2, 0, -2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(40.5, 26)
+shape = SubResource("RectangleShape2D_3s41h")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(0, 107)
+texture = ExtResource("3_p4i4h")
+offset = Vector2(0, -107)
+
+[node name="Counter" type="Sprite2D" parent="." index="2"]
+position = Vector2(3, 76)
+texture = ExtResource("4_5obai")
+centered = false
+offset = Vector2(0, -22)
+
+[node name="VisibleNotifier" parent="." index="3"]
+scale = Vector2(4.05, 2.65)

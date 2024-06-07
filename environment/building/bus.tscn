@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv2qomeimjixr"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_c5clv"]
+[ext_resource type="Texture2D" uid="uid://ddrnsq7sq6b2a" path="res://asset/images/building/b_car_bus_int-sheet0.png" id="2_st718"]
+[ext_resource type="Texture2D" uid="uid://gl8o0k7lrqaq" path="res://asset/images/building/b_car_bus-sheet0.png" id="3_h0xu4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yyl0"]
+atlas = ExtResource("2_st718")
+region = Rect2(0, 2, 204, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfo4h"]
+size = Vector2(187, 25)
+
+[node name="Buliding" instance=ExtResource("1_c5clv")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 46)
+texture = SubResource("AtlasTexture_5yyl0")
+offset = Vector2(0, -46)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+position = Vector2(0, -31)
+polygon = PackedVector2Array(0, 28, 204, 28, 204, 69, 194, 72, 194, 53, 202, 53, 202, 31, 14, 31, 16, 56, 177, 53, 177, 73, 0, 74)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(109, 14)
+shape = SubResource("RectangleShape2D_tfo4h")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-1, 90)
+texture = ExtResource("3_h0xu4")
+offset = Vector2(0, -91)
+
+[node name="VisibleNotifier" parent="." index="2"]
+scale = Vector2(10.25, 2.3)

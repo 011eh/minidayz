@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxk0gy2qf7xo2"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_587xp"]
+[ext_resource type="Texture2D" uid="uid://dulwvspfcxkhn" path="res://asset/images/building/b_hunter_shelter_int-sheet0.png" id="2_0lakt"]
+[ext_resource type="Texture2D" uid="uid://b8up7kyf2162a" path="res://asset/images/building/b_hunter_shelter-sheet0.png" id="3_ilq20"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ieq4x"]
+size = Vector2(41, 29)
+
+[node name="Buliding" instance=ExtResource("1_587xp")]
+
+[node name="Inside" parent="." index="0"]
+position = Vector2(0, 33)
+texture = ExtResource("2_0lakt")
+offset = Vector2(0, -33)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(1, 28, 1, -6, 60, -6, 60, 28, 22, 28, 22, 25, 45, 25, 45, -1, 22, -1, 22, 6, 4, 6, 4, 25, 10, 25, 9.99005, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(24.5, 13.5)
+shape = SubResource("RectangleShape2D_ieq4x")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(1, 61)
+texture = ExtResource("3_ilq20")
+offset = Vector2(-1, -67)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(0, -2)
+scale = Vector2(3.25, 1.75)

@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cvfp1ak51lf75"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_jk1qm"]
+[ext_resource type="Texture2D" uid="uid://dneumhoe2ou8l" path="res://asset/images/building/b_city_house_3_int-sheet0.png" id="2_b00g1"]
+[ext_resource type="Texture2D" uid="uid://dlapgl48jbbvw" path="res://asset/images/building/b_city_house_3-sheet0.png" id="3_ayhfb"]
+[ext_resource type="Texture2D" uid="uid://cpe0qi1se3626" path="res://asset/images/building/b_city_house_3_tv.png" id="4_ogptb"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="5_oudwd"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="6_s5ym1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ni2xb"]
+size = Vector2(298, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuxvv"]
+atlas = ExtResource("6_s5ym1")
+region = Rect2(17, 60, 46, 56)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_n7bsj"]
+b = Vector2(23, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01r0v"]
+radius = 3.0
+height = 16.0
+
+[node name="Buliding" instance=ExtResource("1_jk1qm")]
+building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Tv")])
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_b00g1")
+offset = Vector2(-1, -67)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, -6, 302, -6, 302, 106, 71.218, 106, 71, 106, 71, 102, 82, 102, 82, 69, 103, 69, 103, 102, 133, 102, 133, 81, 145, 81, 145, 102, 237, 102, 237, 39, 87, 39, 87, 43, 82, 43, 82, 34, 242, 34, 242, 102, 298, 102, 297, 1, 33, 2, 33, 2, 33, 47, 31, 47, 31, 65, 4, 64.9318, 4, 102, 48, 102, 47.8571, 106, 0, 106)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(153, 52)
+shape = SubResource("RectangleShape2D_ni2xb")
+
+[node name="Tv" type="Sprite2D" parent="Inside" index="2"]
+position = Vector2(139, 87)
+texture = ExtResource("4_ogptb")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(0, 106)
+texture = ExtResource("3_ayhfb")
+offset = Vector2(0, -288)
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(0, -182)
+scale = Vector2(15.1, 9.1)
+
+[node name="Door" parent="." index="3" instance=ExtResource("5_oudwd")]
+position = Vector2(48, 103)
+texture = SubResource("AtlasTexture_xuxvv")
+offset = Vector2(0, -37)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_n7bsj")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
+position = Vector2(12, 0)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_01r0v")
+
+[editable path="Door"]

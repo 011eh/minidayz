@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://8i8331v14a8d"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_oue8f"]
+[ext_resource type="Texture2D" uid="uid://bnbxrgey8iude" path="res://asset/images/building/b_city_house_2_int-sheet0.png" id="2_mn5bp"]
+[ext_resource type="Texture2D" uid="uid://djag8cbt36k4p" path="res://asset/images/building/b_city_house_2-sheet0.png" id="3_kqj4d"]
+[ext_resource type="PackedScene" uid="uid://c8cjokc6bhr8r" path="res://environment/building/door_double.tscn" id="4_lbnap"]
+[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_e61xy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wl0b"]
+size = Vector2(215, 102)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25y0h"]
+atlas = ExtResource("5_e61xy")
+region = Rect2(84, 263, 54, 48)
+
+[node name="Buliding" instance=ExtResource("1_oue8f")]
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_mn5bp")
+offset = Vector2(-1, -69)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, 104, 0, -6, 225, -6, 225, 104, 124.967, 104, 125, 98, 137, 98, 137, 82, 144, 82, 144, 98, 220, 98, 209, 98, 209, 76, 191, 76, 190.812, 59.0966, 137, 59, 137, 52, 220, 52.0779, 220, 21, 194, 21, 194, 23, 191, 23, 191, 22, 177, 22, 177, 23, 174, 23, 174, 21, 144, 21, 144, 2, 104.886, 2, 105, 7, 82, 7, 82, 12, 80, 12, 75, 7, 61, 7, 61, 3, 50, 3, 50, 6, 5, 6, 5, 47, 23, 47, 23, 83, 5, 83, 5, 98, 81.0615, 98, 81.0467, 82.0622, 66, 82, 66, 59, 81, 59, 81, 32, 88, 32, 88.0217, 98, 100, 98, 99.8712, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+position = Vector2(112.5, 53)
+shape = SubResource("RectangleShape2D_3wl0b")
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-2, -185)
+texture = ExtResource("3_kqj4d")
+
+[node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-1, -185)
+scale = Vector2(11.35, 9.25)
+
+[node name="Door" parent="." index="3" instance=ExtResource("4_lbnap")]
+position = Vector2(112, 104)
+texture = SubResource("AtlasTexture_25y0h")
+offset = Vector2(-13, -34)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+position = Vector2(-13, 0)
+
+[node name="Door2" parent="Door/StaticBody2D" index="1"]
+position = Vector2(14, 0)
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
+
+[editable path="Door"]

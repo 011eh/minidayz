@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://cesb8fs8ynlq"]
+
+[ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_sgqym"]
+[ext_resource type="Texture2D" uid="uid://v16o0iwlrwbb" path="res://asset/images/building/b_village_red_int-sheet0.png" id="2_7vrgc"]
+[ext_resource type="Texture2D" uid="uid://dc7lis1r2nc6o" path="res://asset/images/building/b_village_red-sheet0.png" id="3_l8n5t"]
+[ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="4_841fg"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="5_30pu7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6xqc"]
+atlas = ExtResource("5_30pu7")
+region = Rect2(144, 271, 38, 46)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_r5caj"]
+b = Vector2(18, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s7tlw"]
+radius = 3.0
+height = 16.0
+
+[node name="Buliding" instance=ExtResource("1_sgqym")]
+
+[node name="Inside" parent="." index="0"]
+texture = ExtResource("2_7vrgc")
+offset = Vector2(0, -40)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, -6, 144, -6, 144, 70, 115, 70, 115, 76, 45, 76, 45, 73, 112, 73, 112, 67, 141, 67, 141, 9, 90, 9, 90.0625, 2, 67, 2, 67, 19, 14, 19, 14, 35, 4, 35, 4, 62, 23, 62, 23, 73, 31, 73, 31, 76, 19, 76, 19, 65, 1, 65)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
+polygon = PackedVector2Array(4, 2, 141, 2, 141, 67, 116, 70, 112, 73, 45, 76, 31, 76, 23, 73, 19, 65, 4, 62)
+
+[node name="Outside" parent="." index="1"]
+position = Vector2(-2, 65)
+texture = ExtResource("3_l8n5t")
+offset = Vector2(0, -143)
+
+[node name="VisibleNotifier" parent="." index="2"]
+visible = false
+position = Vector2(-1, -77)
+scale = Vector2(8.65, 7.2)
+
+[node name="Door" parent="." index="3" instance=ExtResource("4_841fg")]
+position = Vector2(28, 75)
+texture = SubResource("AtlasTexture_j6xqc")
+offset = Vector2(0, -31)
+
+[node name="Door1" parent="Door/StaticBody2D" index="0"]
+shape = SubResource("SegmentShape2D_r5caj")
+
+[node name="InteractionArea" parent="Door" index="1"]
+position = Vector2(9, 0)
+
+[node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
+shape = SubResource("CapsuleShape2D_s7tlw")
+
+[editable path="Door"]
