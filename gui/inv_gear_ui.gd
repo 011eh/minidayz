@@ -73,7 +73,7 @@ func _get_drag_data(at_position):
 		return self
 
 func _can_drop_data(at_position, ui):
-	return $Icon.get_rect().has_point(at_position) and \
+	return has_data and $Icon.get_rect().has_point(at_position) and \
 		not ItemActionTable.get_recipes(instance_from_id(item_id), instance_from_id(ui.item_id)).is_empty()
 
 func _drop_data(at_position, ui):

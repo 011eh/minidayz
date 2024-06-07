@@ -58,39 +58,41 @@ func _ready():
 	melee_weapon_card.visible = false
 	%SplitItemDialog.visible = false
 
-func setup(inventory: PlayerInventory) -> void:
-	inventory.slot_item_changed.connect(update_inventory_ui)
-
-	var player_pickup_area := inventory.pickup_area
-	player_pickup_area.area_entered.connect(func(area: Area2D) -> void:
-		var ui := PickPileUI.instantiate()
-		pick_pile_item_ui.add_child(ui)
-		ui.update_item_ui(area.owner)
-		pick_pile_ui_dict[area.get_instance_id()] = ui
-	)
-
-	player_pickup_area.area_exited.connect(func(area: Area2D) -> void:
-		pick_pile_ui_dict.get(area.get_instance_id()).queue_free()
-		pick_pile_ui_dict.erase(area.get_instance_id())
-	)
-	
+func setup(player: Player) -> void:
+	var inventory := player.inventory
 	item_dropped.connect(inventory.drop_item)
 	knife_dropped.connect(inventory.ui_equip_knife)
 	item_index_changed.connect(inventory.ui_swap_item)
 	%SplitItemDialog.item_splitted.connect(inventory.ui_split_item)
 	equipment_changed.connect(inventory.ui_equip_item)
 	ItemActionTable.setup(inventory, show_spin_box)
-
+	inventory.slot_item_changed.connect(update_inventory_ui)
+	
+	var detection_area := player.detection_area
+	detection_area.area_entered.connect(func(area: InteractionArea) -> void:
+		if area.owner_type != InteractionArea.OwnerType.ITEM:
+			return
+		
+		var ui := PickPileUI.instantiate()
+		pick_pile_item_ui.add_child(ui)
+		ui.update_item_ui(area.owner)
+		pick_pile_ui_dict[area.get_instance_id()] = ui
+	)
+	detection_area.area_exited.connect(func(area: InteractionArea) -> void:
+		pick_pile_ui_dict.get(area.get_instance_id()).queue_free()
+		pick_pile_ui_dict.erase(area.get_instance_id())
+	)
+	
 	for item_ui in get_tree().get_nodes_in_group('item_ui_group'):
 		item_ui.pick_pile_item_slotted.connect(inventory.ui_put_item_to_slot)
 		item_ui.item_clicked.connect(toggle_item_menu)
 		item_ui.item_ui_dropped.connect(handle_item_ui_dropped)
-
+	
 	for item_card in get_tree().get_nodes_in_group('item_cards'):
 		item_card.item_clicked.connect(toggle_item_menu)
 	
 	%BackpackCard.item_ui_dropped.connect(handle_item_ui_dropped)
-
+	
 	item_menu.visible = false
 	add_child(item_menu)
 
