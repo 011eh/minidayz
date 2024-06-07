@@ -47,7 +47,7 @@ static func create_gear_random(type: PlayerInventory.EquipmentType) -> Gear:
 	var gear: Gear
 	match type:
 		PlayerInventory.EquipmentType.CLOTHES:
-			gear = ItemCreator.create_item(Gear, randi_range(0, 16))
+			gear = ItemCreator.create_item(Gear, randi_range(0, 16) + 95)
 		PlayerInventory.EquipmentType.PANTS:
 			gear = ItemCreator.create_item(Gear, randi_range(17, 23))
 		PlayerInventory.EquipmentType.HELMET:

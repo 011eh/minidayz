@@ -70,7 +70,7 @@ var weapon_reload = func(weapon: RangedWeapon,ammo: NumberItem) -> void:
 
 var eject_ammo_to_inventory = func(weapon: RangedWeapon):
 	var ammo := weapon.eject()
-	put_to_inventory.call(ammo)
+	put_to_inventory.call(ammo, false)
 
 
 func _init():
