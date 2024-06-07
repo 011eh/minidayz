@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://m833wwd4xoqo"]
+
+[ext_resource type="Script" path="res://test/buliding_test.gd" id="1_40pox"]
+[ext_resource type="PackedScene" uid="uid://c5dryjeoop8oy" path="res://environment/building/church.tscn" id="3_1kjmu"]
+[ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="3_54yjx"]
+[ext_resource type="PackedScene" uid="uid://dlfph631kco02" path="res://environment/building/piano_house.tscn" id="4_pas86"]
+[ext_resource type="PackedScene" uid="uid://cvfp1ak51lf75" path="res://environment/building/city_house_3.tscn" id="5_migpe"]
+
+[node name="BulidingTest" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_40pox")
+
+[node name="Player" parent="." groups=["player"] instance=ExtResource("3_54yjx")]
+position = Vector2(647, 229)
+collision_layer = 7
+collision_mask = 3
+
+[node name="Buliding" parent="." instance=ExtResource("3_1kjmu")]
+
+[node name="Buliding2" parent="." instance=ExtResource("4_pas86")]
+position = Vector2(304, 93)
+
+[node name="Buliding3" parent="." instance=ExtResource("5_migpe")]
+position = Vector2(576, 122)
