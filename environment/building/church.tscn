@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://cptvsqs77w358" path="res://asset/images/building/b_church_int-sheet0.png" id="2_lwrh3"]
 [ext_resource type="Texture2D" uid="uid://dsaqxlrely3uh" path="res://asset/images/building/b_church-sheet0.png" id="3_1qr3b"]
 [ext_resource type="PackedScene" uid="uid://c8cjokc6bhr8r" path="res://environment/building/door_double.tscn" id="4_ej5vh"]
-[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_ird2w"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="5_ird2w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46yva"]
 atlas = ExtResource("5_ird2w")
-region = Rect2(115, 10, 110, 87)
+region = Rect2(112, 10, 116, 87)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_qd7xq"]
-b = Vector2(27, 0)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_a7ync"]
+b = Vector2(25, 0)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_ys1pl"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gc1ti"]
 b = Vector2(-27, 0)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_udyoy"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q7ug1"]
 radius = 5.0
 height = 24.0
 
@@ -31,7 +31,7 @@ polygon = PackedVector2Array(0, -5, 291, -5, 291, 105, 266, 105, 266, 166, 257, 
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
 position = Vector2(30, -43)
-polygon = PackedVector2Array(40, 44, 192, 45, 249, 69, 249, 135, 236, 148, 197, 204, 142, 239, 89, 239, 35, 204, -4, 148, -17, 134, -17, 69)
+polygon = PackedVector2Array(40, 44, 192, 45, 249, 69, 249, 135, 236, 148, 197, 204, 142, 237, 89, 237, 35, 204, -4, 148, -17, 134, -17, 69)
 
 [node name="Outside" parent="." index="1"]
 position = Vector2(-2, 200)
@@ -43,18 +43,24 @@ position = Vector2(-1, -333)
 scale = Vector2(14.65, 16.65)
 
 [node name="Door" parent="." index="3" instance=ExtResource("4_ej5vh")]
-position = Vector2(147, 197)
+position = Vector2(145, 195)
 texture = SubResource("AtlasTexture_46yva")
-offset = Vector2(-27, -69)
-frame = 1
+offset = Vector2(-28, -67)
+
+[node name="StaticBody2D" parent="Door" index="0"]
+visible = true
 
 [node name="Door1" parent="Door/StaticBody2D" index="0"]
-shape = SubResource("SegmentShape2D_qd7xq")
+position = Vector2(-25, 0)
+shape = SubResource("SegmentShape2D_a7ync")
 
 [node name="Door2" parent="Door/StaticBody2D" index="1"]
-shape = SubResource("SegmentShape2D_ys1pl")
+shape = SubResource("SegmentShape2D_gc1ti")
+
+[node name="InteractionArea" parent="Door" index="1"]
+visible = true
 
 [node name="CollisionShape2D" parent="Door/InteractionArea" index="0"]
-shape = SubResource("CapsuleShape2D_udyoy")
+shape = SubResource("CapsuleShape2D_q7ug1")
 
 [editable path="Door"]

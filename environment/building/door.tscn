@@ -9,7 +9,7 @@ atlas = ExtResource("1_mnqc6")
 region = Rect2(0, 0, 1, 1)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_i261x"]
-b = Vector2(18, 0)
+b = Vector2(19, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arrwq"]
 radius = 3.0

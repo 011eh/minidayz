@@ -18,7 +18,7 @@ func _ready():
 		$InteractionArea.interaction_inputted.connect(func():
 			is_opened = not is_opened
 			tween = create_tween()
-			tween.tween_property(%Door1, 'rotation', deg_to_rad(0 if is_opened else 90), 0)
+			tween.tween_property(%Door1, 'rotation', deg_to_rad(90 if is_opened else 0), 0)
 			tween.tween_property(self, 'frame', 1 if is_opened else 0, 0)
 			tween.play()
 		)
@@ -27,8 +27,8 @@ func _ready():
 		$InteractionArea.interaction_inputted.connect(func():
 			is_opened = not is_opened
 			tween = create_tween()
-			tween.tween_property(%Door1, 'rotation', deg_to_rad(0 if is_opened else 90), 0)
-			tween.tween_property(%Door2, 'rotation', deg_to_rad(0 if is_opened else -90), 0)
+			tween.tween_property(%Door1, 'rotation', deg_to_rad(90 if is_opened else 0), 0)
+			tween.tween_property(%Door2, 'rotation', deg_to_rad(-90 if is_opened else 0), 0)
 			tween.tween_property(self, 'frame', 1 if is_opened else 0, 0)
 			tween.play()
 		)
