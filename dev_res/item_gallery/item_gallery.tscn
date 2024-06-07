@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3 uid="uid://cns568wlj0otf"]
+
+[ext_resource type="PackedScene" path="res://dev_res/item_gallery/item_container.tscn" id="1_5ce7j"]
+[ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_1k22a"]
+[ext_resource type="Script" path="res://item/number_item.gd" id="3_0r7kv"]
+[ext_resource type="Script" path="res://item/craft.gd" id="4_shltk"]
+[ext_resource type="Script" path="res://item/knife.gd" id="5_egtqp"]
+[ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="6_rwjs0"]
+[ext_resource type="Script" path="res://item/melee_weapon.gd" id="7_fnb2d"]
+[ext_resource type="Texture2D" uid="uid://bb5h2ev7gk3ua" path="res://asset/images/equipment/weapon/main/gui_main_weapon.png" id="8_tx7qq"]
+[ext_resource type="Script" path="res://item/main_weapon.gd" id="9_gwh3s"]
+[ext_resource type="Texture2D" uid="uid://3amhjsr2gevu" path="res://asset/images/equipment/weapon/pistol/gui_pistol.png" id="10_hew4u"]
+[ext_resource type="Script" path="res://item/pistol.gd" id="11_3xekh"]
+
+[node name="ItemGallery" type="ColorRect"]
+offset_right = 576.0
+offset_bottom = 324.0
+scale = Vector2(0.5, 0.5)
+color = Color(0.580392, 0.494118, 0.443137, 1)
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot Item" parent="TabContainer" instance=ExtResource("1_5ce7j")]
+layout_mode = 2
+split_offset = 124
+gui_texture = ExtResource("2_1k22a")
+frame_size = Vector2i(32, 32)
+item_script = ExtResource("3_0r7kv")
+properties = PackedStringArray("id", "item_name", "texture", "wear_per_use")
+
+[node name="ItemList" parent="TabContainer/Slot Item" index="0"]
+custom_minimum_size = Vector2(124, 0)
+max_columns = 5
+fixed_column_width = 32
+
+[node name="Craft" parent="TabContainer" instance=ExtResource("1_5ce7j")]
+visible = false
+layout_mode = 2
+split_offset = 124
+gui_texture = ExtResource("2_1k22a")
+frame_size = Vector2i(32, 32)
+item_script = ExtResource("4_shltk")
+properties = PackedStringArray("id", "item_name", "texture", "wear_per_use")
+
+[node name="ItemList" parent="TabContainer/Craft" index="0"]
+custom_minimum_size = Vector2(124, 0)
+max_columns = 5
+fixed_column_width = 32
+
+[node name="Knife" parent="TabContainer" instance=ExtResource("1_5ce7j")]
+visible = false
+layout_mode = 2
+split_offset = 124
+gui_texture = ExtResource("2_1k22a")
+frame_size = Vector2i(32, 32)
+frame_offset = 84
+item_script = ExtResource("5_egtqp")
+properties = PackedStringArray("id", "item_name", "texture", "wear_per_use", "min_damage", "max_damage", "run_penalty", "attack_rate", "crit_chance", "crit_chance")
+
+[node name="ItemList" parent="TabContainer/Knife" index="0"]
+custom_minimum_size = Vector2(124, 0)
+max_columns = 5
+fixed_column_width = 32
+
+[node name="Melee Weapon" parent="TabContainer" instance=ExtResource("1_5ce7j")]
+visible = false
+layout_mode = 2
+split_offset = 160
+gui_texture = ExtResource("6_rwjs0")
+frame_size = Vector2i(44, 44)
+item_script = ExtResource("7_fnb2d")
+properties = PackedStringArray("id", "item_name", "texture", "wear_per_use", "min_damage", "max_damage", "run_penalty", "attack_rate", "crit_chance", "crit_chance")
+
+[node name="ItemList" parent="TabContainer/Melee Weapon" index="0"]
+custom_minimum_size = Vector2(160, 0)
+max_columns = 3
+fixed_column_width = 44
+
+[node name="Main Weapon" parent="TabContainer" instance=ExtResource("1_5ce7j")]
+visible = false
+layout_mode = 2
+split_offset = 160
+gui_texture = ExtResource("8_tx7qq")
+frame_size = Vector2i(185, 68)
+item_script = ExtResource("9_gwh3s")
+properties = PackedStringArray("id", "item_name", "texture", "wear_per_use", "min_damage", "max_damage", "run_penalty", "attack_rate", "basic_spread", "min_spread", "max_spread", "spread_per_shot", "mag_size", "ammo_type", "aim_speed", "reload_time")
+
+[node name="ItemList" parent="TabContainer/Main Weapon" index="0"]
+custom_minimum_size = Vector2(205, 0)
+
+[node name="Pistol" parent="TabContainer" instance=ExtResource("1_5ce7j")]
+visible = false
+layout_mode = 2
+split_offset = 160
+gui_texture = ExtResource("10_hew4u")
+frame_size = Vector2i(82, 82)
+frame_offset = -25
+item_script = ExtResource("11_3xekh")
+properties = PackedStringArray("id", "item_name", "texture", "wear_per_use", "min_damage", "max_damage", "run_penalty", "attack_rate", "basic_spread", "min_spread", "max_spread", "spread_per_shot", "mag_size", "ammo_type", "aim_speed", "reload_time")
+
+[node name="ItemList" parent="TabContainer/Pistol" index="0"]
+custom_minimum_size = Vector2(188, 0)
+max_columns = 2
+
+[editable path="TabContainer/Slot Item"]
+[editable path="TabContainer/Craft"]
+[editable path="TabContainer/Knife"]
+[editable path="TabContainer/Melee Weapon"]
+[editable path="TabContainer/Main Weapon"]
+[editable path="TabContainer/Pistol"]

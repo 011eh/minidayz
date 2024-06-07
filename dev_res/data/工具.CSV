@@ -1,0 +1,11 @@
+id,item_name,texture,wear_per_use
+85,Battery,res://asset/images/item/battery.png,10
+86,Tomato Seeds Pack,res://asset/images/item/tomato_seeds_pack.png,20
+87,Pepper Seeds Pack,res://asset/images/item/pepper_seeds_pack.png,20
+88,Zucchini Seeds Pack,res://asset/images/item/zucchini_seeds_pack.png,20
+89,Radio,res://asset/images/item/radio.png,20
+90,Hacksaw,res://asset/images/item/hacksaw.png,10
+91,Cleaning Kit,res://asset/images/item/cleaning_kit.png,10
+92,Sewing Kit,res://asset/images/item/sewing_kit.png,10
+93,Basic Fishing Rod,res://asset/images/item/basic_fishing_rod.png,20
+94,Spinning Fishing Rod,res://asset/images/item/spinning_fishing_rod.png,15

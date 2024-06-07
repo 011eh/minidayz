@@ -1,0 +1,107 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbyk50a17tivu"]
+
+[ext_resource type="Script" path="res://dev_res/item_res_util.gd" id="1_4rgpr"]
+
+[node name="ItemResGenerator" type="Node2D"]
+script = ExtResource("1_4rgpr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 97.0
+offset_top = 18.0
+offset_right = 471.0
+offset_bottom = 185.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+offset_right = 135.0
+offset_bottom = 26.0
+text = "Generate Res File"
+
+[node name="ResGenerate" type="FlowContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -136.0
+offset_right = 180.0
+grow_vertical = 0
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="Control/ResGenerate"]
+layout_mode = 2
+text = "Slot Item"
+
+[node name="Button2" type="Button" parent="Control/ResGenerate"]
+layout_mode = 2
+text = "State Item"
+
+[node name="Button3" type="Button" parent="Control/ResGenerate"]
+layout_mode = 2
+text = "Craft"
+
+[node name="Button5" type="Button" parent="Control/ResGenerate"]
+layout_mode = 2
+text = " Melee Weapon	"
+
+[node name="Button6" type="Button" parent="Control/ResGenerate"]
+layout_mode = 2
+text = "Ranged Weapon"
+
+[node name="Button7" type="Button" parent="Control/ResGenerate"]
+layout_mode = 2
+text = "Gear"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_bottom = 26.0
+grow_horizontal = 0
+text = "Print Res Info"
+horizontal_alignment = 3
+
+[node name="ResFileInfoPrinter" type="FlowContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -183.0
+offset_top = -136.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="Control/ResFileInfoPrinter"]
+layout_mode = 2
+text = "Slot Item"
+
+[node name="Button2" type="Button" parent="Control/ResFileInfoPrinter"]
+layout_mode = 2
+text = "State Item"
+
+[node name="Button3" type="Button" parent="Control/ResFileInfoPrinter"]
+layout_mode = 2
+text = "Craft"
+
+[node name="Button5" type="Button" parent="Control/ResFileInfoPrinter"]
+layout_mode = 2
+text = " Melee Weapon	"
+
+[node name="Button6" type="Button" parent="Control/ResFileInfoPrinter"]
+layout_mode = 2
+text = "Ranged Weapon"
+
+[node name="Button7" type="Button" parent="Control/ResFileInfoPrinter"]
+layout_mode = 2
+text = "Gear"

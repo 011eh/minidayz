@@ -1,0 +1,39 @@
+id,item_name,texture,stackable,stack_limit,health,hunger,drink,heat
+47,Energy Drink,res://asset/images/item/energy_drink.png,1,3,0,3,40,0
+48,Kvas,res://asset/images/item/kvas.png,1,3,0,3,40,0
+49,Nota Cola,res://asset/images/item/nota_cola.png,1,3,0,3,10,0
+50,Nuko Cola,res://asset/images/item/nuko_cola.png,1,3,0,3,10,0
+51,Pipsi,res://asset/images/item/pipsi.png,1,3,0,3,10,0
+52,Spite,res://asset/images/item/spite.png,1,3,0,3,10,0
+53,Whiskey,res://asset/images/item/whiskey.png,1,3,0,3,5,0
+54,Canned Bean,res://asset/images/item/canned_bean.png,1,3,0,30,5,0
+55,Canned Tuna,res://asset/images/item/canned_tuna.png,1,3,0,20,0,0
+56,Rice,res://asset/images/item/rice.png,1,3,0,80,0,0
+57,Tactical Bacon,res://asset/images/item/tactical_bacon.png,1,3,0,40,10,0
+58,Apple,res://asset/images/item/apple.png,1,5,0,5,5,0
+59,Banana,res://asset/images/item/banana.png,1,5,0,5,5,0
+60,Orange,res://asset/images/item/orange.png,1,5,0,5,10,0
+61,Bell Pepper,res://asset/images/item/bell_pepper.png,1,5,0,5,5,0
+62,Zucchini,res://asset/images/item/zucchini.png,1,5,0,10,15,0
+63,Tomato,res://asset/images/item/tomato.png,1,5,0,5,5,0
+64,Bilberry,res://asset/images/item/bilberry.png,1,5,0,5,10,0
+65,Cranberry,res://asset/images/item/cranberry.png,1,5,0,5,10,0
+66,Cloudberry,res://asset/images/item/cloudberry.png,1,5,0,5,10,0
+67,Mushroom,res://asset/images/item/mushroom.png,1,5,0,10,0,0
+68,Rabbit Meat,res://asset/images/item/rabbit_meat.png,1,5,0,15,3,0
+69,Cooked Rabbit Meat,res://asset/images/item/cooked_rabbit_meat.png,1,5,0,25,3,0
+70,Raw Steak,res://asset/images/item/raw_steak.png,1,3,0,30,5,0
+71,Cooked Steak,res://asset/images/item/cooked_steak.png,1,3,0,50,3,0
+72,Herring,res://asset/images/item/herring.png,1,5,0,15,3,0
+73,Perch,res://asset/images/item/perch.png,1,5,0,25,3,0
+74,Ruffe,res://asset/images/item/ruffe.png,1,5,0,20,3,0
+75,Salmon,res://asset/images/item/salmon.png,1,5,0,15,3,0
+76,Small Fish Fillet,res://asset/images/item/small_fish_fillet.png,1,5,0,20,0,0
+77,Big Fish Fillet,res://asset/images/item/big_fish_fillet.png,1,5,0,80,0,0
+78,MRE Ration 1,res://asset/images/item/mre_ration.png,0,5,0,90,80,0
+79,MRE Ration 2,res://asset/images/item/mre_ration.png,0,5,0,90,80,0
+80,Saline Bag,res://asset/images/item/saline_bag.png,0,5,20,0,5,0
+81,Blood Bag,res://asset/images/item/blood_bag.png,0,5,70,0,5,0
+82,Water Bottle,res://asset/images/item/water_bottle.png,0,4,0,0,6,0
+83,Canteen,res://asset/images/item/canteen.png,0,5,0,0,15,0
+84,Heat Pack,res://asset/images/item/heat_pack.png,0,5,0,0,0,40

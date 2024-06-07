@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://clskaopc843u0"
+
+[deps]
+
+files=["res://dev_res/data/远程武器.item.translation", "res://dev_res/data/远程武器.texture.translation", "res://dev_res/data/远程武器.wear.translation", "res://dev_res/data/远程武器.min.translation", "res://dev_res/data/远程武器.max.translation", "res://dev_res/data/远程武器.run.translation", "res://dev_res/data/远程武器.attack.translation", "res://dev_res/data/远程武器.basic.translation", "res://dev_res/data/远程武器.min.translation", "res://dev_res/data/远程武器.max.translation", "res://dev_res/data/远程武器.spread.translation", "res://dev_res/data/远程武器.mag.translation", "res://dev_res/data/远程武器.ammo.translation", "res://dev_res/data/远程武器.aim.translation", "res://dev_res/data/远程武器.reload.translation"]
+
+source_file="res://dev_res/data/远程武器.CSV"
+dest_files=["res://dev_res/data/远程武器.item.translation", "res://dev_res/data/远程武器.texture.translation", "res://dev_res/data/远程武器.wear.translation", "res://dev_res/data/远程武器.min.translation", "res://dev_res/data/远程武器.max.translation", "res://dev_res/data/远程武器.run.translation", "res://dev_res/data/远程武器.attack.translation", "res://dev_res/data/远程武器.basic.translation", "res://dev_res/data/远程武器.min.translation", "res://dev_res/data/远程武器.max.translation", "res://dev_res/data/远程武器.spread.translation", "res://dev_res/data/远程武器.mag.translation", "res://dev_res/data/远程武器.ammo.translation", "res://dev_res/data/远程武器.aim.translation", "res://dev_res/data/远程武器.reload.translation"]
+
+[params]
+
+compress=true
+delimiter=0

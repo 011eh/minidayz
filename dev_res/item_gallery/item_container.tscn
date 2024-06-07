@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://dev_res/item_gallery/item_container.gd" id="1_pj25y"]
+
+[node name="Slot Item2" type="HSplitContainer"]
+offset_right = 162.0
+offset_bottom = 150.0
+script = ExtResource("1_pj25y")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 2
+same_column_width = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
