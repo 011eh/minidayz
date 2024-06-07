@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc6efm0bv4jok"
-path="res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"
+uid="uid://dehnys3kl6xv0"
+path="res://.godot/imported/minimap_tile.png-97f3ef65653977a4c950d662519f6c81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_police_station_int-sheet0.png"
-dest_files=["res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"]
+source_file="res://asset/images/minimap/minimap_tile.png"
+dest_files=["res://.godot/imported/minimap_tile.png-97f3ef65653977a4c950d662519f6c81.ctex"]
 
 [params]
 

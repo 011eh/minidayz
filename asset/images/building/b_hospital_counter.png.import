@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kxqxe6oa2gcy"
-path="res://.godot/imported/ground_lvl3_tilemap.png-0aaf4d33349d9f4d39abe9285347ef2f.ctex"
+uid="uid://dwm7xl4n5q7y4"
+path="res://.godot/imported/b_hospital_counter.png-5947ed37f9994c5947ff18f9fcb32e3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/environment/ground_lvl3_tilemap.png"
-dest_files=["res://.godot/imported/ground_lvl3_tilemap.png-0aaf4d33349d9f4d39abe9285347ef2f.ctex"]
+source_file="res://asset/images/building/b_hospital_counter.png"
+dest_files=["res://.godot/imported/b_hospital_counter.png-5947ed37f9994c5947ff18f9fcb32e3b.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

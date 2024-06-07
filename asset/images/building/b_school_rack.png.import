@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bciym00uq0s4k"
-path="res://.godot/imported/minimap_tile-sheet0.png-c00a6765b4fb3e29abd9e3291850a690.ctex"
+uid="uid://tl6wna1t1xgc"
+path="res://.godot/imported/b_school_rack.png-3a91c2dacf714304e906a4f956827898.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/minimap/minimap_tile-sheet0.png"
-dest_files=["res://.godot/imported/minimap_tile-sheet0.png-c00a6765b4fb3e29abd9e3291850a690.ctex"]
+source_file="res://asset/images/building/b_school_rack.png"
+dest_files=["res://.godot/imported/b_school_rack.png-3a91c2dacf714304e906a4f956827898.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

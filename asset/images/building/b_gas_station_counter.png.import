@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc6efm0bv4jok"
-path="res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"
+uid="uid://bms656s7pyheu"
+path="res://.godot/imported/b_gas_station_counter.png-50777e3c5da11db0881e910abc125289.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/images/building/b_police_station_int-sheet0.png"
-dest_files=["res://.godot/imported/b_police_station_int-sheet0.png-fb4b30e9b38081658d66463421a4a4b8.ctex"]
+source_file="res://asset/images/building/b_gas_station_counter.png"
+dest_files=["res://.godot/imported/b_gas_station_counter.png-50777e3c5da11db0881e910abc125289.ctex"]
 
 [params]
 
