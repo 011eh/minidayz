@@ -5,7 +5,7 @@ func start() -> void:
 	owner.playback.travel('Run')
 
 func run() -> void:
-	owner.get_input_diretion()
+	owner.get_input_direction()
 	if owner.is_moving():
 		var param := 'parameters/Run/WeaponState/%d/blend_position' % owner.weapon_state as String
 		owner.animation_tree.set(param, owner.velocity)

@@ -27,38 +27,12 @@ const WEPAON_OFFSET = 6
 
 var target_item: Item
 var equipment_slots: Array[Item]
-@onready
-var pickup_area := %PickupArea
-@onready
-var detection_area := %DetectionArea
-@onready
-var target_pickup_area := %TargetPickupArea
 
-
-func _ready():
-	target_pickup_area.area_entered.connect(pickup)
+func _init():
 	equipment_slots.resize(EQUIPMENT_SLOT_NUMBER)
 	var player_slot := Gear.create_player_slot()
 	equipment_slots[0] = player_slot
 	update_inventory_ui()
-
-func _unhandled_input(event):
-	if event.is_action_pressed('pickup'):
-		if pickup_area.has_overlapping_areas():
-			put_to_inventory(pickup_area.get_overlapping_areas().front().owner)
-		else:
-			var item: Item = detection_area.nearest_item
-			if is_instance_valid(item):
-				target_pickup_area.monitoring = true
-				owner.target_position = item.global_position
-
-func pickup(area: Area2D) -> void:
-	var item := area.owner as Item
-	if item != detection_area.nearest_item:
-		return
-	target_pickup_area.set_deferred('monitoring', false)
-	owner.target_position = Vector2.ZERO
-	put_to_inventory(item)
 
 func put_to_inventory(item: Item, from_world: bool = true) -> bool:
 	if item.is_equipment():
@@ -93,7 +67,7 @@ func get_gear_sort_by_durability() -> Array[Gear]:
 	for gear in equipment_slots.slice(0, WEPAON_OFFSET):
 		if is_instance_valid(gear):
 			gears.append(gear)
-	gears.sort_custom(func(g1: Gear, g2: Gear): g1.durability > g2.durability)
+	gears.sort_custom(func(g1: Gear, g2: Gear) -> bool: return g1.durability > g2.durability)
 	return gears
 
 func find_stackable_items(item: NumberItem, gears: Array[Gear]) -> Array[NumberItem]:
@@ -167,7 +141,7 @@ func drop_item(type: EquipmentType, slot_index: int = -1, update_ui: bool = fals
 		item = slots[slot_index]
 		slots[slot_index] = null
 	item.position = owner.global_position
-	owner.get_parent().call_deferred('add_child', item)
+	owner.get_parent().call_deferred('add_child',item)
 	if update_ui:
 		slot_item_changed.emit(type, equipment_slots[type])
 

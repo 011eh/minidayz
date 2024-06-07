@@ -74,7 +74,7 @@ func update_status() -> void:
 	if is_sick and is_good_status():
 		is_sick = false
 
-func try_restore():
+func try_restore() -> void:
 	if restoring or is_health():
 		health += health_restore_rate * STATUS_UPDATE_INTERVAL
 		restore_state_changed.emit(RESTORING if health_restore_rate <= NORMAL_RESTORE_RATE else FAST_RESTORING)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://ch2rssv03o2ak"]
+[gd_scene load_steps=67 format=3 uid="uid://ch2rssv03o2ak"]
 
 [ext_resource type="Script" path="res://character/character_sprite.gd" id="1_psyd6"]
 [ext_resource type="Texture2D" uid="uid://pqlbc4otpf82" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="3_qxl6g"]
@@ -4336,10 +4336,7 @@ states/dead/node = SubResource("AnimationNodeAnimation_6ay1x")
 states/dead/position = Vector2(373, 186)
 graph_offset = Vector2(-198.176, 42.9996)
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rxyu4"]
-
 [node name="Character" type="CharacterBody2D"]
-position = Vector2(35, 35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -4398,7 +4395,6 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_25lx7")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_rxyu4")
 parameters/Aim/blend_position = 0.0
 parameters/Aim/0/blend_position = Vector2(0, 0)
 parameters/Aim/1/blend_position = Vector2(0, 0)
