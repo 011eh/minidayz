@@ -1,9 +1,150 @@
-[gd_scene load_steps=2 format=3 uid="uid://s6ed4fofmkhq"]
+[gd_scene load_steps=38 format=3 uid="uid://s6ed4fofmkhq"]
 
 [ext_resource type="Script" path="res://test/test.gd" id="1_om7j8"]
+[ext_resource type="PackedScene" uid="uid://dv2qomeimjixr" path="res://environment/building/bus.tscn" id="2_6uosg"]
+[ext_resource type="PackedScene" uid="uid://djo4u0l5iq8yo" path="res://environment/building/dot.tscn" id="3_1btqw"]
+[ext_resource type="PackedScene" uid="uid://cfkstqk3d25hn" path="res://environment/building/shed.tscn" id="4_a4f3p"]
+[ext_resource type="PackedScene" uid="uid://cesb8fs8ynlq" path="res://environment/building/village_red.tscn" id="5_qq3yt"]
+[ext_resource type="PackedScene" uid="uid://jfm75d1ni65g" path="res://environment/building/school.tscn" id="6_c5nks"]
+[ext_resource type="PackedScene" uid="uid://b7p08jmvxhq04" path="res://environment/building/hostel.tscn" id="7_t2gsb"]
+[ext_resource type="PackedScene" uid="uid://b7a7mp085xni8" path="res://environment/building/castle.tscn" id="8_wmbuy"]
+[ext_resource type="PackedScene" uid="uid://c5dryjeoop8oy" path="res://environment/building/church.tscn" id="9_mg2dn"]
+[ext_resource type="PackedScene" uid="uid://rfx8tjp36m3i" path="res://environment/building/village_yard.tscn" id="10_awv7q"]
+[ext_resource type="PackedScene" uid="uid://qi00hijp8nw1" path="res://environment/building/gunshop.tscn" id="11_1algq"]
+[ext_resource type="PackedScene" uid="uid://dck7rnq3f8k74" path="res://environment/building/village_red_2.tscn" id="12_tujvg"]
+[ext_resource type="PackedScene" uid="uid://cdq7hupfk50xu" path="res://environment/building/village_green.tscn" id="13_jqpnb"]
+[ext_resource type="PackedScene" uid="uid://bklp5pavejub" path="res://environment/building/village_brown.tscn" id="14_1yvxa"]
+[ext_resource type="PackedScene" uid="uid://c52ibhcojmefm" path="res://environment/building/gas_fuelling_island.tscn" id="15_phdgl"]
+[ext_resource type="PackedScene" uid="uid://bbyenvpqhx353" path="res://environment/building/hospital.tscn" id="16_rni55"]
+[ext_resource type="PackedScene" uid="uid://b8tbvw8w7j1mc" path="res://environment/building/village_yellow.tscn" id="17_l6wgw"]
+[ext_resource type="PackedScene" uid="uid://bmarqqnh4wmtf" path="res://environment/building/military_shtab.tscn" id="18_5undw"]
+[ext_resource type="PackedScene" uid="uid://r2m1ce0rfees" path="res://environment/building/red_brick.tscn" id="19_vp38s"]
+[ext_resource type="PackedScene" uid="uid://cnknximavirof" path="res://environment/building/small_shed.tscn" id="20_3i65t"]
+[ext_resource type="PackedScene" uid="uid://bvgy0awef5yt0" path="res://environment/building/militay_tent_east.tscn" id="21_arav0"]
+[ext_resource type="PackedScene" uid="uid://cbow2b1cqba1v" path="res://environment/building/militay_tent_nato.tscn" id="22_0rc5j"]
+[ext_resource type="PackedScene" uid="uid://bn0yknjnnip5v" path="res://environment/building/gas_station.tscn" id="23_vn032"]
+[ext_resource type="PackedScene" uid="uid://dlfph631kco02" path="res://environment/building/piano_house.tscn" id="24_ht8xi"]
+[ext_resource type="PackedScene" uid="uid://2bilwk8qtm1n" path="res://environment/building/garage_blue.tscn" id="25_m4id0"]
+[ext_resource type="PackedScene" uid="uid://iyel8c81oquf" path="res://environment/building/supermarket.tscn" id="26_ivklk"]
+[ext_resource type="PackedScene" uid="uid://cp6ar47c6ewr5" path="res://environment/building/military_barrack_1.tscn" id="27_su6b8"]
+[ext_resource type="PackedScene" uid="uid://8jm6np07bgv7" path="res://environment/building/military_barrack_2.tscn" id="28_qjt7y"]
+[ext_resource type="PackedScene" uid="uid://cq5h148opi1li" path="res://environment/building/city_house_4.tscn" id="29_3f8ai"]
+[ext_resource type="PackedScene" uid="uid://cvfp1ak51lf75" path="res://environment/building/city_house_3.tscn" id="30_j3toe"]
+[ext_resource type="PackedScene" uid="uid://cxaaepbxwisjm" path="res://environment/building/fire_station.tscn" id="31_nv3rb"]
+[ext_resource type="PackedScene" uid="uid://d3gsxmnxq3ppa" path="res://environment/building/garage_brown.tscn" id="32_8dnnv"]
+[ext_resource type="PackedScene" uid="uid://cn4uroa1ysqr6" path="res://environment/building/garage_green.tscn" id="33_l0guf"]
+[ext_resource type="PackedScene" uid="uid://301fkbk1t1ky" path="res://environment/building/city_house_1.tscn" id="34_8uxg4"]
+[ext_resource type="PackedScene" uid="uid://8i8331v14a8d" path="res://environment/building/city_house_2.tscn" id="35_ccr3q"]
+[ext_resource type="PackedScene" uid="uid://b8cx6oqwu38n" path="res://environment/building/police_station.tscn" id="36_aqlrd"]
+[ext_resource type="PackedScene" uid="uid://bxk0gy2qf7xo2" path="res://environment/building/hunter_shelter.tscn" id="37_ojsqa"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_om7j8")
 
-[node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("1_om7j8")
+[node name="Buliding" parent="." instance=ExtResource("2_6uosg")]
+position = Vector2(742, 5)
+
+[node name="Buliding2" parent="." instance=ExtResource("3_1btqw")]
+position = Vector2(994, -20)
+
+[node name="Buliding3" parent="." instance=ExtResource("4_a4f3p")]
+position = Vector2(-735, 351)
+
+[node name="Buliding4" parent="." instance=ExtResource("5_qq3yt")]
+position = Vector2(-377, 391)
+
+[node name="Buliding5" parent="." instance=ExtResource("6_c5nks")]
+position = Vector2(1376, 403)
+
+[node name="Buliding6" parent="." instance=ExtResource("7_t2gsb")]
+position = Vector2(-377, 817)
+
+[node name="Buliding7" parent="." instance=ExtResource("8_wmbuy")]
+position = Vector2(1463, -67)
+
+[node name="Buliding8" parent="." instance=ExtResource("9_mg2dn")]
+position = Vector2(-627, 62)
+
+[node name="Buliding9" parent="." instance=ExtResource("10_awv7q")]
+position = Vector2(-414, 556)
+
+[node name="Buliding10" parent="." instance=ExtResource("11_1algq")]
+position = Vector2(887, 469)
+
+[node name="Buliding11" parent="." instance=ExtResource("12_tujvg")]
+position = Vector2(-734, 629)
+
+[node name="Buliding12" parent="." instance=ExtResource("13_jqpnb")]
+position = Vector2(-689, 809)
+
+[node name="Buliding13" parent="." instance=ExtResource("14_1yvxa")]
+position = Vector2(-707, 1005)
+
+[node name="Buliding14" parent="." instance=ExtResource("15_phdgl")]
+position = Vector2(851, 237)
+
+[node name="Buliding15" parent="." instance=ExtResource("16_rni55")]
+position = Vector2(2003, -67)
+
+[node name="Buliding16" parent="." instance=ExtResource("17_l6wgw")]
+position = Vector2(-381, 1005)
+
+[node name="Buliding17" parent="." instance=ExtResource("18_5undw")]
+position = Vector2(2583, -1)
+
+[node name="Buliding18" parent="." instance=ExtResource("19_vp38s")]
+position = Vector2(-789, 1291)
+
+[node name="Buliding19" parent="." instance=ExtResource("20_3i65t")]
+position = Vector2(-368, 1246)
+
+[node name="Buliding20" parent="." instance=ExtResource("21_arav0")]
+position = Vector2(1172, 499)
+
+[node name="Buliding21" parent="." instance=ExtResource("22_0rc5j")]
+position = Vector2(1153, 616)
+
+[node name="Buliding22" parent="." instance=ExtResource("23_vn032")]
+position = Vector2(1226, 293)
+
+[node name="Buliding23" parent="." instance=ExtResource("24_ht8xi")]
+position = Vector2(-1021, 111)
+
+[node name="Buliding24" parent="." instance=ExtResource("25_m4id0")]
+position = Vector2(-1021, 360)
+
+[node name="Buliding25" parent="." instance=ExtResource("26_ivklk")]
+position = Vector2(-1133, 481)
+
+[node name="Buliding26" parent="." instance=ExtResource("27_su6b8")]
+position = Vector2(2666, 373)
+
+[node name="Buliding27" parent="." instance=ExtResource("28_qjt7y")]
+position = Vector2(2730, 219)
+
+[node name="Buliding28" parent="." instance=ExtResource("29_3f8ai")]
+position = Vector2(-2, 313)
+
+[node name="Buliding29" parent="." instance=ExtResource("30_j3toe")]
+position = Vector2(292, 346)
+
+[node name="Buliding30" parent="." instance=ExtResource("31_nv3rb")]
+position = Vector2(2033, 428)
+
+[node name="Buliding31" parent="." instance=ExtResource("32_8dnnv")]
+position = Vector2(-1211, 364)
+
+[node name="Buliding32" parent="." instance=ExtResource("33_l0guf")]
+position = Vector2(-1385, 307)
+
+[node name="Buliding33" parent="." instance=ExtResource("34_8uxg4")]
+position = Vector2(300, 33)
+
+[node name="Buliding34" parent="." instance=ExtResource("35_ccr3q")]
+position = Vector2(0, 5)
+
+[node name="Buliding35" parent="." instance=ExtResource("36_aqlrd")]
+position = Vector2(-1056, 820)
+
+[node name="Buliding36" parent="." instance=ExtResource("37_ojsqa")]
+position = Vector2(1165, -1)
