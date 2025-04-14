@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/heat_pack.png-5948c51b94b232e508e8531fc444d6a
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

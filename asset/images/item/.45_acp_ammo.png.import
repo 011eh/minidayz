@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/.45_acp_ammo.png-9cd97f2aadf2075e0758a48b503e
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://ddo4sfhsqi08b"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_5m7nk"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_5m7nk"]
 [ext_resource type="Texture2D" uid="uid://bweqkbjrr5tih" path="res://asset/images/item/saline_bag.png" id="2_gwym5"]
 
 [resource]

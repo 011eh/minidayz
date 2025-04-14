@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/gorka_helmet.png-83a92982cbe6b7545b5ac9255c8a
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

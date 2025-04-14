@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://cn6643oixvnos"]
 
-[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_vtdw8"]
+[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_vtdw8"]
 [ext_resource type="Texture2D" uid="uid://dmd62i80xwiwh" path="res://asset/images/item/bandage.png" id="2_onwp7"]
 
 [resource]

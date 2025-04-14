@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://cxt05sy5itv8o"]
 
-[ext_resource type="Script" path="res://test/inventory_test.gd" id="1_hmvta"]
+[ext_resource type="Script" uid="uid://diusgjc3m8lup" path="res://test/inventory_test.gd" id="1_hmvta"]
 [ext_resource type="PackedScene" uid="uid://dai086rmd3g3s" path="res://gui/inventory_ui.tscn" id="2_gkbq1"]
-[ext_resource type="Script" path="res://character/player/inventory.gd" id="3_uuol1"]
-[ext_resource type="Script" path="res://character/player/item_pick.gd" id="4_vbx4q"]
+[ext_resource type="Script" uid="uid://crqvyfq56jxqo" path="res://character/player/inventory.gd" id="3_uuol1"]
+[ext_resource type="Script" uid="uid://dxsn2jdyds4ha" path="res://character/player/item_pick.gd" id="4_vbx4q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4r1fq"]
 radius = 31.0

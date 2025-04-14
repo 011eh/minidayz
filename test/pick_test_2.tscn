@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgh0acd0g5w0q"]
 
-[ext_resource type="Script" path="res://test/pick_test_2.gd" id="1_1jrk2"]
+[ext_resource type="Script" uid="uid://dqlrjmqearu2y" path="res://test/pick_test_2.gd" id="1_1jrk2"]
 [ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="2_tmfs2"]
 [ext_resource type="PackedScene" uid="uid://c8cjokc6bhr8r" path="res://environment/building/door_double.tscn" id="3_h6dvv"]
 

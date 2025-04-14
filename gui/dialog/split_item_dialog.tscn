@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cdhqi2jjctohy"]
 
 [ext_resource type="PackedScene" uid="uid://b0cxyvtmu0pmo" path="res://gui/dialog/dialog.tscn" id="1_m1uw1"]
-[ext_resource type="Script" path="res://gui/dialog/split_item_dialog.gd" id="2_aenoh"]
+[ext_resource type="Script" uid="uid://b4n3t6eyc6dnn" path="res://gui/dialog/split_item_dialog.gd" id="2_aenoh"]
 [ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_kg1l0"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_167en"]

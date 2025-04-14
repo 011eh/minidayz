@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ve0ib04je6nv" path="res://asset/images/building/b_police_station-sheet0.png" id="3_uwfv8"]
 [ext_resource type="Texture2D" uid="uid://cbpy52u65cvbc" path="res://asset/images/building/b_police_station_chest.png" id="4_tud8g"]
 [ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="5_wqgfo"]
-[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="6_foebx"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="6_foebx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wonm"]
 size = Vector2(193, 91)

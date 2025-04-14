@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/gasmask.png-7e8ba1982b52fba0e61555e70be2f6ac.
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

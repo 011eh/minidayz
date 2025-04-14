@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/akm.png-dd41d20e2a2d1b913136e47a665a2020.ctex
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

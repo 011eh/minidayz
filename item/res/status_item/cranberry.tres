@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://c486h8ph53mjw"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_ih23f"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_ih23f"]
 [ext_resource type="Texture2D" uid="uid://dldgbff1mgup6" path="res://asset/images/item/cranberry.png" id="2_iakg7"]
 
 [resource]

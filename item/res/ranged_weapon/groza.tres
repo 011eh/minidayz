@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://caymtdc1k6kuu"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ph4po"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ph4po"]
 [ext_resource type="Texture2D" uid="uid://b2rouxafp845p" path="res://asset/images/equipment/weapon/main/groza.png" id="2_8d170"]
 
 [resource]

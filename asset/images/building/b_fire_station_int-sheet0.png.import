@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/b_fire_station_int-sheet0.png-822a89b4ed4db94
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

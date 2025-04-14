@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dki55m34v67wp"]
 
-[ext_resource type="Script" path="res://environment/ground.gd" id="1_hpqh3"]
+[ext_resource type="Script" uid="uid://yc0cvcpobvl8" path="res://environment/ground.gd" id="1_hpqh3"]
 [ext_resource type="TileSet" uid="uid://rhlox203ltec" path="res://environment/ground_terrain.tres" id="2_6cd8i"]
 [ext_resource type="TileSet" uid="uid://dy13cibxixk7g" path="res://environment/ground_decoration.tres" id="3_jbh0a"]
 

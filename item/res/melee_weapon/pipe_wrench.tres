@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://drr8704l42rst"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_7q848"]
+[ext_resource type="Script" uid="uid://jlepxj6nyo1i" path="res://item/res/script/melee_weapon_resource.gd" id="1_7q848"]
 [ext_resource type="Texture2D" uid="uid://bo37qatrtauw" path="res://asset/images/equipment/weapon/melee/pipe_wrench.png" id="2_8vec3"]
 
 [resource]

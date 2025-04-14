@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://chbikjtlcvu1i"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_62bcu"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_62bcu"]
 [ext_resource type="Texture2D" uid="uid://b8bxq8dlv6r0x" path="res://asset/images/equipment/weapon/pistol/pb.png" id="2_uuoi8"]
 
 [resource]

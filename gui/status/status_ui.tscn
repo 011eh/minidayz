@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://iwyei4l0bm53"]
 
 [ext_resource type="PackedScene" uid="uid://dsvhudtuui5rd" path="res://gui/status/panel.tscn" id="1_85bd1"]
-[ext_resource type="Script" path="res://gui/status/status_ui.gd" id="1_pwscj"]
+[ext_resource type="Script" uid="uid://b5jhdrfs0pefp" path="res://gui/status/status_ui.gd" id="1_pwscj"]
 [ext_resource type="Texture2D" uid="uid://cpw63lts0d7ox" path="res://asset/images/gui/status/gui_panel.png" id="3_kvtpw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ltyc"]

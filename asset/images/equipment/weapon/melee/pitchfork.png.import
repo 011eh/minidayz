@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/pitchfork.png-1c50f4fa94e53c64a6a0c9f9a286c87
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://dk5bw08fjve2c"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_3qnpy"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_3qnpy"]
 [ext_resource type="Texture2D" uid="uid://cmevaffkak21p" path="res://asset/images/equipment/weapon/main/sporter_22.png" id="2_km2nw"]
 
 [resource]

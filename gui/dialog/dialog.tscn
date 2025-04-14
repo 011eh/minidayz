@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0cxyvtmu0pmo"]
 
-[ext_resource type="Script" path="res://gui/dialog/dialog.gd" id="1_5umiq"]
+[ext_resource type="Script" uid="uid://dnwlaudm7sb6g" path="res://gui/dialog/dialog.gd" id="1_5umiq"]
 [ext_resource type="Texture2D" uid="uid://dkprfwvmprclv" path="res://asset/images/gui/portrait/bg_rust.png" id="1_qtp2u"]
 [ext_resource type="Texture2D" uid="uid://cr5l1xw6nrv6u" path="res://asset/images/gui/control/menu_btn_wood-sheet0.png" id="2_2yq56"]
 

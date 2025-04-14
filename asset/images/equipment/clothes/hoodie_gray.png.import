@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/hoodie_gray.png-80f4a15722f40c0ae1117a7af0b43
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

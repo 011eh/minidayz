@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://hn1vgnqwbhmj"]
 
-[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_5dxfg"]
+[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_5dxfg"]
 [ext_resource type="Texture2D" uid="uid://de66ju75g3twl" path="res://asset/images/item/bear_trap.png" id="2_b0y6n"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://5ytlax32d5ki"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_706wn"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_706wn"]
 [ext_resource type="Texture2D" uid="uid://c3adnirokkdv8" path="res://asset/images/item/canteen.png" id="2_up6wj"]
 
 [resource]

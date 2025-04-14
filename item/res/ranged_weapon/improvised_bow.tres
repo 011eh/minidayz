@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bgwq2iym0g0u8"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_acwl3"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_acwl3"]
 [ext_resource type="Texture2D" uid="uid://3i86tnm84se0" path="res://asset/images/equipment/weapon/main/improvised_bow.png" id="2_le7df"]
 
 [resource]

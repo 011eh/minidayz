@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://c8lbpjl5n5g6c"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_goukm"]
+[ext_resource type="Script" uid="uid://jlepxj6nyo1i" path="res://item/res/script/melee_weapon_resource.gd" id="1_goukm"]
 [ext_resource type="Texture2D" uid="uid://h6y4f3bclgn6" path="res://asset/images/equipment/weapon/melee/sword.png" id="2_ict4k"]
 
 [resource]

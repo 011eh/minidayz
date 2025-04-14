@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://d1fs3dk073lry"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_dppwf"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_dppwf"]
 [ext_resource type="Texture2D" uid="uid://c8cjm7tltjv5c" path="res://asset/images/item/nuko_cola.png" id="2_5gn5p"]
 
 [resource]

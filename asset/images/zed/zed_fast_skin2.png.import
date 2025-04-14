@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/zed_fast_skin2.png-6e7b522d62ca0ee467915d3098
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

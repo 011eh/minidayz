@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cedqln17eotwh"]
 
 [ext_resource type="Texture2D" uid="uid://dpgmy5gfjginb" path="res://asset/images/gui/inventory/gui_pickpile_panel-sheet0.png" id="1_hee1h"]
-[ext_resource type="Script" path="res://gui/pick_pile_item_ui.gd" id="2_f1xw3"]
+[ext_resource type="Script" uid="uid://bww7daglksnmi" path="res://gui/pick_pile_item_ui.gd" id="2_f1xw3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x7txg"]
 line_spacing = -3.0

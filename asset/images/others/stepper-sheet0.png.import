@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/stepper-sheet0.png-dbc6166c8abdf73c325a9cfd2d
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

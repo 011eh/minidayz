@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://dabadgw2g801b"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_wmo7b"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_wmo7b"]
 [ext_resource type="Texture2D" uid="uid://bek1xmc6a6740" path="res://asset/images/equipment/weapon/pistol/glock.png" id="2_lcauj"]
 
 [resource]

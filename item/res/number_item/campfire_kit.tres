@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://ce8i0p8ypbjnu"]
 
-[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_q0d7j"]
+[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_q0d7j"]
 [ext_resource type="Texture2D" uid="uid://crrvtbto2extr" path="res://asset/images/item/campfire_kit.png" id="2_e74y3"]
 
 [resource]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://p5l6kuhe677s" path="res://asset/images/building/b_military_barrack2_int-sheet0.png" id="2_3qci3"]
 [ext_resource type="Texture2D" uid="uid://oh04ylr0xris" path="res://asset/images/building/b_military_barrack2-sheet0.png" id="3_5um0h"]
 [ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="4_f8d65"]
-[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_xiqbs"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="5_xiqbs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_le3s8"]
 size = Vector2(126, 107.772)

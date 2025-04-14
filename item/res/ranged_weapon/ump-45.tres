@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://dxpns8bwpa8ht"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_50ijl"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_50ijl"]
 [ext_resource type="Texture2D" uid="uid://dyw442amki7lc" path="res://asset/images/equipment/weapon/main/ump-45.png" id="2_v8hwe"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://b70w1t87ov4tk"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_e1ul3"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_e1ul3"]
 [ext_resource type="Texture2D" uid="uid://d4jd1oyw2y1mx" path="res://asset/images/equipment/weapon/main/mp5k.png" id="2_pbjaa"]
 
 [resource]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=76 format=3 uid="uid://bc0vqye7xndin"]
 
-[ext_resource type="Script" path="res://character/player/player.gd" id="1_p4jss"]
-[ext_resource type="Script" path="res://character/character_sprite.gd" id="1_tmqfn"]
+[ext_resource type="Script" uid="uid://dait750tnosp1" path="res://character/player/player.gd" id="1_p4jss"]
+[ext_resource type="Script" uid="uid://ch7eo7orfplsm" path="res://character/character_sprite.gd" id="1_tmqfn"]
 [ext_resource type="Texture2D" uid="uid://pqlbc4otpf82" path="res://asset/images/character/player_skin/player_skin_def_1.png" id="2_sqr3j"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://58gh2e24kmuc" path="res://character/res/aim_pistol.tres" id="3_4v2fb"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bdiojy5ramrm2" path="res://character/res/idle_rifle.tres" id="4_857b6"]
@@ -13,13 +13,13 @@
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://hlfygt5ju8dk" path="res://character/res/run_meleel.tres" id="10_3vkye"]
 [ext_resource type="PackedScene" uid="uid://8hjlolpiy8t2" path="res://state/state_machine.tscn" id="11_2c2df"]
 [ext_resource type="PackedScene" uid="uid://b8yhj20b1btro" path="res://character/player/detection_area.tscn" id="12_dpvu4"]
-[ext_resource type="Script" path="res://character/player/inventory.gd" id="13_7faaq"]
-[ext_resource type="Script" path="res://character/player/state/idle_state.gd" id="14_ehgwp"]
-[ext_resource type="Script" path="res://character/player/state/player_state_machine.gd" id="14_wtcso"]
-[ext_resource type="Script" path="res://character/player/state/run_state.gd" id="15_qccxp"]
-[ext_resource type="Script" path="res://character/player/state/melee_attack_state.gd" id="16_5nobj"]
-[ext_resource type="Script" path="res://character/player/state/aim_state.gd" id="17_j5d5w"]
-[ext_resource type="Script" path="res://character/player/input_handle.gd" id="20_pwtqn"]
+[ext_resource type="Script" uid="uid://crqvyfq56jxqo" path="res://character/player/inventory.gd" id="13_7faaq"]
+[ext_resource type="Script" uid="uid://bommvf34ripr0" path="res://character/player/state/idle_state.gd" id="14_ehgwp"]
+[ext_resource type="Script" uid="uid://8ro7b5ovtyxn" path="res://character/player/state/player_state_machine.gd" id="14_wtcso"]
+[ext_resource type="Script" uid="uid://dtscs1q61dnnr" path="res://character/player/state/run_state.gd" id="15_qccxp"]
+[ext_resource type="Script" uid="uid://doh3wnbremqlx" path="res://character/player/state/melee_attack_state.gd" id="16_5nobj"]
+[ext_resource type="Script" uid="uid://wvuwk3f22vs5" path="res://character/player/state/aim_state.gd" id="17_j5d5w"]
+[ext_resource type="Script" uid="uid://bgat50oq5op2g" path="res://character/player/input_handle.gd" id="20_pwtqn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1fp6"]
 radius = 2.0
@@ -4212,44 +4212,44 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n0p77"]
 _data = {
-"aim_pistol_down": SubResource("Animation_q7afi"),
-"aim_pistol_left": SubResource("Animation_kjih0"),
-"aim_pistol_right": SubResource("Animation_3fjt1"),
-"aim_pistol_up": SubResource("Animation_pih1x"),
-"aim_rifle_down": SubResource("Animation_dajks"),
-"aim_rifle_left": SubResource("Animation_ryhe1"),
-"aim_rifle_right": SubResource("Animation_if2x2"),
-"aim_rifle_up": SubResource("Animation_ost8a"),
-"dead": SubResource("Animation_53yss"),
-"idle_melee_down": SubResource("Animation_piu3a"),
-"idle_melee_left": SubResource("Animation_cp443"),
-"idle_melee_right": SubResource("Animation_42dkk"),
-"idle_melee_up": SubResource("Animation_r03fn"),
-"idle_pistol_down": SubResource("Animation_dk6ff"),
-"idle_pistol_left": SubResource("Animation_o7j46"),
-"idle_pistol_right": SubResource("Animation_bbhha"),
-"idle_pistol_up": SubResource("Animation_pd6kf"),
-"idle_rifle_down": SubResource("Animation_3brp4"),
-"idle_rifle_left": SubResource("Animation_wphwb"),
-"idle_rifle_right": SubResource("Animation_hn0t4"),
-"idle_rifle_up": SubResource("Animation_ikbor"),
-"melee_attack_down": SubResource("Animation_q7wwb"),
-"melee_attack_left": SubResource("Animation_udi6c"),
-"melee_attack_right": SubResource("Animation_d13bx"),
-"melee_attack_up": SubResource("Animation_urrf1"),
-"run_melee_down": SubResource("Animation_hktke"),
-"run_melee_left": SubResource("Animation_wx0gj"),
-"run_melee_right": SubResource("Animation_7p7am"),
-"run_melee_up": SubResource("Animation_lojts"),
-"run_pistol_down": SubResource("Animation_uidpu"),
-"run_pistol_left": SubResource("Animation_p1h4w"),
-"run_pistol_right": SubResource("Animation_uk5nl"),
-"run_pistol_up": SubResource("Animation_rda7b"),
-"run_rifle_down": SubResource("Animation_ystki"),
-"run_rifle_left": SubResource("Animation_rh8qv"),
-"run_rifle_right": SubResource("Animation_b5lvx"),
-"run_rifle_up": SubResource("Animation_2je17"),
-"work": SubResource("Animation_a3v7a")
+&"aim_pistol_down": SubResource("Animation_q7afi"),
+&"aim_pistol_left": SubResource("Animation_kjih0"),
+&"aim_pistol_right": SubResource("Animation_3fjt1"),
+&"aim_pistol_up": SubResource("Animation_pih1x"),
+&"aim_rifle_down": SubResource("Animation_dajks"),
+&"aim_rifle_left": SubResource("Animation_ryhe1"),
+&"aim_rifle_right": SubResource("Animation_if2x2"),
+&"aim_rifle_up": SubResource("Animation_ost8a"),
+&"dead": SubResource("Animation_53yss"),
+&"idle_melee_down": SubResource("Animation_piu3a"),
+&"idle_melee_left": SubResource("Animation_cp443"),
+&"idle_melee_right": SubResource("Animation_42dkk"),
+&"idle_melee_up": SubResource("Animation_r03fn"),
+&"idle_pistol_down": SubResource("Animation_dk6ff"),
+&"idle_pistol_left": SubResource("Animation_o7j46"),
+&"idle_pistol_right": SubResource("Animation_bbhha"),
+&"idle_pistol_up": SubResource("Animation_pd6kf"),
+&"idle_rifle_down": SubResource("Animation_3brp4"),
+&"idle_rifle_left": SubResource("Animation_wphwb"),
+&"idle_rifle_right": SubResource("Animation_hn0t4"),
+&"idle_rifle_up": SubResource("Animation_ikbor"),
+&"melee_attack_down": SubResource("Animation_q7wwb"),
+&"melee_attack_left": SubResource("Animation_udi6c"),
+&"melee_attack_right": SubResource("Animation_d13bx"),
+&"melee_attack_up": SubResource("Animation_urrf1"),
+&"run_melee_down": SubResource("Animation_hktke"),
+&"run_melee_left": SubResource("Animation_wx0gj"),
+&"run_melee_right": SubResource("Animation_7p7am"),
+&"run_melee_up": SubResource("Animation_lojts"),
+&"run_pistol_down": SubResource("Animation_uidpu"),
+&"run_pistol_left": SubResource("Animation_p1h4w"),
+&"run_pistol_right": SubResource("Animation_uk5nl"),
+&"run_pistol_up": SubResource("Animation_rda7b"),
+&"run_rifle_down": SubResource("Animation_ystki"),
+&"run_rifle_left": SubResource("Animation_rh8qv"),
+&"run_rifle_right": SubResource("Animation_b5lvx"),
+&"run_rifle_up": SubResource("Animation_2je17"),
+&"work": SubResource("Animation_a3v7a")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c06jx"]
@@ -4309,7 +4309,7 @@ nodes/Seek/node = SubResource("AnimationNodeTimeSeek_873jm")
 nodes/Seek/position = Vector2(100, 180)
 nodes/WeaponState/node = SubResource("AnimationNodeBlendSpace1D_1f3bu")
 nodes/WeaponState/position = Vector2(-148.998, 244.774)
-node_connections = [&"output", 0, &"Seek", &"Seek", 0, &"WeaponState"]
+node_connections = [&"Seek", 0, &"WeaponState", &"output", 0, &"Seek"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dd7pp"]
 animation = &"work"
@@ -4323,7 +4323,7 @@ nodes/Animation/position = Vector2(220, 160)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_506tu")
 nodes/TimeScale/position = Vector2(419, 166)
 nodes/output/position = Vector2(600, 200)
-node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+node_connections = [&"TimeScale", 0, &"Animation", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ay1x"]
 animation = &"dead"

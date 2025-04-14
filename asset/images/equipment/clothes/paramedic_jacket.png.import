@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/paramedic_jacket.png-c995e85d949f3b1271e5ab5c
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

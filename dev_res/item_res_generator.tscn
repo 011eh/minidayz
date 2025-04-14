@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bbyk50a17tivu"]
 
-[ext_resource type="Script" path="res://dev_res/item_res_util.gd" id="1_4rgpr"]
+[ext_resource type="Script" uid="uid://cupegl1axpba5" path="res://dev_res/item_res_util.gd" id="1_4rgpr"]
 
 [node name="ItemResGenerator" type="Node2D"]
 script = ExtResource("1_4rgpr")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://camkxlfij60f2"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_tnsym"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_tnsym"]
 [ext_resource type="Texture2D" uid="uid://dc0f6ur24xqc4" path="res://asset/images/equipment/weapon/main/svd.png" id="2_e0as2"]
 
 [resource]

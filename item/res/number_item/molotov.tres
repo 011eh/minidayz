@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://bqqdv3aglk7cr"]
 
-[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_k0ng2"]
+[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_k0ng2"]
 [ext_resource type="Texture2D" uid="uid://dfwnh45xsjhb" path="res://asset/images/item/molotov.png" id="2_kva2o"]
 
 [resource]

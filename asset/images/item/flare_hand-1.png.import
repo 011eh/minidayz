@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/flare_hand-1.png-94dcd3723581e982b6de713b5d86
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

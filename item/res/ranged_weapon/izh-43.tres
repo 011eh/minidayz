@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bml6hmtkpq1jr"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ptjy6"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ptjy6"]
 [ext_resource type="Texture2D" uid="uid://w0kyy43ejjno" path="res://asset/images/equipment/weapon/main/izh-43.png" id="2_2vg2f"]
 
 [resource]

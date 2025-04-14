@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dhr6v8ey3mryl" path="res://asset/images/building/b_city_house_1_int-sheet0.png" id="2_cjewc"]
 [ext_resource type="Texture2D" uid="uid://ch0v2spp5fra" path="res://asset/images/building/b_city_house_1-sheet0.png" id="3_pcrbs"]
 [ext_resource type="PackedScene" uid="uid://c8cjokc6bhr8r" path="res://environment/building/door_double.tscn" id="4_umxsu"]
-[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="5_x6sn0"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="5_x6sn0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khqf1"]
 size = Vector2(215, 102)

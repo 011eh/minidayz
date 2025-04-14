@@ -1,16 +1,16 @@
 [gd_scene load_steps=12 format=3 uid="uid://cns568wlj0otf"]
 
-[ext_resource type="PackedScene" path="res://dev_res/item_gallery/item_container.tscn" id="1_5ce7j"]
+[ext_resource type="PackedScene" uid="uid://bdon2oci28bo3" path="res://dev_res/item_gallery/item_container.tscn" id="1_5ce7j"]
 [ext_resource type="Texture2D" uid="uid://cjghv7gg0twlm" path="res://asset/images/item/gui_slot_item.png" id="2_1k22a"]
-[ext_resource type="Script" path="res://item/number_item.gd" id="3_0r7kv"]
-[ext_resource type="Script" path="res://item/craft.gd" id="4_shltk"]
-[ext_resource type="Script" path="res://item/knife.gd" id="5_egtqp"]
+[ext_resource type="Script" uid="uid://b80c2mpge58hw" path="res://item/number_item.gd" id="3_0r7kv"]
+[ext_resource type="Script" uid="uid://cs4ty4kfe1wic" path="res://item/craft.gd" id="4_shltk"]
+[ext_resource type="Script" uid="uid://dklc70sx4lrxl" path="res://item/knife.gd" id="5_egtqp"]
 [ext_resource type="Texture2D" uid="uid://boowax7ow4uom" path="res://asset/images/equipment/weapon/melee/gui_melee.png" id="6_rwjs0"]
-[ext_resource type="Script" path="res://item/melee_weapon.gd" id="7_fnb2d"]
+[ext_resource type="Script" uid="uid://c0whq3lxsfiag" path="res://item/melee_weapon.gd" id="7_fnb2d"]
 [ext_resource type="Texture2D" uid="uid://bb5h2ev7gk3ua" path="res://asset/images/equipment/weapon/main/gui_main_weapon.png" id="8_tx7qq"]
-[ext_resource type="Script" path="res://item/main_weapon.gd" id="9_gwh3s"]
+[ext_resource type="Script" uid="uid://b3jonfwg21xty" path="res://item/main_weapon.gd" id="9_gwh3s"]
 [ext_resource type="Texture2D" uid="uid://3amhjsr2gevu" path="res://asset/images/equipment/weapon/pistol/gui_pistol.png" id="10_hew4u"]
-[ext_resource type="Script" path="res://item/pistol.gd" id="11_3xekh"]
+[ext_resource type="Script" uid="uid://b0413y5206h07" path="res://item/pistol.gd" id="11_3xekh"]
 
 [node name="ItemGallery" type="ColorRect"]
 offset_right = 576.0

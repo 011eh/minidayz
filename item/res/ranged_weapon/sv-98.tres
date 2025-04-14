@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://c503oo8qh51wh"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ulbvy"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ulbvy"]
 [ext_resource type="Texture2D" uid="uid://cbuj8qnfylkeu" path="res://asset/images/equipment/weapon/main/sv-98.png" id="2_wl7jf"]
 
 [resource]

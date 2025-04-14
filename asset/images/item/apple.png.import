@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/apple.png-be7f6ae7f0d7eb0bbadb6b9e05b1ee7b.ct
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

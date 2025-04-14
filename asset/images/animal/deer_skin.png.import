@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/deer_skin.png-0d10972af3e0490ef74d486cf73f596
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

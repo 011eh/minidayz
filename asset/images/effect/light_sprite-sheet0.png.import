@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/light_sprite-sheet0.png-fd71aa80d2979a74d40a4
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

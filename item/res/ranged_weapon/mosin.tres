@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://sk47ypklbg77"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_h66wq"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_h66wq"]
 [ext_resource type="Texture2D" uid="uid://k6wf7y5ssggd" path="res://asset/images/equipment/weapon/main/mosin.png" id="2_e47o7"]
 
 [resource]

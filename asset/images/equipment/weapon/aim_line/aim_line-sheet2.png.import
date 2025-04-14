@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/aim_line-sheet2.png-d269fd02cdffb3b1f243c9169
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

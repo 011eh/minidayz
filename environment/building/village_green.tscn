@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://donjsejsgay0j" path="res://asset/images/building/b_village_green_chest.png" id="3_fh6cf"]
 [ext_resource type="Texture2D" uid="uid://bfe7pbofybrna" path="res://asset/images/building/b_village_green_sofa.png" id="4_6b30h"]
 [ext_resource type="PackedScene" uid="uid://csmgm1i7qal0u" path="res://environment/building/door.tscn" id="6_qwuxg"]
-[ext_resource type="Texture2D" uid="uid://brsensc2lmlhh" path="res://asset/images/building/door.png" id="7_obacj"]
+[ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="7_obacj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xd2b"]
 atlas = ExtResource("7_obacj")

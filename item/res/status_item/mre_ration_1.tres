@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://pvwcxvo6lf27"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_weabg"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_weabg"]
 [ext_resource type="Texture2D" uid="uid://ckacx2rehbi51" path="res://asset/images/item/mre_ration.png" id="2_wub2a"]
 
 [resource]

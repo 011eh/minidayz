@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://dhf8m6n0hkl0j"]
 
-[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_dpoij"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_dpoij"]
 [ext_resource type="Texture2D" uid="uid://datr0gt6vdpad" path="res://asset/images/equipment/helmet/moto_helmet.png" id="2_wikq7"]
 
 [resource]

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://dguuwi37crkh3"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_f51af"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_f51af"]
 [ext_resource type="Texture2D" uid="uid://py84xpr7c828" path="res://asset/images/item/bilberry.png" id="2_06fvj"]
 
 [resource]

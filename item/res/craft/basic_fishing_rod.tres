@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="DurabilityItemResource" load_steps=3 format=3 uid="uid://d276x0n8ps212"]
 
-[ext_resource type="Script" path="res://item/res/script/durability_item_resource.gd" id="1_jwsid"]
+[ext_resource type="Script" uid="uid://cex83hv3yxo1w" path="res://item/res/script/durability_item_resource.gd" id="1_jwsid"]
 [ext_resource type="Texture2D" uid="uid://dne811f3aq243" path="res://asset/images/item/basic_fishing_rod.png" id="2_ty60k"]
 
 [resource]

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://cqwvvqgo2bdny"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_e0p2i"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_e0p2i"]
 [ext_resource type="Texture2D" uid="uid://bxlx6gvjcuth4" path="res://asset/images/item/canned_tuna.png" id="2_inc56"]
 
 [resource]

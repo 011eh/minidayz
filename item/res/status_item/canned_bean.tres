@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://bkks0i1kogr3q"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_v8cgc"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_v8cgc"]
 [ext_resource type="Texture2D" uid="uid://b14p4y2gefbr5" path="res://asset/images/item/canned_bean.png" id="2_yc4q8"]
 
 [resource]

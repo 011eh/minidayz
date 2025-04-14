@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/amenu_bg-sheet0.png-78b69331748f7c5ae325c4e6c
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

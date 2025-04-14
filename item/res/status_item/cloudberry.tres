@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://eagpqxbanhal"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_71vsi"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_71vsi"]
 [ext_resource type="Texture2D" uid="uid://c67kne1iofj2d" path="res://asset/images/item/cloudberry.png" id="2_4attb"]
 
 [resource]

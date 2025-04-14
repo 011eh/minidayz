@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://dc2k3ps6mk3s0"]
 
-[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_d1qkm"]
+[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_d1qkm"]
 [ext_resource type="Texture2D" uid="uid://byaa1xuk7k7c0" path="res://asset/images/item/morphine.png" id="2_b5bx1"]
 
 [resource]

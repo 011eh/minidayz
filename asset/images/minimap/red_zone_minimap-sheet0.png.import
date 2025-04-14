@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/red_zone_minimap-sheet0.png-7c77b3e6d3bd95508
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

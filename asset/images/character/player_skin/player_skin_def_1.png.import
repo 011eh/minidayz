@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/player_skin_def_1.png-88f5f4b2a5ac38a003a6416
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

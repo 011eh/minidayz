@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/flare_active.png-a940455168a0bdb1f10a0d56007d
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

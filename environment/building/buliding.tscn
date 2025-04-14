@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://uxjobfrdh14c"]
 
-[ext_resource type="Script" path="res://environment/building/buliding.gd" id="1_8uotd"]
+[ext_resource type="Script" uid="uid://bs4vo2bfkvabx" path="res://environment/building/buliding.gd" id="1_8uotd"]
 
 [node name="Buliding" type="Node2D"]
 script = ExtResource("1_8uotd")

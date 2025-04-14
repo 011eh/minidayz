@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bjdbgabn2dmdb"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_4q0o5"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_4q0o5"]
 [ext_resource type="Texture2D" uid="uid://bhulqb00maelc" path="res://asset/images/equipment/weapon/pistol/mac-10.png" id="2_6t2fq"]
 
 [resource]

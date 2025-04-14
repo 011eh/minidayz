@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/pad_stick-sheet0.png-d88227a9704eb0266b767d37
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

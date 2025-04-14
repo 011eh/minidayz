@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://dq5s58xie14ov"]
 
-[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_bt17s"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_bt17s"]
 [ext_resource type="Texture2D" uid="uid://py7s00ka5egu" path="res://asset/images/equipment/pants/gorka_pants.png" id="2_nvct7"]
 
 [resource]

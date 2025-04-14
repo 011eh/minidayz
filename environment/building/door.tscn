@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://csmgm1i7qal0u"]
 
-[ext_resource type="Script" path="res://environment/building/door.gd" id="1_fcq6s"]
+[ext_resource type="Script" uid="uid://4nr4skc5vweq" path="res://environment/building/door.gd" id="1_fcq6s"]
 [ext_resource type="Texture2D" uid="uid://x5830pt2w0vm" path="res://asset/images/building/door.png" id="1_mnqc6"]
 [ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="2_fcrry"]
 

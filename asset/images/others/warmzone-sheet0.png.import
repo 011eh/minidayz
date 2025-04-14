@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/warmzone-sheet0.png-54e7d2a6b0c03588a9f407478
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

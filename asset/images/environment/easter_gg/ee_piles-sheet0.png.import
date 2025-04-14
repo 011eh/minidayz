@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/ee_piles-sheet0.png-7a65d095c4ff55b0c00ba1cca
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

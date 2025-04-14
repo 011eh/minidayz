@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://b8y7ria08asx8"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_ycd4u"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_ycd4u"]
 [ext_resource type="Texture2D" uid="uid://dy5c2tpgj434s" path="res://asset/images/item/nota_cola.png" id="2_n3c26"]
 
 [resource]

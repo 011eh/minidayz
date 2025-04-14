@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://hurf778u80p1"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_5ovps"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_5ovps"]
 [ext_resource type="Texture2D" uid="uid://bxvulny55x80y" path="res://asset/images/item/zucchini.png" id="2_26dlw"]
 
 [resource]

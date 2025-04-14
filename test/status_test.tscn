@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c832ed3hgptqr"]
 
 [ext_resource type="PackedScene" uid="uid://iwyei4l0bm53" path="res://gui/status/status_ui.tscn" id="1_gm5cw"]
-[ext_resource type="Script" path="res://status/player_status.gd" id="1_ikxjg"]
-[ext_resource type="Script" path="res://test/status_test.gd" id="1_j5ur3"]
+[ext_resource type="Script" uid="uid://btdkipmov7y0e" path="res://status/player_status.gd" id="1_ikxjg"]
+[ext_resource type="Script" uid="uid://b3a1h2qu0olta" path="res://test/status_test.gd" id="1_j5ur3"]
 
 [node name="StatusTest" type="Node"]
 script = ExtResource("1_j5ur3")

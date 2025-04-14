@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://bxjcg43yswnbu"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_gxiig"]
+[ext_resource type="Script" uid="uid://jlepxj6nyo1i" path="res://item/res/script/melee_weapon_resource.gd" id="1_gxiig"]
 [ext_resource type="Texture2D" uid="uid://oq8t5atkpb11" path="res://asset/images/equipment/weapon/melee/butcher_knife.png" id="2_psk7n"]
 
 [resource]

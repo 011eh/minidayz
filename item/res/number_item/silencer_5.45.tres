@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://dsxrjymncpu7a"]
 
-[ext_resource type="Script" path="res://item/res/script/number_item_resource.gd" id="1_lb4t2"]
+[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_lb4t2"]
 [ext_resource type="Texture2D" uid="uid://bkmq7fdhnbmu4" path="res://asset/images/item/silencer_5.45.png" id="2_7d6fp"]
 
 [resource]

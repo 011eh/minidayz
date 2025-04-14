@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://bidx3ahq8gbfg"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_rq3p5"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_rq3p5"]
 [ext_resource type="Texture2D" uid="uid://c8gqvuxlbv7jq" path="res://asset/images/item/kvas.png" id="2_b7pk1"]
 
 [resource]

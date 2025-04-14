@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://dix8nxime5dw7"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_yy2cx"]
+[ext_resource type="Script" uid="uid://jlepxj6nyo1i" path="res://item/res/script/melee_weapon_resource.gd" id="1_yy2cx"]
 [ext_resource type="Texture2D" uid="uid://5oia8fbakmbg" path="res://asset/images/equipment/weapon/melee/fire_axe.png" id="2_ownm5"]
 
 [resource]

@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/9x18_ammo.png-0b67755ccc0c7bf159d593e8f41cbdc
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

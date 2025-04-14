@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://bdon2oci28bo3"]
 
-[ext_resource type="Script" path="res://dev_res/item_gallery/item_container.gd" id="1_pj25y"]
+[ext_resource type="Script" uid="uid://vebwxyrkl8k5" path="res://dev_res/item_gallery/item_container.gd" id="1_pj25y"]
 
 [node name="Slot Item2" type="HSplitContainer"]
 offset_right = 162.0

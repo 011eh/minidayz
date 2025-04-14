@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://b8c2ds7xsrrlc"]
 
-[ext_resource type="Script" path="res://item/res/script/status_item_resource.gd" id="1_ivfox"]
+[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_ivfox"]
 [ext_resource type="Texture2D" uid="uid://c36qcbahxxg7w" path="res://asset/images/item/perch.png" id="2_edpij"]
 
 [resource]

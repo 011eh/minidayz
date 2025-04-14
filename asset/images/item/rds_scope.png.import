@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/rds_scope.png-8a0c68a576b853e9a7823e4e1ceac6f
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/rain_fade-sheet1.png-62be48b6662827bbb4c0d920
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
