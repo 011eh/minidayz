@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://m833wwd4xoqo"]
+[gd_scene load_steps=8 format=3 uid="uid://m833wwd4xoqo"]
 
 [ext_resource type="Script" uid="uid://b7aipc45eehjs" path="res://test/buliding_test.gd" id="1_40pox"]
 [ext_resource type="PackedScene" uid="uid://c5dryjeoop8oy" path="res://environment/building/church.tscn" id="3_1kjmu"]
 [ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="3_54yjx"]
 [ext_resource type="PackedScene" uid="uid://dlfph631kco02" path="res://environment/building/piano_house.tscn" id="4_pas86"]
 [ext_resource type="PackedScene" uid="uid://cvfp1ak51lf75" path="res://environment/building/city_house_3.tscn" id="5_migpe"]
+[ext_resource type="PackedScene" uid="uid://dv2qomeimjixr" path="res://environment/building/bus.tscn" id="6_x6q20"]
+[ext_resource type="PackedScene" uid="uid://b7a7mp085xni8" path="res://environment/building/castle.tscn" id="7_ni5si"]
 
 [node name="BulidingTest" type="Node2D"]
 y_sort_enabled = true
@@ -22,3 +24,8 @@ position = Vector2(304, 219)
 
 [node name="Buliding3" parent="." instance=ExtResource("5_migpe")]
 position = Vector2(576, 122)
+
+[node name="Buliding4" parent="." instance=ExtResource("6_x6q20")]
+
+[node name="Buliding" parent="Buliding4" instance=ExtResource("7_ni5si")]
+position = Vector2(-468, 327)
