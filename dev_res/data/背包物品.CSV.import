@@ -15,3 +15,5 @@ dest_files=["res://dev_res/data/背包物品.item.translation", "res://dev_res/d
 
 compress=true
 delimiter=0
+unescape_keys=false
+unescape_translations=true
