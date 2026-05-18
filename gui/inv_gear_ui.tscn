@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://rcw4wnrlmx6u"]
+[gd_scene format=3 format=3 uid="uid://rcw4wnrlmx6u"]
 
 [ext_resource type="Script" uid="uid://d0h3p3e3wcyfk" path="res://gui/inv_gear_ui.gd" id="1_ay1m6"]
 

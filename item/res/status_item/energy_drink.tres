@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://bd3rc3vsh8yy8"]
+[gd_resource type="Resource" script_class="StatusItemResource" format=3 uid="uid://bd3rc3vsh8yy8"]
 
-[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_sedgn"]
+[ext_resource type="Script" uid="uid://c2hv824js8183" path="res://item/res/script/status_item_resource.gd" id="1_sedgn"]
 [ext_resource type="Texture2D" uid="uid://f8g6k2lj8wqt" path="res://asset/images/item/energy_drink.png" id="2_wlrdd"]
 
 [resource]
 script = ExtResource("1_sedgn")
-health = 0
 hunger = 3
 drink = 40
-heat = 0
-stackable = true
 stack_limit = 3
 id = 47
 item_name = &"Energy Drink"

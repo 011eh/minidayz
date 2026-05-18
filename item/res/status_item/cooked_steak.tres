@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://df5ajpc7r1pui"]
+[gd_resource type="Resource" script_class="StatusItemResource" format=3 uid="uid://df5ajpc7r1pui"]
 
-[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_gd6d5"]
+[ext_resource type="Script" uid="uid://c2hv824js8183" path="res://item/res/script/status_item_resource.gd" id="1_gd6d5"]
 [ext_resource type="Texture2D" uid="uid://d363dwk5run3a" path="res://asset/images/item/cooked_steak.png" id="2_nx1xa"]
 
 [resource]
 script = ExtResource("1_gd6d5")
-health = 0
 hunger = 50
 drink = 3
-heat = 0
-stackable = true
 stack_limit = 3
 id = 71
 item_name = &"Cooked Steak"

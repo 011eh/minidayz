@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://cg0atmqna7tdm"]
+[gd_resource type="Resource" script_class="NumberItemResource" format=3 uid="uid://cg0atmqna7tdm"]
 
-[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_6jkou"]
+[ext_resource type="Script" uid="uid://r8jbiukgv512" path="res://item/res/script/number_item_resource.gd" id="1_6jkou"]
 [ext_resource type="Texture2D" uid="uid://bqb6c1spjfr1" path="res://asset/images/item/landmine.png" id="2_y4wlb"]
 
 [resource]
 script = ExtResource("1_6jkou")
-stackable = true
 stack_limit = 3
 id = 45
 item_name = &"Landmine"

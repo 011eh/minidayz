@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bg65y45auors1"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_q7yj6"]
-[ext_resource type="Texture2D" uid="uid://cpxcaldycpr51" path="res://asset/images/equipment/weapon/pistol/magnum.png" id="2_ospem"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_q7yj6"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/pistol/magnum.png" id="2_ospem"]
 
 [resource]
 script = ExtResource("1_q7yj6")
@@ -15,9 +15,8 @@ aim_speed = 4.0
 reload_time = 2.0
 min_damage = 33
 max_damage = 57
-run_penalty = 0
 attack_rate = 257.0
 wear_per_use = 0.8
-id = 195
+id = 30
 item_name = &"Magnum"
 texture = ExtResource("2_ospem")

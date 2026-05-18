@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://dt1o873n7iiky"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ydppv"]
-[ext_resource type="Texture2D" uid="uid://de01e460ajn6n" path="res://asset/images/equipment/weapon/main/sks.png" id="2_ypyij"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ydppv"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/main/sks.png" id="2_ypyij"]
 
 [resource]
 script = ExtResource("1_ydppv")
@@ -16,8 +16,7 @@ reload_time = 3.0
 min_damage = 33
 max_damage = 357
 run_penalty = 4
-attack_rate = 0.0
 wear_per_use = 0.5
-id = 184
+id = 19
 item_name = &"SKS"
 texture = ExtResource("2_ypyij")

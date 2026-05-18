@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://c33rp6dn5jvvj"]
+[gd_resource type="Resource" script_class="StatusItemResource" format=3 uid="uid://c33rp6dn5jvvj"]
 
-[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_r6lky"]
+[ext_resource type="Script" uid="uid://c2hv824js8183" path="res://item/res/script/status_item_resource.gd" id="1_r6lky"]
 [ext_resource type="Texture2D" uid="uid://1ufapg560cef" path="res://asset/images/item/banana.png" id="2_vdglf"]
 
 [resource]
 script = ExtResource("1_r6lky")
-health = 0
 hunger = 5
 drink = 5
-heat = 0
-stackable = true
 stack_limit = 5
 id = 59
 item_name = &"Banana"

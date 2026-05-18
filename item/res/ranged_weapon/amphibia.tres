@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://dassmqm5jhnxr"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_1ehrr"]
-[ext_resource type="Texture2D" uid="uid://b8u05jxxetl32" path="res://asset/images/equipment/weapon/pistol/amphibia.png" id="2_jufsm"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_1ehrr"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/pistol/amphibia.png" id="2_jufsm"]
 
 [resource]
 script = ExtResource("1_1ehrr")
@@ -15,9 +15,8 @@ aim_speed = 8.0
 reload_time = 2.0
 min_damage = 11
 max_damage = 19
-run_penalty = 0
 attack_rate = 450.0
 wear_per_use = 0.8
-id = 190
+id = 25
 item_name = &"Amphibia"
 texture = ExtResource("2_jufsm")

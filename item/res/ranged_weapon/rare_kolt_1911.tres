@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://bgn7besqwujkj"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_lgdxn"]
-[ext_resource type="Texture2D" uid="uid://gxua24alvagd" path="res://asset/images/equipment/weapon/pistol/rare_kolt_1911.png" id="2_8nb7u"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_lgdxn"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/pistol/rare_kolt_1911.png" id="2_8nb7u"]
 
 [resource]
 script = ExtResource("1_lgdxn")
@@ -15,9 +15,8 @@ aim_speed = 8.0
 reload_time = 2.0
 min_damage = 18
 max_damage = 32
-run_penalty = 0
 attack_rate = 450.0
 wear_per_use = 0.8
-id = 198
+id = 33
 item_name = &"Rare Kolt 1911"
 texture = ExtResource("2_8nb7u")

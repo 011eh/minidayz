@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://bxjcg43yswnbu"]
+[gd_resource type="Resource" script_class="MeleeWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://jlepxj6nyo1i" path="res://item/res/script/melee_weapon_resource.gd" id="1_gxiig"]
-[ext_resource type="Texture2D" uid="uid://oq8t5atkpb11" path="res://asset/images/equipment/weapon/melee/butcher_knife.png" id="2_psk7n"]
+[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_gxiig"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/melee/butcher_knife.png" id="2_psk7n"]
 
 [resource]
 script = ExtResource("1_gxiig")
@@ -12,6 +12,6 @@ max_damage = 23
 run_penalty = 1
 attack_rate = 0.8
 wear_per_use = 0.4
-id = 163
+id = 12
 item_name = &"Butcher Knife"
 texture = ExtResource("2_psk7n")

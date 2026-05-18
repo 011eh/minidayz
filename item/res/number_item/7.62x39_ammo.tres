@@ -1,11 +1,10 @@
-[gd_resource type="Resource" script_class="NumberItemResource" load_steps=3 format=3 uid="uid://cfxkdawysm47m"]
+[gd_resource type="Resource" script_class="NumberItemResource" format=3 uid="uid://cfxkdawysm47m"]
 
-[ext_resource type="Script" uid="uid://ddn8p450q0ofg" path="res://item/res/script/number_item_resource.gd" id="1_wjiph"]
+[ext_resource type="Script" uid="uid://r8jbiukgv512" path="res://item/res/script/number_item_resource.gd" id="1_wjiph"]
 [ext_resource type="Texture2D" uid="uid://cx0bvuu4ow400" path="res://asset/images/item/7.62x39_ammo.png" id="2_lrwt4"]
 
 [resource]
 script = ExtResource("1_wjiph")
-stackable = true
 stack_limit = 40
 id = 3
 item_name = &"7.62x39 Ammo"

@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://dkd51jw3mcai6"]
+[gd_resource type="Resource" script_class="StatusItemResource" format=3 uid="uid://dkd51jw3mcai6"]
 
-[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_rja2o"]
+[ext_resource type="Script" uid="uid://c2hv824js8183" path="res://item/res/script/status_item_resource.gd" id="1_rja2o"]
 [ext_resource type="Texture2D" uid="uid://b0g2gk5lnalcw" path="res://asset/images/item/ruffe.png" id="2_t1wek"]
 
 [resource]
 script = ExtResource("1_rja2o")
-health = 0
 hunger = 20
 drink = 3
-heat = 0
-stackable = true
 stack_limit = 5
 id = 74
 item_name = &"Ruffe"

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://b04x0rmov86y3"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_sewdh"]
-[ext_resource type="Texture2D" uid="uid://d1n7wimugv7oj" path="res://asset/images/equipment/weapon/main/remington_870.png" id="2_apjpg"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_sewdh"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/main/remington_870.png" id="2_apjpg"]
 
 [resource]
 script = ExtResource("1_sewdh")
@@ -18,6 +18,6 @@ max_damage = 25
 run_penalty = 2
 attack_rate = 0.65
 wear_per_use = 0.5
-id = 180
+id = 15
 item_name = &"Remington 870"
 texture = ExtResource("2_apjpg")

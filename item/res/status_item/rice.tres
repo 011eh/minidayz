@@ -1,15 +1,11 @@
-[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://ctyj86coflpft"]
+[gd_resource type="Resource" script_class="StatusItemResource" format=3 uid="uid://ctyj86coflpft"]
 
-[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_nun16"]
+[ext_resource type="Script" uid="uid://c2hv824js8183" path="res://item/res/script/status_item_resource.gd" id="1_nun16"]
 [ext_resource type="Texture2D" uid="uid://dgvu38k0emd20" path="res://asset/images/item/rice.png" id="2_thxr0"]
 
 [resource]
 script = ExtResource("1_nun16")
-health = 0
 hunger = 80
-drink = 0
-heat = 0
-stackable = true
 stack_limit = 3
 id = 56
 item_name = &"Rice"

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://chbikjtlcvu1i"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_62bcu"]
-[ext_resource type="Texture2D" uid="uid://b8bxq8dlv6r0x" path="res://asset/images/equipment/weapon/pistol/pb.png" id="2_uuoi8"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_62bcu"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/pistol/pb.png" id="2_uuoi8"]
 
 [resource]
 script = ExtResource("1_62bcu")
@@ -15,9 +15,8 @@ aim_speed = 8.0
 reload_time = 2.0
 min_damage = 18
 max_damage = 30
-run_penalty = 0
 attack_rate = 450.0
 wear_per_use = 0.8
-id = 196
+id = 31
 item_name = &"PB"
 texture = ExtResource("2_uuoi8")

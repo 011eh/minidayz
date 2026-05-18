@@ -1,15 +1,12 @@
-[gd_resource type="Resource" script_class="StatusItemResource" load_steps=3 format=3 uid="uid://bv60ebh11jap8"]
+[gd_resource type="Resource" script_class="StatusItemResource" format=3 uid="uid://bv60ebh11jap8"]
 
-[ext_resource type="Script" uid="uid://38ikqxiywme2" path="res://item/res/script/status_item_resource.gd" id="1_bt5ge"]
+[ext_resource type="Script" uid="uid://c2hv824js8183" path="res://item/res/script/status_item_resource.gd" id="1_bt5ge"]
 [ext_resource type="Texture2D" uid="uid://ck66yytpjgj1i" path="res://asset/images/item/cooked_rabbit_meat.png" id="2_ou34j"]
 
 [resource]
 script = ExtResource("1_bt5ge")
-health = 0
 hunger = 25
 drink = 3
-heat = 0
-stackable = true
 stack_limit = 5
 id = 69
 item_name = &"Cooked Rabbit Meat"

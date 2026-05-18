@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="GearResource" load_steps=3 format=3 uid="uid://cd3q3a8jm07mf"]
+[gd_resource type="Resource" script_class="GearResource" format=3]
 
-[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_y25pn"]
-[ext_resource type="Texture2D" uid="uid://dv32it52mctes" path="res://asset/images/equipment/clothes/dress.png" id="2_jwmq8"]
+[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_y25pn"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/clothes/dress.png" id="2_jwmq8"]
 
 [resource]
 script = ExtResource("1_y25pn")
-type = 1
 slot_number = 1
 heat = 4.0
-armor = 0.0
-id = 97
+id = 2
 item_name = &"Dress"
 texture = ExtResource("2_jwmq8")

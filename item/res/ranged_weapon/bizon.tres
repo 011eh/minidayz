@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://go57rdtri4o7"]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
 
-[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_8jism"]
-[ext_resource type="Texture2D" uid="uid://hxnb2gdsd6g8" path="res://asset/images/equipment/weapon/main/bizon.png" id="2_3ot2a"]
+[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_8jism"]
+[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/main/bizon.png" id="2_3ot2a"]
 
 [resource]
 script = ExtResource("1_8jism")
@@ -18,6 +18,6 @@ max_damage = 20
 run_penalty = 1
 attack_rate = 550.0
 wear_per_use = 0.3
-id = 171
+id = 6
 item_name = &"Bizon"
 texture = ExtResource("2_3ot2a")
