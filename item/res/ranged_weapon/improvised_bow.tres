@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3 uid="uid://cjktq4wcev2vk"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_acwl3"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/main/improvised_bow.png" id="2_le7df"]
+[ext_resource type="Script" uid="uid://djegifnqumkrj" path="res://item/res/script/ranged_weapon_resource.gd" id="1_acwl3"]
+[ext_resource type="Texture2D" uid="uid://3i86tnm84se0" path="res://asset/images/equipment/weapon/main/improvised_bow.png" id="2_le7df"]
 
 [resource]
 script = ExtResource("1_acwl3")

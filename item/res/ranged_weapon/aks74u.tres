@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="RangedWeaponResource" format=3]
+[gd_resource type="Resource" script_class="RangedWeaponResource" format=3 uid="uid://513cwyg84284"]
 
-[ext_resource type="Script" path="res://item/res/script/ranged_weapon_resource.gd" id="1_od7mj"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/main/aks74u.png" id="2_th7ul"]
+[ext_resource type="Script" uid="uid://djegifnqumkrj" path="res://item/res/script/ranged_weapon_resource.gd" id="1_od7mj"]
+[ext_resource type="Texture2D" uid="uid://ddtgodrw8b6r4" path="res://asset/images/equipment/weapon/main/aks74u.png" id="2_th7ul"]
 
 [resource]
 script = ExtResource("1_od7mj")

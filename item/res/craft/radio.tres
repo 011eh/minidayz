@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DurabilityItemResource" format=3]
+[gd_resource type="Resource" script_class="DurabilityItemResource" format=3 uid="uid://3mwr30pw167q"]
 
-[ext_resource type="Script" path="res://item/res/script/durability_item_resource.gd" id="1_16coe"]
-[ext_resource type="Texture2D" path="res://asset/images/item/radio.png" id="2_f8k0f"]
+[ext_resource type="Script" uid="uid://dmb3pvh0rpayr" path="res://item/res/script/durability_item_resource.gd" id="1_16coe"]
+[ext_resource type="Texture2D" uid="uid://jrukikhgvgsy" path="res://asset/images/item/radio.png" id="2_f8k0f"]
 
 [resource]
 script = ExtResource("1_16coe")

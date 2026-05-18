@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="GearResource" format=3]
+[gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dh5ur72asngvd"]
 
-[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_kk1c6"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/clothes/paramedic_jacket.png" id="2_hs5x8"]
+[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_kk1c6"]
+[ext_resource type="Texture2D" uid="uid://x1woy6nfcwq6" path="res://asset/images/equipment/clothes/paramedic_jacket.png" id="2_hs5x8"]
 
 [resource]
 script = ExtResource("1_kk1c6")

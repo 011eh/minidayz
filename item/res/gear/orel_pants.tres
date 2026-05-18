@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="GearResource" format=3]
+[gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://bpy5mjkp0b0st"]
 
-[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_4ctkc"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/pants/orel_pants.png" id="2_8mc8p"]
+[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_4ctkc"]
+[ext_resource type="Texture2D" uid="uid://c5ex4bpkwihp" path="res://asset/images/equipment/pants/orel_pants.png" id="2_8mc8p"]
 
 [resource]
 script = ExtResource("1_4ctkc")

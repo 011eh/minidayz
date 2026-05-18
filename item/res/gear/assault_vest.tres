@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="GearResource" format=3]
+[gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dc3lwjc0a0731"]
 
-[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_hg6pr"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/vest/assault_vest.png" id="2_7xcbg"]
+[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_hg6pr"]
+[ext_resource type="Texture2D" uid="uid://rq8pxpeobfuq" path="res://asset/images/equipment/vest/assault_vest.png" id="2_7xcbg"]
 
 [resource]
 script = ExtResource("1_hg6pr")

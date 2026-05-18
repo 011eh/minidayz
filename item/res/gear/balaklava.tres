@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="GearResource" format=3]
+[gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dgf0sedjl40f5"]
 
-[ext_resource type="Script" path="res://item/res/script/gear_resource.gd" id="1_yom04"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/helmet/balaklava.png" id="2_bkcf7"]
+[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_yom04"]
+[ext_resource type="Texture2D" uid="uid://bm8mbkn62o8fq" path="res://asset/images/equipment/helmet/balaklava.png" id="2_bkcf7"]
 
 [resource]
 script = ExtResource("1_yom04")

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DurabilityItemResource" format=3]
+[gd_resource type="Resource" script_class="DurabilityItemResource" format=3 uid="uid://chdx27hpxnl2i"]
 
-[ext_resource type="Script" path="res://item/res/script/durability_item_resource.gd" id="1_d5qaq"]
-[ext_resource type="Texture2D" path="res://asset/images/item/cleaning_kit.png" id="2_vltn4"]
+[ext_resource type="Script" uid="uid://dmb3pvh0rpayr" path="res://item/res/script/durability_item_resource.gd" id="1_d5qaq"]
+[ext_resource type="Texture2D" uid="uid://dwwopusil1jxs" path="res://asset/images/item/cleaning_kit.png" id="2_vltn4"]
 
 [resource]
 script = ExtResource("1_d5qaq")

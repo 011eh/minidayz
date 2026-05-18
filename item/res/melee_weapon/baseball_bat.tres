@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="MeleeWeaponResource" format=3]
+[gd_resource type="Resource" script_class="MeleeWeaponResource" format=3 uid="uid://clj4fa73ty1ap"]
 
-[ext_resource type="Script" path="res://item/res/script/melee_weapon_resource.gd" id="1_aaykb"]
-[ext_resource type="Texture2D" path="res://asset/images/equipment/weapon/melee/hatchet.png" id="2_tl4gj"]
+[ext_resource type="Script" uid="uid://c1lyeypjl18fa" path="res://item/res/script/melee_weapon_resource.gd" id="1_aaykb"]
+[ext_resource type="Texture2D" uid="uid://ct57wuigxfkic" path="res://asset/images/equipment/weapon/melee/hatchet.png" id="2_tl4gj"]
 
 [resource]
 script = ExtResource("1_aaykb")
