@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://yc0cvcpobvl8" path="res://environment/ground.gd" id="1_egn3p"]
 [ext_resource type="TileSet" uid="uid://rhlox203ltec" path="res://environment/ground_terrain.tres" id="2_6cd8i"]
 [ext_resource type="TileSet" uid="uid://dy13cibxixk7g" path="res://environment/ground_decoration.tres" id="3_jbh0a"]
+[ext_resource type="PackedScene" uid="uid://byae3ru25o6xr" path="res://dev_res/dev_camera.tscn" id="4_7y6t5"]
 
 [node name="Ground" type="Node2D" unique_id=1762010831]
 script = ExtResource("1_egn3p")
@@ -32,3 +33,5 @@ tile_set = ExtResource("2_6cd8i")
 use_parent_material = true
 rotation = -0.00108804
 tile_set = ExtResource("3_jbh0a")
+
+[node name="DevCamera" parent="." unique_id=1234440884 instance=ExtResource("4_7y6t5")]
