@@ -11,9 +11,7 @@ const TOTAL_MAP_SIZE = BLOCK_SIZE * MAP_SIZE_IN_BLOCKS # 272
 const MIN_TOWNS = 25
 const MAX_TOWNS = 25
 
-# Road settings - 道路连接概率设置
-const HIGH_CONNECTION_CHANCE = 0.85  # 同行/列城镇间高概率连接
-const ISOLATION_CHANCE = 0.3        # 城镇孤立的概率（1 - HIGH_CONNECTION_CHANCE）
+# Road settings
 const MIN_ROAD_WIDTH = 2
 const MAX_ROAD_WIDTH = 4
 
@@ -59,98 +57,42 @@ func is_3x3_clear(center: Vector2i) -> bool:
 	return true
 
 func generate_row_column_roads():
-	"""生成同行/同列城镇间的道路连接，大概率相连，小概率孤立"""
+	"""还原原版 roads_1 / roads_2：逐行/逐列只连接最先出现的前两个地点，确定性连接"""
 	roads.clear()
 
 	if towns.size() < 2:
 		return
 
-	# 按行分组城镇
+	# 按行分组城镇（roads_1 横向）
 	var towns_by_row = {}
 	for town in towns:
 		if not towns_by_row.has(town.y):
 			towns_by_row[town.y] = []
 		towns_by_row[town.y].append(town)
 
-	# 按列分组城镇
+	# 按列分组城镇（roads_2 纵向）
 	var towns_by_column = {}
 	for town in towns:
 		if not towns_by_column.has(town.x):
 			towns_by_column[town.x] = []
 		towns_by_column[town.x].append(town)
 
-	# 连接同行的城镇
+	# roads_1：每行按 x 升序，连接最先出现的前两个地点
 	for row in towns_by_row.keys():
 		var row_towns = towns_by_row[row]
-		if row_towns.size() > 1:
-			connect_towns_in_line(row_towns, true)  # true表示水平连接
+		if row_towns.size() >= 2:
+			row_towns.sort_custom(func(a, b): return a.x < b.x)
+			roads.append(create_straight_path(row_towns[0], row_towns[1]))
 
-	# 连接同列的城镇
+	# roads_2：每列按 y 升序，连接最先出现的前两个地点（与横向路交叉处由地形连接自动合并为十字）
 	for column in towns_by_column.keys():
 		var column_towns = towns_by_column[column]
-		if column_towns.size() > 1:
-			connect_towns_in_line(column_towns, false)  # false表示垂直连接
+		if column_towns.size() >= 2:
+			column_towns.sort_custom(func(a, b): return a.y < b.y)
+			roads.append(create_straight_path(column_towns[0], column_towns[1]))
 
 	print("生成了 ", roads.size(), " 条道路连接")
 	analyze_connectivity()
-
-func connect_towns_in_line(line_towns: Array, is_horizontal: bool):
-	"""连接一条线上的城镇（同行或同列）"""
-	if line_towns.size() < 2:
-		return
-
-	# 排序城镇（水平按x坐标，垂直按y坐标）
-	if is_horizontal:
-		line_towns.sort_custom(func(a, b): return a.x < b.x)
-	else:
-		line_towns.sort_custom(func(a, b): return a.y < b.y)
-
-	# 逐一连接相邻城镇，但有一定概率跳过连接（创造孤立城镇）
-	for i in range(line_towns.size() - 1):
-		var town_a = line_towns[i]
-		var town_b = line_towns[i + 1]
-
-		# 大概率连接，小概率跳过（创建孤立城镇的机会）
-		if rng.randf() < HIGH_CONNECTION_CHANCE:
-			# 检查路径是否畅通
-			if is_path_clear_between_towns(town_a, town_b):
-				var path = create_straight_path(town_a, town_b)
-				if path.size() > 0:
-					roads.append(path)
-		else:
-			print("跳过连接 ", town_a, " 和 ", town_b, " (创建孤立机会)")
-
-func is_path_clear_between_towns(start: Vector2i, end: Vector2i) -> bool:
-	"""检查两个城镇间的路径是否被其他城镇阻挡"""
-	# 获取路径上的所有中间点
-	var path_blocks = get_path_blocks(start, end)
-
-	# 检查中间路径上是否有其他城镇
-	for block in path_blocks:
-		if block != start and block != end:
-			if block in towns:
-				return false
-
-	return true
-
-func get_path_blocks(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
-	"""获取两点间直线路径上的所有块坐标"""
-	var blocks: Array[Vector2i] = []
-
-	if start.x == end.x:
-		# 垂直路径
-		var min_y = min(start.y, end.y)
-		var max_y = max(start.y, end.y)
-		for y in range(min_y, max_y + 1):
-			blocks.append(Vector2i(start.x, y))
-	elif start.y == end.y:
-		# 水平路径
-		var min_x = min(start.x, end.x)
-		var max_x = max(start.x, end.x)
-		for x in range(min_x, max_x + 1):
-			blocks.append(Vector2i(x, start.y))
-
-	return blocks
 
 func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
 	"""创建两点间的直线路径"""
@@ -308,18 +250,6 @@ func is_valid_cell(cell_pos: Vector2i) -> bool:
 func set_seed(seed_value: int):
 	"""Set random seed for reproducible generation"""
 	rng.seed = seed_value
-
-# 新增：设置道路连接概率
-func set_connection_probability(high_chance: float, isolation_chance: float = 0.0):
-	"""设置道路连接概率"""
-	if isolation_chance == 0.0:
-		isolation_chance = 1.0 - high_chance
-
-	# 确保概率在合理范围内
-	high_chance = clamp(high_chance, 0.0, 1.0)
-	isolation_chance = clamp(isolation_chance, 0.0, 1.0)
-
-	print("设置连接概率: ", high_chance, ", 孤立概率: ", isolation_chance)
 
 # 新增：重新生成道路（保持城镇不变）
 func regenerate_roads_only():
