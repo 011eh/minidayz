@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dk662g8cbruuw"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_q51j4"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_q51j4"]
 [ext_resource type="Texture2D" uid="uid://deu72m8rvpw43" path="res://asset/images/equipment/helmet/hard_helmet.png" id="2_k1cn6"]
 
 [resource]

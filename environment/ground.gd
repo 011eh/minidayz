@@ -17,11 +17,6 @@ const ISOLATION_CHANCE = 0.3        # 城镇孤立的概率（1 - HIGH_CONNECTIO
 const MIN_ROAD_WIDTH = 2
 const MAX_ROAD_WIDTH = 4
 
-# 新增：城镇分布设置
-const MIN_TOWN_DISTANCE = 2  # 城镇间最小距离（以块为单位）
-const GRID_SUBDIVISIONS = 5  # 将地图划分为 5x5 的网格区域
-const ALLOW_EDGE_TOWNS = true  # 允许城镇出现在地图边缘
-
 # Data structures
 var towns: Array[Vector2i] = []  # Block coordinates
 var roads: Array[Array] = []     # Road segments
@@ -39,17 +34,29 @@ func generate_world():
 	render_map()
 
 func generate_towns_uniform():
-	"""使用网格分布和泊松圆盘采样生成均匀分布的城镇"""
+	"""原版落子算法：随机抽格，要求目标格 3×3 邻域全空才落子，否则重抽"""
 	towns.clear()
 	var target_towns = rng.randi_range(MIN_TOWNS, MAX_TOWNS)
 
-	# 方法1：网格分布法（推荐用于确保均匀分布）
-	towns = generate_towns_grid_distribution(target_towns)
-
-	# 如果需要更自然的分布，可以使用方法2：泊松圆盘采样
-	# towns = generate_towns_poisson_disk(target_towns)
+	var attempts = 0
+	var max_attempts = target_towns * 200
+	while towns.size() < target_towns and attempts < max_attempts:
+		var pos = Vector2i(
+			rng.randi_range(0, MAP_SIZE_IN_BLOCKS - 1),
+			rng.randi_range(0, MAP_SIZE_IN_BLOCKS - 1)
+		)
+		if is_3x3_clear(pos):
+			towns.append(pos)
+		attempts += 1
 
 	print("生成了 ", towns.size(), " 个城镇，位置：", towns)
+
+func is_3x3_clear(center: Vector2i) -> bool:
+	"""要求 center 周围 3×3 共 9 格内没有其它城镇（保证间距 ≥2 格）"""
+	for town in towns:
+		if abs(town.x - center.x) <= 1 and abs(town.y - center.y) <= 1:
+			return false
+	return true
 
 func generate_row_column_roads():
 	"""生成同行/同列城镇间的道路连接，大概率相连，小概率孤立"""
@@ -188,105 +195,6 @@ func analyze_connectivity():
 	print("孤立的城镇数量: ", isolated_towns.size())
 	if isolated_towns.size() > 0:
 		print("孤立城镇位置: ", isolated_towns)
-
-func generate_towns_grid_distribution(target_count: int) -> Array[Vector2i]:
-	"""网格分布法：将地图划分为网格，每个网格区域放置一个城镇"""
-	var result_towns: Array[Vector2i] = []
-
-	# 计算每个网格单元的大小
-	var grid_cell_size = MAP_SIZE_IN_BLOCKS / GRID_SUBDIVISIONS
-	var towns_per_cell = max(1, target_count / (GRID_SUBDIVISIONS * GRID_SUBDIVISIONS))
-
-	# 根据设置决定边界范围
-	var border_offset = 0 if ALLOW_EDGE_TOWNS else 1
-	var max_coord = MAP_SIZE_IN_BLOCKS - 1 if ALLOW_EDGE_TOWNS else MAP_SIZE_IN_BLOCKS - 2
-
-	# 为每个网格单元生成城镇
-	for grid_x in range(GRID_SUBDIVISIONS):
-		for grid_y in range(GRID_SUBDIVISIONS):
-			# 计算当前网格单元的边界
-			var cell_min_x = max(border_offset, grid_x * grid_cell_size)
-			var cell_max_x = min(max_coord, (grid_x + 1) * grid_cell_size - 1)
-			var cell_min_y = max(border_offset, grid_y * grid_cell_size)
-			var cell_max_y = min(max_coord, (grid_y + 1) * grid_cell_size - 1)
-
-			# 在当前网格单元中放置城镇
-			var attempts = 0
-			var towns_in_cell = 0
-			while towns_in_cell < towns_per_cell and attempts < 50:
-				var town_pos = Vector2i(
-								   rng.randi_range(cell_min_x, cell_max_x),
-								   rng.randi_range(cell_min_y, cell_max_y)
-							   )
-
-				if is_position_suitable_for_town(town_pos, result_towns):
-					result_towns.append(town_pos)
-					towns_in_cell += 1
-
-				attempts += 1
-
-			# 如果已经达到目标数量就停止
-			if result_towns.size() >= target_count:
-				break
-
-		if result_towns.size() >= target_count:
-			break
-
-	# 如果还没达到目标数量，用随机填充的方式补充
-	fill_remaining_towns_randomly(result_towns, target_count)
-
-	return result_towns
-
-func generate_towns_poisson_disk(target_count: int) -> Array[Vector2i]:
-	"""泊松圆盘采样法：确保城镇间有最小距离，同时分布相对均匀"""
-	var result_towns: Array[Vector2i] = []
-	var attempts = 0
-	var max_attempts = target_count * 50
-
-	# 根据设置决定边界范围
-	var min_coord = 0 if ALLOW_EDGE_TOWNS else 1
-	var max_coord = MAP_SIZE_IN_BLOCKS - 1 if ALLOW_EDGE_TOWNS else MAP_SIZE_IN_BLOCKS - 2
-
-	while result_towns.size() < target_count and attempts < max_attempts:
-		var candidate = Vector2i(
-							rng.randi_range(min_coord, max_coord),
-							rng.randi_range(min_coord, max_coord)
-						)
-
-		if is_position_suitable_for_town(candidate, result_towns):
-			result_towns.append(candidate)
-
-		attempts += 1
-
-	return result_towns
-
-func is_position_suitable_for_town(pos: Vector2i, existing_towns: Array[Vector2i]) -> bool:
-	"""检查位置是否适合放置城镇（距离其他城镇足够远）"""
-	for existing_town in existing_towns:
-		var distance = pos.distance_to(existing_town)
-		if distance < MIN_TOWN_DISTANCE:
-			return false
-	return true
-
-func fill_remaining_towns_randomly(current_towns: Array[Vector2i], target_count: int):
-	"""用随机方式填充剩余的城镇位置"""
-	var attempts = 0
-	var max_attempts = (target_count - current_towns.size()) * 50
-
-	# 根据设置决定边界范围
-	var min_coord = 0 if ALLOW_EDGE_TOWNS else 1
-	var max_coord = MAP_SIZE_IN_BLOCKS - 1 if ALLOW_EDGE_TOWNS else MAP_SIZE_IN_BLOCKS - 2
-
-	while current_towns.size() < target_count and attempts < max_attempts:
-		var candidate = Vector2i(
-							rng.randi_range(min_coord, max_coord),
-							rng.randi_range(min_coord, max_coord)
-						)
-
-		if is_position_suitable_for_town(candidate, current_towns):
-			current_towns.append(candidate)
-
-		attempts += 1
 
 func render_map():
 	"""Render towns and roads on the tilemap"""

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://bd3rmh5ximwsd"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_4gafo"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_4gafo"]
 [ext_resource type="Texture2D" uid="uid://ckh1fq6h6cu6h" path="res://asset/images/equipment/clothes/hunter_jacket.png" id="2_8pryn"]
 
 [resource]

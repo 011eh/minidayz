@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://b42eli662ljv7"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_7an6t"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_7an6t"]
 [ext_resource type="Texture2D" uid="uid://4ea5rtl4pv5d" path="res://asset/images/equipment/clothes/tracksuit_jacket.png" id="2_j1kcs"]
 
 [resource]

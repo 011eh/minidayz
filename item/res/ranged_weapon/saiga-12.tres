@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" format=3 uid="uid://4f4qs0uwny2x"]
 
-[ext_resource type="Script" uid="uid://djegifnqumkrj" path="res://item/res/script/ranged_weapon_resource.gd" id="1_gfqoh"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_gfqoh"]
 [ext_resource type="Texture2D" uid="uid://cjbl67c603cx3" path="res://asset/images/equipment/weapon/main/saiga-12.png" id="2_tuuoq"]
 
 [resource]

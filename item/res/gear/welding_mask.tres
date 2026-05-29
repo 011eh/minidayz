@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://ddwnnvby3v85j"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_d52d2"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_d52d2"]
 [ext_resource type="Texture2D" uid="uid://10nds1wuxoe5" path="res://asset/images/equipment/helmet/welding_mask.png" id="2_6nihm"]
 
 [resource]

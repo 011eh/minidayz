@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dtfiorc1xedwt"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_74xj6"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_74xj6"]
 [ext_resource type="Texture2D" uid="uid://ck68gun1dmqij" path="res://asset/images/equipment/clothes/shirt_green.png" id="2_y32k2"]
 
 [resource]

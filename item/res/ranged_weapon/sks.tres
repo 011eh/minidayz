@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" format=3 uid="uid://dwjfq6q6y6v3u"]
 
-[ext_resource type="Script" uid="uid://djegifnqumkrj" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ydppv"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_ydppv"]
 [ext_resource type="Texture2D" uid="uid://de01e460ajn6n" path="res://asset/images/equipment/weapon/main/sks.png" id="2_ypyij"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://cajpabu4evtbc"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_pfum4"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_pfum4"]
 [ext_resource type="Texture2D" uid="uid://dimphsmet42vh" path="res://asset/images/equipment/vest/bulletproof_vest.png" id="2_ppqkj"]
 
 [resource]

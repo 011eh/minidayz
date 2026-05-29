@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" format=3 uid="uid://b6o1cs61ejysx"]
 
-[ext_resource type="Script" uid="uid://djegifnqumkrj" path="res://item/res/script/ranged_weapon_resource.gd" id="1_xxs5n"]
+[ext_resource type="Script" uid="uid://b31hdybrcyk4k" path="res://item/res/script/ranged_weapon_resource.gd" id="1_xxs5n"]
 [ext_resource type="Texture2D" uid="uid://bbyt02wfghsb0" path="res://asset/images/equipment/weapon/pistol/sawed_repeater.png" id="2_vg0lf"]
 
 [resource]

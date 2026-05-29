@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://b61321y155v7u"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_a6fww"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_a6fww"]
 [ext_resource type="Texture2D" uid="uid://c7ha405h0fex" path="res://asset/images/equipment/backpack/school_backpack.png" id="2_vyn6i"]
 
 [resource]

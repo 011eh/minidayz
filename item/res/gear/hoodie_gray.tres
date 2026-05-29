@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://cv0ricencw7vp"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_snbam"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_snbam"]
 [ext_resource type="Texture2D" uid="uid://cvgahikiulemv" path="res://asset/images/equipment/clothes/hoodie_gray.png" id="2_u5px4"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dga7rv536h8ah"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_v3a5r"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_v3a5r"]
 [ext_resource type="Texture2D" uid="uid://beg81tgv76mla" path="res://asset/images/equipment/helmet/headlamp.png" id="2_2e333"]
 
 [resource]

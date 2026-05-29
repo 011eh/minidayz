@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="GearResource" format=3 uid="uid://dg8oa6gfosbty"]
 
-[ext_resource type="Script" uid="uid://ci0bv66mb0m2" path="res://item/res/script/gear_resource.gd" id="1_juxwy"]
+[ext_resource type="Script" uid="uid://c0dpwv07k6wum" path="res://item/res/script/gear_resource.gd" id="1_juxwy"]
 [ext_resource type="Texture2D" uid="uid://byl3qfiib3yyf" path="res://asset/images/equipment/helmet/police_hat.png" id="2_nykqi"]
 
 [resource]
