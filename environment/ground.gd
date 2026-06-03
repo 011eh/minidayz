@@ -3,21 +3,57 @@ extends Node2D
 @onready var ground_layer := %GroundLayer
 
 # Constants
-const BLOCK_SIZE = 17
+const BLOCK_SIZE = 17                            # 1 个 block = 17×17 terrain tile
 const MAP_SIZE_IN_BLOCKS = 16
 const TOTAL_MAP_SIZE = BLOCK_SIZE * MAP_SIZE_IN_BLOCKS # 272
-
-# Town settings
-const MIN_TOWNS = 25
-const MAX_TOWNS = 25
+const TILE_PX = 60                               # terrain tile 像素尺寸（见 尺度规格）
+const BLOCK_PX = BLOCK_SIZE * TILE_PX            # 1 个 block 的世界像素尺寸 = 1020（= 原版地点间距）
 
 # Road settings
-const MIN_ROAD_WIDTH = 2
-const MAX_ROAD_WIDTH = 4
+const ROAD_WIDTH = 4
+
+# 地块类型（统一数据源）：用枚举替代原版魔法数字（9/6/13…），
+# 注释标注原版网格类型码（见 城镇生成逻辑.md §3.3）以便对照照搬算法。
+enum BlockType {
+	EMPTY,        # 原版 0：空地 / 森林
+	VILLAGE,      # 原版 9：村庄
+	CITY,         # 原版 6：城市
+	MILITARY,     # 原版 5：军营
+	HOSPITAL,     # 原版 11：医院
+	FIRESTATION,  # 原版 15：消防站
+	ROAD_H,       # 原版 13：横向道路（roads_1 生成）
+	ROAD_V,       # 原版 12：纵向道路（roads_2 生成）
+	ROAD_CROSS,   # 原版 14：十字路口（roads_2 生成）
+	SECRET,       # 原版 2：秘密地点（roads_2 生成）
+}
+
+# 5 类地点的集合（供「扫描相邻格找地点」等原版算法复用）
+const LOCATION_TYPES := [
+	BlockType.VILLAGE, BlockType.CITY, BlockType.MILITARY,
+	BlockType.HOSPITAL, BlockType.FIRESTATION,
+]
+# 3 种道路的集合
+const ROAD_TYPES := [BlockType.ROAD_H, BlockType.ROAD_V, BlockType.ROAD_CROSS]
+# 道路连接的地点类型（原版 roads_1/2 只连 9/6/11/15，军营 5 不连）
+const ROAD_CONNECT_TYPES := [
+	BlockType.VILLAGE, BlockType.CITY, BlockType.HOSPITAL, BlockType.FIRESTATION,
+]
+
+# 各关卡地点数量表（完全照原版 §3.1）：villages/cities/militaries/hospitals/firestations/secret/gas
+const LEVEL_LOCATION_COUNTS := {
+	0: {"village": 20, "city": 3, "military": 0, "hospital": 1, "firestation": 1, "secret": 1, "gas": 1},
+	1: {"village": 15, "city": 5, "military": 2, "hospital": 2, "firestation": 2, "secret": 1, "gas": 2},
+	2: {"village": 6, "city": 10, "military": 4, "hospital": 3, "firestation": 3, "secret": 1, "gas": 3},
+	3: {"village": 3, "city": 11, "military": 6, "hospital": 4, "firestation": 2, "secret": 1, "gas": 4},
+}
 
 # Data structures
-var towns: Array[Vector2i] = []  # Block coordinates
+var current_level := 0           # 当前关卡（决定地点数量表）
+var grid: Array = []             # 16×16，grid[y][x] = BlockType，生成与渲染的统一数据源
+var locations: Array[Dictionary] = []  # [{ block:Vector2i, type:BlockType, hotspot:Vector2 }]，供阶段 C 实例化
+var towns: Array[Vector2i] = []  # 5 类地点的 block 坐标（占位渲染 + 调试用）
 var roads: Array[Array] = []     # Road segments
+var gas_station_count := 0       # 加油站数量（阶段 C 后处理用，A 阶段仅记录）
 var rng: RandomNumberGenerator
 
 func _ready():
@@ -26,72 +62,182 @@ func _ready():
 	generate_world()
 
 func generate_world():
-	"""Main generation function"""
-	generate_towns_uniform()
-	generate_row_column_roads()
+	"""Main generation function（对标原版步骤 2→3→4）"""
+	init_grid()
+	generate_locations()      # 步骤2：5 类地点落子，写入 grid
+	generate_roads()          # 步骤3+4：roads_1 横向 / roads_2 纵向 + 十字
+	generate_secret_place()   # 步骤4 尾：秘密地点
+	collect_locations()       # 扫描 grid 汇总 locations（含 hotspot）+ towns
 	render_map()
 
-func generate_towns_uniform():
-	"""原版落子算法：随机抽格，要求目标格 3×3 邻域全空才落子，否则重抽"""
-	towns.clear()
-	var target_towns = rng.randi_range(MIN_TOWNS, MAX_TOWNS)
+# --- grid 统一数据源：初始化与存取辅助 ---
 
-	var attempts = 0
-	var max_attempts = target_towns * 200
-	while towns.size() < target_towns and attempts < max_attempts:
-		var pos = Vector2i(
+func init_grid():
+	"""把 grid 重置为 16×16 全 EMPTY"""
+	grid.clear()
+	for y in range(MAP_SIZE_IN_BLOCKS):
+		var row := []
+		row.resize(MAP_SIZE_IN_BLOCKS)
+		row.fill(BlockType.EMPTY)
+		grid.append(row)
+
+func is_in_grid(x: int, y: int) -> bool:
+	"""block 坐标是否在 16×16 网格内"""
+	return x >= 0 and x < MAP_SIZE_IN_BLOCKS and y >= 0 and y < MAP_SIZE_IN_BLOCKS
+
+func get_block(x: int, y: int) -> BlockType:
+	"""读取 block 类型；越界返回 EMPTY（便于「扫描相邻格」时无需特判边界）"""
+	if not is_in_grid(x, y):
+		return BlockType.EMPTY
+	return grid[y][x]
+
+func set_block(x: int, y: int, type: BlockType):
+	"""写入 block 类型（越界忽略）"""
+	if is_in_grid(x, y):
+		grid[y][x] = type
+
+func is_location(type: BlockType) -> bool:
+	"""是否为 5 类地点之一（村庄/城市/军营/医院/消防站）"""
+	return type in LOCATION_TYPES
+
+func is_road(type: BlockType) -> bool:
+	"""是否为道路（横/纵/十字）"""
+	return type in ROAD_TYPES
+
+# --- 步骤2：地点落子（完全照原版 §3.1/§3.2）---
+
+func generate_locations():
+	"""按关卡数量表，分 5 类用「3×3 邻域全空」算法落子并写入 grid"""
+	var counts = LEVEL_LOCATION_COUNTS.get(current_level, LEVEL_LOCATION_COUNTS[0])
+	gas_station_count = counts["gas"]
+	# 原版落子顺序：village → military → city → hospital → firestation
+	_place_type(BlockType.VILLAGE, counts["village"])
+	_place_type(BlockType.MILITARY, counts["military"])
+	_place_type(BlockType.CITY, counts["city"])
+	_place_type(BlockType.HOSPITAL, counts["hospital"])
+	_place_type(BlockType.FIRESTATION, counts["firestation"])
+
+func _place_type(type: BlockType, count: int):
+	"""随机抽格，要求 3×3 邻域全空则在中心落子，否则重抽，直到放满 count 个"""
+	var placed := 0
+	var attempts := 0
+	var max_attempts := count * 500 + 1000
+	while placed < count and attempts < max_attempts:
+		attempts += 1
+		var p := Vector2i(
 			rng.randi_range(0, MAP_SIZE_IN_BLOCKS - 1),
 			rng.randi_range(0, MAP_SIZE_IN_BLOCKS - 1)
 		)
-		if is_3x3_clear(pos):
-			towns.append(pos)
-		attempts += 1
+		if is_3x3_clear_at(p):
+			set_block(p.x, p.y, type)
+			placed += 1
+	if placed < count:
+		push_warning("地点落子未放满：type=%d 目标 %d 实放 %d" % [type, count, placed])
 
-	print("生成了 ", towns.size(), " 个城镇，位置：", towns)
-
-func is_3x3_clear(center: Vector2i) -> bool:
-	"""要求 center 周围 3×3 共 9 格内没有其它城镇（保证间距 ≥2 格）"""
-	for town in towns:
-		if abs(town.x - center.x) <= 1 and abs(town.y - center.y) <= 1:
-			return false
+func is_3x3_clear_at(center: Vector2i) -> bool:
+	"""center 周围 3×3 共 9 格在 grid 上全为 EMPTY（越界视为空，照原版）"""
+	for dy in range(-1, 2):
+		for dx in range(-1, 2):
+			if get_block(center.x + dx, center.y + dy) != BlockType.EMPTY:
+				return false
 	return true
 
-func generate_row_column_roads():
-	"""还原原版 roads_1 / roads_2：逐行/逐列只连接最先出现的前两个地点，确定性连接"""
+# --- 步骤3+4：道路网（完全照原版 roads_1 / roads_2）---
+
+func generate_roads():
+	"""roads_1 逐行 + roads_2 逐列：只连前两个 9/6/11/15 地点，之间填路，交叉处标十字"""
 	roads.clear()
 
-	if towns.size() < 2:
-		return
+	# roads_1（横向）：每一行(y)找前两个可连地点，之间空格填 ROAD_H
+	for y in range(MAP_SIZE_IN_BLOCKS):
+		var pair := _first_two_connectable_in_row(y)
+		if pair.x == -1 or pair.y == -1:
+			continue
+		for x in range(pair.x + 1, pair.y):
+			if get_block(x, y) == BlockType.EMPTY:
+				set_block(x, y, BlockType.ROAD_H)
+		roads.append(create_straight_path(Vector2i(pair.x, y), Vector2i(pair.y, y)))
 
-	# 按行分组城镇（roads_1 横向）
-	var towns_by_row = {}
-	for town in towns:
-		if not towns_by_row.has(town.y):
-			towns_by_row[town.y] = []
-		towns_by_row[town.y].append(town)
-
-	# 按列分组城镇（roads_2 纵向）
-	var towns_by_column = {}
-	for town in towns:
-		if not towns_by_column.has(town.x):
-			towns_by_column[town.x] = []
-		towns_by_column[town.x].append(town)
-
-	# roads_1：每行按 x 升序，连接最先出现的前两个地点
-	for row in towns_by_row.keys():
-		var row_towns = towns_by_row[row]
-		if row_towns.size() >= 2:
-			row_towns.sort_custom(func(a, b): return a.x < b.x)
-			roads.append(create_straight_path(row_towns[0], row_towns[1]))
-
-	# roads_2：每列按 y 升序，连接最先出现的前两个地点（与横向路交叉处由地形连接自动合并为十字）
-	for column in towns_by_column.keys():
-		var column_towns = towns_by_column[column]
-		if column_towns.size() >= 2:
-			column_towns.sort_custom(func(a, b): return a.y < b.y)
-			roads.append(create_straight_path(column_towns[0], column_towns[1]))
+	# roads_2（纵向）：每一列(x)找前两个可连地点，之间 ROAD_H→ROAD_CROSS、EMPTY→ROAD_V
+	for x in range(MAP_SIZE_IN_BLOCKS):
+		var pair := _first_two_connectable_in_column(x)
+		if pair.x == -1 or pair.y == -1:
+			continue
+		for y in range(pair.x + 1, pair.y):
+			var b := get_block(x, y)
+			if b == BlockType.ROAD_H:
+				set_block(x, y, BlockType.ROAD_CROSS)
+			elif b == BlockType.EMPTY:
+				set_block(x, y, BlockType.ROAD_V)
+		roads.append(create_straight_path(Vector2i(x, pair.x), Vector2i(x, pair.y)))
 
 	print("生成了 ", roads.size(), " 条道路连接")
+
+func _first_two_connectable_in_row(y: int) -> Vector2i:
+	"""返回第 y 行最先出现的两个可连地点的 x（Vector2i(first,second)，缺则为 -1）"""
+	var first := -1
+	var second := -1
+	for x in range(MAP_SIZE_IN_BLOCKS):
+		if get_block(x, y) in ROAD_CONNECT_TYPES:
+			if first == -1:
+				first = x
+			elif second == -1:
+				second = x
+				break
+	return Vector2i(first, second)
+
+func _first_two_connectable_in_column(x: int) -> Vector2i:
+	"""返回第 x 列最先出现的两个可连地点的 y（Vector2i(first,second)，缺则为 -1）"""
+	var first := -1
+	var second := -1
+	for y in range(MAP_SIZE_IN_BLOCKS):
+		if get_block(x, y) in ROAD_CONNECT_TYPES:
+			if first == -1:
+				first = y
+			elif second == -1:
+				second = y
+				break
+	return Vector2i(first, second)
+
+# --- 步骤4 尾：秘密地点（完全照原版 §4）---
+
+func generate_secret_place():
+	"""扫描「3×3 块全空 + 坐标在 2~15」的候选格，随机选一个在中心标 SECRET"""
+	var counts = LEVEL_LOCATION_COUNTS.get(current_level, LEVEL_LOCATION_COUNTS[0])
+	var secret_count: int = counts["secret"]
+	for _i in range(secret_count):
+		var candidates: Array[Vector2i] = []
+		# CurX/CurY ∈ [2,15]，落子中心 = (cx-1, cy-1) ∈ [1,14]
+		for cy in range(2, MAP_SIZE_IN_BLOCKS):
+			for cx in range(2, MAP_SIZE_IN_BLOCKS):
+				var center := Vector2i(cx - 1, cy - 1)
+				if is_3x3_clear_at(center):
+					candidates.append(center)
+		if candidates.is_empty():
+			break
+		var pick := candidates[rng.randi_range(0, candidates.size() - 1)]
+		set_block(pick.x, pick.y, BlockType.SECRET)
+
+# --- 扫描 grid 汇总地点列表（含 hotspot 世界坐标，供阶段 C 实例化）---
+
+func collect_locations():
+	"""遍历 grid，把 5 类地点 + 秘密地点收集为 locations，并记录 hotspot = block × 1020px"""
+	locations.clear()
+	towns.clear()
+	for y in range(MAP_SIZE_IN_BLOCKS):
+		for x in range(MAP_SIZE_IN_BLOCKS):
+			var t: BlockType = grid[y][x]
+			if not (is_location(t) or t == BlockType.SECRET):
+				continue
+			var block := Vector2i(x, y)
+			locations.append({
+				"block": block,
+				"type": t,
+				"hotspot": Vector2(block) * BLOCK_PX,
+			})
+			if is_location(t):
+				towns.append(block)
+	print("汇总地点 ", locations.size(), " 个（其中 5 类地点 ", towns.size(), " 个）")
 	analyze_connectivity()
 
 func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
@@ -140,13 +286,44 @@ func analyze_connectivity():
 
 func render_map():
 	"""Render towns and roads on the tilemap"""
-	# 先渲染道路（在底层）
+	# 先铺草地基底（加权随机，含花/石变体）
+	render_grass_base()
+
+	# 再渲染道路（在草地之上，覆盖其下草格并算过渡）
 	for road in roads:
 		render_road(road)
 
-	# 再渲染城镇（在上层）
+	# 最后渲染城镇（在上层）
 	for town_block in towns:
 		render_town(town_block)
+
+func render_grass_base():
+	"""用加权随机铺满整张地图的草地基底（变体靠低 probability 自然冒出）"""
+	var pick := create_pick_random_tile_callable(ground_layer, 0)
+	for x in range(TOTAL_MAP_SIZE):
+		for y in range(TOTAL_MAP_SIZE):
+			ground_layer.set_cell(Vector2i(x, y), 0, pick.call())
+
+# 从 TileMapPattern 取候选 tile，按各 tile 的 probability 加权随机（仿 Godot 编辑器散布逻辑）
+# 参考: editor/plugins/tiles/tile_map_editor.cpp
+func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int, scattering := 0.0) -> Callable:
+	var pattern := layer.tile_set.get_pattern(pattern_id)
+	var source := layer.tile_set.get_source(0) as TileSetAtlasSource
+	var coords_list: Array[Vector2i] = []
+	var cumulative: Array[float] = []   # 预存累积权重，call() 内免重复查表
+	var sum := 0.0
+	for cell in pattern.get_used_cells():
+		var c := pattern.get_cell_atlas_coords(cell)
+		sum += source.get_tile_data(c, 0).probability
+		coords_list.append(c)
+		cumulative.append(sum)
+	return func() -> Vector2i:
+		# scattering > 0 时上界超过 sum，落空返回 (-1,-1)（留洞）；草地基底用默认 0 铺满
+		var rand := rng.randf_range(0, sum + sum * scattering)
+		for i in coords_list.size():
+			if cumulative[i] >= rand:
+				return coords_list[i]
+		return Vector2i(-1, -1)
 
 func render_town(block_pos: Vector2i):
 	"""Render a town in the specified block"""
@@ -163,16 +340,32 @@ func render_road(path: Array):
 	if path.size() < 2:
 		return
 
-	var road_width = rng.randi_range(MIN_ROAD_WIDTH, MAX_ROAD_WIDTH)
+	var road_width = ROAD_WIDTH
 
-	# Convert block path to cell path
-	var cell_path = []
-	for block_pos in path:
-		var block_center = Vector2i(block_pos) * BLOCK_SIZE + Vector2i(BLOCK_SIZE / 2, BLOCK_SIZE / 2)
-		cell_path.append(block_center)
+	# 道路只铺在两城镇之间的空地上，端点止于城镇 block 边缘（不进入城镇内部）
+	var a := Vector2i(path[0])
+	var b := Vector2i(path[path.size() - 1])
+	var half := BLOCK_SIZE / 2
+	var start_cell: Vector2i
+	var end_cell: Vector2i
+
+	if a.y == b.y:
+		# 水平路：中心线 y 取城镇行中心，x 从前一城镇右缘的下一格 到 后一城镇左缘的前一格
+		var y := a.y * BLOCK_SIZE + half
+		var lo: int = min(a.x, b.x)
+		var hi: int = max(a.x, b.x)
+		start_cell = Vector2i((lo + 1) * BLOCK_SIZE, y)
+		end_cell = Vector2i(hi * BLOCK_SIZE - 1, y)
+	else:
+		# 垂直路：中心线 x 取城镇列中心
+		var x := a.x * BLOCK_SIZE + half
+		var lo: int = min(a.y, b.y)
+		var hi: int = max(a.y, b.y)
+		start_cell = Vector2i(x, (lo + 1) * BLOCK_SIZE)
+		end_cell = Vector2i(x, hi * BLOCK_SIZE - 1)
 
 	# Draw road using cellular approach
-	draw_road_path(cell_path, road_width)
+	draw_road_path([start_cell, end_cell], road_width)
 
 func draw_road_path(cell_path: Array, width: int):
 	"""Draw road using a cellular approach"""
@@ -251,13 +444,11 @@ func set_seed(seed_value: int):
 	"""Set random seed for reproducible generation"""
 	rng.seed = seed_value
 
-# 新增：重新生成道路（保持城镇不变）
-func regenerate_roads_only():
-	"""只重新生成道路，保持城镇位置不变"""
-	generate_row_column_roads()
-	# 清除之前的渲染，重新渲染
+# 重新生成整张地图（道路写入 grid，无法只重算道路，故整图重来）
+func regenerate():
+	"""清空并重新生成整张地图"""
 	ground_layer.clear()
-	render_map()
+	generate_world()
 
 # Debug function
 func get_generation_info() -> Dictionary:
