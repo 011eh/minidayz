@@ -5,11 +5,11 @@ extends Node2D
 
 @export var map_seed: int = 0
 
-const BLOCK_SIZE := 17
+const BLOCK_SIZE_IN_TILE := 17
 const MAP_SIZE_IN_BLOCKS := 16
-const TOTAL_MAP_SIZE := BLOCK_SIZE * MAP_SIZE_IN_BLOCKS
+const TOTAL_MAP_SIZE := BLOCK_SIZE_IN_TILE * MAP_SIZE_IN_BLOCKS
 const TILE_PX := 60
-const BLOCK_PX := BLOCK_SIZE * TILE_PX
+const BLOCK_PX := BLOCK_SIZE_IN_TILE * TILE_PX
 const ROAD_WIDTH := 4
 const DECO_TILE_PX := 30
 const DECO_BLOCK_SIZE := BLOCK_PX / DECO_TILE_PX
@@ -88,17 +88,9 @@ func _ready():
 func generate_world():
 	"""Main generation function（对标原版步骤 2→3→4）"""
 	init_grid()
-
-	# 步骤2：5 类地点落子，写入 grid
 	generate_locations()
-
-	# 步骤3+4：roads_1 横向 / roads_2 纵向 + 十字
 	generate_roads()
-
-	# 步骤4 尾：秘密地点
 	generate_secret_place()
-
-	# 扫描 grid 汇总 locations（含 hotspot）+ towns
 	collect_locations()
 
 	render_map()
@@ -179,7 +171,7 @@ func generate_roads():
 	"""roads_1 逐行 + roads_2 逐列：只连前两个 9/6/11/15 地点，之间填路，交叉处标十字"""
 	roads.clear()
 
-	# roads_1（横向）：每一行(y)找前两个可连地点，之间空格填 ROAD_H
+	# 横向：每一行(y)找前两个可连地点，之间空格填 ROAD_H
 	for y in range(MAP_SIZE_IN_BLOCKS):
 		var pair := _first_two_connectable_in_row(y)
 		if pair.x == -1 or pair.y == -1:
@@ -189,7 +181,7 @@ func generate_roads():
 				set_block(x, y, BlockType.ROAD_H)
 		roads.append(create_straight_path(Vector2i(pair.x, y), Vector2i(pair.y, y)))
 
-	# roads_2（纵向）：每一列(x)找前两个可连地点，之间 ROAD_H→ROAD_CROSS、EMPTY→ROAD_V
+	# 纵向：每一列(x)找前两个可连地点，之间 ROAD_H → ROAD_CROSS、EMPTY → ROAD_V
 	for x in range(MAP_SIZE_IN_BLOCKS):
 		var pair := _first_two_connectable_in_column(x)
 		if pair.x == -1 or pair.y == -1:
@@ -373,24 +365,24 @@ func render_road(path: Array) -> void:
 	# 道路只铺在两城镇之间的空地上，端点止于城镇 block 边缘（不进入城镇内部）
 	var a := Vector2i(path[0])
 	var b := Vector2i(path[path.size() - 1])
-	var half := BLOCK_SIZE / 2
+	var half := BLOCK_SIZE_IN_TILE / 2
 	var start_cell: Vector2i
 	var end_cell: Vector2i
 
 	if a.y == b.y:
 		# 水平路：中心线 y 取城镇行中心，x 从前一城镇右缘的下一格 到 后一城镇左缘的前一格
-		var y := a.y * BLOCK_SIZE + half
+		var y := a.y * BLOCK_SIZE_IN_TILE + half
 		var lo: int = min(a.x, b.x)
 		var hi: int = max(a.x, b.x)
-		start_cell = Vector2i((lo + 1) * BLOCK_SIZE, y)
-		end_cell = Vector2i(hi * BLOCK_SIZE - 1, y)
+		start_cell = Vector2i((lo + 1) * BLOCK_SIZE_IN_TILE, y)
+		end_cell = Vector2i(hi * BLOCK_SIZE_IN_TILE - 1, y)
 	else:
 		# 垂直路：中心线 x 取城镇列中心
-		var x := a.x * BLOCK_SIZE + half
+		var x := a.x * BLOCK_SIZE_IN_TILE + half
 		var lo: int = min(a.y, b.y)
 		var hi: int = max(a.y, b.y)
-		start_cell = Vector2i(x, (lo + 1) * BLOCK_SIZE)
-		end_cell = Vector2i(x, hi * BLOCK_SIZE - 1)
+		start_cell = Vector2i(x, (lo + 1) * BLOCK_SIZE_IN_TILE)
+		end_cell = Vector2i(x, hi * BLOCK_SIZE_IN_TILE - 1)
 
 	# Draw road using cellular approach
 	draw_road_path([start_cell, end_cell], ROAD_WIDTH)
