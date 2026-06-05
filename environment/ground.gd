@@ -5,32 +5,30 @@ extends Node2D
 
 @export var map_seed: int = 0
 
-const BLOCK_SIZE = 17
-const MAP_SIZE_IN_BLOCKS = 16
-const TOTAL_MAP_SIZE = BLOCK_SIZE * MAP_SIZE_IN_BLOCKS
-const TILE_PX = 60
-const BLOCK_PX = BLOCK_SIZE * TILE_PX
+const BLOCK_SIZE := 17
+const MAP_SIZE_IN_BLOCKS := 16
+const TOTAL_MAP_SIZE := BLOCK_SIZE * MAP_SIZE_IN_BLOCKS
+const TILE_PX := 60
+const BLOCK_PX := BLOCK_SIZE * TILE_PX
+const ROAD_WIDTH := 4
+const DECO_TILE_PX := 30
+const DECO_BLOCK_SIZE := BLOCK_PX / DECO_TILE_PX
 
-const ROAD_WIDTH = 4
+# atlas source id
+const DECO_SRC_GRASS := 0
+const DECO_SRC_ROAD := 1
+const DECO_SRC_VILLAGE := 2
+const DECO_SRC_CITY := 3
+const DECO_SRC_MILITARY := 4
+const DECO_SRC_FOREST := 5
 
-const DECO_TILE_PX = 30
-const DECO_BLOCK_SIZE = BLOCK_PX / DECO_TILE_PX
-# 各 block 类型对应的 decoration source（ground_decoration.tres 已按类型拆成 6 个 atlas source，
-# 每个 source 内的 tile 自带 probability，散布时按权重抽取——对标原版每类地点各撒自己一套装饰 tile）：
-const DECO_SRC_GRASS = 0
-const DECO_SRC_ROAD = 1
-const DECO_SRC_VILLAGE = 2
-const DECO_SRC_CITY = 3
-const DECO_SRC_MILITARY = 4
-const DECO_SRC_FOREST = 5
-# 每 block 散布数量（对标原版 map_generation.decoded.txt 各地点的 Repeat(n)）：
-const DECO_COUNT_TOWN = 250                       # 村庄/城市/医院/消防站（原版 Repeat(250)）
-const DECO_COUNT_MILITARY = 200                   # 军营（原版 Repeat(200)）
-const DECO_COUNT_BAND = 70                        # 道路块每条带（原版每带 Repeat(70)，共 3 带）
-const DECO_COUNT_FOREST = 210                     # 野外/秘密地点整块（原版野外 70×3 竖带 = 210）
+# block 散布数量
+const DECO_COUNT_TOWN := 250
+const DECO_COUNT_MILITARY := 200
+const DECO_COUNT_BAND := 70
+const DECO_COUNT_FOREST := 210
 
-# 地块类型（统一数据源）：用枚举替代原版魔法数字（9/6/13…），
-# 注释标注原版网格类型码（见 城镇生成逻辑.md §3.3）以便对照照搬算法。
+
 enum BlockType {
 	EMPTY,
 	VILLAGE,
@@ -44,19 +42,20 @@ enum BlockType {
 	SECRET,
 }
 
-# 5 类地点的集合（供「扫描相邻格找地点」等原版算法复用）
+
 const LOCATION_TYPES := [
 	BlockType.VILLAGE, BlockType.CITY, BlockType.MILITARY,
 	BlockType.HOSPITAL, BlockType.FIRESTATION,
 ]
-# 3 种道路的集合
+
 const ROAD_TYPES := [BlockType.ROAD_H, BlockType.ROAD_V, BlockType.ROAD_CROSS]
-# 道路连接的地点类型（原版 roads_1/2 只连 9/6/11/15，军营 5 不连）
+
+# 道路连接的地点类型，军营 5 不连
 const ROAD_CONNECT_TYPES := [
 	BlockType.VILLAGE, BlockType.CITY, BlockType.HOSPITAL, BlockType.FIRESTATION,
 ]
 
-# 各关卡地点数量表（完全照原版 §3.1）：villages/cities/militaries/hospitals/firestations/secret/gas
+
 const LEVEL_LOCATION_COUNTS := {
 	0: {"village": 20, "city": 3, "military": 0, "hospital": 1, "firestation": 1, "secret": 1, "gas": 1},
 	1: {"village": 15, "city": 5, "military": 2, "hospital": 2, "firestation": 2, "secret": 1, "gas": 2},
@@ -64,14 +63,18 @@ const LEVEL_LOCATION_COUNTS := {
 	3: {"village": 3, "city": 11, "military": 6, "hospital": 4, "firestation": 2, "secret": 1, "gas": 4},
 }
 
-# Data structures
-var current_level := 0           # 当前关卡（决定地点数量表）
-var grid: Array = []             # 16×16，grid[y][x] = BlockType，生成与渲染的统一数据源
-var locations: Array[Dictionary] = []  # [{ block:Vector2i, type:BlockType, hotspot:Vector2 }]，供阶段 C 实例化
-var towns: Array[Vector2i] = []  # 5 类地点的 block 坐标（占位渲染 + 调试用）
-var roads: Array[Array] = []     # Road segments
-var gas_station_count := 0       # 加油站数量（阶段 C 后处理用，A 阶段仅记录）
+var current_level := 0
+var grid: Array[Array] = []
+
+# [{ block:Vector2i, type:BlockType, hotspot:Vector2 }]，供阶段 C 实例化
+var locations: Array[Dictionary] = []
+
+# 5 类地点的 block 坐标（占位渲染 + 调试用）
+var towns: Array[Vector2i] = []
+var roads: Array[Array] = []
+var gas_station_count := 0
 var rng: RandomNumberGenerator
+
 
 func _ready():
 	rng = RandomNumberGenerator.new()
@@ -85,10 +88,19 @@ func _ready():
 func generate_world():
 	"""Main generation function（对标原版步骤 2→3→4）"""
 	init_grid()
-	generate_locations()      # 步骤2：5 类地点落子，写入 grid
-	generate_roads()          # 步骤3+4：roads_1 横向 / roads_2 纵向 + 十字
-	generate_secret_place()   # 步骤4 尾：秘密地点
-	collect_locations()       # 扫描 grid 汇总 locations（含 hotspot）+ towns
+
+	# 步骤2：5 类地点落子，写入 grid
+	generate_locations()
+
+	# 步骤3+4：roads_1 横向 / roads_2 纵向 + 十字
+	generate_roads()
+
+	# 步骤4 尾：秘密地点
+	generate_secret_place()
+
+	# 扫描 grid 汇总 locations（含 hotspot）+ towns
+	collect_locations()
+
 	render_map()
 
 # --- grid 统一数据源：初始化与存取辅助 ---
@@ -125,13 +137,11 @@ func is_road(type: BlockType) -> bool:
 	"""是否为道路（横/纵/十字）"""
 	return type in ROAD_TYPES
 
-# --- 步骤2：地点落子（完全照原版 §3.1/§3.2）---
-
 func generate_locations():
 	"""按关卡数量表，分 5 类用「3×3 邻域全空」算法落子并写入 grid"""
 	var counts = LEVEL_LOCATION_COUNTS.get(current_level, LEVEL_LOCATION_COUNTS[0])
 	gas_station_count = counts["gas"]
-	# 原版落子顺序：village → military → city → hospital → firestation
+
 	_place_type(BlockType.VILLAGE, counts["village"])
 	_place_type(BlockType.MILITARY, counts["military"])
 	_place_type(BlockType.CITY, counts["city"])
@@ -220,6 +230,27 @@ func _first_two_connectable_in_column(x: int) -> Vector2i:
 				break
 	return Vector2i(first, second)
 
+func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
+	"""创建两点间的直线路径"""
+	var path := []
+	var current := start
+	path.append(current)
+
+	if start.x == end.x:
+		# 垂直移动
+		var direction := 1 if end.y > start.y else -1
+		while current.y != end.y:
+			current.y += direction
+			path.append(Vector2i(current))
+	elif start.y == end.y:
+		# 水平移动
+		var direction := 1 if end.x > start.x else -1
+		while current.x != end.x:
+			current.x += direction
+			path.append(Vector2i(current))
+
+	return path
+
 # --- 步骤4 尾：秘密地点（完全照原版 §4）---
 
 func generate_secret_place():
@@ -228,6 +259,7 @@ func generate_secret_place():
 	var secret_count: int = counts["secret"]
 	for _i in range(secret_count):
 		var candidates: Array[Vector2i] = []
+
 		# CurX/CurY ∈ [2,15]，落子中心 = (cx-1, cy-1) ∈ [1,14]
 		for cy in range(2, MAP_SIZE_IN_BLOCKS):
 			for cx in range(2, MAP_SIZE_IN_BLOCKS):
@@ -261,31 +293,10 @@ func collect_locations():
 	print("汇总地点 ", locations.size(), " 个（其中 5 类地点 ", towns.size(), " 个）")
 	analyze_connectivity()
 
-func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
-	"""创建两点间的直线路径"""
-	var path = []
-	var current = start
-	path.append(current)
-
-	if start.x == end.x:
-		# 垂直移动
-		var direction = 1 if end.y > start.y else -1
-		while current.y != end.y:
-			current.y += direction
-			path.append(Vector2i(current))
-	elif start.y == end.y:
-		# 水平移动
-		var direction = 1 if end.x > start.x else -1
-		while current.x != end.x:
-			current.x += direction
-			path.append(Vector2i(current))
-
-	return path
-
 func analyze_connectivity():
 	"""分析城镇连接情况"""
-	var connected_towns = {}
-	var isolated_towns = []
+	var connected_towns := {}
+	var isolated_towns := []
 
 	# 统计连接的城镇
 	for road in roads:
@@ -305,12 +316,15 @@ func analyze_connectivity():
 	if isolated_towns.size() > 0:
 		print("孤立城镇位置: ", isolated_towns)
 
+# --- 渲染：草地基底 → 道路 → 装饰（顺序对标 render_map 调用流）---
+
 func render_map():
 	"""Render roads and decoration on the tilemap
 
 	城镇不在地面层渲染（建筑在阶段 C 实例化）；调试时由 WorldInspector 叠加层
 	标出地点范围与类型，地面这里保持草地即可。
 	"""
+
 	# 先铺草地基底（加权随机，含花/石变体）
 	render_grass_base()
 
@@ -321,70 +335,6 @@ func render_map():
 	# 装饰层（独立 TileMapLayer，叠在最上）
 	render_decoration()
 
-func render_decoration():
-	"""按 grid 地块类型散布装饰（对标原版 ground_enviroment 的按地点散布）
-
-	每类地点撒自己一套装饰 tile（source 按类型拆分，见 DECO_SRC_*）：
-	- 道路块：照原版 3 条带——中带撒路面残骸(source 1)，两侧带撒草地(source 0)，横/纵路决定分带轴
-	- 村庄/城市/军营/医院/消防：整块均匀撒对应类型装饰（建筑在阶段 C 会叠在其上）
-	- 秘密地点 / 空地：撒野外植被(source 5)
-	"""
-	decoration_layer.clear()
-	# 为每个 source 预建「按 tile probability 加权随机取 atlas 坐标」的闭包
-	var picks := {}
-	var ts: TileSet = decoration_layer.tile_set
-	for i in range(ts.get_source_count()):
-		var sid: int = ts.get_source_id(i)
-		picks[sid] = create_deco_pick(sid)
-	for by in range(MAP_SIZE_IN_BLOCKS):
-		for bx in range(MAP_SIZE_IN_BLOCKS):
-			var type: BlockType = grid[by][bx]
-			var org := Vector2i(bx * DECO_BLOCK_SIZE, by * DECO_BLOCK_SIZE)
-			if is_road(type):
-				_scatter_road_block(type, org, picks)
-			elif is_location(type):
-				var sid := _location_deco_source(type)
-				var count := DECO_COUNT_MILITARY if type == BlockType.MILITARY else DECO_COUNT_TOWN
-				_scatter_band(org, sid, picks[sid], count, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-			else:
-				# 秘密地点与空地：野外植被（原版野外/wilderness 装饰集）
-				_scatter_band(org, DECO_SRC_FOREST, picks[DECO_SRC_FOREST], DECO_COUNT_FOREST, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-
-func _location_deco_source(type: BlockType) -> int:
-	"""5 类地点 → 对应 decoration source（医院/消防站共用城市装饰集，照原版同属 town set）"""
-	match type:
-		BlockType.VILLAGE: return DECO_SRC_VILLAGE
-		BlockType.CITY: return DECO_SRC_CITY
-		BlockType.MILITARY: return DECO_SRC_MILITARY
-		BlockType.HOSPITAL: return DECO_SRC_CITY
-		BlockType.FIRESTATION: return DECO_SRC_CITY
-		_: return DECO_SRC_GRASS
-
-func _scatter_road_block(type: BlockType, org: Vector2i, picks: Dictionary):
-	"""道路块按原版 3 条带散布：中带=路面残骸(source 1)，两侧=草地(source 0)；横路按 y 分带，纵路按 x 分带"""
-	var third := DECO_BLOCK_SIZE / 3   # 34/3 ≈ 11，对应原版 0~11 / 11~22 / 22~33
-	var grass_pick: Callable = picks[DECO_SRC_GRASS]
-	var road_pick: Callable = picks[DECO_SRC_ROAD]
-	if type == BlockType.ROAD_V:
-		# 纵路：左带草 / 中带路 / 右带草（按 x 切）
-		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, third, 0, DECO_BLOCK_SIZE)
-		_scatter_band(org, DECO_SRC_ROAD,  road_pick,  DECO_COUNT_BAND, third, third * 2, 0, DECO_BLOCK_SIZE)
-		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, third * 2, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-	else:
-		# 横路 / 十字：上带草 / 中带路 / 下带草（按 y 切）
-		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, 0, third)
-		_scatter_band(org, DECO_SRC_ROAD,  road_pick,  DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, third, third * 2)
-		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, third * 2, DECO_BLOCK_SIZE)
-
-func _scatter_band(org: Vector2i, source_id: int, pick: Callable, count: int, x0: int, x1: int, y0: int, y1: int):
-	"""在 block 内的子矩形 [x0,x1)×[y0,y1) 里随机散布 count 个加权 tile（对标原版 Repeat(count) + SetTile(random,random,choose)）"""
-	for _i in range(count):
-		var coords: Vector2i = pick.call()
-		if coords == Vector2i(-1, -1):
-			continue
-		var cell := org + Vector2i(rng.randi_range(x0, x1 - 1), rng.randi_range(y0, y1 - 1))
-		decoration_layer.set_cell(cell, source_id, coords)
-
 func render_grass_base():
 	"""用加权随机铺满整张地图的草地基底（变体靠低 probability 自然冒出）"""
 	var pick := create_pick_random_tile_callable(ground_layer, 0)
@@ -392,34 +342,15 @@ func render_grass_base():
 		for y in range(TOTAL_MAP_SIZE):
 			ground_layer.set_cell(Vector2i(x, y), 0, pick.call())
 
-# 针对某个 decoration source，遍历其全部 tile，按各 tile 的 probability 构建加权随机取 atlas 坐标的闭包
-# （ground_decoration.tres 已按类型把装饰拆成独立 source，无需再借 pattern 间接取 tile）
-func create_deco_pick(source_id: int) -> Callable:
-	var source := decoration_layer.tile_set.get_source(source_id) as TileSetAtlasSource
-	var coords_list: Array[Vector2i] = []
-	var cumulative: Array[float] = []   # 预存累积权重，call() 内免重复求和
-	var sum := 0.0
-	for i in range(source.get_tiles_count()):
-		var c := source.get_tile_id(i)
-		sum += source.get_tile_data(c, 0).probability
-		coords_list.append(c)
-		cumulative.append(sum)
-	return func() -> Vector2i:
-		if coords_list.is_empty():
-			return Vector2i(-1, -1)
-		var rand := rng.randf_range(0, sum)
-		for i in coords_list.size():
-			if cumulative[i] >= rand:
-				return coords_list[i]
-		return coords_list[coords_list.size() - 1]
-
 # 从 TileMapPattern 取候选 tile，按各 tile 的 probability 加权随机（仿 Godot 编辑器散布逻辑）
 # 参考: editor/plugins/tiles/tile_map_editor.cpp
 func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int, scattering := 0.0) -> Callable:
 	var pattern := layer.tile_set.get_pattern(pattern_id)
 	var source := layer.tile_set.get_source(0) as TileSetAtlasSource
 	var coords_list: Array[Vector2i] = []
-	var cumulative: Array[float] = []   # 预存累积权重，call() 内免重复查表
+
+	# 预存累积权重，call() 内免重复查表
+	var cumulative: Array[float] = []
 	var sum := 0.0
 	for cell in pattern.get_used_cells():
 		var c := pattern.get_cell_atlas_coords(cell)
@@ -434,12 +365,10 @@ func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int, scat
 				return coords_list[i]
 		return Vector2i(-1, -1)
 
-func render_road(path: Array):
+func render_road(path: Array) -> void:
 	"""Render a road along the given path"""
 	if path.size() < 2:
 		return
-
-	var road_width = ROAD_WIDTH
 
 	# 道路只铺在两城镇之间的空地上，端点止于城镇 block 边缘（不进入城镇内部）
 	var a := Vector2i(path[0])
@@ -464,25 +393,25 @@ func render_road(path: Array):
 		end_cell = Vector2i(x, hi * BLOCK_SIZE - 1)
 
 	# Draw road using cellular approach
-	draw_road_path([start_cell, end_cell], road_width)
+	draw_road_path([start_cell, end_cell], ROAD_WIDTH)
 
 func draw_road_path(cell_path: Array, width: int):
 	"""Draw road using a cellular approach"""
-	var road_cells = {}
-	var half_width = width / 2
+	var road_cells := {}
+	var half_width := width / 2
 
 	# Process each segment of the path
 	for i in range(cell_path.size() - 1):
-		var start = Vector2i(cell_path[i])
-		var end = Vector2i(cell_path[i + 1])
+		var start := Vector2i(cell_path[i])
+		var end := Vector2i(cell_path[i + 1])
 
 		# Get all cells along this line segment
-		var line_cells = get_line_cells(start, end)
+		var line_cells := get_line_cells(start, end)
 
 		# For each cell on the line, add surrounding cells based on width
 		for cell in line_cells:
 			# Determine the perpendicular direction for width
-			var direction = Vector2((end - start)).normalized()
+			var direction := Vector2((end - start)).normalized()
 			var perpendicular: Vector2
 
 			if abs(direction.x) > abs(direction.y):
@@ -503,20 +432,20 @@ func draw_road_path(cell_path: Array, width: int):
 
 func get_line_cells(start: Vector2i, end: Vector2i) -> Array:
 	"""Get all cells along a line using Bresenham's algorithm"""
-	var cells = []
-	var x0 = start.x
-	var y0 = start.y
-	var x1 = end.x
-	var y1 = end.y
+	var cells := []
+	var x0 := start.x
+	var y0 := start.y
+	var x1 := end.x
+	var y1 := end.y
 
 	var dx = abs(x1 - x0)
 	var dy = abs(y1 - y0)
-	var sx = 1 if x0 < x1 else -1
-	var sy = 1 if y0 < y1 else -1
+	var sx := 1 if x0 < x1 else -1
+	var sy := 1 if y0 < y1 else -1
 	var err = dx - dy
 
-	var x = x0
-	var y = y0
+	var x := x0
+	var y := y0
 
 	while true:
 		cells.append(Vector2i(x, y))
@@ -539,6 +468,98 @@ func is_valid_cell(cell_pos: Vector2i) -> bool:
 	return cell_pos.x >= 0 and cell_pos.x < TOTAL_MAP_SIZE and \
 	cell_pos.y >= 0 and cell_pos.y < TOTAL_MAP_SIZE
 
+func render_decoration():
+	"""按 grid 地块类型散布装饰（对标原版 ground_enviroment 的按地点散布）
+
+	每类地点撒自己一套装饰 tile（source 按类型拆分，见 DECO_SRC_*）：
+	- 道路块：照原版 3 条带——中带撒路面残骸(source 1)，两侧带撒草地(source 0)，横/纵路决定分带轴
+	- 村庄/城市/军营/医院/消防：整块均匀撒对应类型装饰（建筑在阶段 C 会叠在其上）
+	- 秘密地点 / 空地：撒野外植被(source 5)
+	"""
+	decoration_layer.clear()
+
+	# 为每个 source 预建「按 tile probability 加权随机取 atlas 坐标」的闭包
+	var picks := {}
+	var ts: TileSet = decoration_layer.tile_set
+	for i in range(ts.get_source_count()):
+		var sid: int = ts.get_source_id(i)
+		picks[sid] = create_deco_pick(sid)
+	for by in range(MAP_SIZE_IN_BLOCKS):
+		for bx in range(MAP_SIZE_IN_BLOCKS):
+			var type: BlockType = grid[by][bx]
+			var org := Vector2i(bx * DECO_BLOCK_SIZE, by * DECO_BLOCK_SIZE)
+			if is_road(type):
+				_scatter_road_block(type, org, picks)
+			elif is_location(type):
+				var sid := _location_deco_source(type)
+				var count := DECO_COUNT_MILITARY if type == BlockType.MILITARY else DECO_COUNT_TOWN
+				_scatter_band(org, sid, picks[sid], count, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
+			else:
+				# 秘密地点与空地：野外植被（原版野外/wilderness 装饰集）
+				_scatter_band(org, DECO_SRC_FOREST, picks[DECO_SRC_FOREST], DECO_COUNT_FOREST, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
+
+# 针对某个 decoration source，遍历其全部 tile，按各 tile 的 probability 构建加权随机取 atlas 坐标的闭包
+# （ground_decoration.tres 已按类型把装饰拆成独立 source，无需再借 pattern 间接取 tile）
+func create_deco_pick(source_id: int) -> Callable:
+	var source := decoration_layer.tile_set.get_source(source_id) as TileSetAtlasSource
+	var coords_list: Array[Vector2i] = []
+
+	# 预存累积权重，call() 内免重复求和
+	var cumulative: Array[float] = []
+	var sum := 0.0
+	for i in range(source.get_tiles_count()):
+		var c := source.get_tile_id(i)
+		sum += source.get_tile_data(c, 0).probability
+		coords_list.append(c)
+		cumulative.append(sum)
+	return func() -> Vector2i:
+		if coords_list.is_empty():
+			return Vector2i(-1, -1)
+		var rand := rng.randf_range(0, sum)
+		for i in coords_list.size():
+			if cumulative[i] >= rand:
+				return coords_list[i]
+		return coords_list[coords_list.size() - 1]
+
+func _location_deco_source(type: BlockType) -> int:
+	"""5 类地点 → 对应 decoration source（医院/消防站共用城市装饰集，照原版同属 town set）"""
+	match type:
+		BlockType.VILLAGE: return DECO_SRC_VILLAGE
+		BlockType.CITY: return DECO_SRC_CITY
+		BlockType.MILITARY: return DECO_SRC_MILITARY
+		BlockType.HOSPITAL: return DECO_SRC_CITY
+		BlockType.FIRESTATION: return DECO_SRC_CITY
+		_: return DECO_SRC_GRASS
+
+func _scatter_road_block(type: BlockType, org: Vector2i, picks: Dictionary):
+	"""道路块按原版 3 条带散布：中带=路面残骸(source 1)，两侧=草地(source 0)；横路按 y 分带，纵路按 x 分带"""
+
+	# 34/3 ≈ 11，对应原版 0~11 / 11~22 / 22~33
+	var third := DECO_BLOCK_SIZE / 3
+	var grass_pick: Callable = picks[DECO_SRC_GRASS]
+	var road_pick: Callable = picks[DECO_SRC_ROAD]
+	if type == BlockType.ROAD_V:
+		# 纵路：左带草 / 中带路 / 右带草（按 x 切）
+		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, third, 0, DECO_BLOCK_SIZE)
+		_scatter_band(org, DECO_SRC_ROAD,  road_pick,  DECO_COUNT_BAND, third, third * 2, 0, DECO_BLOCK_SIZE)
+		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, third * 2, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
+	else:
+		# 横路 / 十字：上带草 / 中带路 / 下带草（按 y 切）
+		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, 0, third)
+		_scatter_band(org, DECO_SRC_ROAD,  road_pick,  DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, third, third * 2)
+		_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, third * 2, DECO_BLOCK_SIZE)
+
+func _scatter_band(org: Vector2i, source_id: int, pick: Callable, count: int, x0: int, x1: int, y0: int, y1: int):
+	"""在 block 内的子矩形 [x0,x1)×[y0,y1) 里随机散布 count 个加权 tile（对标原版 Repeat(count) + SetTile(random,random,choose)）"""
+	for _i in range(count):
+		var coords: Vector2i = pick.call()
+		if coords == Vector2i(-1, -1):
+			continue
+		var cell := org + Vector2i(rng.randi_range(x0, x1 - 1), rng.randi_range(y0, y1 - 1))
+		decoration_layer.set_cell(cell, source_id, coords)
+
+# --- 工具 / 重新生成 ---
+
 func set_seed(seed_value: int):
 	"""Set random seed for reproducible generation"""
 	rng.seed = seed_value
@@ -549,7 +570,8 @@ func regenerate():
 	ground_layer.clear()
 	generate_world()
 
-# Debug function
+# --- Debug ---
+
 func get_generation_info() -> Dictionary:
 	"""Return information about the generated world"""
 	return {
