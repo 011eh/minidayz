@@ -3,29 +3,26 @@ extends Node2D
 @onready var ground_layer := %GroundLayer
 @onready var decoration_layer := %DecorationLayer
 
-@export var map_seed: int = 0  # 地图种子：0 = 每次随机；非 0 = 用此种子固定复现
+@export var map_seed: int = 0
 
-# Constants
-const BLOCK_SIZE = 17                            # 1 个 block = 17×17 terrain tile
+const BLOCK_SIZE = 17
 const MAP_SIZE_IN_BLOCKS = 16
-const TOTAL_MAP_SIZE = BLOCK_SIZE * MAP_SIZE_IN_BLOCKS # 272
-const TILE_PX = 60                               # terrain tile 像素尺寸（见 尺度规格）
-const BLOCK_PX = BLOCK_SIZE * TILE_PX            # 1 个 block 的世界像素尺寸 = 1020（= 原版地点间距）
+const TOTAL_MAP_SIZE = BLOCK_SIZE * MAP_SIZE_IN_BLOCKS
+const TILE_PX = 60
+const BLOCK_PX = BLOCK_SIZE * TILE_PX
 
-# Road settings
 const ROAD_WIDTH = 4
 
-# Decoration settings（装饰层：30px tile，每 block 34×34，对标原版 ground_enviroment/t221）
 const DECO_TILE_PX = 30
-const DECO_BLOCK_SIZE = BLOCK_PX / DECO_TILE_PX  # 1020/30 = 34，1 个 block 的装饰格数
+const DECO_BLOCK_SIZE = BLOCK_PX / DECO_TILE_PX
 # 各 block 类型对应的 decoration source（ground_decoration.tres 已按类型拆成 6 个 atlas source，
 # 每个 source 内的 tile 自带 probability，散布时按权重抽取——对标原版每类地点各撒自己一套装饰 tile）：
-const DECO_SRC_GRASS = 0      # 草地：草丛/石头/枯木/灌木（路两侧带、地点过渡）
-const DECO_SRC_ROAD = 1       # 残骸：轮胎/木头/血迹/杂物（路面中带）
-const DECO_SRC_VILLAGE = 2    # 村庄装饰
-const DECO_SRC_CITY = 3       # 城市装饰（医院/消防站共用：原版同属 town 装饰集）
-const DECO_SRC_MILITARY = 4   # 军营装饰
-const DECO_SRC_FOREST = 5     # 野外植被（空地 / 秘密地点）
+const DECO_SRC_GRASS = 0
+const DECO_SRC_ROAD = 1
+const DECO_SRC_VILLAGE = 2
+const DECO_SRC_CITY = 3
+const DECO_SRC_MILITARY = 4
+const DECO_SRC_FOREST = 5
 # 每 block 散布数量（对标原版 map_generation.decoded.txt 各地点的 Repeat(n)）：
 const DECO_COUNT_TOWN = 250                       # 村庄/城市/医院/消防站（原版 Repeat(250)）
 const DECO_COUNT_MILITARY = 200                   # 军营（原版 Repeat(200)）
@@ -35,16 +32,16 @@ const DECO_COUNT_FOREST = 210                     # 野外/秘密地点整块（
 # 地块类型（统一数据源）：用枚举替代原版魔法数字（9/6/13…），
 # 注释标注原版网格类型码（见 城镇生成逻辑.md §3.3）以便对照照搬算法。
 enum BlockType {
-	EMPTY,        # 原版 0：空地 / 森林
-	VILLAGE,      # 原版 9：村庄
-	CITY,         # 原版 6：城市
-	MILITARY,     # 原版 5：军营
-	HOSPITAL,     # 原版 11：医院
-	FIRESTATION,  # 原版 15：消防站
-	ROAD_H,       # 原版 13：横向道路（roads_1 生成）
-	ROAD_V,       # 原版 12：纵向道路（roads_2 生成）
-	ROAD_CROSS,   # 原版 14：十字路口（roads_2 生成）
-	SECRET,       # 原版 2：秘密地点（roads_2 生成）
+	EMPTY,
+	VILLAGE,
+	CITY,
+	MILITARY,
+	HOSPITAL,
+	FIRESTATION,
+	ROAD_H,
+	ROAD_V,
+	ROAD_CROSS,
+	SECRET,
 }
 
 # 5 类地点的集合（供「扫描相邻格找地点」等原版算法复用）
