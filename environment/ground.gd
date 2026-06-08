@@ -92,10 +92,7 @@ func generate_world():
 	generate_roads()
 	generate_secret_place()
 	collect_locations()
-
 	render_map()
-
-# --- grid 统一数据源：初始化与存取辅助 ---
 
 func init_grid():
 	"""把 grid 重置为 16×16 全 EMPTY"""
@@ -243,8 +240,6 @@ func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
 
 	return path
 
-# --- 步骤4 尾：秘密地点（完全照原版 §4）---
-
 func generate_secret_place():
 	"""扫描「3×3 块全空 + 坐标在 2~15」的候选格，随机选一个在中心标 SECRET"""
 	var counts = LEVEL_LOCATION_COUNTS.get(current_level, LEVEL_LOCATION_COUNTS[0])
@@ -262,8 +257,6 @@ func generate_secret_place():
 			break
 		var pick := candidates[rng.randi_range(0, candidates.size() - 1)]
 		set_block(pick.x, pick.y, BlockType.SECRET)
-
-# --- 扫描 grid 汇总地点列表（含 hotspot 世界坐标，供阶段 C 实例化）---
 
 func collect_locations():
 	"""遍历 grid，把 5 类地点 + 秘密地点收集为 locations，并记录 hotspot = block × 1020px"""
@@ -317,31 +310,26 @@ func render_map():
 	标出地点范围与类型，地面这里保持草地即可。
 	"""
 
-	# 先铺草地基底（加权随机，含花/石变体）
 	render_grass_base()
-
-	# 再渲染道路（在草地之上，覆盖其下草格并算过渡）
 	for road in roads:
 		render_road(road)
-
-	# 装饰层（独立 TileMapLayer，叠在最上）
 	render_decoration()
 
 func render_grass_base():
 	"""用加权随机铺满整张地图的草地基底（变体靠低 probability 自然冒出）"""
-	var pick := create_pick_random_tile_callable(ground_layer, 0)
+	var pick := create_pick_random_tile_callable(ground_layer, 0, 32.33)
 	for x in range(TOTAL_MAP_SIZE):
 		for y in range(TOTAL_MAP_SIZE):
-			ground_layer.set_cell(Vector2i(x, y), 0, pick.call())
+			var tile = pick.call()
+			if tile != Vector2i(-1, -1):
+				ground_layer.set_cell(Vector2i(x, y), 0, tile)
 
-# 从 TileMapPattern 取候选 tile，按各 tile 的 probability 加权随机（仿 Godot 编辑器散布逻辑）
 # 参考: editor/plugins/tiles/tile_map_editor.cpp
 func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int, scattering := 0.0) -> Callable:
 	var pattern := layer.tile_set.get_pattern(pattern_id)
 	var source := layer.tile_set.get_source(0) as TileSetAtlasSource
 	var coords_list: Array[Vector2i] = []
 
-	# 预存累积权重，call() 内免重复查表
 	var cumulative: Array[float] = []
 	var sum := 0.0
 	for cell in pattern.get_used_cells():
@@ -350,7 +338,6 @@ func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int, scat
 		coords_list.append(c)
 		cumulative.append(sum)
 	return func() -> Vector2i:
-		# scattering > 0 时上界超过 sum，落空返回 (-1,-1)（留洞）；草地基底用默认 0 铺满
 		var rand := rng.randf_range(0, sum + sum * scattering)
 		for i in coords_list.size():
 			if cumulative[i] >= rand:
@@ -384,7 +371,6 @@ func render_road(path: Array) -> void:
 		start_cell = Vector2i(x, (lo + 1) * BLOCK_SIZE_IN_TILE)
 		end_cell = Vector2i(x, hi * BLOCK_SIZE_IN_TILE - 1)
 
-	# Draw road using cellular approach
 	draw_road_path([start_cell, end_cell], ROAD_WIDTH)
 
 func draw_road_path(cell_path: Array, width: int):
@@ -392,37 +378,30 @@ func draw_road_path(cell_path: Array, width: int):
 	var road_cells := {}
 	var half_width := width / 2
 
-	# Process each segment of the path
 	for i in range(cell_path.size() - 1):
 		var start := Vector2i(cell_path[i])
 		var end := Vector2i(cell_path[i + 1])
 
-		# Get all cells along this line segment
 		var line_cells := get_line_cells(start, end)
 
-		# For each cell on the line, add surrounding cells based on width
 		for cell in line_cells:
-			# Determine the perpendicular direction for width
 			var direction := Vector2((end - start)).normalized()
 			var perpendicular: Vector2
 
 			if abs(direction.x) > abs(direction.y):
-				# Horizontal line, expand vertically
 				perpendicular = Vector2(0, 1)
 			else:
-				# Vertical line, expand horizontally
 				perpendicular = Vector2(1, 0)
 
-			# Add cells perpendicular to the line
 			for offset in range(-half_width, width - half_width):
-				var road_cell = cell + Vector2i(perpendicular * offset)
+				var road_cell := cell + Vector2i(perpendicular * offset)
 				if is_valid_cell(road_cell):
 					road_cells[road_cell] = true
 
 	# 渲染道路地形（使用地形连接）
 	ground_layer.set_cells_terrain_connect(road_cells.keys(), 0, 1)
 
-func get_line_cells(start: Vector2i, end: Vector2i) -> Array:
+func get_line_cells(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
 	"""Get all cells along a line using Bresenham's algorithm"""
 	var cells := []
 	var x0 := start.x
@@ -460,7 +439,7 @@ func is_valid_cell(cell_pos: Vector2i) -> bool:
 	return cell_pos.x >= 0 and cell_pos.x < TOTAL_MAP_SIZE and \
 	cell_pos.y >= 0 and cell_pos.y < TOTAL_MAP_SIZE
 
-func render_decoration():
+func render_decoration() -> void:
 	"""按 grid 地块类型散布装饰（对标原版 ground_enviroment 的按地点散布）
 
 	每类地点撒自己一套装饰 tile（source 按类型拆分，见 DECO_SRC_*）：
@@ -550,8 +529,6 @@ func _scatter_band(org: Vector2i, source_id: int, pick: Callable, count: int, x0
 		var cell := org + Vector2i(rng.randi_range(x0, x1 - 1), rng.randi_range(y0, y1 - 1))
 		decoration_layer.set_cell(cell, source_id, coords)
 
-# --- 工具 / 重新生成 ---
-
 func set_seed(seed_value: int):
 	"""Set random seed for reproducible generation"""
 	rng.seed = seed_value
@@ -561,8 +538,6 @@ func regenerate():
 	"""清空并重新生成整张地图"""
 	ground_layer.clear()
 	generate_world()
-
-# --- Debug ---
 
 func get_generation_info() -> Dictionary:
 	"""Return information about the generated world"""

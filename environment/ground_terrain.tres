@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://b5nvenxnclafv" path="res://asset/images/environment/ground_tilemap.png" id="1_wi273"]
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_qqtrs"]
-tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 4, 1, 131072, 3, 65537, 131072, 4)
+[sub_resource type="TileMapPattern" id="TileMapPattern_kguw6"]
+tile_data = PackedInt32Array(65536, 65536, 4, 1, 131072, 3, 65537, 131072, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkjvf"]
 texture = ExtResource("1_wi273")
@@ -310,4 +310,4 @@ terrain_set_0/terrain_2/color = Color(0.375, 0.5, 0.25, 1)
 terrain_set_0/terrain_3/name = "Water"
 terrain_set_0/terrain_3/color = Color(0.46875, 0.5, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_jkjvf")
-pattern_0 = SubResource("TileMapPattern_qqtrs")
+pattern_0 = SubResource("TileMapPattern_kguw6")
