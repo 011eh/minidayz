@@ -313,7 +313,7 @@ func render_map():
 	render_grass_base()
 	for road in roads:
 		render_road(road)
-	render_decoration()
+#	render_decoration()
 
 func render_grass_base():
 	"""用加权随机铺满整张地图的草地基底（变体靠低 probability 自然冒出）"""
@@ -325,19 +325,45 @@ func render_grass_base():
 				ground_layer.set_cell(Vector2i(x, y), 0, tile)
 
 # 参考: editor/plugins/tiles/tile_map_editor.cpp
-func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int, scattering := 0.0) -> Callable:
-	var pattern := layer.tile_set.get_pattern(pattern_id)
-	var source := layer.tile_set.get_source(0) as TileSetAtlasSource
+func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int = -1, scattering: float = 0.0, source_id: int = 0) -> Callable:
+	var tile_set := layer.tile_set
+	if tile_set == null:
+		return func() -> Vector2i:
+			return Vector2i(-1, -1)
+
+	if not tile_set.has_source(source_id):
+		return func() -> Vector2i:
+			return Vector2i(-1, -1)
+
+	var source := tile_set.get_source(source_id) as TileSetAtlasSource
+	if source == null:
+		return func() -> Vector2i:
+			return Vector2i(-1, -1)
+
 	var coords_list: Array[Vector2i] = []
 
 	var cumulative: Array[float] = []
 	var sum := 0.0
-	for cell in pattern.get_used_cells():
-		var c := pattern.get_cell_atlas_coords(cell)
-		sum += source.get_tile_data(c, 0).probability
-		coords_list.append(c)
-		cumulative.append(sum)
+
+	if pattern_id >= 0 and pattern_id < tile_set.get_patterns_count():
+		var pattern := tile_set.get_pattern(pattern_id)
+		for cell in pattern.get_used_cells():
+			if pattern.get_cell_source_id(cell) != source_id:
+				continue
+			var c := pattern.get_cell_atlas_coords(cell)
+			sum += source.get_tile_data(c, 0).probability
+			coords_list.append(c)
+			cumulative.append(sum)
+	else:
+		for i in range(source.get_tiles_count()):
+			var c := source.get_tile_id(i)
+			sum += source.get_tile_data(c, 0).probability
+			coords_list.append(c)
+			cumulative.append(sum)
+
 	return func() -> Vector2i:
+		if coords_list.is_empty() or sum <= 0.0:
+			return Vector2i(-1, -1)
 		var rand := rng.randf_range(0, sum + sum * scattering)
 		for i in coords_list.size():
 			if cumulative[i] >= rand:
@@ -399,11 +425,11 @@ func draw_road_path(cell_path: Array, width: int):
 					road_cells[road_cell] = true
 
 	# 渲染道路地形（使用地形连接）
-	ground_layer.set_cells_terrain_connect(road_cells.keys(), 0, 1)
+	ground_layer.set_cells_terrain_connect(road_cells.keys(), 0, 1, true)
 
 func get_line_cells(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
 	"""Get all cells along a line using Bresenham's algorithm"""
-	var cells := []
+	var cells: Array[Vector2i] = []
 	var x0 := start.x
 	var y0 := start.y
 	var x1 := end.x
@@ -454,7 +480,7 @@ func render_decoration() -> void:
 	var ts: TileSet = decoration_layer.tile_set
 	for i in range(ts.get_source_count()):
 		var sid: int = ts.get_source_id(i)
-		picks[sid] = create_deco_pick(sid)
+		picks[sid] = create_pick_random_tile_callable(decoration_layer, -1, 0.0, sid)
 	for by in range(MAP_SIZE_IN_BLOCKS):
 		for bx in range(MAP_SIZE_IN_BLOCKS):
 			var type: BlockType = grid[by][bx]
@@ -468,29 +494,6 @@ func render_decoration() -> void:
 			else:
 				# 秘密地点与空地：野外植被（原版野外/wilderness 装饰集）
 				_scatter_band(org, DECO_SRC_FOREST, picks[DECO_SRC_FOREST], DECO_COUNT_FOREST, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-
-# 针对某个 decoration source，遍历其全部 tile，按各 tile 的 probability 构建加权随机取 atlas 坐标的闭包
-# （ground_decoration.tres 已按类型把装饰拆成独立 source，无需再借 pattern 间接取 tile）
-func create_deco_pick(source_id: int) -> Callable:
-	var source := decoration_layer.tile_set.get_source(source_id) as TileSetAtlasSource
-	var coords_list: Array[Vector2i] = []
-
-	# 预存累积权重，call() 内免重复求和
-	var cumulative: Array[float] = []
-	var sum := 0.0
-	for i in range(source.get_tiles_count()):
-		var c := source.get_tile_id(i)
-		sum += source.get_tile_data(c, 0).probability
-		coords_list.append(c)
-		cumulative.append(sum)
-	return func() -> Vector2i:
-		if coords_list.is_empty():
-			return Vector2i(-1, -1)
-		var rand := rng.randf_range(0, sum)
-		for i in coords_list.size():
-			if cumulative[i] >= rand:
-				return coords_list[i]
-		return coords_list[coords_list.size() - 1]
 
 func _location_deco_source(type: BlockType) -> int:
 	"""5 类地点 → 对应 decoration source（医院/消防站共用城市装饰集，照原版同属 town set）"""
