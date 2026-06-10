@@ -162,8 +162,6 @@ func is_3x3_clear_at(center: Vector2i) -> bool:
 				return false
 	return true
 
-# --- 步骤3+4：道路网（完全照原版 roads_1 / roads_2）---
-
 func generate_roads():
 	"""roads_1 逐行 + roads_2 逐列：只连前两个 9/6/11/15 地点，之间填路，交叉处标十字"""
 	roads.clear()
@@ -383,6 +381,7 @@ func render_road(path: Array) -> void:
 	var end_cell: Vector2i
 
 	if a.y == b.y:
+
 		# 水平路：中心线 y 取城镇行中心，x 从前一城镇右缘的下一格 到 后一城镇左缘的前一格
 		var y := a.y * BLOCK_SIZE_IN_TILE + half
 		var lo: int = min(a.x, b.x)
@@ -390,6 +389,7 @@ func render_road(path: Array) -> void:
 		start_cell = Vector2i((lo + 1) * BLOCK_SIZE_IN_TILE, y)
 		end_cell = Vector2i(hi * BLOCK_SIZE_IN_TILE - 1, y)
 	else:
+
 		# 垂直路：中心线 x 取城镇列中心
 		var x := a.x * BLOCK_SIZE_IN_TILE + half
 		var lo: int = min(a.y, b.y)
