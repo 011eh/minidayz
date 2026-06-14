@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cx7a1h8h5l52o"]
+
+[ext_resource type="Script" uid="uid://c4sqa7p8v7hwd" path="res://dev_res/ground_decoration_debugger.gd" id="1_o33vk"]
+
+[node name="GroundDecorationDebugger" type="Node2D"]
+script = ExtResource("1_o33vk")

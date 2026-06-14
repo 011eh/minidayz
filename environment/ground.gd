@@ -4,6 +4,25 @@ extends Node2D
 @onready var decoration_layer := %DecorationLayer
 
 @export var map_seed: int = 0
+@export var auto_render_decoration := true
+
+@export_group("Decoration Scattering")
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var village_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var city_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var military_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var hospital_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var firestation_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var grass_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var water_edge_scattering: float = 20.0
+@export_range(0.0, 100.0, 0.1, "suffix:%")
+var road_debris_scattering: float = 20.0
 
 const BLOCK_SIZE_IN_TILE := 17
 const MAP_SIZE_IN_BLOCKS := 16
@@ -24,16 +43,16 @@ const DECO_BLOCK_SIZE := BLOCK_PX / DECO_TILE_PX
 const DECO_TILES_PER_GROUND_TILE := TILE_PX / DECO_TILE_PX
 
 # 6
-const ROAD_START_IN_BLOCK := BLOCK_SIZE_IN_TILE / 2 - ROAD_WIDTH / 2
+const ROAD_MIN_IN_BLOCK := BLOCK_SIZE_IN_TILE / 2 - ROAD_WIDTH / 2
 
 # 10
-const ROAD_END_IN_BLOCK := ROAD_START_IN_BLOCK + ROAD_WIDTH
+const ROAD_MAX_IN_BLOCK := ROAD_MIN_IN_BLOCK + ROAD_WIDTH
 
 # 12
-const DECO_ROAD_START := ROAD_START_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
+const DECO_ROAD_MIN := ROAD_MIN_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
 
 # 20
-const DECO_ROAD_END := ROAD_END_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
+const DECO_ROAD_MAX := ROAD_MAX_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
 
 # atlas source id
 const DECO_SRC_GRASS := 0
@@ -41,13 +60,7 @@ const DECO_SRC_ROAD := 1
 const DECO_SRC_VILLAGE := 2
 const DECO_SRC_CITY := 3
 const DECO_SRC_MILITARY := 4
-const DECO_SRC_FOREST := 5
-
-# block 散布数量
-const DECO_COUNT_TOWN := 250
-const DECO_COUNT_MILITARY := 200
-const DECO_COUNT_BAND := 70
-const DECO_COUNT_FOREST := 210
+const DECO_SRC_WATER_EDGE := 5
 
 
 enum BlockType {
@@ -60,22 +73,32 @@ enum BlockType {
 	ROAD_H,
 	ROAD_V,
 	ROAD_CROSS,
+	ROAD_H_UP,
+	ROAD_H_DOWN,
+	ROAD_V_LEFT,
+	ROAD_V_RIGHT,
 	SECRET,
+	WATER,
 }
-
 
 const LOCATION_TYPES := [
 	BlockType.VILLAGE, BlockType.CITY, BlockType.MILITARY,
 	BlockType.HOSPITAL, BlockType.FIRESTATION,
 ]
 
-const ROAD_TYPES := [BlockType.ROAD_H, BlockType.ROAD_V, BlockType.ROAD_CROSS]
+const ROAD_TYPES := [
+	BlockType.ROAD_H,
+	BlockType.ROAD_V,
+	BlockType.ROAD_CROSS,
+	BlockType.ROAD_H_UP,
+	BlockType.ROAD_H_DOWN,
+	BlockType.ROAD_V_LEFT,
+	BlockType.ROAD_V_RIGHT,
+]
 
-# 道路连接的地点类型，军营 5 不连
 const ROAD_CONNECT_TYPES := [
 	BlockType.VILLAGE, BlockType.CITY, BlockType.HOSPITAL, BlockType.FIRESTATION,
 ]
-
 
 const LEVEL_LOCATION_COUNTS := {
 	0: {"village": 20, "city": 3, "military": 0, "hospital": 1, "firestation": 1, "secret": 1, "gas": 1},
@@ -83,6 +106,7 @@ const LEVEL_LOCATION_COUNTS := {
 	2: {"village": 6, "city": 10, "military": 4, "hospital": 3, "firestation": 3, "secret": 1, "gas": 3},
 	3: {"village": 3, "city": 11, "military": 6, "hospital": 4, "firestation": 2, "secret": 1, "gas": 4},
 }
+
 
 var current_level := 0
 var grid: Array[Array] = []
@@ -115,6 +139,46 @@ func generate_world():
 	collect_locations()
 	render_map()
 
+# 重新生成整张地图（道路写入 grid，无法只重算道路，故整图重来）
+func regenerate():
+	"""清空并重新生成整张地图"""
+	ground_layer.clear()
+	generate_world()
+
+func set_seed(seed_value: int):
+	"""Set random seed for reproducible generation"""
+	rng.seed = seed_value
+
+func get_generation_info() -> Dictionary:
+	"""Return information about the generated world"""
+	return {
+		"towns": towns,
+		"roads": roads.size(),
+		"total_blocks": MAP_SIZE_IN_BLOCKS * MAP_SIZE_IN_BLOCKS,
+		"town_distribution": analyze_town_distribution(),
+		"connectivity_info": get_connectivity_info()
+	}
+
+func get_connectivity_info() -> Dictionary:
+	"""获取连接性信息"""
+	var connected_towns := {}
+	var isolated_count := 0
+
+	for road in roads:
+		if road.size() >= 2:
+			var start_town = road[0]
+			var end_town = road[road.size() - 1]
+			connected_towns[start_town] = true
+			connected_towns[end_town] = true
+
+	isolated_count = towns.size() - connected_towns.size()
+
+	return {
+		"connected_towns": connected_towns.size(),
+		"isolated_towns": isolated_count,
+		"connection_rate": float(connected_towns.size()) / float(towns.size()) if towns.size() > 0 else 0.0
+	}
+
 func init_grid():
 	"""把 grid 重置为 16×16 全 EMPTY"""
 	grid.clear()
@@ -144,8 +208,12 @@ func is_location(type: BlockType) -> bool:
 	return type in LOCATION_TYPES
 
 func is_road(type: BlockType) -> bool:
-	"""是否为道路（横/纵/十字）"""
+	"""是否为道路（横/纵/十字/丁字）"""
 	return type in ROAD_TYPES
+
+func is_water(type: BlockType) -> bool:
+	"""是否为水域"""
+	return type == BlockType.WATER
 
 func generate_locations():
 	"""按关卡数量表，分 5 类用「3×3 邻域全空」算法落子并写入 grid"""
@@ -184,7 +252,7 @@ func is_3x3_clear_at(center: Vector2i) -> bool:
 	return true
 
 func generate_roads():
-	"""roads_1 逐行 + roads_2 逐列：只连前两个 9/6/11/15 地点，之间填路，交叉处标十字"""
+	"""roads_1 逐行 + roads_2 逐列：只连前两个 9/6/11/15 地点，交叉/贴边支路归一化为对应道路类型"""
 	roads.clear()
 
 	# 横向：每一行(y)找前两个可连地点，之间空格填 ROAD_H
@@ -210,6 +278,7 @@ func generate_roads():
 				set_block(x, y, BlockType.ROAD_V)
 		roads.append(create_straight_path(Vector2i(x, pair.x), Vector2i(x, pair.y)))
 
+	_normalize_road_junction_types()
 	print("生成了 ", roads.size(), " 条道路连接")
 
 func _first_two_connectable_in_row(y: int) -> Vector2i:
@@ -237,6 +306,80 @@ func _first_two_connectable_in_column(x: int) -> Vector2i:
 				second = y
 				break
 	return Vector2i(first, second)
+
+func _normalize_road_junction_types() -> void:
+	for by in range(MAP_SIZE_IN_BLOCKS):
+		for bx in range(MAP_SIZE_IN_BLOCKS):
+			var type: BlockType = grid[by][bx]
+			if not is_road(type):
+				continue
+			var block := Vector2i(bx, by)
+			set_block(bx, by, _road_type_for_connections(_road_connections_for_generation(block, type)))
+
+func _road_connections(left: bool, right: bool, up: bool, down: bool) -> Dictionary:
+	return {
+		"left": left,
+		"right": right,
+		"up": up,
+		"down": down,
+	}
+
+func _road_connections_for_type(type: BlockType) -> Dictionary:
+	match type:
+		BlockType.ROAD_H:
+			return _road_connections(true, true, false, false)
+		BlockType.ROAD_H_UP:
+			return _road_connections(true, true, true, false)
+		BlockType.ROAD_H_DOWN:
+			return _road_connections(true, true, false, true)
+		BlockType.ROAD_V:
+			return _road_connections(false, false, true, true)
+		BlockType.ROAD_V_LEFT:
+			return _road_connections(true, false, true, true)
+		BlockType.ROAD_V_RIGHT:
+			return _road_connections(false, true, true, true)
+		BlockType.ROAD_CROSS:
+			return _road_connections(true, true, true, true)
+		_:
+			return _road_connections(false, false, false, false)
+
+func _road_connections_for_generation(block: Vector2i, type: BlockType) -> Dictionary:
+	var connections := _road_connections_for_type(type)
+	if _is_road_connect_location(block + Vector2i(-1, 0)):
+		connections["left"] = true
+	if _is_road_connect_location(block + Vector2i(1, 0)):
+		connections["right"] = true
+	if _is_road_connect_location(block + Vector2i(0, -1)):
+		connections["up"] = true
+	if _is_road_connect_location(block + Vector2i(0, 1)):
+		connections["down"] = true
+	return connections
+
+func _road_type_for_connections(connections: Dictionary) -> BlockType:
+	var left: bool = connections["left"]
+	var right: bool = connections["right"]
+	var up: bool = connections["up"]
+	var down: bool = connections["down"]
+
+	if left and right and up and down:
+		return BlockType.ROAD_CROSS
+	if left and right:
+		if up:
+			return BlockType.ROAD_H_UP
+		if down:
+			return BlockType.ROAD_H_DOWN
+		return BlockType.ROAD_H
+	if up and down:
+		if left:
+			return BlockType.ROAD_V_LEFT
+		if right:
+			return BlockType.ROAD_V_RIGHT
+		return BlockType.ROAD_V
+
+	return BlockType.ROAD_CROSS
+
+func _is_road_connect_location(block: Vector2i) -> bool:
+	return is_in_grid(block.x, block.y) and get_block(block.x, block.y) in ROAD_CONNECT_TYPES
 
 func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
 	"""创建两点间的直线路径"""
@@ -320,6 +463,25 @@ func analyze_connectivity():
 	if isolated_towns.size() > 0:
 		print("孤立城镇位置: ", isolated_towns)
 
+func analyze_town_distribution() -> Dictionary:
+	"""分析城镇分布的均匀性"""
+	if towns.size() < 2:
+		return {"average_distance": 0, "min_distance": 0, "max_distance": 0}
+
+	var distances := []
+	for i in range(towns.size()):
+		for j in range(i + 1, towns.size()):
+			distances.append(towns[i].distance_to(towns[j]))
+
+	distances.sort()
+	var avg_distance = distances.reduce(func(sum, d): return sum + d, 0) / float(distances.size())
+
+	return {
+		"average_distance": avg_distance,
+		"min_distance": distances[0],
+		"max_distance": distances[distances.size() - 1]
+	}
+
 # --- 渲染：草地基底 → 道路 → 装饰（顺序对标 render_map 调用流）---
 
 func render_map():
@@ -331,7 +493,8 @@ func render_map():
 
 	render_grass_base()
 	render_roads_from_grid()
-	render_decoration()
+	if auto_render_decoration:
+		render_decoration()
 
 func render_grass_base():
 	"""用加权随机铺满整张地图的草地基底（变体靠低 probability 自然冒出）"""
@@ -343,63 +506,168 @@ func render_grass_base():
 				ground_layer.set_cell(Vector2i(x, y), 0, tile)
 
 func render_roads_from_grid() -> void:
-	"""按 road block 的连接方向绘制道路；地点贴边时补出 T 字支路。"""
+	"""按 grid 中保存的道路类型绘制道路。"""
 	var road_cells := {}
 	for by in range(MAP_SIZE_IN_BLOCKS):
 		for bx in range(MAP_SIZE_IN_BLOCKS):
 			var type: BlockType = grid[by][bx]
-			if not is_road(type):
-				continue
-			var block := Vector2i(bx, by)
-			var connections := _road_connections_for_block(block, type)
-			_add_road_cells_for_connections(road_cells, block, connections)
+			if is_road(type):
+				_add_road_cells_for_type(road_cells, Vector2i(bx, by), type)
 	if not road_cells.is_empty():
 		ground_layer.set_cells_terrain_connect(road_cells.keys(), 0, 1, false)
 
-func _road_connections_for_block(block: Vector2i, type: BlockType) -> Dictionary:
-	var connections := {
-		"left": false,
-		"right": false,
-		"up": false,
-		"down": false,
-	}
-
+func _add_road_cells_for_type(road_cells: Dictionary, block: Vector2i, type: BlockType) -> void:
 	match type:
 		BlockType.ROAD_H:
-			connections["left"] = true
-			connections["right"] = true
-			connections["up"] = _is_road_connect_location(block + Vector2i(0, -1))
-			connections["down"] = _is_road_connect_location(block + Vector2i(0, 1))
+			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
+		BlockType.ROAD_H_UP:
+			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, ROAD_MAX_IN_BLOCK)
+		BlockType.ROAD_H_DOWN:
+			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
 		BlockType.ROAD_V:
-			connections["up"] = true
-			connections["down"] = true
-			connections["left"] = _is_road_connect_location(block + Vector2i(-1, 0))
-			connections["right"] = _is_road_connect_location(block + Vector2i(1, 0))
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+		BlockType.ROAD_V_LEFT:
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, ROAD_MAX_IN_BLOCK, ROAD_MAX_IN_BLOCK)
+		BlockType.ROAD_V_RIGHT:
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
 		BlockType.ROAD_CROSS:
-			connections["left"] = true
-			connections["right"] = true
-			connections["up"] = true
-			connections["down"] = true
-	return connections
+			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
 
-func _is_road_connect_location(block: Vector2i) -> bool:
-	return is_in_grid(block.x, block.y) and get_block(block.x, block.y) in ROAD_CONNECT_TYPES
-
-func _add_road_cells_for_connections(road_cells: Dictionary, block: Vector2i, connections: Dictionary) -> void:
-	if connections["left"]:
-		_add_road_rect(road_cells, block, 0, ROAD_END_IN_BLOCK, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK)
-	if connections["right"]:
-		_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK)
-	if connections["up"]:
-		_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK, 0, ROAD_END_IN_BLOCK)
-	if connections["down"]:
-		_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE)
-
-func _add_road_rect(road_cells: Dictionary, block: Vector2i, x0: int, x1: int, y0: int, y1: int) -> void:
+func _add_road_rect(road_cells: Dictionary, block: Vector2i, x0: int, y0: int, x1: int, y1: int) -> void:
 	var org := block * BLOCK_SIZE_IN_TILE
 	for y in range(y0, y1):
 		for x in range(x0, x1):
 			road_cells[org + Vector2i(x, y)] = true
+
+func render_decoration() -> void:
+	"""按 grid 地块类型散布装饰"""
+	decoration_layer.clear()
+	for by in range(MAP_SIZE_IN_BLOCKS):
+		for bx in range(MAP_SIZE_IN_BLOCKS):
+			var type: BlockType = grid[by][bx]
+			var org := Vector2i(bx * DECO_BLOCK_SIZE, by * DECO_BLOCK_SIZE)
+			if is_road(type):
+				_scatter_road_block(type, org)
+			elif is_location(type):
+				var sid := _location_deco_source(type)
+				var scattering := _location_deco_scattering(type)
+				_scatter_band(org, sid, scattering, 0, 0, DECO_BLOCK_SIZE, DECO_BLOCK_SIZE)
+			elif is_water(type):
+				_scatter_water_block(org)
+			else:
+				_scatter_band(org, DECO_SRC_GRASS, grass_scattering, 0, 0, DECO_BLOCK_SIZE, DECO_BLOCK_SIZE)
+
+func _location_deco_source(type: BlockType) -> int:
+	"""地点类型 → 对应 decoration source（医院/消防站复用城市装饰集）"""
+	match type:
+		BlockType.VILLAGE: return DECO_SRC_VILLAGE
+		BlockType.CITY: return DECO_SRC_CITY
+		BlockType.MILITARY: return DECO_SRC_MILITARY
+		BlockType.HOSPITAL: return DECO_SRC_CITY
+		BlockType.FIRESTATION: return DECO_SRC_CITY
+		_: return DECO_SRC_GRASS
+
+func _location_deco_scattering(type: BlockType) -> float:
+	match type:
+		BlockType.VILLAGE: return village_scattering
+		BlockType.CITY: return city_scattering
+		BlockType.MILITARY: return military_scattering
+		BlockType.HOSPITAL: return hospital_scattering
+		BlockType.FIRESTATION: return firestation_scattering
+		_: return grass_scattering
+
+func _scatter_water_block(org: Vector2i) -> void:
+	_scatter_band(org, DECO_SRC_WATER_EDGE, water_edge_scattering, 0, 0, DECO_BLOCK_SIZE, DECO_BLOCK_SIZE)
+
+func _scatter_road_block(type: BlockType, org: Vector2i):
+	"""道路块按 grid 中保存的道路类型散布装饰。"""
+	var road_min := DECO_ROAD_MIN
+	var road_max := DECO_ROAD_MAX
+	var road_width := road_max - road_min
+	var connections := _road_connections_for_type(type)
+
+	# 道路块会被道路分割最多4块区域
+	var grass_bands: Array[Rect2i] = [
+		Rect2i(0, 0, road_min, road_min),
+		Rect2i(road_max, 0, DECO_BLOCK_SIZE - road_max, road_min),
+		Rect2i(0, road_max, road_min, DECO_BLOCK_SIZE - road_max),
+		Rect2i(road_max, road_max, DECO_BLOCK_SIZE - road_max, DECO_BLOCK_SIZE - road_max),
+	]
+	if not connections["left"]:
+		grass_bands.append(Rect2i(0, road_min, road_min, road_width))
+	if not connections["right"]:
+		grass_bands.append(Rect2i(road_max, road_min, DECO_BLOCK_SIZE - road_max, road_width))
+	if not connections["up"]:
+		grass_bands.append(Rect2i(road_min, 0, road_width, road_min))
+	if not connections["down"]:
+		grass_bands.append(Rect2i(road_min, road_max, road_width, DECO_BLOCK_SIZE - road_max))
+
+	_scatter_rects(org, DECO_SRC_GRASS, grass_scattering, grass_bands)
+	_scatter_road_debris_for_connections(org, connections)
+
+func _scatter_road_debris_for_connections(org: Vector2i, connections: Dictionary) -> void:
+	var road_min := DECO_ROAD_MIN
+	var road_max := DECO_ROAD_MAX
+	var road_width := road_max - road_min
+	var debris_bands: Array[Rect2i] = []
+
+	if connections["left"] and connections["right"]:
+		debris_bands.append(Rect2i(0, road_min, DECO_BLOCK_SIZE, road_width))
+	else:
+		if connections["left"]:
+			debris_bands.append(Rect2i(0, road_min, road_max, road_width))
+		if connections["right"]:
+			debris_bands.append(Rect2i(road_min, road_min, DECO_BLOCK_SIZE - road_min, road_width))
+
+	if connections["up"] and connections["down"]:
+		debris_bands.append(Rect2i(road_min, 0, road_width, DECO_BLOCK_SIZE))
+	else:
+		if connections["up"]:
+			debris_bands.append(Rect2i(road_min, 0, road_width, road_max))
+		if connections["down"]:
+			debris_bands.append(Rect2i(road_min, road_min, road_width, DECO_BLOCK_SIZE - road_min))
+
+	_scatter_rects(org, DECO_SRC_ROAD, road_debris_scattering, debris_bands)
+
+func _scatter_rects(org: Vector2i, source_id: int, scattering: float, bands: Array[Rect2i]) -> void:
+	for band in bands:
+		_scatter_band(
+			org,
+			source_id,
+			scattering,
+			band.position.x,
+			band.position.y,
+			band.position.x + band.size.x,
+			band.position.y + band.size.y
+		)
+
+func _scatter_band(org: Vector2i, source_id: int, scattering: float, x0: int, y0: int, x1: int, y1: int) -> void:
+	"""在 block 内 [x0,x1)×[y0,y1) 区域逐格散布装饰。"""
+	if x1 <= x0 or y1 <= y0:
+		return
+	var scattering_density := clampf(scattering / 100.0, 0.0, 1.0)
+	if scattering_density <= 0.0:
+		return
+	var pick := create_pick_random_tile_callable(
+		decoration_layer,
+		-1,
+		_scattering_density_to_factor(scattering_density),
+		source_id
+	)
+	for x in range(x0, x1):
+		for y in range(y0, y1):
+			var coords: Vector2i = pick.call()
+			if coords == Vector2i(-1, -1):
+				continue
+			decoration_layer.set_cell(org + Vector2i(x, y), source_id, coords)
+
+func _scattering_density_to_factor(scattering_density: float) -> float:
+	return 1.0 / scattering_density - 1.0
 
 # 参考: editor/plugins/tiles/tile_map_editor.cpp
 func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int = -1, scattering: float = 0.0, source_id: int = 0) -> Callable:
@@ -446,264 +714,3 @@ func create_pick_random_tile_callable(layer: TileMapLayer, pattern_id: int = -1,
 			if cumulative[i] >= rand:
 				return coords_list[i]
 		return Vector2i(-1, -1)
-
-func render_road(path: Array) -> void:
-	"""Render a road along the given path"""
-	if path.size() < 2:
-		return
-
-	# 道路只铺在两城镇之间的空地上，端点止于城镇 block 边缘（不进入城镇内部）
-	var a := Vector2i(path[0])
-	var b := Vector2i(path[path.size() - 1])
-	var half := BLOCK_SIZE_IN_TILE / 2
-	var start_cell: Vector2i
-	var end_cell: Vector2i
-
-	if a.y == b.y:
-
-		# 水平路：中心线 y 取城镇行中心，x 从前一城镇右缘的下一格 到 后一城镇左缘的前一格
-		var y := a.y * BLOCK_SIZE_IN_TILE + half
-		var lo: int = min(a.x, b.x)
-		var hi: int = max(a.x, b.x)
-		start_cell = Vector2i((lo + 1) * BLOCK_SIZE_IN_TILE, y)
-		end_cell = Vector2i(hi * BLOCK_SIZE_IN_TILE - 1, y)
-	else:
-
-		# 垂直路：中心线 x 取城镇列中心
-		var x := a.x * BLOCK_SIZE_IN_TILE + half
-		var lo: int = min(a.y, b.y)
-		var hi: int = max(a.y, b.y)
-		start_cell = Vector2i(x, (lo + 1) * BLOCK_SIZE_IN_TILE)
-		end_cell = Vector2i(x, hi * BLOCK_SIZE_IN_TILE - 1)
-
-	draw_road_path([start_cell, end_cell], ROAD_WIDTH)
-
-func draw_road_path(cell_path: Array, width: int):
-	"""Draw road using a cellular approach"""
-	var road_cells := {}
-	var half_width := width / 2
-
-	for i in range(cell_path.size() - 1):
-		var start := Vector2i(cell_path[i])
-		var end := Vector2i(cell_path[i + 1])
-
-		var line_cells := get_line_cells(start, end)
-
-		for cell in line_cells:
-			var direction := Vector2((end - start)).normalized()
-			var perpendicular: Vector2
-
-			if abs(direction.x) > abs(direction.y):
-				perpendicular = Vector2(0, 1)
-			else:
-				perpendicular = Vector2(1, 0)
-
-			for offset in range(-half_width, width - half_width):
-				var road_cell := cell + Vector2i(perpendicular * offset)
-				if is_valid_cell(road_cell):
-					road_cells[road_cell] = true
-
-	# 渲染道路地形（使用地形连接）
-	ground_layer.set_cells_terrain_connect(road_cells.keys(), 0, 1, true)
-
-func get_line_cells(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
-	"""Get all cells along a line using Bresenham's algorithm"""
-	var cells: Array[Vector2i] = []
-	var x0 := start.x
-	var y0 := start.y
-	var x1 := end.x
-	var y1 := end.y
-
-	var dx = abs(x1 - x0)
-	var dy = abs(y1 - y0)
-	var sx := 1 if x0 < x1 else -1
-	var sy := 1 if y0 < y1 else -1
-	var err = dx - dy
-
-	var x := x0
-	var y := y0
-
-	while true:
-		cells.append(Vector2i(x, y))
-
-		if x == x1 and y == y1:
-			break
-
-		var e2 = 2 * err
-		if e2 > -dy:
-			err -= dy
-			x += sx
-		if e2 < dx:
-			err += dx
-			y += sy
-
-	return cells
-
-func is_valid_cell(cell_pos: Vector2i) -> bool:
-	"""Check if cell position is within map bounds"""
-	return cell_pos.x >= 0 and cell_pos.x < TOTAL_MAP_SIZE and \
-	cell_pos.y >= 0 and cell_pos.y < TOTAL_MAP_SIZE
-
-func render_decoration() -> void:
-	"""按 grid 地块类型散布装饰（对标原版 ground_enviroment 的按地点散布）
-
-	每类地点撒自己一套装饰 tile（source 按类型拆分，见 DECO_SRC_*）：
-	- 道路块：照原版 3 条带——中带撒路面残骸(source 1)，两侧带撒草地(source 0)，横/纵路决定分带轴
-	- 村庄/城市/军营/医院/消防：整块均匀撒对应类型装饰（建筑在阶段 C 会叠在其上）
-	- 秘密地点 / 空地：撒野外植被(source 5)
-	"""
-	decoration_layer.clear()
-
-	# 为每个 source 预建「按 tile probability 加权随机取 atlas 坐标」的闭包
-	var picks := {}
-	var ts: TileSet = decoration_layer.tile_set
-	for i in range(ts.get_source_count()):
-		var sid: int = ts.get_source_id(i)
-		picks[sid] = create_pick_random_tile_callable(decoration_layer, -1, 0.0, sid)
-	for by in range(MAP_SIZE_IN_BLOCKS):
-		for bx in range(MAP_SIZE_IN_BLOCKS):
-			var type: BlockType = grid[by][bx]
-			var org := Vector2i(bx * DECO_BLOCK_SIZE, by * DECO_BLOCK_SIZE)
-			if is_road(type):
-				_scatter_road_block(Vector2i(bx, by), type, org, picks)
-			elif is_location(type):
-				var sid := _location_deco_source(type)
-				var count := DECO_COUNT_MILITARY if type == BlockType.MILITARY else DECO_COUNT_TOWN
-				_scatter_band(org, sid, picks[sid], count, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-			else:
-				# 秘密地点与空地：野外植被（原版野外/wilderness 装饰集）
-				_scatter_band(org, DECO_SRC_FOREST, picks[DECO_SRC_FOREST], DECO_COUNT_FOREST, 0, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-
-func _location_deco_source(type: BlockType) -> int:
-	"""5 类地点 → 对应 decoration source（医院/消防站共用城市装饰集，照原版同属 town set）"""
-	match type:
-		BlockType.VILLAGE: return DECO_SRC_VILLAGE
-		BlockType.CITY: return DECO_SRC_CITY
-		BlockType.MILITARY: return DECO_SRC_MILITARY
-		BlockType.HOSPITAL: return DECO_SRC_CITY
-		BlockType.FIRESTATION: return DECO_SRC_CITY
-		_: return DECO_SRC_GRASS
-
-func _scatter_road_block(block: Vector2i, type: BlockType, org: Vector2i, picks: Dictionary):
-	"""道路块按连接方向散布装饰；地点贴边支路会形成 T 字路口。"""
-
-	# 装饰层 30px，地面层 60px；17 格 block 中 4 格宽道路会覆盖地面局部 [6,10)，
-	# 换算成装饰层是 [12,20)，不能按 34 格三等分。
-	var road_start := DECO_ROAD_START
-	var road_end := DECO_ROAD_END
-	var connections := _road_connections_for_block(block, type)
-	var grass_pick: Callable = picks[DECO_SRC_GRASS]
-	var road_pick: Callable = picks[DECO_SRC_ROAD]
-	if type == BlockType.ROAD_V:
-		# 纵路：左带草 / 中带路 / 右带草（按 x 切）
-		if connections["left"]:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, 0, road_start, 0, road_start)
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, 0, road_start, road_end, DECO_BLOCK_SIZE)
-		else:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, road_start, 0, DECO_BLOCK_SIZE)
-		if connections["right"]:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, road_end, DECO_BLOCK_SIZE, 0, road_start)
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, road_end, DECO_BLOCK_SIZE, road_end, DECO_BLOCK_SIZE)
-		else:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, road_end, DECO_BLOCK_SIZE, 0, DECO_BLOCK_SIZE)
-	elif type == BlockType.ROAD_H:
-		# 横路 / 十字：上带草 / 中带路 / 下带草（按 y 切）
-		if connections["up"]:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, 0, road_start, 0, road_start)
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, road_end, DECO_BLOCK_SIZE, 0, road_start)
-		else:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, 0, road_start)
-		if connections["down"]:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, 0, road_start, road_end, DECO_BLOCK_SIZE)
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND / 2, road_end, DECO_BLOCK_SIZE, road_end, DECO_BLOCK_SIZE)
-		else:
-			_scatter_band(org, DECO_SRC_GRASS, grass_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, road_end, DECO_BLOCK_SIZE)
-	_scatter_road_debris_for_connections(org, road_pick, connections)
-
-func _scatter_road_debris_for_connections(org: Vector2i, road_pick: Callable, connections: Dictionary) -> void:
-	var road_start := DECO_ROAD_START
-	var road_end := DECO_ROAD_END
-
-	if connections["left"] and connections["right"]:
-		_scatter_band(org, DECO_SRC_ROAD, road_pick, DECO_COUNT_BAND, 0, DECO_BLOCK_SIZE, road_start, road_end)
-	else:
-		if connections["left"]:
-			_scatter_band(org, DECO_SRC_ROAD, road_pick, DECO_COUNT_BAND / 2, 0, road_end, road_start, road_end)
-		if connections["right"]:
-			_scatter_band(org, DECO_SRC_ROAD, road_pick, DECO_COUNT_BAND / 2, road_start, DECO_BLOCK_SIZE, road_start, road_end)
-
-	if connections["up"] and connections["down"]:
-		_scatter_band(org, DECO_SRC_ROAD, road_pick, DECO_COUNT_BAND, road_start, road_end, 0, DECO_BLOCK_SIZE)
-	else:
-		if connections["up"]:
-			_scatter_band(org, DECO_SRC_ROAD, road_pick, DECO_COUNT_BAND / 2, road_start, road_end, 0, road_end)
-		if connections["down"]:
-			_scatter_band(org, DECO_SRC_ROAD, road_pick, DECO_COUNT_BAND / 2, road_start, road_end, road_start, DECO_BLOCK_SIZE)
-
-func _scatter_band(org: Vector2i, source_id: int, pick: Callable, count: int, x0: int, x1: int, y0: int, y1: int):
-	"""在 block 内的子矩形 [x0,x1)×[y0,y1) 里随机散布 count 个加权 tile（对标原版 Repeat(count) + SetTile(random,random,choose)）"""
-	for _i in range(count):
-		var coords: Vector2i = pick.call()
-		if coords == Vector2i(-1, -1):
-			continue
-		var cell := org + Vector2i(rng.randi_range(x0, x1 - 1), rng.randi_range(y0, y1 - 1))
-		decoration_layer.set_cell(cell, source_id, coords)
-
-func set_seed(seed_value: int):
-	"""Set random seed for reproducible generation"""
-	rng.seed = seed_value
-
-# 重新生成整张地图（道路写入 grid，无法只重算道路，故整图重来）
-func regenerate():
-	"""清空并重新生成整张地图"""
-	ground_layer.clear()
-	generate_world()
-
-func get_generation_info() -> Dictionary:
-	"""Return information about the generated world"""
-	return {
-		"towns": towns,
-		"roads": roads.size(),
-		"total_blocks": MAP_SIZE_IN_BLOCKS * MAP_SIZE_IN_BLOCKS,
-		"town_distribution": analyze_town_distribution(),
-		"connectivity_info": get_connectivity_info()
-	}
-
-func get_connectivity_info() -> Dictionary:
-	"""获取连接性信息"""
-	var connected_towns := {}
-	var isolated_count := 0
-
-	for road in roads:
-		if road.size() >= 2:
-			var start_town = road[0]
-			var end_town = road[road.size() - 1]
-			connected_towns[start_town] = true
-			connected_towns[end_town] = true
-
-	isolated_count = towns.size() - connected_towns.size()
-
-	return {
-		"connected_towns": connected_towns.size(),
-		"isolated_towns": isolated_count,
-		"connection_rate": float(connected_towns.size()) / float(towns.size()) if towns.size() > 0 else 0.0
-	}
-
-func analyze_town_distribution() -> Dictionary:
-	"""分析城镇分布的均匀性"""
-	if towns.size() < 2:
-		return {"average_distance": 0, "min_distance": 0, "max_distance": 0}
-
-	var distances := []
-	for i in range(towns.size()):
-		for j in range(i + 1, towns.size()):
-			distances.append(towns[i].distance_to(towns[j]))
-
-	distances.sort()
-	var avg_distance = distances.reduce(func(sum, d): return sum + d, 0) / float(distances.size())
-
-	return {
-		"average_distance": avg_distance,
-		"min_distance": distances[0],
-		"max_distance": distances[distances.size() - 1]
-	}
