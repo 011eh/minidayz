@@ -26,6 +26,7 @@ var road_debris_scattering: float = 20.0
 
 const BLOCK_SIZE_IN_TILE := 17
 const MAP_SIZE_IN_BLOCKS := 16
+const WATER_CHANCE_DENOMINATOR := 9
 
 # 272
 const TOTAL_MAP_SIZE := BLOCK_SIZE_IN_TILE * MAP_SIZE_IN_BLOCKS
@@ -135,6 +136,7 @@ func generate_world():
 	init_grid()
 	generate_locations()
 	generate_roads()
+	generate_water_blocks()
 	generate_secret_place()
 	collect_locations()
 	render_map()
@@ -380,6 +382,18 @@ func _road_type_for_connections(connections: Dictionary) -> BlockType:
 
 func _is_road_connect_location(block: Vector2i) -> bool:
 	return is_in_grid(block.x, block.y) and get_block(block.x, block.y) in ROAD_CONNECT_TYPES
+
+func generate_water_blocks() -> void:
+	"""道路生成后，剩余空地每格有 1/9 概率变为 WATER"""
+	var water_count := 0
+	for y in range(MAP_SIZE_IN_BLOCKS):
+		for x in range(MAP_SIZE_IN_BLOCKS):
+			if get_block(x, y) != BlockType.EMPTY:
+				continue
+			if rng.randi_range(1, WATER_CHANCE_DENOMINATOR) == 1:
+				set_block(x, y, BlockType.WATER)
+				water_count += 1
+	print("生成了 ", water_count, " 个水域块")
 
 func create_straight_path(start: Vector2i, end: Vector2i) -> Array:
 	"""创建两点间的直线路径"""

@@ -10,6 +10,7 @@ extends Node2D
 @export var show_hud := true
 @export var show_grid_info := true
 @export var grid_info_position := Vector2(12, 220)
+@export var show_water_blocks := true
 @export var show_band_rects := true
 @export var show_generated_cells := true
 
@@ -106,6 +107,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _draw() -> void:
 	if not _ready_ok:
 		return
+	if show_water_blocks:
+		_draw_water_block_rects()
 	if _is_valid_block(_hover_block) and _hover_block != _selected_block:
 		_draw_block_rect(_hover_block, Color(1, 1, 1, 0.45), false, 3.0)
 	if _is_valid_block(_selected_block):
@@ -405,6 +408,15 @@ func _draw_block_rect(block: Vector2i, color: Color, filled: bool, width: float)
 	else:
 		draw_rect(rect, color, false, width)
 
+func _draw_water_block_rects() -> void:
+	var source_id := int(ground.DECO_SRC_WATER_EDGE)
+	for y in range(int(ground.MAP_SIZE_IN_BLOCKS)):
+		for x in range(int(ground.MAP_SIZE_IN_BLOCKS)):
+			if ground.is_water(int(ground.get_block(x, y))):
+				var block := Vector2i(x, y)
+				_draw_block_rect(block, _source_color(source_id, 0.16), true, 1.0)
+				_draw_block_rect(block, _source_color(source_id, 0.85), false, 4.0)
+
 func _draw_band_rects() -> void:
 	for i in range(_bands.size()):
 		var band: Dictionary = _bands[i]
@@ -529,6 +541,7 @@ func _format_grid_info() -> String:
 	lines.append("        HO HOSPITAL  FI FIRESTATION  SE SECRET  WA WATER")
 	lines.append("Roads:  RH ROAD_H  RV ROAD_V  RC CROSS")
 	lines.append("        HU H_UP  HD H_DOWN  VL V_LEFT  VR V_RIGHT")
+	lines.append("Counts: %s" % _format_block_type_counts())
 	return "\n".join(lines)
 
 func _grid_code_for_type(type: int) -> String:
@@ -549,6 +562,24 @@ func _grid_code_for_type(type: int) -> String:
 		"SECRET": return "SE"
 		"WATER": return "WA"
 		_: return "??"
+
+func _format_block_type_counts() -> String:
+	if ground == null:
+		return ""
+	var counts := {}
+	var size := int(ground.MAP_SIZE_IN_BLOCKS)
+	for y in range(size):
+		for x in range(size):
+			var type := int(ground.get_block(x, y))
+			counts[type] = int(counts.get(type, 0)) + 1
+
+	var parts: Array[String] = []
+	var names: Array = ground.BlockType.keys()
+	for type in range(names.size()):
+		var count := int(counts.get(type, 0))
+		if count > 0:
+			parts.append("%s=%d" % [_grid_code_for_type(type), count])
+	return ", ".join(parts)
 
 func _format_source_counts() -> String:
 	var parts: Array[String] = []
