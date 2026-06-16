@@ -20,6 +20,7 @@ const TYPE_COLORS := {
 	"HOSPITAL": Color.CYAN,
 	"FIRESTATION": Color.YELLOW,
 	"SECRET": Color.MAGENTA,
+	"WATER": Color.DODGER_BLUE,
 }
 
 var ground: Node
@@ -53,15 +54,25 @@ func _draw() -> void:
 
 	# 每个地点：边框(大小) + 类型文字
 	for loc in ground.locations:
-		var block: Vector2i = loc.block
 		var type_name: String = type_names[loc.type]
 		var col: Color = TYPE_COLORS.get(type_name, Color.WHITE)
-		var rect := Rect2(Vector2(block) * bpx, Vector2(bpx, bpx))
-		if show_fill:
-			draw_rect(rect, Color(col.r, col.g, col.b, 0.12), true)
-		draw_rect(rect, col, false, border_width)
-		draw_string(_font, rect.position + Vector2(24, font_size + 12), type_name,
-			HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, col)
-		# 角标：block 坐标(小字)
-		draw_string(_font, rect.position + Vector2(24, font_size * 2), "block %d,%d" % [block.x, block.y],
-			HORIZONTAL_ALIGNMENT_LEFT, -1, int(font_size * 0.5), Color(1, 1, 1, 0.7))
+		_draw_block_marker(loc.block, type_name, col, bpx)
+
+	# 水域块：不在 locations 里，直接扫 grid 标出范围 + 类型 + 坐标
+	var water_type: int = ground.BlockType.WATER
+	var water_col: Color = TYPE_COLORS.get("WATER", Color.DODGER_BLUE)
+	for by in range(n):
+		for bx in range(n):
+			if ground.grid[by][bx] == water_type:
+				_draw_block_marker(Vector2i(bx, by), "WATER", water_col, bpx)
+
+func _draw_block_marker(block: Vector2i, type_name: String, col: Color, bpx: int) -> void:
+	var rect := Rect2(Vector2(block) * bpx, Vector2(bpx, bpx))
+	if show_fill:
+		draw_rect(rect, Color(col.r, col.g, col.b, 0.12), true)
+	draw_rect(rect, col, false, border_width)
+	draw_string(_font, rect.position + Vector2(24, font_size + 12), type_name,
+		HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, col)
+	# 角标：block 坐标(小字)
+	draw_string(_font, rect.position + Vector2(24, font_size * 2), "block %d,%d" % [block.x, block.y],
+		HORIZONTAL_ALIGNMENT_LEFT, -1, int(font_size * 0.5), Color(1, 1, 1, 0.7))
