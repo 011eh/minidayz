@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var ground_layer := %GroundLayer
+@onready var water_layer := $WaterLayer
 @onready var decoration_layer := %DecorationLayer
 
 @export var map_seed: int = 0
@@ -27,6 +28,8 @@ var road_debris_scattering: float = 20.0
 const BLOCK_SIZE_IN_TILE := 17
 const MAP_SIZE_IN_BLOCKS := 16
 const WATER_CHANCE_DENOMINATOR := 9
+const WATER_PATTERN_ID := 1
+const WATER_PATTERN_OFFSET := Vector2i(2, 2)
 
 # 272
 const TOTAL_MAP_SIZE := BLOCK_SIZE_IN_TILE * MAP_SIZE_IN_BLOCKS
@@ -98,7 +101,7 @@ const ROAD_TYPES := [
 ]
 
 const ROAD_CONNECT_TYPES := [
-	BlockType.VILLAGE, BlockType.CITY, BlockType.HOSPITAL, BlockType.FIRESTATION,
+	BlockType.VILLAGE, BlockType.CITY, BlockType.HOSPITAL, BlockType.FIRESTATION,BlockType.MILITARY
 ]
 
 const LEVEL_LOCATION_COUNTS := {
@@ -506,6 +509,7 @@ func render_map():
 	"""
 
 	render_grass_base()
+	render_water_from_grid()
 	render_roads_from_grid()
 	if auto_render_decoration:
 		render_decoration()
@@ -518,6 +522,20 @@ func render_grass_base():
 			var tile = pick.call()
 			if tile != Vector2i(-1, -1):
 				ground_layer.set_cell(Vector2i(x, y), 0, tile)
+
+func render_water_from_grid() -> void:
+	"""把 water 块图案（pattern 1）绘制到 WaterLayer，每块在 block 内偏移 (2,2)。"""
+	water_layer.clear()
+	var tile_set: TileSet = water_layer.tile_set
+	if tile_set == null or WATER_PATTERN_ID >= tile_set.get_patterns_count():
+		return
+	var pattern: TileMapPattern = tile_set.get_pattern(WATER_PATTERN_ID)
+	for by in range(MAP_SIZE_IN_BLOCKS):
+		for bx in range(MAP_SIZE_IN_BLOCKS):
+			if get_block(bx, by) != BlockType.WATER:
+				continue
+			var org := Vector2i(bx, by) * BLOCK_SIZE_IN_TILE + WATER_PATTERN_OFFSET
+			water_layer.set_pattern(org, pattern)
 
 func render_roads_from_grid() -> void:
 	"""按 grid 中保存的道路类型绘制道路。"""
