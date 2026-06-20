@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://blnha8a5y5ygn"]
+
+[ext_resource type="Script" uid="uid://c62u4k5bkm4jd" path="res://environment/location_template/template_slot.gd" id="1_tslot"]
+
+[node name="TemplateSlot" type="Marker2D" unique_id=429677637]
+script = ExtResource("1_tslot")

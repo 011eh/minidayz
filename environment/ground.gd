@@ -7,6 +7,14 @@ extends Node2D
 @export var map_seed: int = 0
 @export var auto_render_decoration := true
 
+@export_group("Location Templates")
+@export var village_templates: Array[PackedScene] = []
+@export var city_templates: Array[PackedScene] = []
+@export var military_templates: Array[PackedScene] = []
+@export var hospital_templates: Array[PackedScene] = []
+@export var firestation_templates: Array[PackedScene] = []
+@export var secret_templates: Array[PackedScene] = []
+
 @export_group("Decoration Scattering")
 @export_range(0.0, 100.0, 0.1, "suffix:%")
 var village_scattering: float = 20.0
@@ -123,6 +131,21 @@ var towns: Array[Vector2i] = []
 var roads: Array[Array] = []
 var gas_station_count := 0
 var rng: RandomNumberGenerator
+
+# 实例化出的地块节点的容器（render_locations 创建/重建）
+var locations_root: Node2D
+
+
+## 地点类型 → 候选模板集。秘密地点暂归入 SECRET。
+func _template_registry() -> Dictionary:
+	return {
+		BlockType.VILLAGE: village_templates,
+		BlockType.CITY: city_templates,
+		BlockType.MILITARY: military_templates,
+		BlockType.HOSPITAL: hospital_templates,
+		BlockType.FIRESTATION: firestation_templates,
+		BlockType.SECRET: secret_templates,
+	}
 
 
 func _ready():
@@ -502,17 +525,46 @@ func analyze_town_distribution() -> Dictionary:
 # --- 渲染：草地基底 → 道路 → 装饰（顺序对标 render_map 调用流）---
 
 func render_map():
-	"""Render roads and decoration on the tilemap
-
-	城镇不在地面层渲染（建筑在阶段 C 实例化）；调试时由 WorldInspector 叠加层
-	标出地点范围与类型，地面这里保持草地即可。
-	"""
+	"""草地基底 → 水 → 道路足迹 + 地点足迹（共用一次 terrain-connect）→ 实例化地点 → 装饰"""
 
 	render_grass_base()
 	render_water_from_grid()
-	render_roads_from_grid()
+
+	# 道路与地点足迹铺进同一个路面 terrain，村内小路才能无缝接到村外的路。
+	var pavement_cells := {}
+	_collect_road_cells(pavement_cells)
+	render_locations(pavement_cells)
+	if not pavement_cells.is_empty():
+		ground_layer.set_cells_terrain_connect(pavement_cells.keys(), 0, 1, false)
+
 	if auto_render_decoration:
 		render_decoration()
+
+func render_locations(pavement_cells: Dictionary) -> void:
+	"""遍历 locations，按类型 choose 一个模板实例化到 hotspot，并收集其足迹 cells。"""
+	if locations_root != null:
+		locations_root.queue_free()
+	locations_root = Node2D.new()
+	locations_root.name = "Locations"
+	add_child(locations_root)
+
+	var registry := _template_registry()
+	for loc in locations:
+		if not registry.has(loc.type):
+			continue
+		var templates: Array[PackedScene] = registry[loc.type]
+		if templates.is_empty():
+			continue
+		var scene := templates[rng.randi() % templates.size()]
+		var instance := scene.instantiate()
+		var block := instance as LocationTemplate
+		if block == null:
+			push_warning("模板根节点不是 LocationTemplate：%s" % scene.resource_path)
+			instance.free()
+			continue
+		locations_root.add_child(block)
+		block.position = loc.hotspot
+		block.build(rng, pavement_cells)
 
 func render_grass_base():
 	"""用加权随机铺满整张地图的草地基底（变体靠低 probability 自然冒出）"""
@@ -537,16 +589,13 @@ func render_water_from_grid() -> void:
 			var org := Vector2i(bx, by) * BLOCK_SIZE_IN_TILE + WATER_PATTERN_OFFSET
 			water_layer.set_pattern(org, pattern)
 
-func render_roads_from_grid() -> void:
-	"""按 grid 中保存的道路类型绘制道路。"""
-	var road_cells := {}
+func _collect_road_cells(road_cells: Dictionary) -> void:
+	"""按 grid 中保存的道路类型，把路面 cells 收进共享字典（与地点足迹合并后统一连接）。"""
 	for by in range(MAP_SIZE_IN_BLOCKS):
 		for bx in range(MAP_SIZE_IN_BLOCKS):
 			var type: BlockType = grid[by][bx]
 			if is_road(type):
 				_add_road_cells_for_type(road_cells, Vector2i(bx, by), type)
-	if not road_cells.is_empty():
-		ground_layer.set_cells_terrain_connect(road_cells.keys(), 0, 1, false)
 
 func _add_road_cells_for_type(road_cells: Dictionary, block: Vector2i, type: BlockType) -> void:
 	match type:
