@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bv4r8m2krawtn"]
+
+[ext_resource type="Script" uid="uid://cb8x2q5n7vobs" path="res://environment/objects/obstacle.gd" id="1_obst"]
+
+[node name="Vehicle" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_obst")
+
+[node name="SpriteH" type="Sprite2D" parent="."]
+centered = false
+
+[node name="SpriteV" type="Sprite2D" parent="."]
+visible = false
+centered = false
+
+[node name="ShapeH" type="CollisionShape2D" parent="."]
+
+[node name="ShapeV" type="CollisionShape2D" parent="."]
+disabled = true
+
+[node name="LootAnchors" type="Node2D" parent="."]

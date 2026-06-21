@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dq7w3kx1n6yor"]
+
+[ext_resource type="Script" uid="uid://cb8x2q5n7vobs" path="res://environment/objects/obstacle.gd" id="1_obst"]
+
+[node name="Obstacle" type="StaticBody2D" unique_id=2034809725]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_obst")
+
+[node name="SpriteH" type="Sprite2D" parent="." unique_id=1223670026]
+centered = false
+
+[node name="SpriteV" type="Sprite2D" parent="." unique_id=892243293]
+visible = false
+centered = false
+
+[node name="ShapeH" type="CollisionShape2D" parent="." unique_id=920687637]
+
+[node name="ShapeV" type="CollisionShape2D" parent="." unique_id=72738851]
+visible = false
+disabled = true

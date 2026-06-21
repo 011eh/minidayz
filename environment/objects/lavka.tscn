@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://byp5huwddayuq"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://c4fyiqiv6qc11" path="res://asset/images/environment/obst_lavka-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h"]
+atlas = ExtResource("2_tex")
+region = Rect2(1, 39, 42, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v"]
+atlas = ExtResource("2_tex")
+region = Rect2(1, 10, 11, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(26, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
+size = Vector2(18, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o0f4"]
+atlas = ExtResource("2_tex")
+region = Rect2(12, 1, 8, 36)
+
+[node name="Obstacle" unique_id=755731067 instance=ExtResource("1_base")]
+y_sort_enabled = true
+orientation = 1
+
+[node name="SpriteH" parent="." index="0" unique_id=1223670026]
+visible = false
+position = Vector2(0, -20)
+texture = SubResource("AtlasTexture_h")
+
+[node name="SpriteV" parent="." index="1" unique_id=892243293]
+visible = true
+position = Vector2(0, 13)
+texture = SubResource("AtlasTexture_v")
+offset = Vector2(0, -4)
+
+[node name="ShapeH" parent="." index="2" unique_id=920687637]
+visible = false
+position = Vector2(15, -8.5)
+shape = SubResource("RectangleShape2D_h")
+disabled = true
+
+[node name="ShapeV" parent="." index="3" unique_id=72738851]
+visible = true
+position = Vector2(11, 22.5)
+shape = SubResource("RectangleShape2D_v")
+disabled = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="4" unique_id=2051803585]
+position = Vector2(10, 36)
+texture = SubResource("AtlasTexture_7o0f4")
+offset = Vector2(5, -18)
