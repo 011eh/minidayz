@@ -32,6 +32,10 @@ gdscript/warnings/shadowed_global_identifier=0
 gdscript/warnings/integer_division=0
 gdscript/warnings/confusable_local_declaration=0
 
+[display]
+
+window/stretch/scale=1.5
+
 [input]
 
 aim={

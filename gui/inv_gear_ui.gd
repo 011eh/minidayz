@@ -71,6 +71,7 @@ func _get_drag_data(at_position):
 		rect.texture = $Icon.texture
 		set_drag_preview(rect)
 		return self
+	return null
 
 func _can_drop_data(at_position, ui):
 	return has_data and $Icon.get_rect().has_point(at_position) and \

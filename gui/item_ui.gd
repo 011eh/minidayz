@@ -74,6 +74,7 @@ func _get_drag_data(at_position):
 		rect.texture = icon.texture
 		set_drag_preview(rect)
 		return self
+	return null
 
 func _can_drop_data(at_position, ui):
 	if ui is PickPileItemUI:

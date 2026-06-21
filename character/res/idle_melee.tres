@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendSpace2D" load_steps=5 format=3 uid="uid://dg6i5ecrhw66t"]
+[gd_resource type="AnimationNodeBlendSpace2D" format=3 uid="uid://dg6i5ecrhw66t"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lkgdp"]
 animation = &"idle_melee_left"
@@ -13,12 +13,16 @@ animation = &"idle_melee_right"
 animation = &"idle_melee_down"
 
 [resource]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_lkgdp")
 blend_point_0/pos = Vector2(-1, 0)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_jtrhg")
 blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_qavp0")
 blend_point_2/pos = Vector2(1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_chobh")
 blend_point_3/pos = Vector2(0, 1)
-blend_mode = 1
+blend_point_3/name = &"3"
