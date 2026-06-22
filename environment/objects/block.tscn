@@ -1,27 +1,24 @@
-[gd_scene format=3 uid="uid://byp5huwddayuq"]
+[gd_scene format=3 uid="uid://bbl0ck7obst2a"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://c4fyiqiv6qc11" path="res://asset/images/environment/obst_lavka-sheet0.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://do3304k1ugo2a" path="res://asset/images/environment/obst_block-sheet0.png" id="2_texh"]
+[ext_resource type="Texture2D" uid="uid://mdlpqeawm6hi" path="res://asset/images/environment/obst_block-sheet1.png" id="3_texv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h"]
-atlas = ExtResource("2_tex")
-region = Rect2(1, 39, 42, 20)
+atlas = ExtResource("2_texh")
+region = Rect2(0, 0, 30, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
-size = Vector2(26, 11)
+size = Vector2(23, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v"]
-atlas = ExtResource("2_tex")
-region = Rect2(1, 10, 11, 27)
+atlas = ExtResource("3_texv")
+region = Rect2(0, 0, 18, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
-size = Vector2(18, 23)
+size = Vector2(11, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7o0f4"]
-atlas = ExtResource("2_tex")
-region = Rect2(12, 1, 8, 36)
-
-[node name="Obstacle" unique_id=755731067 instance=ExtResource("1_base")]
+[node name="Block" unique_id=309000001 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Horizontal" parent="." index="0" unique_id=1754740756]
@@ -29,10 +26,10 @@ y_sort_enabled = true
 
 [node name="SpriteH" parent="Horizontal" index="0" unique_id=1223670026]
 texture = SubResource("AtlasTexture_h")
-offset = Vector2(0, -20)
+offset = Vector2(-15, -9)
 
 [node name="ShapeH" parent="Horizontal" index="1" unique_id=920687637]
-position = Vector2(15, -8.5)
+position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_h")
 
 [node name="Vertical" parent="." index="1" unique_id=1580780015]
@@ -40,12 +37,8 @@ y_sort_enabled = true
 
 [node name="SpriteV" parent="Vertical" index="0" unique_id=892243293]
 texture = SubResource("AtlasTexture_v")
+offset = Vector2(-9, -13)
 
 [node name="ShapeV" parent="Vertical" index="1" unique_id=72738851]
-position = Vector2(11, 13.5)
+position = Vector2(-3.5, -0.5)
 shape = SubResource("RectangleShape2D_v")
-
-[node name="Backrest" type="Sprite2D" parent="Vertical" index="2" unique_id=2051803585]
-position = Vector2(11, 27)
-texture = SubResource("AtlasTexture_7o0f4")
-offset = Vector2(4, -18)

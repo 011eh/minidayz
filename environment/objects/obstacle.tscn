@@ -7,15 +7,20 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_obst")
 
-[node name="SpriteH" type="Sprite2D" parent="." unique_id=1223670026]
+[node name="Horizontal" type="Node2D" parent="." unique_id=1754740756]
+metadata/_edit_group_ = true
+
+[node name="SpriteH" type="Sprite2D" parent="Horizontal" unique_id=1223670026]
 centered = false
 
-[node name="SpriteV" type="Sprite2D" parent="." unique_id=892243293]
+[node name="ShapeH" type="CollisionShape2D" parent="Horizontal" unique_id=920687637]
+
+[node name="Vertical" type="Node2D" parent="." unique_id=1580780015]
 visible = false
+metadata/_edit_group_ = true
+
+[node name="SpriteV" type="Sprite2D" parent="Vertical" unique_id=892243293]
 centered = false
 
-[node name="ShapeH" type="CollisionShape2D" parent="." unique_id=920687637]
-
-[node name="ShapeV" type="CollisionShape2D" parent="." unique_id=72738851]
-visible = false
+[node name="ShapeV" type="CollisionShape2D" parent="Vertical" unique_id=72738851]
 disabled = true

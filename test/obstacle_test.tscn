@@ -11,7 +11,6 @@ position = Vector2(-71, -18)
 
 [node name="Obstacle2" parent="." unique_id=747932113 instance=ExtResource("1_eqadj")]
 position = Vector2(41, -6)
-orientation = 0
 
 [node name="Player" parent="." unique_id=1320654469 instance=ExtResource("2_eqadj")]
-position = Vector2(-63, -9)
+position = Vector2(41, -3)
