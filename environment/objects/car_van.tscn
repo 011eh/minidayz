@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://cma1hq37c8x6w" path="res://asset/images/environment/car/car_van.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(100, 52)
+size = Vector2(94, 32)
 
-[node name="CarVan" instance=ExtResource("1_base")]
+[node name="CarVan" unique_id=1480334249 instance=ExtResource("1_base")]
 y_sort_enabled = true
 color_count = 3
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
-centered = true
 texture = ExtResource("2_tex")
+centered = true
 hframes = 2
 vframes = 3
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(8, 7)
 shape = SubResource("RectangleShape2D_body")

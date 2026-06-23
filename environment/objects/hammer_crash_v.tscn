@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhmcrsv0obs00"]
+[gd_scene format=3 uid="uid://dhmcrsv0obs00"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cout7f7wev5gt" path="res://asset/images/environment/hammer_crash-sheet0.png" id="2_tex"]
@@ -7,10 +7,10 @@
 atlas = ExtResource("2_tex")
 region = Rect2(0, 0, 71, 87)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
-size = Vector2(56, 80)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3etw"]
+size = Vector2(46, 60)
 
-[node name="HammerCrashV" instance=ExtResource("1_base")]
+[node name="HammerCrashV" unique_id=490007640 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
@@ -18,5 +18,5 @@ texture = SubResource("AtlasTexture_v")
 offset = Vector2(-36, -44)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-5, 0)
-shape = SubResource("RectangleShape2D_v")
+position = Vector2(-9, 7)
+shape = SubResource("RectangleShape2D_y3etw")

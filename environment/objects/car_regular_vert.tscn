@@ -6,16 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(42, 70)
 
-[node name="CarRegularVert" instance=ExtResource("1_base")]
+[node name="CarRegularVert" unique_id=3863017 instance=ExtResource("1_base")]
 y_sort_enabled = true
 color_count = 4
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
-centered = true
+position = Vector2(-5, 35)
 texture = ExtResource("2_tex")
+centered = true
+offset = Vector2(5, -35)
 hframes = 2
 vframes = 4
 
 [node name="Shape" parent="." index="1"]
+position = Vector2(-6, 0)
 shape = SubResource("RectangleShape2D_body")

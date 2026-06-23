@@ -1,17 +1,110 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh4xc5p2md1w3"]
+[gd_scene format=3 uid="uid://dh4xc5p2md1w3"]
 
-[ext_resource type="PackedScene" uid="uid://blavkah0seat00" path="res://environment/objects/lavka_h.tscn" id="1_lavh"]
-[ext_resource type="PackedScene" uid="uid://blavkav0seat00" path="res://environment/objects/lavka_v.tscn" id="3_lavv"]
-[ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="2_eqadj"]
+[ext_resource type="PackedScene" uid="uid://dbarh1cade0aa" path="res://environment/objects/barricade_h.tscn" id="1_barricade_h"]
+[ext_resource type="PackedScene" uid="uid://dbarv1cade0bb" path="res://environment/objects/barricade_v.tscn" id="2_barricade_v"]
+[ext_resource type="PackedScene" uid="uid://bblockh0obst0" path="res://environment/objects/block_h.tscn" id="3_block_h"]
+[ext_resource type="PackedScene" uid="uid://bblockv0obst0" path="res://environment/objects/block_v.tscn" id="4_block_v"]
+[ext_resource type="PackedScene" uid="uid://dfenceh0obs00" path="res://environment/objects/fence_h.tscn" id="5_fence_h"]
+[ext_resource type="PackedScene" uid="uid://dfencev0obs00" path="res://environment/objects/fence_v.tscn" id="6_fence_v"]
+[ext_resource type="PackedScene" uid="uid://dhmcrsh0obs00" path="res://environment/objects/hammer_crash_h.tscn" id="7_hammer_h"]
+[ext_resource type="PackedScene" uid="uid://dhmcrsv0obs00" path="res://environment/objects/hammer_crash_v.tscn" id="8_hammer_v"]
+[ext_resource type="PackedScene" uid="uid://dhescoh0obs00" path="res://environment/objects/hesco_h.tscn" id="9_hesco_h"]
+[ext_resource type="PackedScene" uid="uid://dhescov0obs00" path="res://environment/objects/hesco_v.tscn" id="10_hesco_v"]
+[ext_resource type="PackedScene" uid="uid://creyruv0517ol" path="res://environment/objects/lavka_h.tscn" id="11_lavka_h"]
+[ext_resource type="PackedScene" uid="uid://creysav0517ol" path="res://environment/objects/lavka_v.tscn" id="12_lavka_v"]
+[ext_resource type="PackedScene" uid="uid://dpillmp00obs0" path="res://environment/objects/pillar_lamp.tscn" id="13_pillar_lamp"]
+[ext_resource type="PackedScene" uid="uid://dpilpol00obs0" path="res://environment/objects/pillar_pole.tscn" id="14_pillar_pole"]
+[ext_resource type="PackedScene" uid="uid://dpilsgn00obs0" path="res://environment/objects/pillar_sign.tscn" id="15_pillar_sign"]
+[ext_resource type="PackedScene" uid="uid://dpiltwr00obs0" path="res://environment/objects/pillar_tower.tscn" id="16_pillar_tower"]
+[ext_resource type="PackedScene" uid="uid://csndblkh0aa00" path="res://environment/objects/sandblock_h.tscn" id="17_sandblock_h"]
+[ext_resource type="PackedScene" uid="uid://csndblkv0bb00" path="res://environment/objects/sandblock_v.tscn" id="18_sandblock_v"]
+[ext_resource type="PackedScene" uid="uid://cqbnh8rr87lc6" path="res://environment/objects/trash_container_h.tscn" id="19_trash_h"]
+[ext_resource type="PackedScene" uid="uid://cqbninrr87lc6" path="res://environment/objects/trash_container_v.tscn" id="20_trash_v"]
+[ext_resource type="PackedScene" uid="uid://c22n8uo7fk44h" path="res://environment/objects/car_hatch.tscn" id="21_car_hatch"]
+[ext_resource type="PackedScene" uid="uid://c22wnmu1sk0x0" path="res://environment/objects/car_police_vert.tscn" id="22_car_police"]
+[ext_resource type="PackedScene" uid="uid://c22ydh8boc44h" path="res://environment/objects/car_regular.tscn" id="23_car_regular"]
+[ext_resource type="PackedScene" uid="uid://c22ydh8boc40t" path="res://environment/objects/car_regular_vert.tscn" id="24_car_reg_v"]
+[ext_resource type="PackedScene" uid="uid://c2228peqfk4l0" path="res://environment/objects/car_van.tscn" id="25_car_van"]
+[ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="27_player"]
 
-[node name="ObstacleTest" type="Node2D"]
+[node name="ObstacleTest" type="Node2D" unique_id=430894018]
 y_sort_enabled = true
 
-[node name="Obstacle" parent="." instance=ExtResource("1_lavh")]
-position = Vector2(-71, -18)
+[node name="BarricadeH" parent="." unique_id=1352695496 instance=ExtResource("1_barricade_h")]
+position = Vector2(-300, -350)
 
-[node name="Obstacle2" parent="." instance=ExtResource("3_lavv")]
-position = Vector2(41, -6)
+[node name="BarricadeV" parent="." unique_id=275311347 instance=ExtResource("2_barricade_v")]
+position = Vector2(-150, -350)
 
-[node name="Player" parent="." instance=ExtResource("2_eqadj")]
-position = Vector2(41, -3)
+[node name="BlockH" parent="." unique_id=1109791396 instance=ExtResource("3_block_h")]
+position = Vector2(0, -350)
+
+[node name="BlockV" parent="." unique_id=491952585 instance=ExtResource("4_block_v")]
+position = Vector2(150, -350)
+
+[node name="FenceH" parent="." unique_id=1373834693 instance=ExtResource("5_fence_h")]
+position = Vector2(300, -350)
+
+[node name="FenceV" parent="." unique_id=1594243101 instance=ExtResource("6_fence_v")]
+position = Vector2(-300, -150)
+
+[node name="HammerCrashH" parent="." unique_id=1410478963 instance=ExtResource("7_hammer_h")]
+position = Vector2(-150, -150)
+
+[node name="HammerCrashV" parent="." unique_id=327948523 instance=ExtResource("8_hammer_v")]
+position = Vector2(0, -150)
+
+[node name="HescoH" parent="." unique_id=461488282 instance=ExtResource("9_hesco_h")]
+position = Vector2(150, -150)
+
+[node name="HescoV" parent="." unique_id=1714182483 instance=ExtResource("10_hesco_v")]
+position = Vector2(300, -150)
+
+[node name="LavkaH" parent="." unique_id=1781465061 instance=ExtResource("11_lavka_h")]
+position = Vector2(-300, 50)
+
+[node name="LavkaV" parent="." unique_id=33235715 instance=ExtResource("12_lavka_v")]
+position = Vector2(-150, 50)
+
+[node name="PillarLamp" parent="." unique_id=1274826621 instance=ExtResource("13_pillar_lamp")]
+position = Vector2(0, 50)
+
+[node name="PillarPole" parent="." unique_id=1076394512 instance=ExtResource("14_pillar_pole")]
+position = Vector2(150, 50)
+
+[node name="PillarSign" parent="." unique_id=46713567 instance=ExtResource("15_pillar_sign")]
+position = Vector2(300, 50)
+
+[node name="PillarTower" parent="." unique_id=1658557173 instance=ExtResource("16_pillar_tower")]
+position = Vector2(-300, 250)
+
+[node name="SandblockH" parent="." unique_id=2131868208 instance=ExtResource("17_sandblock_h")]
+position = Vector2(-150, 250)
+
+[node name="SandblockV" parent="." unique_id=507413720 instance=ExtResource("18_sandblock_v")]
+position = Vector2(0, 250)
+
+[node name="TrashContainerH" parent="." unique_id=616643893 instance=ExtResource("19_trash_h")]
+position = Vector2(150, 250)
+
+[node name="TrashContainerV" parent="." unique_id=249167567 instance=ExtResource("20_trash_v")]
+position = Vector2(300, 250)
+
+[node name="CarHatch" parent="." unique_id=1907999760 instance=ExtResource("21_car_hatch")]
+position = Vector2(-300, 450)
+color_count = 4
+
+[node name="CarPoliceVert" parent="." unique_id=145692275 instance=ExtResource("22_car_police")]
+position = Vector2(-150, 450)
+
+[node name="CarRegular" parent="." unique_id=660370303 instance=ExtResource("23_car_regular")]
+position = Vector2(0, 450)
+
+[node name="CarRegularVert" parent="." unique_id=565169151 instance=ExtResource("24_car_reg_v")]
+position = Vector2(150, 450)
+
+[node name="CarVan" parent="." unique_id=2105737104 instance=ExtResource("25_car_van")]
+position = Vector2(300, 450)
+
+[node name="Player" parent="." unique_id=1394615433 instance=ExtResource("27_player")]
+position = Vector2(-19, -202)

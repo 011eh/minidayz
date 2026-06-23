@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfencev0obs00"]
+[gd_scene format=3 uid="uid://dfencev0obs00"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cbbpn7gnxrr7p" path="res://asset/images/environment/fence_vertical-sheet0.png" id="2_tex"]
@@ -8,15 +8,16 @@ atlas = ExtResource("2_tex")
 region = Rect2(0, 0, 24, 113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
-size = Vector2(9, 109)
+size = Vector2(12, 79)
 
-[node name="FenceV" instance=ExtResource("1_base")]
+[node name="FenceV" unique_id=1102734267 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(-8, 56)
 texture = SubResource("AtlasTexture_v")
-offset = Vector2(-12, -57)
+offset = Vector2(-4, -113)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-7.5, 0)
+position = Vector2(-7, 14.5)
 shape = SubResource("RectangleShape2D_v")

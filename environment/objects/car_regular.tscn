@@ -4,19 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://qmtfye1u7ulu" path="res://asset/images/environment/car/car_regular.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(92, 44)
+size = Vector2(92, 35)
 
-[node name="CarRegular" instance=ExtResource("1_base")]
+[node name="CarRegular" unique_id=1904100092 instance=ExtResource("1_base")]
 y_sort_enabled = true
 color_count = 4
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
-centered = true
+position = Vector2(0, -11)
 texture = ExtResource("2_tex")
+centered = true
+offset = Vector2(0, 11)
 hframes = 2
 vframes = 4
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_body")

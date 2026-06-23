@@ -15,8 +15,13 @@ func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
 
-	if color_count > 1:
-		_color_row = randi() % color_count
+	var sprite := get_node_or_null("Sprite") as Sprite2D
+	var effective_color_count := color_count
+	if sprite:
+		effective_color_count = mini(color_count, sprite.vframes)
+
+	if effective_color_count > 1:
+		_color_row = randi() % effective_color_count
 	_update_frame()
 
 func open() -> void:

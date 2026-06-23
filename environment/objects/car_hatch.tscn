@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bhme5xanl342p" path="res://asset/images/environment/car/car_hatch.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(72, 40)
+size = Vector2(71, 27)
 
 [node name="CarHatch" unique_id=1054574416 instance=ExtResource("1_base")]
 y_sort_enabled = true
-color_count = 4
+color_count = 3
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
@@ -18,5 +18,5 @@ hframes = 2
 vframes = 3
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(0, 3)
+position = Vector2(-0.5, 9.5)
 shape = SubResource("RectangleShape2D_body")
