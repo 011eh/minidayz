@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c2228peqfk4l0"]
+
+[ext_resource type="PackedScene" uid="uid://bv4r8m2krawtn" path="res://environment/objects/vehicle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://cma1hq37c8x6w" path="res://asset/images/environment/car/car_van.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(100, 52)
+
+[node name="CarVan" instance=ExtResource("1_base")]
+y_sort_enabled = true
+color_count = 3
+has_open_state = true
+
+[node name="Sprite" parent="." index="0"]
+centered = true
+texture = ExtResource("2_tex")
+hframes = 2
+vframes = 3
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_body")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://csndblkh0aa00"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://cgwvoii74uj2u" path="res://asset/images/environment/obst_sandblock-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h"]
+atlas = ExtResource("2_tex")
+region = Rect2(1, 1, 78, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(70, 24)
+
+[node name="SandblockH" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource("AtlasTexture_h")
+offset = Vector2(-39, -12)
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_h")

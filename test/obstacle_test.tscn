@@ -1,16 +1,17 @@
-[gd_scene format=3 uid="uid://dh4xc5p2md1w3"]
+[gd_scene load_steps=4 format=3 uid="uid://dh4xc5p2md1w3"]
 
-[ext_resource type="PackedScene" uid="uid://byp5huwddayuq" path="res://environment/objects/lavka.tscn" id="1_eqadj"]
+[ext_resource type="PackedScene" uid="uid://blavkah0seat00" path="res://environment/objects/lavka_h.tscn" id="1_lavh"]
+[ext_resource type="PackedScene" uid="uid://blavkav0seat00" path="res://environment/objects/lavka_v.tscn" id="3_lavv"]
 [ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="2_eqadj"]
 
-[node name="ObstacleTest" type="Node2D" unique_id=1153561229]
+[node name="ObstacleTest" type="Node2D"]
 y_sort_enabled = true
 
-[node name="Obstacle" parent="." unique_id=755731067 instance=ExtResource("1_eqadj")]
+[node name="Obstacle" parent="." instance=ExtResource("1_lavh")]
 position = Vector2(-71, -18)
 
-[node name="Obstacle2" parent="." unique_id=747932113 instance=ExtResource("1_eqadj")]
+[node name="Obstacle2" parent="." instance=ExtResource("3_lavv")]
 position = Vector2(41, -6)
 
-[node name="Player" parent="." unique_id=1320654469 instance=ExtResource("2_eqadj")]
+[node name="Player" parent="." instance=ExtResource("2_eqadj")]
 position = Vector2(41, -3)

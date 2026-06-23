@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://blavkav0seat00"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://c4fyiqiv6qc11" path="res://asset/images/environment/obst_lavka-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v"]
+atlas = ExtResource("2_tex")
+region = Rect2(1, 10, 11, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
+size = Vector2(18, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_backrest"]
+atlas = ExtResource("2_tex")
+region = Rect2(12, 1, 8, 36)
+
+[node name="LavkaV" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource("AtlasTexture_v")
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(11, 13.5)
+shape = SubResource("RectangleShape2D_v")
+
+[node name="Backrest" type="Sprite2D" parent="."]
+position = Vector2(11, 27)
+texture = SubResource("AtlasTexture_backrest")
+offset = Vector2(4, -18)

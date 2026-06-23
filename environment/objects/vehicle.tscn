@@ -7,20 +7,9 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_veh")
 
-[node name="Horizontal" type="Node2D" parent="."]
-
-[node name="SpriteH" type="Sprite2D" parent="Horizontal"]
+[node name="Sprite" type="Sprite2D" parent="."]
 centered = false
 
-[node name="ShapeH" type="CollisionShape2D" parent="Horizontal"]
-
-[node name="Vertical" type="Node2D" parent="."]
-visible = false
-
-[node name="SpriteV" type="Sprite2D" parent="Vertical"]
-centered = false
-
-[node name="ShapeV" type="CollisionShape2D" parent="Vertical"]
-disabled = true
+[node name="Shape" type="CollisionShape2D" parent="."]
 
 [node name="LootAnchors" type="Node2D" parent="."]

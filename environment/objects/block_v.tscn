@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bblockv0obst0"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://mdlpqeawm6hi" path="res://asset/images/environment/obst_block-sheet1.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 18, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
+size = Vector2(11, 25)
+
+[node name="BlockV" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource("AtlasTexture_v")
+offset = Vector2(-9, -13)
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(-3.5, -0.5)
+shape = SubResource("RectangleShape2D_v")

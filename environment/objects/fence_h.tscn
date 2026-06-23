@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfenceh0obs00"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://c7lnvi45wg70l" path="res://asset/images/environment/fence_horizontal-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 67, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
+size = Vector2(62, 44)
+
+[node name="FenceH" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = SubResource("AtlasTexture_h")
+offset = Vector2(-34, -25)
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_h")

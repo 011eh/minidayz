@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c22ydh8boc40t"]
+
+[ext_resource type="PackedScene" uid="uid://bv4r8m2krawtn" path="res://environment/objects/vehicle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://y84hidmuwpof" path="res://asset/images/environment/car/car_regular_vert.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(42, 70)
+
+[node name="CarRegularVert" instance=ExtResource("1_base")]
+y_sort_enabled = true
+color_count = 4
+has_open_state = true
+
+[node name="Sprite" parent="." index="0"]
+centered = true
+texture = ExtResource("2_tex")
+hframes = 2
+vframes = 4
+
+[node name="Shape" parent="." index="1"]
+shape = SubResource("RectangleShape2D_body")
