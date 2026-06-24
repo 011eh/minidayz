@@ -5,18 +5,37 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v"]
 atlas = ExtResource("2_tex")
-region = Rect2(0, 0, 71, 87)
+region = Rect2(0, 0, 50, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y3etw"]
 size = Vector2(46, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjki4"]
+atlas = ExtResource("2_tex")
+region = Rect2(74, 31, 22, 40)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7o0f4"]
+a = Vector2(-10, -4)
+b = Vector2(-17, 5)
 
 [node name="HammerCrashV" unique_id=490007640 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(7, 42)
 texture = SubResource("AtlasTexture_v")
-offset = Vector2(-36, -44)
+offset = Vector2(-43, -86)
 
 [node name="Shape" parent="." index="1"]
+visible = false
 position = Vector2(-9, 7)
 shape = SubResource("RectangleShape2D_y3etw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=38578082]
+position = Vector2(15, 18)
+texture = SubResource("AtlasTexture_mjki4")
+offset = Vector2(5, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3" unique_id=580694395]
+position = Vector2(32, 12)
+shape = SubResource("SegmentShape2D_7o0f4")

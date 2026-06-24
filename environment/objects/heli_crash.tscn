@@ -3,16 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://q1am4f36o2uc" path="res://asset/images/environment/heli_crash-sheet0.png" id="2_tex"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(180, 78)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swl0n"]
+radius = 35.327156
+height = 212.04309
 
-[node name="HeliCrash" instance=ExtResource("1_base")]
+[node name="HeliCrash" unique_id=107899053 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(-22, 50)
 texture = ExtResource("2_tex")
-offset = Vector2(-120, -150)
+offset = Vector2(-95, -186)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-8, -44)
-shape = SubResource("RectangleShape2D_body")
+position = Vector2(-4.000001, -24)
+rotation = 1.0995574
+shape = SubResource("CapsuleShape2D_swl0n")

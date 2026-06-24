@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhescov0obs00"]
+[gd_scene format=3 uid="uid://dhescov0obs00"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://boeejcpj04dvl" path="res://asset/images/environment/hesco_vertical-sheet0.png" id="2_tex"]
@@ -8,15 +8,16 @@ atlas = ExtResource("2_tex")
 region = Rect2(0, 0, 50, 127)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
-size = Vector2(30, 122)
+size = Vector2(27, 78)
 
-[node name="HescoV" instance=ExtResource("1_base")]
+[node name="HescoV" unique_id=259640289 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(0, 52)
 texture = SubResource("AtlasTexture_v")
-offset = Vector2(-25, -64)
+offset = Vector2(-16, -127)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-9, 0)
+position = Vector2(-0.5, 10)
 shape = SubResource("RectangleShape2D_v")

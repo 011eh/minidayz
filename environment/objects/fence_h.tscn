@@ -7,17 +7,18 @@
 atlas = ExtResource("2_tex")
 region = Rect2(0, 0, 67, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
-size = Vector2(62, 7)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n46bj"]
+radius = 4.0
+height = 70.0
 
 [node name="FenceH" unique_id=1562481609 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(-1, 25)
+position = Vector2(0, 4)
 texture = SubResource("AtlasTexture_h")
-offset = Vector2(-33, -50)
+offset = Vector2(-34, -50)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(0, 18.5)
-shape = SubResource("RectangleShape2D_h")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_n46bj")

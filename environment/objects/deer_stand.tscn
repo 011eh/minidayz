@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://8wpwj4y800w3" path="res://asset/images/environment/b_deer_stand-sheet0.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_base"]
-size = Vector2(46, 14)
+size = Vector2(41, 21)
 
-[node name="DeerStand" instance=ExtResource("1_base")]
+[node name="DeerStand" unique_id=1151899278 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
@@ -14,5 +14,5 @@ texture = ExtResource("2_tex")
 offset = Vector2(-30, -80)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(0, -7)
+position = Vector2(-5.5, -14.5)
 shape = SubResource("RectangleShape2D_base")

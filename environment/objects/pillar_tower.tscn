@@ -1,22 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpiltwr00obs0"]
+[gd_scene format=3 uid="uid://dpiltwr00obs0"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://dwcax34lwyles" path="res://asset/images/environment/pillar-sheet0.png" id="2_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tower"]
 atlas = ExtResource("2_tex")
-region = Rect2(0, 0, 95, 181)
+region = Rect2(0, 0, 95, 180)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tower"]
-size = Vector2(31, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw4es"]
+radius = 4.0
+height = 14.0
 
-[node name="PillarTower" instance=ExtResource("1_base")]
+[node name="PillarTower" unique_id=749380149 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(0, 1)
 texture = SubResource("AtlasTexture_tower")
-offset = Vector2(-48, -91)
+offset = Vector2(-24, -176)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-18, 73)
-shape = SubResource("RectangleShape2D_tower")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xw4es")

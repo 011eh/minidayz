@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw4tpump00obs"]
+[gd_scene format=3 uid="uid://cw4tpump00obs"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://b026e0pniwm85" path="res://asset/images/environment/waterpump-sheet0.png" id="2_tex"]

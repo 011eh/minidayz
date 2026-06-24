@@ -1,22 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbarh1cade0aa"]
+[gd_scene format=3 uid="uid://dbarh1cade0aa"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://bibmrxqfspkbv" path="res://asset/images/environment/obst_barricade-sheet0.png" id="2_tex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h"]
 atlas = ExtResource("2_tex")
-region = Rect2(63, 31, 56, 25)
+region = Rect2(63, 11, 56, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h"]
-size = Vector2(48, 16)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6p8js"]
+radius = 5.0
+height = 56.0
 
-[node name="BarricadeH" instance=ExtResource("1_base")]
+[node name="BarricadeH" unique_id=349362309 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(0, 3)
 texture = SubResource("AtlasTexture_h")
-offset = Vector2(-28, -13)
+offset = Vector2(-28, -25)
+vframes = 2
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-2, 3)
-shape = SubResource("RectangleShape2D_h")
+position = Vector2(0, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6p8js")

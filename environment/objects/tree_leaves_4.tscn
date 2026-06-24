@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://eq6ny4l8leaf4"]
+[gd_scene format=3 uid="uid://vrse2oy06eod"]
 
 [ext_resource type="PackedScene" uid="uid://c5t8h0wq2nx6m" path="res://environment/objects/tree.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://dqilada34e6y1" path="res://asset/images/environment/tree_leaves_4.png" id="2_tex"]

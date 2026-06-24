@@ -1,27 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5t8h0wq2nx6m"]
+[gd_scene format=3 uid="uid://c5t8h0wq2nx6m"]
 
-[ext_resource type="Script" path="res://environment/objects/tree.gd" id="1_tree"]
+[ext_resource type="Script" uid="uid://d1ejubqjnaoja" path="res://environment/objects/tree.gd" id="1_tree"]
 [ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="2_ia"]
-[ext_resource type="Script" path="res://environment/objects/chop_interaction.gd" id="3_chop"]
+[ext_resource type="Script" uid="uid://dmlgji1m2w0pf" path="res://environment/objects/chop_interaction.gd" id="3_chop"]
 [ext_resource type="AudioStream" uid="uid://cb2hx2nygi0i7" path="res://asset/media/environment/treefall_1.ogg" id="4_fall"]
 
-[node name="Tree" type="Node2D"]
+[node name="Tree" type="Node2D" unique_id=1900498121]
 script = ExtResource("1_tree")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-centered = true
+[node name="Sprite" type="Sprite2D" parent="." unique_id=646019758]
 hframes = 2
 
-[node name="Trunk" type="StaticBody2D" parent="."]
+[node name="Trunk" type="StaticBody2D" parent="." unique_id=1004181516]
 collision_layer = 2
 collision_mask = 0
 
-[node name="TrunkShape" type="CollisionShape2D" parent="Trunk"]
+[node name="TrunkShape" type="CollisionShape2D" parent="Trunk" unique_id=524145976]
 
-[node name="InteractionArea" parent="." instance=ExtResource("2_ia")]
+[node name="InteractionArea" parent="." unique_id=129995800 instance=ExtResource("2_ia")]
 script = ExtResource("3_chop")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=588505740]
 
-[node name="FallSound" type="AudioStreamPlayer2D" parent="."]
+[node name="FallSound" type="AudioStreamPlayer2D" parent="." unique_id=289649468]
 stream = ExtResource("4_fall")

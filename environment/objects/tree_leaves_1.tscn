@@ -3,22 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://c5t8h0wq2nx6m" path="res://environment/objects/tree.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://bc41042h0elj2" path="res://asset/images/environment/tree_leaves_1.png" id="2_tex"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_trunk"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xx4l3"]
+radius = 4.0
+height = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia"]
-size = Vector2(66, 94)
+[node name="TreeLeaves1" unique_id=771793943 instance=ExtResource("1_base")]
 
-[node name="TreeLeaves1" instance=ExtResource("1_base")]
-
-[node name="Sprite" parent="." index="0"]
-position = Vector2(0, -49)
+[node name="Sprite" parent="." index="0" unique_id=646019758]
+position = Vector2(-4, -41)
 texture = ExtResource("2_tex")
 
-[node name="TrunkShape" parent="Trunk" index="0"]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_trunk")
+[node name="TrunkShape" parent="Trunk" parent_id_path=PackedInt32Array(1004181516) index="0" unique_id=524145976]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xx4l3")
 
-[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+[node name="CollisionShape2D" parent="InteractionArea" parent_id_path=PackedInt32Array(129995800) index="0" unique_id=588505740]
 position = Vector2(0, -47)
-shape = SubResource("RectangleShape2D_ia")
