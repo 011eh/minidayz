@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ce4ff5t6helic"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://q1am4f36o2uc" path="res://asset/images/environment/heli_crash-sheet0.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(180, 78)
+
+[node name="HeliCrash" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_tex")
+offset = Vector2(-120, -150)
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(-8, -44)
+shape = SubResource("RectangleShape2D_body")

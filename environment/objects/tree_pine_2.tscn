@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dn2pq7l4tree2"]
+
+[ext_resource type="PackedScene" uid="uid://c5t8h0wq2nx6m" path="res://environment/objects/tree.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://ch4vb18jiwjfs" path="res://asset/images/environment/tree_pine_2.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trunk"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia"]
+size = Vector2(100, 114)
+
+[node name="TreePine2" instance=ExtResource("1_base")]
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -60)
+texture = ExtResource("2_tex")
+
+[node name="TrunkShape" parent="Trunk" index="0"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_trunk")
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, -58)
+shape = SubResource("RectangleShape2D_ia")

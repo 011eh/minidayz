@@ -27,12 +27,14 @@ func _ready():
 			owner.target_position = Vector2.ZERO
 			if area.owner_type == InteractionArea.OwnerType.ITEM:
 				inventory.put_to_inventory(area.owner)
-				return 
-			area.interaction_inputted.emit()
+				return
+			area.interact()
 	)
 
 func get_interactable_list() -> Array[Area2D]:
-	return interaction_area.get_overlapping_areas()
+	return interaction_area.get_overlapping_areas().filter(func(area):
+		return area is InteractionArea and area.can_interact()
+	)
 
 func _unhandled_input(event):
 	if event.is_action('interact') and event.pressed == true:
@@ -42,7 +44,7 @@ func _unhandled_input(event):
 			if interactable.owner_type == InteractionArea.OwnerType.ITEM:
 				inventory.put_to_inventory(interactable.owner)
 				return
-			interactable.interaction_inputted.emit()
+			interactable.interact()
 			return
 		
 		if not detectable_list.is_empty():

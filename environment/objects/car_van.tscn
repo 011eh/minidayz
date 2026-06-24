@@ -1,10 +1,15 @@
-[gd_scene format=3 uid="uid://c2228peqfk4l0"]
+[gd_scene load_steps=6 format=3 uid="uid://c2228peqfk4l0"]
 
 [ext_resource type="PackedScene" uid="uid://bv4r8m2krawtn" path="res://environment/objects/vehicle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cma1hq37c8x6w" path="res://asset/images/environment/car/car_van.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="3_ia"]
+[ext_resource type="Script" path="res://environment/objects/searchable_interaction.gd" id="4_search"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
 size = Vector2(94, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia"]
+size = Vector2(110, 48)
 
 [node name="CarVan" unique_id=1480334249 instance=ExtResource("1_base")]
 y_sort_enabled = true
@@ -20,3 +25,11 @@ vframes = 3
 [node name="Shape" parent="." index="1"]
 position = Vector2(8, 7)
 shape = SubResource("RectangleShape2D_body")
+
+[node name="InteractionArea" parent="." index="3" instance=ExtResource("3_ia")]
+position = Vector2(8, 7)
+script = ExtResource("4_search")
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("RectangleShape2D_ia")

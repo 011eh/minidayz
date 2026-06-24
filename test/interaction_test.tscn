@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cintrtst0test"]
+
+[ext_resource type="Script" uid="uid://brihrieffoyal" path="res://test/interaction_test.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bc0vqye7xndin" path="res://character/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://c2228peqfk4l0" path="res://environment/objects/car_van.tscn" id="3_car_van"]
+
+[node name="InteractionTest" type="Node2D" unique_id=2113404849]
+y_sort_enabled = true
+script = ExtResource("1_script")
+
+[node name="Player" parent="." unique_id=107856266 groups=["player"] instance=ExtResource("2_player")]
+position = Vector2(-40, 124)
+collision_layer = 7
+
+[node name="CarVan" parent="." unique_id=2028317969 instance=ExtResource("3_car_van")]
+position = Vector2(-150, -120)
+
+[node name="CarVan2" parent="." unique_id=1475446199 instance=ExtResource("3_car_van")]
+position = Vector2(150, -120)
+
+[node name="CarVan3" parent="." unique_id=675904639 instance=ExtResource("3_car_van")]
+position = Vector2(0, 150)

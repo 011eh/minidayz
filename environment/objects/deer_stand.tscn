@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cd1ee2r3deers"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://8wpwj4y800w3" path="res://asset/images/environment/b_deer_stand-sheet0.png" id="2_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_base"]
+size = Vector2(46, 14)
+
+[node name="DeerStand" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_tex")
+offset = Vector2(-30, -80)
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_base")

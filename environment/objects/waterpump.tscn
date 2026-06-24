@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cw4tpump00obs"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://b026e0pniwm85" path="res://asset/images/environment/waterpump-sheet0.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://d0g2x7l1jodnh" path="res://mechanics/interaction_area.tscn" id="3_ia"]
+[ext_resource type="Script" path="res://environment/objects/pump_interaction.gd" id="4_pump"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(14, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ia"]
+size = Vector2(40, 44)
+
+[node name="WaterPump" instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_tex")
+offset = Vector2(-10, -14)
+
+[node name="Shape" parent="." index="1"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_body")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_ia")]
+script = ExtResource("4_pump")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_ia")
