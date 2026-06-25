@@ -34,6 +34,7 @@ gdscript/warnings/confusable_local_declaration=0
 
 [display]
 
+window/size/mode=2
 window/stretch/scale=1.5
 
 [input]

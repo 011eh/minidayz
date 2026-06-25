@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://csndblkv0bb00"]
+[gd_scene format=3 uid="uid://csndblkv0bb00"]
 
 [ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cgwvoii74uj2u" path="res://asset/images/environment/obst_sandblock-sheet0.png" id="2_tex"]
@@ -7,16 +7,17 @@
 atlas = ExtResource("2_tex")
 region = Rect2(81, 1, 22, 50)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v"]
-size = Vector2(15, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k2mmc"]
+radius = 3.5
+height = 36.0
 
-[node name="SandblockV" instance=ExtResource("1_base")]
+[node name="SandblockV" unique_id=1219327903 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=606723850]
 texture = SubResource("AtlasTexture_v")
-offset = Vector2(-11, -26)
+offset = Vector2(-7, -26)
 
-[node name="Shape" parent="." index="1"]
-position = Vector2(-3.5, -1)
-shape = SubResource("RectangleShape2D_v")
+[node name="Shape" parent="." index="1" unique_id=833586808]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_k2mmc")

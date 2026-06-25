@@ -9,16 +9,16 @@ region = Rect2(0, 0, 67, 50)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n46bj"]
 radius = 4.0
-height = 70.0
+height = 66.0
 
 [node name="FenceH" unique_id=1562481609 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=606723850]
 position = Vector2(0, 4)
 texture = SubResource("AtlasTexture_h")
 offset = Vector2(-34, -50)
 
-[node name="Shape" parent="." index="1"]
+[node name="Shape" parent="." index="1" unique_id=833586808]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_n46bj")

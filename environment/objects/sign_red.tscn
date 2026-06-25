@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dpilsgn00obs0"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://dwcax34lwyles" path="res://asset/images/environment/pillar-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sign"]
+atlas = ExtResource("2_tex")
+region = Rect2(215, 75, 41, 72)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0ptl"]
+radius = 1.0
+
+[node name="SignRed" unique_id=1467597479 instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0" unique_id=606723850]
+position = Vector2(0, 2)
+texture = SubResource("AtlasTexture_sign")
+offset = Vector2(-9, -72)
+
+[node name="Shape" parent="." index="1" unique_id=833586808]
+shape = SubResource("CircleShape2D_a0ptl")

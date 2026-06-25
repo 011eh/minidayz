@@ -14,13 +14,13 @@ height = 56.0
 [node name="BarricadeH" unique_id=349362309 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=606723850]
 position = Vector2(0, 3)
 texture = SubResource("AtlasTexture_h")
 offset = Vector2(-28, -25)
 vframes = 2
 
-[node name="Shape" parent="." index="1"]
+[node name="Shape" parent="." index="1" unique_id=833586808]
 position = Vector2(0, -2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_6p8js")

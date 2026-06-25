@@ -14,10 +14,10 @@ size = Vector2(98, 34)
 y_sort_enabled = true
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(24, 28)
+position = Vector2(24, 17)
 texture = SubResource("AtlasTexture_h")
 offset = Vector2(-76, -56)
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-3, 5)
+position = Vector2(-3, -6)
 shape = SubResource("RectangleShape2D_h")

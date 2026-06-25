@@ -12,10 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://dhescov0obs00" path="res://environment/objects/hesco_v.tscn" id="10_hesco_v"]
 [ext_resource type="PackedScene" uid="uid://creyruv0517ol" path="res://environment/objects/lavka_h.tscn" id="11_lavka_h"]
 [ext_resource type="PackedScene" uid="uid://creysav0517ol" path="res://environment/objects/lavka_v.tscn" id="12_lavka_v"]
-[ext_resource type="PackedScene" uid="uid://dpillmp00obs0" path="res://environment/objects/pillar_lamp.tscn" id="13_pillar_lamp"]
-[ext_resource type="PackedScene" uid="uid://dpilpol00obs0" path="res://environment/objects/pillar_pole.tscn" id="14_pillar_pole"]
-[ext_resource type="PackedScene" uid="uid://dpilsgn00obs0" path="res://environment/objects/pillar_sign.tscn" id="15_pillar_sign"]
-[ext_resource type="PackedScene" uid="uid://dpiltwr00obs0" path="res://environment/objects/pillar_tower.tscn" id="16_pillar_tower"]
+[ext_resource type="PackedScene" uid="uid://dpillmp00obs0" path="res://environment/objects/basketball_hoop.tscn" id="13_lamp"]
+[ext_resource type="PackedScene" uid="uid://c3d7xf2h7ivch" path="res://environment/objects/pole.tscn" id="14_v08wg"]
+[ext_resource type="PackedScene" uid="uid://dpilsgn00obs0" path="res://environment/objects/sign_red.tscn" id="15_sign"]
+[ext_resource type="PackedScene" uid="uid://dpiltwr00obs0" path="res://environment/objects/tower.tscn" id="16_tower"]
 [ext_resource type="PackedScene" uid="uid://csndblkh0aa00" path="res://environment/objects/sandblock_h.tscn" id="17_sandblock_h"]
 [ext_resource type="PackedScene" uid="uid://csndblkv0bb00" path="res://environment/objects/sandblock_v.tscn" id="18_sandblock_v"]
 [ext_resource type="PackedScene" uid="uid://cqbnh8rr87lc6" path="res://environment/objects/trash_container_h.tscn" id="19_trash_h"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://dn2pq7l4tree2" path="res://environment/objects/tree_pine_2.tscn" id="33_tree_pine_2"]
 [ext_resource type="PackedScene" uid="uid://bn3lv1l5leaf1" path="res://environment/objects/tree_leaves_1.tscn" id="34_tree_leaves_1"]
 [ext_resource type="PackedScene" uid="uid://cn4mw2l6leaf2" path="res://environment/objects/tree_leaves_2.tscn" id="35_tree_leaves_2"]
+[ext_resource type="PackedScene" uid="uid://bfndqqmihoajl" path="res://environment/objects/sign_blue.tscn" id="36_nndrh"]
 [ext_resource type="PackedScene" uid="uid://dp5nx3l7leaf3" path="res://environment/objects/tree_leaves_3.tscn" id="36_tree_leaves_3"]
 [ext_resource type="PackedScene" uid="uid://vrse2oy06eod" path="res://environment/objects/tree_leaves_4.tscn" id="37_tree_leaves_4"]
 
@@ -75,16 +76,16 @@ position = Vector2(-300, 50)
 [node name="LavkaV" parent="." unique_id=33235715 instance=ExtResource("12_lavka_v")]
 position = Vector2(-150, 50)
 
-[node name="PillarLamp" parent="." unique_id=1274826621 instance=ExtResource("13_pillar_lamp")]
+[node name="BasketballHoop" parent="." unique_id=1274826621 instance=ExtResource("13_lamp")]
 position = Vector2(0, 50)
 
-[node name="PillarPole" parent="." unique_id=1076394512 instance=ExtResource("14_pillar_pole")]
+[node name="Pole" parent="." unique_id=38751702 instance=ExtResource("14_v08wg")]
 position = Vector2(150, 50)
 
-[node name="PillarSign" parent="." unique_id=46713567 instance=ExtResource("15_pillar_sign")]
+[node name="Sign" parent="." unique_id=46713567 instance=ExtResource("15_sign")]
 position = Vector2(300, 50)
 
-[node name="PillarTower" parent="." unique_id=1658557173 instance=ExtResource("16_pillar_tower")]
+[node name="Tower" parent="." unique_id=1658557173 instance=ExtResource("16_tower")]
 position = Vector2(-300, 250)
 
 [node name="SandblockH" parent="." unique_id=2131868208 instance=ExtResource("17_sandblock_h")]
@@ -143,4 +144,7 @@ position = Vector2(150, 850)
 position = Vector2(300, 850)
 
 [node name="Player" parent="." unique_id=1394615433 instance=ExtResource("27_player")]
-position = Vector2(-267, 70)
+position = Vector2(-311, 444)
+
+[node name="SignBlue" parent="." unique_id=1467597479 instance=ExtResource("36_nndrh")]
+position = Vector2(347, 51)

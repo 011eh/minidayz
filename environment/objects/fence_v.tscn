@@ -14,10 +14,10 @@ height = 66.0
 [node name="FenceV" unique_id=1102734267 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=606723850]
 position = Vector2(-1, 33)
 texture = SubResource("AtlasTexture_v")
 offset = Vector2(-4, -113)
 
-[node name="Shape" parent="." index="1"]
+[node name="Shape" parent="." index="1" unique_id=833586808]
 shape = SubResource("CapsuleShape2D_6p8js")

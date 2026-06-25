@@ -13,11 +13,11 @@ size = Vector2(90, 23)
 [node name="HescoH" unique_id=542109198 instance=ExtResource("1_base")]
 y_sort_enabled = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=606723850]
 position = Vector2(0, 8)
 texture = SubResource("AtlasTexture_h")
 offset = Vector2(-47, -70)
 
-[node name="Shape" parent="." index="1"]
+[node name="Shape" parent="." index="1" unique_id=833586808]
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_h")

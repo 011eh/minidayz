@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c3d7xf2h7ivch"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://dwcax34lwyles" path="res://asset/images/environment/pillar-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pole"]
+atlas = ExtResource("2_tex")
+region = Rect2(97, 2, 71, 141)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mp3e7"]
+radius = 2.0
+height = 6.0
+
+[node name="Pole" unique_id=38751702 instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0" unique_id=606723850]
+position = Vector2(0, 4)
+texture = SubResource("AtlasTexture_pole")
+offset = Vector2(-27, -141)
+
+[node name="Shape" parent="." index="1" unique_id=833586808]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_mp3e7")

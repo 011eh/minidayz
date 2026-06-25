@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dpillmp00obs0"]
+
+[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://dwcax34lwyles" path="res://asset/images/environment/pillar-sheet0.png" id="2_tex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lamp"]
+atlas = ExtResource("2_tex")
+region = Rect2(171, 0, 43, 87)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efot1"]
+radius = 0.3
+height = 1.0
+
+[node name="BasketballHoop" unique_id=419013152 instance=ExtResource("1_base")]
+y_sort_enabled = true
+
+[node name="Sprite" parent="." index="0" unique_id=606723850]
+position = Vector2(0, 2)
+texture = SubResource("AtlasTexture_lamp")
+offset = Vector2(-2, -80)
+
+[node name="Shape" parent="." index="1" unique_id=833586808]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_efot1")
