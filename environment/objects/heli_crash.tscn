@@ -1,21 +1,35 @@
 [gd_scene format=3 uid="uid://ce4ff5t6helic"]
 
-[ext_resource type="PackedScene" uid="uid://dq7w3kx1n6yor" path="res://environment/objects/obstacle.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://q1am4f36o2uc" path="res://asset/images/environment/heli_crash-sheet0.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://bbhndfdr1cmp0" path="res://environment/components/behind_fader.gd" id="3_bfdr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_swl0n"]
-radius = 35.327156
-height = 212.04309
+[sub_resource type="AtlasTexture" id="AtlasTexture_nndrh"]
+atlas = ExtResource("2_tex")
+region = Rect2(80, 0, 160, 186)
 
-[node name="HeliCrash" unique_id=107899053 instance=ExtResource("1_base")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qgby"]
+atlas = ExtResource("2_tex")
+region = Rect2(0, 0, 80, 186)
+
+[node name="HeliCrash" type="StaticBody2D" unique_id=107899053]
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
 
-[node name="Sprite" parent="." index="0"]
-position = Vector2(-22, 50)
-texture = ExtResource("2_tex")
-offset = Vector2(-95, -186)
+[node name="Sprite" type="Sprite2D" parent="." unique_id=606723850]
+texture = SubResource("AtlasTexture_nndrh")
+offset = Vector2(57, -20)
 
-[node name="Shape" parent="." index="1"]
-position = Vector2(-4.000001, -24)
-rotation = 1.0995574
-shape = SubResource("CapsuleShape2D_swl0n")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1762230019]
+position = Vector2(13, 4)
+polygon = PackedVector2Array(-89, 51, -8, 25, 2, 30, 68, -5, 97, -23, 87, -32, 67, -37, 41, -56, -75, -16, -108, 6, -114, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1720538776]
+position = Vector2(-101, 34)
+texture = SubResource("AtlasTexture_5qgby")
+offset = Vector2(38, -54)
+
+[node name="BehindFader" type="VisibleOnScreenNotifier2D" parent="." unique_id=1264432957]
+position = Vector2(3, 10)
+script = ExtResource("3_bfdr")
+targets = Array[NodePath]([NodePath("../Sprite"), NodePath("../Sprite2D")])

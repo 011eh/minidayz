@@ -4,19 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://ujpq5ybhcing" path="res://asset/images/environment/car/car_police_vert.png" id="2_tex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
-size = Vector2(42, 67)
+size = Vector2(38, 64)
 
 [node name="CarPoliceVert" unique_id=956313090 instance=ExtResource("1_base")]
 y_sort_enabled = true
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(-2, 0)
+position = Vector2(0, -25)
 texture = ExtResource("2_tex")
 centered = true
-offset = Vector2(2, 0)
+offset = Vector2(3, 24)
 hframes = 2
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-4, -0.5)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_body")

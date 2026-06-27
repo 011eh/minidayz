@@ -12,11 +12,15 @@ color_count = 3
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2(2, -12)
 texture = ExtResource("2_tex")
 centered = true
 hframes = 2
 vframes = 3
 
 [node name="Shape" parent="." index="1"]
-position = Vector2(-0.5, 9.5)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_body")
+
+[node name="LootAnchors" parent="." index="2"]
+position = Vector2(0, -8)

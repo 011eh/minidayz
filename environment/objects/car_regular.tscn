@@ -12,7 +12,7 @@ color_count = 4
 has_open_state = true
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(0, -11)
+position = Vector2(0, -13)
 texture = ExtResource("2_tex")
 centered = true
 offset = Vector2(0, 11)

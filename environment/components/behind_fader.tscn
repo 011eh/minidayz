@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dbhndfdrscn01"]
+
+[ext_resource type="Script" uid="uid://bbhndfdr1cmp0" path="res://environment/components/behind_fader.gd" id="1_bfdr"]
+
+[node name="BehindFader" type="VisibleOnScreenNotifier2D"]
+script = ExtResource("1_bfdr")
