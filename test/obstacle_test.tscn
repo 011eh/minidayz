@@ -144,7 +144,7 @@ position = Vector2(150, 850)
 position = Vector2(300, 850)
 
 [node name="Player" parent="." unique_id=1394615433 groups=["player"] instance=ExtResource("27_player")]
-position = Vector2(-120, 692)
+position = Vector2(22, 666)
 
 [node name="SignBlue" parent="." unique_id=1467597479 instance=ExtResource("36_nndrh")]
 position = Vector2(347, 51)
