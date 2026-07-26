@@ -25,6 +25,7 @@ height = 16.0
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Piano")])
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-118, -123)
 texture = ExtResource("2_mhjpm")
 offset = Vector2(0, -72)
 
@@ -36,22 +37,22 @@ position = Vector2(117.5, 54)
 shape = SubResource("RectangleShape2D_cyqc2")
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-7, 110)
+position = Vector2(-125, -13)
 texture = ExtResource("3_8lknh")
 offset = Vector2(0, -228)
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(-6, -117)
+position = Vector2(-124, -240)
 scale = Vector2(12.3, 5.85)
 
 [node name="Piano" type="Sprite2D" parent="." index="3"]
-position = Vector2(156, 46)
+position = Vector2(38, -77)
 texture = ExtResource("4_y2em0")
 centered = false
 offset = Vector2(0, -9)
 
 [node name="Door" parent="." index="4" instance=ExtResource("5_hdekc")]
-position = Vector2(109, 108)
+position = Vector2(-9, -15)
 texture = SubResource("AtlasTexture_51vgl")
 offset = Vector2(0, -33)
 

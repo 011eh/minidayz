@@ -23,6 +23,7 @@ height = 16.0
 [node name="Buliding" instance=ExtResource("1_38fcs")]
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-81, -72)
 texture = ExtResource("2_a5vxi")
 offset = Vector2(0, -46)
 
@@ -37,16 +38,16 @@ position = Vector2(81, 35)
 shape = SubResource("RectangleShape2D_7pun8")
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-6, 71)
+position = Vector2(-87, -1)
 texture = ExtResource("3_ie820")
 offset = Vector2(0, -154)
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(-5, -82)
+position = Vector2(-86, -154)
 scale = Vector2(8.5, 4.1)
 
 [node name="Door" parent="." index="3" instance=ExtResource("4_h6gdl")]
-position = Vector2(142, 70)
+position = Vector2(61, -2)
 texture = SubResource("AtlasTexture_ni6o2")
 offset = Vector2(-10, -31)
 

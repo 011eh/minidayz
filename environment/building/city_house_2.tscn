@@ -16,6 +16,7 @@ region = Rect2(84, 263, 54, 48)
 [node name="Buliding" instance=ExtResource("1_oue8f")]
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-113, -105)
 texture = ExtResource("2_mn5bp")
 offset = Vector2(-1, -69)
 
@@ -27,15 +28,15 @@ position = Vector2(112.5, 53)
 shape = SubResource("RectangleShape2D_3wl0b")
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-2, -185)
+position = Vector2(-115, -290)
 texture = ExtResource("3_kqj4d")
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(-1, -185)
+position = Vector2(-114, -290)
 scale = Vector2(11.35, 9.25)
 
 [node name="Door" parent="." index="3" instance=ExtResource("4_lbnap")]
-position = Vector2(112, 104)
+position = Vector2(-1, -1)
 texture = SubResource("AtlasTexture_25y0h")
 offset = Vector2(-13, -34)
 

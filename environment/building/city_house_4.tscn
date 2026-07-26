@@ -40,6 +40,7 @@ height = 24.0
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Table1"), NodePath("Inside/Table2"), NodePath("Inside/Table3"), NodePath("Inside/Table4")])
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-113, -109)
 texture = ExtResource("2_7avew")
 offset = Vector2(-1, -62)
 
@@ -86,16 +87,16 @@ centered = false
 offset = Vector2(0, -10)
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-1, 108)
+position = Vector2(-114, -1)
 texture = ExtResource("3_npueu")
 offset = Vector2(0, -289)
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(0, -180)
+position = Vector2(-113, -289)
 scale = Vector2(11.35, 9)
 
 [node name="Door" parent="." index="3" instance=ExtResource("7_gxycc")]
-position = Vector2(175, 69)
+position = Vector2(62, -40)
 texture = SubResource("AtlasTexture_olbg2")
 
 [node name="Door1" parent="Door/StaticBody2D" index="0"]

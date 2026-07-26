@@ -13,7 +13,7 @@ size = Vector2(116, 28)
 [node name="Buliding" instance=ExtResource("1_3q80g")]
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(0, 35)
+position = Vector2(-59, -43)
 texture = ExtResource("2_3m5ta")
 offset = Vector2(0, -35)
 
@@ -29,9 +29,10 @@ position = Vector2(59, 25)
 shape = SubResource("RectangleShape2D_pcg2n")
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-10, 78)
+position = Vector2(-69, 0)
 texture = ExtResource("3_r7wsc")
 offset = Vector2(0, -78)
 
 [node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-59, -78)
 scale = Vector2(5.85, 1.75)

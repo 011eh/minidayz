@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dck7rnq3f8k74"]
+[gd_scene format=3 uid="uid://dck7rnq3f8k74"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_w6o7a"]
 [ext_resource type="Texture2D" uid="uid://cvgln3w2s6gmc" path="res://asset/images/building/b_village_red2_int-sheet0.png" id="2_rf6p8"]
@@ -21,39 +21,38 @@ b = Vector2(17, -0.200001)
 radius = 2.85
 height = 14.0
 
-[node name="Buliding" instance=ExtResource("1_w6o7a")]
-metadata/_edit_horizontal_guides_ = [49.0]
+[node name="Buliding" unique_id=889156932 instance=ExtResource("1_w6o7a")]
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(-3, 0)
+position = Vector2(-111, -64)
 texture = ExtResource("2_rf6p8")
 offset = Vector2(0, -55)
 
 [node name="StaticBody2D" parent="Inside" index="0"]
 position = Vector2(3, 0)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0" unique_id=2001990859]
 position = Vector2(-3, 0)
 polygon = PackedVector2Array(1, -6, 198, -7, 198, 21, 220, 21, 220, 59, 93, 59, 93, 48.9733, 92, 49, 92, 37, 96, 37, 96, 53, 194, 53, 194, 8, 163, 8, 162.944, 2, 140, 2, 140, 13, 117, 13, 117, 18, 113, 18, 113, 11, 92, 11, 92, 2, 25, 2, 25, 7, 5, 7, 5, 27, 21, 27, 21, 53, 56, 53, 56, 19, 60, 19, 60, 59, 1, 59)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/StaticBody2D" index="1" unique_id=1876620536]
 position = Vector2(78, 51)
 shape = SubResource("SegmentShape2D_bbbwx")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/InteriorArea" index="0" unique_id=1962511199]
 polygon = PackedVector2Array(5, 2, 5, 53, 60, 53, 60, 49, 93, 49, 92.9023, 53, 194, 53, 194, 2)
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-5, 51)
+position = Vector2(-113, -13)
 texture = ExtResource("3_naolr")
 offset = Vector2(0, -168)
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(-5, -119)
+position = Vector2(-113, -183)
 scale = Vector2(11.3, 7.1)
 
-[node name="Door" parent="." index="3" instance=ExtResource("4_m4iye")]
-position = Vector2(52, 55)
+[node name="Door" parent="." index="3" unique_id=1419311717 instance=ExtResource("4_m4iye")]
+position = Vector2(-56, -9)
 texture = SubResource("AtlasTexture_nmnf5")
 offset = Vector2(0, -29.45)
 

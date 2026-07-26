@@ -36,7 +36,7 @@ region = Rect2(30, 0, 14, 76)
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Column"), NodePath("Column2"), NodePath("Column3")])
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(0, 67)
+position = Vector2(-153, -112)
 texture = ExtResource("2_3k5jl")
 offset = Vector2(0, -67)
 
@@ -87,24 +87,25 @@ position = Vector2(252.5, 20)
 shape = SubResource("RectangleShape2D_e54qh")
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(0, 179)
+position = Vector2(-153, 0)
 texture = SubResource("AtlasTexture_rok70")
 offset = Vector2(0, -179)
 
 [node name="Column" type="Sprite2D" parent="." index="2"]
-position = Vector2(29, 173)
+position = Vector2(-124, -6)
 texture = SubResource("AtlasTexture_ug6cg")
 offset = Vector2(0, -38)
 
 [node name="Column2" type="Sprite2D" parent="." index="3"]
-position = Vector2(142, 173)
+position = Vector2(-11, -6)
 texture = SubResource("AtlasTexture_sf6q0")
 offset = Vector2(0, -38)
 
 [node name="Column3" type="Sprite2D" parent="." index="4"]
-position = Vector2(255, 173)
+position = Vector2(102, -6)
 texture = SubResource("AtlasTexture_fac8f")
 offset = Vector2(0, -38)
 
 [node name="VisibleNotifier" parent="." index="5"]
+position = Vector2(-153, -179)
 scale = Vector2(14.15, 7.45)

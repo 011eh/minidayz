@@ -20,6 +20,7 @@ height = 16.0
 [node name="Buliding" instance=ExtResource("1_sgqym")]
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-73, -77)
 texture = ExtResource("2_7vrgc")
 offset = Vector2(0, -40)
 
@@ -30,17 +31,17 @@ polygon = PackedVector2Array(0, -6, 144, -6, 144, 70, 115, 70, 115, 76, 45, 76, 
 polygon = PackedVector2Array(4, 2, 141, 2, 141, 67, 116, 70, 112, 73, 45, 76, 31, 76, 23, 73, 19, 65, 4, 62)
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-2, 65)
+position = Vector2(-75, -12)
 texture = ExtResource("3_l8n5t")
 offset = Vector2(0, -143)
 
 [node name="VisibleNotifier" parent="." index="2"]
 visible = false
-position = Vector2(-1, -77)
+position = Vector2(-74, -154)
 scale = Vector2(8.65, 7.2)
 
 [node name="Door" parent="." index="3" instance=ExtResource("4_841fg")]
-position = Vector2(28, 75)
+position = Vector2(-45, -2)
 texture = SubResource("AtlasTexture_j6xqc")
 offset = Vector2(0, -31)
 

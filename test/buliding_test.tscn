@@ -18,14 +18,16 @@ collision_layer = 7
 collision_mask = 3
 
 [node name="Buliding" parent="." instance=ExtResource("3_1kjmu")]
+position = Vector2(146, 199)
 
 [node name="Buliding2" parent="." instance=ExtResource("4_pas86")]
-position = Vector2(304, 219)
+position = Vector2(422, 342)
 
 [node name="Buliding3" parent="." instance=ExtResource("5_migpe")]
-position = Vector2(576, 122)
+position = Vector2(727, 229)
 
 [node name="Buliding4" parent="." instance=ExtResource("6_x6q20")]
+position = Vector2(102, 94)
 
 [node name="Buliding" parent="Buliding4" instance=ExtResource("7_ni5si")]
-position = Vector2(-468, 327)
+position = Vector2(-377, 443)

@@ -10,6 +10,7 @@
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Table1"), NodePath("Inside/Table2")])
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-176, -94)
 texture = ExtResource("2_qf3yc")
 offset = Vector2(0, -60)
 
@@ -33,10 +34,10 @@ centered = false
 offset = Vector2(0, -18)
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-1, 84)
+position = Vector2(-177, -10)
 texture = ExtResource("3_453yt")
 offset = Vector2(0, -184)
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(0, -99)
+position = Vector2(-176, -193)
 scale = Vector2(17.55, 4.95)

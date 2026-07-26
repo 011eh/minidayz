@@ -52,6 +52,7 @@ height = 26.0001
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Inside/Pillar")])
 
 [node name="Inside" parent="." index="0"]
+position = Vector2(-269, -97)
 texture = ExtResource("2_2yrnq")
 offset = Vector2(0, -62)
 
@@ -86,16 +87,16 @@ texture = SubResource("AtlasTexture_6cbk2")
 offset = Vector2(0, -33)
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(-7, 91)
+position = Vector2(-276, -6)
 texture = ExtResource("3_ucp1f")
 offset = Vector2(0, -281)
 
 [node name="VisibleNotifier" parent="." index="2"]
-position = Vector2(-6, -189)
+position = Vector2(-275, -286)
 scale = Vector2(27.15, 10.45)
 
 [node name="Door" parent="." index="3" instance=ExtResource("4_eyudc")]
-position = Vector2(87, 95)
+position = Vector2(-182, -2)
 texture = SubResource("AtlasTexture_wqwyt")
 offset = Vector2(-18, -37)
 
@@ -117,7 +118,7 @@ visible = true
 shape = SubResource("CapsuleShape2D_55g5f")
 
 [node name="Door2" parent="." index="4" instance=ExtResource("4_eyudc")]
-position = Vector2(285, 89)
+position = Vector2(16, -8)
 texture = SubResource("AtlasTexture_x3aq0")
 offset = Vector2(-31, -50)
 
@@ -139,7 +140,7 @@ visible = true
 shape = SubResource("CapsuleShape2D_xg7hp")
 
 [node name="Door3" parent="." index="5" instance=ExtResource("4_eyudc")]
-position = Vector2(364, 90)
+position = Vector2(95, -7)
 texture = SubResource("AtlasTexture_x3aq0")
 offset = Vector2(-31, -51)
 
@@ -159,7 +160,7 @@ visible = true
 shape = SubResource("CapsuleShape2D_xg7hp")
 
 [node name="Door4" parent="." index="6" instance=ExtResource("4_eyudc")]
-position = Vector2(443, 90)
+position = Vector2(174, -7)
 texture = SubResource("AtlasTexture_x3aq0")
 offset = Vector2(-31, -51)
 

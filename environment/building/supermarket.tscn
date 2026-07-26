@@ -12,7 +12,7 @@ size = Vector2(232, 102)
 building_sprites = Array[NodePath]([NodePath("Inside"), NodePath("Outside"), NodePath("Counter")])
 
 [node name="Inside" parent="." index="0"]
-position = Vector2(0, 59)
+position = Vector2(-120, -102)
 texture = ExtResource("2_pb3o3")
 offset = Vector2(0, -59)
 
@@ -24,14 +24,15 @@ position = Vector2(122, 45)
 shape = SubResource("RectangleShape2D_ut8m2")
 
 [node name="Outside" parent="." index="1"]
-position = Vector2(0, 160)
+position = Vector2(-120, -1)
 texture = ExtResource("3_ayf4h")
 offset = Vector2(0, -160)
 
 [node name="VisibleNotifier" parent="." index="2"]
+position = Vector2(-120, -161)
 scale = Vector2(13.7, 5.95)
 
 [node name="Counter" type="Sprite2D" parent="." index="3"]
-position = Vector2(212, 101)
+position = Vector2(92, -60)
 texture = ExtResource("4_02e17")
 offset = Vector2(0, -11)
