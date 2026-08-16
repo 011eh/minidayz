@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://cv17vlg17tpl0"]
+
+[ext_resource type="PackedScene" uid="uid://barn6ej68ry5i" path="res://environment/location_template/location_template.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://blnha8a5y5ygn" path="res://environment/location_template/template_slot.tscn" id="2_slot"]
+[ext_resource type="PackedScene" uid="uid://bklp5pavejub" path="res://environment/building/village_brown.tscn" id="3_vbrown"]
+[ext_resource type="PackedScene" uid="uid://cesb8fs8ynlq" path="res://environment/building/village_red.tscn" id="4_vred"]
+[ext_resource type="PackedScene" uid="uid://cdq7hupfk50xu" path="res://environment/building/village_green.tscn" id="5_vgreen"]
+[ext_resource type="PackedScene" uid="uid://b8tbvw8w7j1mc" path="res://environment/building/village_yellow.tscn" id="6_vyellow"]
+[ext_resource type="PackedScene" uid="uid://b7p08jmvxhq04" path="res://environment/building/hostel.tscn" id="7_hostel"]
+[ext_resource type="PackedScene" uid="uid://cnknximavirof" path="res://environment/building/small_shed.tscn" id="8_shed"]
+[ext_resource type="PackedScene" uid="uid://c5dryjeoop8oy" path="res://environment/building/church.tscn" id="9_church"]
+[ext_resource type="PackedScene" uid="uid://r2m1ce0rfees" path="res://environment/building/red_brick.tscn" id="10_brick"]
+[ext_resource type="PackedScene" uid="uid://c22n8uo7fk44h" path="res://environment/objects/car_hatch.tscn" id="11_hatch"]
+[ext_resource type="PackedScene" uid="uid://c22ydh8boc44h" path="res://environment/objects/car_regular.tscn" id="12_regular"]
+[ext_resource type="PackedScene" uid="uid://c2228peqfk4l0" path="res://environment/objects/car_van.tscn" id="13_van"]
+[ext_resource type="PackedScene" uid="uid://creyruv0517ol" path="res://environment/objects/lavka_h.tscn" id="14_lavka"]
+[ext_resource type="PackedScene" uid="uid://bn3lv1l5leaf1" path="res://environment/objects/tree_leaves_1.tscn" id="16_leaf1"]
+[ext_resource type="PackedScene" uid="uid://cn4mw2l6leaf2" path="res://environment/objects/tree_leaves_2.tscn" id="17_leaf2"]
+[ext_resource type="PackedScene" uid="uid://dp5nx3l7leaf3" path="res://environment/objects/tree_leaves_3.tscn" id="18_leaf3"]
+[ext_resource type="PackedScene" uid="uid://b25whorq8cii0" path="res://environment/objects/tree_pine_1.tscn" id="19_pine1"]
+
+[node name="Village17" unique_id=544237903 instance=ExtResource("1_base")]
+
+[node name="House1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="0" unique_id=1599667497 instance=ExtResource("2_slot")]
+position = Vector2(273, 254)
+choices = Array[PackedScene]([ExtResource("3_vbrown"), ExtResource("4_vred"), ExtResource("5_vgreen"), ExtResource("6_vyellow"), ExtResource("7_hostel")])
+
+[node name="House2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="1" unique_id=2000308001 instance=ExtResource("2_slot")]
+position = Vector2(741, 248)
+choices = Array[PackedScene]([ExtResource("3_vbrown"), ExtResource("4_vred"), ExtResource("5_vgreen"), ExtResource("6_vyellow"), ExtResource("7_hostel")])
+
+[node name="Shed1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="2" unique_id=1978608264 instance=ExtResource("2_slot")]
+position = Vector2(130, 487)
+choices = Array[PackedScene]([ExtResource("8_shed")])
+
+[node name="Shed2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="3" unique_id=776317053 instance=ExtResource("2_slot")]
+position = Vector2(865, 487)
+choices = Array[PackedScene]([ExtResource("8_shed")])
+
+[node name="ChurchOrBrick" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="4" unique_id=1372505630 instance=ExtResource("2_slot")]
+position = Vector2(510, 618)
+choices = Array[PackedScene]([ExtResource("9_church"), ExtResource("10_brick")])
+choice_offsets = Array[Vector2]([Vector2(0, 0), Vector2(0, -35)])
+
+[node name="Car1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="5" unique_id=1443303329 instance=ExtResource("2_slot")]
+position = Vector2(792, 602)
+type = 1
+choices = Array[PackedScene]([ExtResource("11_hatch"), ExtResource("12_regular"), ExtResource("13_van")])
+
+[node name="Car2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="6" unique_id=693607408 instance=ExtResource("2_slot")]
+position = Vector2(510, 907)
+type = 1
+choices = Array[PackedScene]([ExtResource("11_hatch"), ExtResource("12_regular"), ExtResource("13_van")])
+
+[node name="Car3" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="7" unique_id=402489541 instance=ExtResource("2_slot")]
+position = Vector2(228, 377)
+type = 1
+choices = Array[PackedScene]([ExtResource("11_hatch"), ExtResource("12_regular"), ExtResource("13_van")])
+
+[node name="Bench1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="8" unique_id=1668161843 instance=ExtResource("2_slot")]
+position = Vector2(505, 711)
+type = 3
+choices = Array[PackedScene]([ExtResource("14_lavka")])
+
+[node name="Bench2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="9" unique_id=2110324858 instance=ExtResource("2_slot")]
+position = Vector2(389, 711)
+type = 3
+choices = Array[PackedScene]([ExtResource("14_lavka")])
+
+[node name="Bench3" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="10" unique_id=1061506650 instance=ExtResource("2_slot")]
+position = Vector2(621, 711)
+type = 3
+choices = Array[PackedScene]([ExtResource("14_lavka")])
+
+[node name="Tree1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="11" unique_id=1312153837 instance=ExtResource("2_slot")]
+position = Vector2(117, 712)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="12" unique_id=804364744 instance=ExtResource("2_slot")]
+position = Vector2(135, 836)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree3" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="13" unique_id=746917337 instance=ExtResource("2_slot")]
+position = Vector2(243, 888)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree4" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="14" unique_id=140045331 instance=ExtResource("2_slot")]
+position = Vector2(360, 895)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree5" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="15" unique_id=986494674 instance=ExtResource("2_slot")]
+position = Vector2(660, 895)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree6" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="16" unique_id=73975320 instance=ExtResource("2_slot")]
+position = Vector2(777, 888)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree7" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="17" unique_id=1414839137 instance=ExtResource("2_slot")]
+position = Vector2(885, 836)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])
+
+[node name="Tree8" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="18" unique_id=42451295 instance=ExtResource("2_slot")]
+position = Vector2(903, 712)
+type = 2
+choices = Array[PackedScene]([ExtResource("16_leaf1"), ExtResource("17_leaf2"), ExtResource("18_leaf3"), ExtResource("19_pine1")])

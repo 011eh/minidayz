@@ -16,8 +16,10 @@ enum Category { VILLAGE, CITY, MILITARY, HOSPITAL, FIRESTATION, SECRET }
 ## 与 ground.gd 一致；用于把节点像素位置换算成全局 tile 坐标。
 const TILE_PX := 60
 
-@onready var footprint: TileMapLayer = $Footprint
-@onready var slots: Node2D = $Slots
+var footprint: TileMapLayer:
+	get: return get_node_or_null(^"Footprint") as TileMapLayer
+var slots: Node2D:
+	get: return get_node_or_null(^"Slots") as Node2D
 
 
 ## 生成此地块的全部内容。
@@ -29,6 +31,7 @@ func build(rng: RandomNumberGenerator, pavement_cells: Dictionary) -> void:
 
 
 func _collect_footprint(pavement_cells: Dictionary) -> void:
+	var footprint := self.footprint
 	if footprint == null:
 		return
 	# position = block坐标 × 1020 = block × 17 × 60，故 position / 60 = block 的 tile 原点。
@@ -40,6 +43,7 @@ func _collect_footprint(pavement_cells: Dictionary) -> void:
 
 
 func _build_slots(rng: RandomNumberGenerator) -> void:
+	var slots := self.slots
 	if slots == null:
 		return
 	# 先快照槽位列表，避免边遍历边 add_child / queue_free。
@@ -48,13 +52,15 @@ func _build_slots(rng: RandomNumberGenerator) -> void:
 		if child is TemplateSlot:
 			template_slots.append(child as TemplateSlot)
 	for slot in template_slots:
-		var scene := slot.pick(rng)
+		var index := slot.pick_index(rng)
+		var scene := slot.scene_at(index)
 		if scene != null:
 			var inst := scene.instantiate()
 			slots.add_child(inst)
 			var inst_2d := inst as Node2D
 			if inst_2d != null:
-				inst_2d.position = slot.spawn_position(rng)
+				# 建筑锚点为地板底边中心，故此处不分尺寸、无条件赋值即可对齐。
+				inst_2d.position = slot.spawn_position(rng, index)
 		slot.queue_free()
 
 

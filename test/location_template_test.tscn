@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dlt17tst0test"]
+
+[ext_resource type="Script" uid="uid://dvgogljvqks3h" path="res://test/location_template_test.gd" id="1_lttst"]
+[ext_resource type="PackedScene" uid="uid://cv17vlg17tpl0" path="res://environment/location_template/village_17.tscn" id="2_v17"]
+
+[node name="LocationTemplateTest" type="Node2D" unique_id=1348417938]
+y_sort_enabled = true
+script = ExtResource("1_lttst")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=484630229]
+position = Vector2(510, 510)
+zoom = Vector2(0.62, 0.62)
+
+[node name="Village17" parent="." unique_id=698344456 instance=ExtResource("2_v17")]

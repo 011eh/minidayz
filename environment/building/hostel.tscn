@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7p08jmvxhq04"]
+[gd_scene format=3 uid="uid://b7p08jmvxhq04"]
 
 [ext_resource type="PackedScene" uid="uid://uxjobfrdh14c" path="res://environment/building/buliding.tscn" id="1_gkuuw"]
 [ext_resource type="Texture2D" uid="uid://84aj2qh8x7jv" path="res://asset/images/building/b_hostel_int-sheet0.png" id="2_p553d"]
@@ -20,32 +20,33 @@ b = Vector2(19, 0)
 radius = 3.0
 height = 16.0
 
-[node name="Buliding" instance=ExtResource("1_gkuuw")]
+[node name="Buliding" unique_id=918193588 instance=ExtResource("1_gkuuw")]
 
-[node name="Inside" parent="." index="0"]
+[node name="Inside" parent="." index="0" unique_id=383514004]
 position = Vector2(-81, -53)
 texture = ExtResource("2_p553d")
 offset = Vector2(0, -52)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Inside/StaticBody2D" parent_id_path=PackedInt32Array(266796708) index="0" unique_id=499266346]
 polygon = PackedVector2Array(1, 52, 9.74312, 52, 10, 47, 6, 47, 6, 22, 22, 22, 22, 2, 141, 2, 141, 7, 156, 7, 156, 47, 120, 47, 120, 18, 114, 18, 114, 48, 30, 47, 30.0171, 52, 161, 52, 161, -6, 1, -6)
 
-[node name="InteriorArea" parent="Inside" index="1"]
+[node name="InteriorArea" parent="Inside" index="1" unique_id=1786865532]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inside/InteriorArea" index="0" unique_id=2011090120]
 position = Vector2(81, 27)
 shape = SubResource("RectangleShape2D_ru6lc")
 
-[node name="Outside" parent="." index="1"]
-position = Vector2(-85, -155)
+[node name="Outside" parent="." index="1" unique_id=1822794747]
+position = Vector2(-79, -1)
 texture = ExtResource("3_nku5o")
+offset = Vector2(-6, -154)
 
-[node name="VisibleNotifier" parent="." index="2"]
+[node name="VisibleNotifier" parent="." index="2" unique_id=1619714956]
 position = Vector2(-84, -154)
 scale = Vector2(8.4, 5.05)
 
-[node name="Door" parent="." index="3" instance=ExtResource("4_wjwtc")]
+[node name="Door" parent="." index="3" unique_id=1545685005 instance=ExtResource("4_wjwtc")]
 position = Vector2(-70, -6)
 texture = SubResource("AtlasTexture_8nmac")
 offset = Vector2(-2, -29)
