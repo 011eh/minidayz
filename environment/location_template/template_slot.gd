@@ -1,10 +1,15 @@
 @tool
 class_name TemplateSlot
 extends Marker2D
+## 地块模板里的一个「待填坑位」：运行时由 [LocationTemplate] 抽一个候选实例化，然后自毁。
+##
+## 文件后半段（`--- 编辑器预览 ---` 之后）全部是设计期辅助：画布预览、占地轮廓、场景面板
+## 警告。它们以 `_editor_` 前缀区分，运行时不参与任何逻辑。
 
 
 enum Type { BUILDING, VEHICLE, TREE, PROP, CONTAINER }
 
+## 槽位语义标签。目前仅用于编辑器配色与校验脚本分组，尚无运行时消费者。
 @export
 var type: Type = Type.BUILDING:
 	set(value):
@@ -15,8 +20,8 @@ var type: Type = Type.BUILDING:
 var choices: Array[PackedScene] = []:
 	set(value):
 		choices = value
-		_footprint_cache.clear()
-		_layer_cache.clear()
+		_editor_footprint_cache.clear()
+		_editor_layer_cache.clear()
 		update_configuration_warnings()
 		queue_redraw()
 
@@ -37,10 +42,6 @@ var position_jitter: Vector2 = Vector2.ZERO:
 	set(value):
 		position_jitter = value
 		queue_redraw()
-
-# 编辑器 _draw 每次重绘都要候选轮廓/贴图，缓存避免重复 instantiate。
-var _footprint_cache: Dictionary = {}
-var _layer_cache: Dictionary = {}
 
 
 ## 抽一个候选的索引；空 choices 返回 -1。
@@ -69,14 +70,9 @@ func spawn_position(rng: RandomNumberGenerator, index: int) -> Vector2:
 	)
 
 
-func _get_configuration_warnings() -> PackedStringArray:
-	var warnings: PackedStringArray = []
-	if choices.is_empty():
-		warnings.append("choices 为空：此槽位不会生成任何东西。")
-	if choice_offsets.size() > choices.size():
-		warnings.append("choice_offsets 比 choices 长，多出的项不会生效。")
-	return warnings
+# --- 编辑器预览：以下成员仅设计期生效，运行时不参与生成逻辑 ---
 
+@export_group("Editor Preview", "preview_")
 
 ## 预览用的候选下标；改这个数就能在画布上切换看哪一个候选，不影响运行时随机。
 @export_range(0, 16) var preview_index: int = 0:
@@ -90,7 +86,14 @@ func _get_configuration_warnings() -> PackedStringArray:
 		preview_all_choices = value
 		queue_redraw()
 
+@export_group("", "")
 
+# _draw 每次重绘都要候选轮廓/贴图，缓存避免重复 instantiate。
+var _editor_footprint_cache: Dictionary = {}
+var _editor_layer_cache: Dictionary = {}
+
+
+# 引擎回调，名字不可改；实际职责属于编辑器辅助。
 func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return
@@ -100,7 +103,7 @@ func _draw() -> void:
 		draw_rect(jitter_rect, Color(1.0, 1.0, 1.0, 0.06))
 		draw_rect(jitter_rect, Color(1.0, 1.0, 1.0, 0.25), false, 1.0)
 
-	var color := _type_color()
+	var color := _editor_type_color()
 	var main := clampi(preview_index, 0, maxi(choices.size() - 1, 0))
 
 	# 先叠其余候选的淡影 + 轮廓：摆位时按「最大的那个」判断是否越界或压到邻居槽位，
@@ -109,25 +112,35 @@ func _draw() -> void:
 		for i in choices.size():
 			if i == main:
 				continue
-			_draw_choice(i, Color(1, 1, 1, 0.22))
-			var rect := _footprint_rect(choices[i])
+			_editor_draw_choice(i, Color(1, 1, 1, 0.22))
+			var rect := _editor_footprint_rect(choices[i])
 			if rect.size != Vector2.ZERO:
 				if i < choice_offsets.size():
 					rect.position += choice_offsets[i]
 				draw_rect(rect, Color(color, 0.55), false, 1.0)
 
 	# 预览候选画成不透明实图 —— 所见即所得。
-	_draw_choice(main, Color.WHITE)
+	_editor_draw_choice(main, Color.WHITE)
 
 	draw_circle(Vector2.ZERO, 6.0, color)
 	draw_arc(Vector2.ZERO, 6.0, 0.0, TAU, 20, Color.BLACK, 1.0)
 
 
+# 引擎回调，名字不可改；只在 @tool 脚本下由场景面板调用。
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = []
+	if choices.is_empty():
+		warnings.append("choices 为空：此槽位不会生成任何东西。")
+	if choice_offsets.size() > choices.size():
+		warnings.append("choice_offsets 比 choices 长，多出的项不会生效。")
+	return warnings
+
+
 ## 把某个候选的全部 Sprite2D 按其在场景内的相对变换画出来（贴图预览）。
-func _draw_choice(index: int, modulate_color: Color) -> void:
+func _editor_draw_choice(index: int, modulate_color: Color) -> void:
 	if index < 0 or index >= choices.size():
 		return
-	for layer in _sprite_layers(choices[index]):
+	for layer in _editor_sprite_layers(choices[index]):
 		var offset: Vector2 = layer.offset
 		if index < choice_offsets.size():
 			offset += choice_offsets[index]
@@ -141,24 +154,24 @@ func _draw_choice(index: int, modulate_color: Color) -> void:
 
 ## 候选的占地矩形（相对槽位原点）。
 ## 依赖锚点约定「根原点 = 地板底边中心」，故矩形恒为 (-w/2, -h, w, h)：底边贴 y=0，向上长 h。
-func _footprint_rect(scene: PackedScene) -> Rect2:
+func _editor_footprint_rect(scene: PackedScene) -> Rect2:
 	if scene == null:
 		return Rect2()
-	if _footprint_cache.has(scene):
-		return _footprint_cache[scene]
+	if _editor_footprint_cache.has(scene):
+		return _editor_footprint_cache[scene]
 
 	var instance := scene.instantiate()
-	var size := _anchor_sprite_size(instance)
+	var size := _editor_anchor_sprite_size(instance)
 	# 该实例从未进入场景树，必须 free() —— queue_free() 对树外节点无效。
 	instance.free()
 
 	var rect := Rect2(-size.x * 0.5, -size.y, size.x, size.y)
-	_footprint_cache[scene] = rect
+	_editor_footprint_cache[scene] = rect
 	return rect
 
 
 ## 建筑取 Inside 地板贴图；其它物件退化为第一个有贴图的 Sprite2D。
-func _anchor_sprite_size(instance: Node) -> Vector2:
+func _editor_anchor_sprite_size(instance: Node) -> Vector2:
 	var inside := instance.get_node_or_null(^"Inside") as Sprite2D
 	if inside != null and inside.texture != null:
 		return inside.texture.get_size()
@@ -171,22 +184,23 @@ func _anchor_sprite_size(instance: Node) -> Vector2:
 
 ## 抽取候选场景里所有 Sprite2D 的绘制信息（相对根原点），供 _draw 直接画。
 ## 只在 choices 变更时算一次并缓存 —— 每帧 instantiate 会让编辑器卡顿。
-func _sprite_layers(scene: PackedScene) -> Array:
+## 另被 dev_res/_verify_bounds.gd 用于离线对称性校验，改返回结构时需同步该脚本。
+func _editor_sprite_layers(scene: PackedScene) -> Array:
 	if scene == null:
 		return []
-	if _layer_cache.has(scene):
-		return _layer_cache[scene]
+	if _editor_layer_cache.has(scene):
+		return _editor_layer_cache[scene]
 
 	var instance := scene.instantiate()
 	var layers: Array = []
-	_collect_sprites(instance, Transform2D.IDENTITY, layers)
+	_editor_collect_sprites(instance, Transform2D.IDENTITY, layers)
 	instance.free()
 
-	_layer_cache[scene] = layers
+	_editor_layer_cache[scene] = layers
 	return layers
 
 
-func _collect_sprites(node: Node, parent_xform: Transform2D, layers: Array) -> void:
+func _editor_collect_sprites(node: Node, parent_xform: Transform2D, layers: Array) -> void:
 	var xform := parent_xform
 	var node_2d := node as Node2D
 	if node_2d != null:
@@ -216,10 +230,10 @@ func _collect_sprites(node: Node, parent_xform: Transform2D, layers: Array) -> v
 		})
 
 	for child in node.get_children():
-		_collect_sprites(child, xform, layers)
+		_editor_collect_sprites(child, xform, layers)
 
 
-func _type_color() -> Color:
+func _editor_type_color() -> Color:
 	match type:
 		Type.BUILDING: return Color(0.90, 0.55, 0.20)
 		Type.VEHICLE: return Color(0.30, 0.55, 0.95)

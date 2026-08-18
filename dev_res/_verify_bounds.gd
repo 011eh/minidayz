@@ -68,7 +68,7 @@ func _slot_bounds(slot: TemplateSlot) -> Rect2:
 	var bb := Rect2()
 	var first := true
 	for i in slot.choices.size():
-		for l in slot._sprite_layers(slot.choices[i]):
+		for l in slot._editor_sprite_layers(slot.choices[i]):
 			var r := Rect2(Vector2(l["offset"]) + slot.position, Vector2(l["size"]))
 			if i < slot.choice_offsets.size():
 				r.position += slot.choice_offsets[i]
