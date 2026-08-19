@@ -15,6 +15,9 @@ enum Category { VILLAGE, CITY, MILITARY, HOSPITAL, FIRESTATION, SECRET }
 
 ## 与 ground.gd 一致；用于把节点像素位置换算成全局 tile 坐标。
 const TILE_PX := 60
+## 与 ground.gd 的 BLOCK_SIZE_IN_TILE / BLOCK_PX 一致：一个地块 17×60 = 1020 px 见方。
+const BLOCK_SIZE_IN_TILE := 17
+const BLOCK_PX := BLOCK_SIZE_IN_TILE * TILE_PX
 
 var footprint: TileMapLayer:
 	get: return get_node_or_null(^"Footprint") as TileMapLayer
@@ -71,3 +74,31 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if get_node_or_null("Slots") == null:
 		warnings.append("缺少 Slots (Node2D) 子节点。")
 	return warnings
+
+
+# --- 编辑器预览：以下成员仅设计期生效，运行时不参与生成逻辑 ---
+
+@export_group("Editor Preview", "preview_")
+
+## 在画布上画出地块的实际范围（1020×1020），摆槽位时用来判断是否越界。
+@export var preview_bounds: bool = true:
+	set(value):
+		preview_bounds = value
+		queue_redraw()
+
+@export_group("", "")
+
+
+# 引擎回调，名字不可改；实际职责属于编辑器辅助。
+func _draw() -> void:
+	if not Engine.is_editor_hint() or not preview_bounds:
+		return
+	draw_rect(Rect2(Vector2.ZERO, Vector2(BLOCK_PX, BLOCK_PX)), _editor_grid_color(), false, 1.0)
+
+
+## 取编辑器 2D 网格线的颜色，让地块框与画布网格视觉一致。
+## 导出版本不存在 EditorInterface 这个标识符，故走 get_singleton 动态取，避免解析期报错。
+func _editor_grid_color() -> Color:
+	return Engine.get_singleton(&"EditorInterface") \
+		.get_editor_settings() \
+		.get_setting("editors/2d/grid_color")

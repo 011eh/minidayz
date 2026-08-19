@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b25whorq8cii0" path="res://environment/objects/tree_pine_1.tscn" id="19_pine1"]
 
 [node name="Village17" unique_id=544237903 instance=ExtResource("1_base")]
+preview_bounds = true
 
 [node name="House1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="0" unique_id=1599667497 instance=ExtResource("2_slot")]
 position = Vector2(273, 254)

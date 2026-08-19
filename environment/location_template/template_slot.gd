@@ -3,25 +3,23 @@ class_name TemplateSlot
 extends Marker2D
 ## 地块模板里的一个「待填坑位」：运行时由 [LocationTemplate] 抽一个候选实例化，然后自毁。
 ##
-## 文件后半段（`--- 编辑器预览 ---` 之后）全部是设计期辅助：画布预览、占地轮廓、场景面板
-## 警告。它们以 `_editor_` 前缀区分，运行时不参与任何逻辑。
+## 「编辑器预览」一节之后全部是设计期辅助（画布贴图预览、场景面板警告），
+## 以 `_editor_` 前缀区分，运行时不参与任何逻辑。
 
 
 enum Type { BUILDING, VEHICLE, TREE, PROP, CONTAINER }
 
-## 槽位语义标签。目前仅用于编辑器配色与校验脚本分组，尚无运行时消费者。
-@export
-var type: Type = Type.BUILDING:
-	set(value):
-		type = value
-		queue_redraw()
+## 槽位语义标签。目前仅用于 dev_res/_verify_bounds.gd 分组，尚无运行时消费者。
+@export var type: Type = Type.BUILDING
 
 @export
 var choices: Array[PackedScene] = []:
 	set(value):
 		choices = value
-		_editor_footprint_cache.clear()
 		_editor_layer_cache.clear()
+		# 候选变少时先夹取下标，再让检查器按新上限重建滑条。
+		preview_index = preview_index
+		notify_property_list_changed()
 		update_configuration_warnings()
 		queue_redraw()
 
@@ -70,26 +68,19 @@ func spawn_position(rng: RandomNumberGenerator, index: int) -> Vector2:
 	)
 
 
-# --- 编辑器预览：以下成员仅设计期生效，运行时不参与生成逻辑 ---
+# 编辑器预览
 
 @export_group("Editor Preview", "preview_")
 
 ## 预览用的候选下标；改这个数就能在画布上切换看哪一个候选，不影响运行时随机。
 @export_range(0, 16) var preview_index: int = 0:
 	set(value):
-		preview_index = value
-		queue_redraw()
-
-## 是否把未预览的候选也叠出淡影，用于比较体量差异。
-@export var preview_all_choices: bool = true:
-	set(value):
-		preview_all_choices = value
+		preview_index = clampi(value, 0, maxi(choices.size() - 1, 0))
 		queue_redraw()
 
 @export_group("", "")
 
-# _draw 每次重绘都要候选轮廓/贴图，缓存避免重复 instantiate。
-var _editor_footprint_cache: Dictionary = {}
+# _draw 每帧都要候选贴图，缓存避免重复 instantiate。
 var _editor_layer_cache: Dictionary = {}
 
 
@@ -98,35 +89,19 @@ func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return
 
-	if position_jitter != Vector2.ZERO:
-		var jitter_rect := Rect2(-position_jitter, position_jitter * 2.0)
-		draw_rect(jitter_rect, Color(1.0, 1.0, 1.0, 0.06))
-		draw_rect(jitter_rect, Color(1.0, 1.0, 1.0, 0.25), false, 1.0)
-
-	var color := _editor_type_color()
-	var main := clampi(preview_index, 0, maxi(choices.size() - 1, 0))
-
-	# 先叠其余候选的淡影 + 轮廓：摆位时按「最大的那个」判断是否越界或压到邻居槽位，
-	# 而不是只看当前预览的那一个。
-	if preview_all_choices:
-		for i in choices.size():
-			if i == main:
-				continue
-			_editor_draw_choice(i, Color(1, 1, 1, 0.22))
-			var rect := _editor_footprint_rect(choices[i])
-			if rect.size != Vector2.ZERO:
-				if i < choice_offsets.size():
-					rect.position += choice_offsets[i]
-				draw_rect(rect, Color(color, 0.55), false, 1.0)
-
-	# 预览候选画成不透明实图 —— 所见即所得。
-	_editor_draw_choice(main, Color.WHITE)
-
-	draw_circle(Vector2.ZERO, 6.0, color)
+	_editor_draw_choice(clampi(preview_index, 0, maxi(choices.size() - 1, 0)))
 	draw_arc(Vector2.ZERO, 6.0, 0.0, TAU, 20, Color.BLACK, 1.0)
 
 
-# 引擎回调，名字不可改；只在 @tool 脚本下由场景面板调用。
+# 引擎回调，名字不可改；把 preview_index 的滑条上限压到当前候选数。
+func _validate_property(property: Dictionary) -> void:
+	if property.name == "preview_index":
+		property.hint = PROPERTY_HINT_RANGE
+		property.hint_string = "0,%d,1" % maxi(choices.size() - 1, 0)
+		if choices.size() <= 1:
+			property.usage |= PROPERTY_USAGE_READ_ONLY
+
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
 	if choices.is_empty():
@@ -137,49 +112,14 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 
 ## 把某个候选的全部 Sprite2D 按其在场景内的相对变换画出来（贴图预览）。
-func _editor_draw_choice(index: int, modulate_color: Color) -> void:
+func _editor_draw_choice(index: int) -> void:
 	if index < 0 or index >= choices.size():
 		return
 	for layer in _editor_sprite_layers(choices[index]):
 		var offset: Vector2 = layer.offset
 		if index < choice_offsets.size():
 			offset += choice_offsets[index]
-		draw_texture_rect_region(
-			layer.texture,
-			Rect2(offset, layer.size),
-			layer.region,
-			modulate_color,
-		)
-
-
-## 候选的占地矩形（相对槽位原点）。
-## 依赖锚点约定「根原点 = 地板底边中心」，故矩形恒为 (-w/2, -h, w, h)：底边贴 y=0，向上长 h。
-func _editor_footprint_rect(scene: PackedScene) -> Rect2:
-	if scene == null:
-		return Rect2()
-	if _editor_footprint_cache.has(scene):
-		return _editor_footprint_cache[scene]
-
-	var instance := scene.instantiate()
-	var size := _editor_anchor_sprite_size(instance)
-	# 该实例从未进入场景树，必须 free() —— queue_free() 对树外节点无效。
-	instance.free()
-
-	var rect := Rect2(-size.x * 0.5, -size.y, size.x, size.y)
-	_editor_footprint_cache[scene] = rect
-	return rect
-
-
-## 建筑取 Inside 地板贴图；其它物件退化为第一个有贴图的 Sprite2D。
-func _editor_anchor_sprite_size(instance: Node) -> Vector2:
-	var inside := instance.get_node_or_null(^"Inside") as Sprite2D
-	if inside != null and inside.texture != null:
-		return inside.texture.get_size()
-	for child in instance.get_children():
-		var sprite := child as Sprite2D
-		if sprite != null and sprite.texture != null:
-			return sprite.texture.get_size()
-	return Vector2.ZERO
+		draw_texture_rect_region(layer.texture, Rect2(offset, layer.size), layer.region)
 
 
 ## 抽取候选场景里所有 Sprite2D 的绘制信息（相对根原点），供 _draw 直接画。
@@ -231,13 +171,3 @@ func _editor_collect_sprites(node: Node, parent_xform: Transform2D, layers: Arra
 
 	for child in node.get_children():
 		_editor_collect_sprites(child, xform, layers)
-
-
-func _editor_type_color() -> Color:
-	match type:
-		Type.BUILDING: return Color(0.90, 0.55, 0.20)
-		Type.VEHICLE: return Color(0.30, 0.55, 0.95)
-		Type.TREE: return Color(0.30, 0.75, 0.35)
-		Type.PROP: return Color(0.85, 0.80, 0.30)
-		Type.CONTAINER: return Color(0.70, 0.40, 0.80)
-		_: return Color.WHITE

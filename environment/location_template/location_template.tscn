@@ -4,6 +4,7 @@
 
 [node name="LocationTemplate" type="Node2D" unique_id=1657578176]
 script = ExtResource("1_btpl")
+preview_bounds = null
 
 [node name="Footprint" type="TileMapLayer" parent="." unique_id=71017451]
 
