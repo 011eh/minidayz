@@ -10,7 +10,7 @@
 [node name="Ground" type="Node2D" unique_id=1762010831]
 script = ExtResource("1_egn3p")
 map_seed = -6761191175730590720
-grass_scattering = 10.1
+village_templates = Array[PackedScene]([null])
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=1640090395]
 unique_name_in_owner = true

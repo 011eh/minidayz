@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SlotPool" load_steps=7 format=3]
+
+[ext_resource type="Script" uid="uid://34mxjlsnauxh" path="res://environment/location_template/slot_pool.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bklp5pavejub" path="res://environment/building/village_brown.tscn" id="2_brown"]
+[ext_resource type="PackedScene" uid="uid://cesb8fs8ynlq" path="res://environment/building/village_red.tscn" id="3_red"]
+[ext_resource type="PackedScene" uid="uid://cdq7hupfk50xu" path="res://environment/building/village_green.tscn" id="4_green"]
+[ext_resource type="PackedScene" uid="uid://b8tbvw8w7j1mc" path="res://environment/building/village_yellow.tscn" id="5_yellow"]
+[ext_resource type="PackedScene" uid="uid://b7p08jmvxhq04" path="res://environment/building/hostel.tscn" id="6_hostel"]
+
+[resource]
+script = ExtResource("1_script")
+entries = Array[PackedScene]([ExtResource("2_brown"), ExtResource("3_red"), ExtResource("4_green"), ExtResource("5_yellow"), ExtResource("6_hostel")])
+weights = PackedFloat32Array()

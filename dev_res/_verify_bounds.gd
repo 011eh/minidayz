@@ -20,7 +20,7 @@ func _initialize() -> void:
 		var vis_cx := bb.position.x + bb.size.x * 0.5
 		rows.append({
 			"name": slot.name,
-			"type": _type_name(slot.type),
+			"type": _pool_name(slot),
 			"px": slot.position.x,
 			"py": slot.position.y,
 			"cx": vis_cx,
@@ -28,12 +28,12 @@ func _initialize() -> void:
 		})
 
 	print("=== 各槽位 X 对称性（地块 0..1020，中线 510）===")
-	print("%-14s %-6s %8s %8s %10s %10s" % ["槽位", "类型", "posX", "视觉cx", "镜像posX", "偏中线"])
+	print("%-14s %-20s %8s %8s %10s %10s" % ["槽位", "候选池", "posX", "视觉cx", "镜像posX", "偏中线"])
 	for r in rows:
-		print("%-14s %-6s %8.0f %8.0f %10.0f %+10.0f" % [
+		print("%-14s %-20s %8.0f %8.0f %10.0f %+10.0f" % [
 			r["name"], r["type"], r["px"], r["cx"], BLOCK - r["px"], r["cx"] - MID])
 
-	print("\n=== 按类型配对检查 ===")
+	print("\n=== 按候选池配对检查 ===")
 	var by_type := {}
 	for r in rows:
 		by_type.get_or_add(r["type"], []).append(r)
@@ -67,20 +67,18 @@ func _initialize() -> void:
 func _slot_bounds(slot: TemplateSlot) -> Rect2:
 	var bb := Rect2()
 	var first := true
-	for i in slot.choices.size():
-		for l in slot._editor_sprite_layers(slot.choices[i]):
+	if slot.pool == null:
+		return bb
+	for scene in slot.pool.entries:
+		for l in slot._editor_sprite_layers(scene):
 			var r := Rect2(Vector2(l["offset"]) + slot.position, Vector2(l["size"]))
-			if i < slot.choice_offsets.size():
-				r.position += slot.choice_offsets[i]
 			bb = r if first else bb.merge(r)
 			first = false
 	return bb
 
 
-func _type_name(t: int) -> String:
-	match t:
-		0: return "建筑"
-		1: return "车"
-		2: return "树"
-		3: return "长椅"
-		_: return "?"
+func _pool_name(slot: TemplateSlot) -> String:
+	if slot.pool == null:
+		return "<无>"
+	var path := slot.pool.resource_path
+	return path.get_slice("::", 1) if path.contains("::") else path.get_file()

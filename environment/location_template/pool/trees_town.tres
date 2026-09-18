@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SlotPool" load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://34mxjlsnauxh" path="res://environment/location_template/slot_pool.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://bn3lv1l5leaf1" path="res://environment/objects/tree_leaves_1.tscn" id="2_leaf1"]
+[ext_resource type="PackedScene" uid="uid://cn4mw2l6leaf2" path="res://environment/objects/tree_leaves_2.tscn" id="3_leaf2"]
+[ext_resource type="PackedScene" uid="uid://dp5nx3l7leaf3" path="res://environment/objects/tree_leaves_3.tscn" id="4_leaf3"]
+[ext_resource type="PackedScene" uid="uid://vrse2oy06eod" path="res://environment/objects/tree_leaves_4.tscn" id="5_leaf4"]
+[ext_resource type="PackedScene" uid="uid://b25whorq8cii0" path="res://environment/objects/tree_pine_1.tscn" id="6_pine1"]
+[ext_resource type="PackedScene" uid="uid://dn2pq7l4tree2" path="res://environment/objects/tree_pine_2.tscn" id="7_pine2"]
+
+[resource]
+script = ExtResource("1_script")
+entries = Array[PackedScene]([ExtResource("2_leaf1"), ExtResource("3_leaf2"), ExtResource("4_leaf3"), ExtResource("5_leaf4"), ExtResource("6_pine1"), ExtResource("7_pine2")])
+weights = PackedFloat32Array()
