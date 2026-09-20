@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SlotPool" format=3 uid="uid://dmti30p2g75sh"]
+
+[ext_resource type="Script" uid="uid://34mxjlsnauxh" path="res://environment/location_template/slot_pool.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://cv17vlg17tpl0" path="res://environment/location_template/village_17.tscn" id="2_village_17"]
+
+[resource]
+script = ExtResource("1_script")
+entries = Array[PackedScene]([ExtResource("2_village_17")])

@@ -6,12 +6,12 @@ extends Marker2D
 @export
 var pool: SlotPool = null:
 	set(value):
-		if pool != null and pool.changed.is_connected(_on_pool_changed):
-			pool.changed.disconnect(_on_pool_changed)
+		if pool != null and pool.changed.is_connected(_editor_on_pool_changed):
+			pool.changed.disconnect(_editor_on_pool_changed)
 		pool = value
-		if pool != null and not pool.changed.is_connected(_on_pool_changed):
-			pool.changed.connect(_on_pool_changed)
-		_on_pool_changed()
+		if pool != null and not pool.changed.is_connected(_editor_on_pool_changed):
+			pool.changed.connect(_editor_on_pool_changed)
+		_editor_on_pool_changed()
 
 @export
 var position_jitter: Vector2 = Vector2.ZERO:
@@ -40,25 +40,12 @@ func spawn_position(rng: RandomNumberGenerator) -> Vector2:
 		queue_redraw()
 
 @export_group("", "")
-
-# _draw 每帧都要候选贴图，缓存避免重复 instantiate。
 var _editor_layer_cache: Dictionary = {}
 
 
 func _entry_count() -> int:
 	return pool.entries.size() if pool != null else 0
 
-# 池内容变化后，编辑器里的预览下标与缓存都要重建。
-func _on_pool_changed() -> void:
-	_editor_layer_cache.clear()
-	# 候选变少时先夹取下标，再让检查器按新上限重建滑条。
-	preview_index = preview_index
-	notify_property_list_changed()
-	update_configuration_warnings()
-	queue_redraw()
-
-
-# 引擎回调，名字不可改；实际职责属于编辑器辅助。
 func _draw() -> void:
 	if not Engine.is_editor_hint():
 		return
@@ -72,17 +59,21 @@ func _validate_property(property: Dictionary) -> void:
 		if count <= 1:
 			property.usage |= PROPERTY_USAGE_READ_ONLY
 
-
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = []
 	if pool == null:
 		warnings.append("未设置 pool：此槽位不会生成任何东西。")
 	elif pool.entries.is_empty():
 		warnings.append("pool 的 entries 为空：此槽位不会生成任何东西。")
-	elif pool.weights.size() != 0 and pool.weights.size() != pool.entries.size():
-		warnings.append("pool 的 weights(%d) 与 entries(%d) 长度不一致：应留空或逐项对齐。"
-			% [pool.weights.size(), pool.entries.size()])
 	return warnings
+
+func _editor_on_pool_changed() -> void:
+	_editor_layer_cache.clear()
+	# 候选变少时先夹取下标，再让检查器按新上限重建滑条。
+	preview_index = preview_index
+	notify_property_list_changed()
+	update_configuration_warnings()
+	queue_redraw()
 
 func _editor_draw_choice(index: int) -> void:
 	if pool == null or index < 0 or index >= pool.entries.size():

@@ -11,4 +11,3 @@
 [resource]
 script = ExtResource("1_script")
 entries = Array[PackedScene]([ExtResource("2_leaf1"), ExtResource("3_leaf2"), ExtResource("4_leaf3"), ExtResource("5_leaf4"), ExtResource("6_pine1"), ExtResource("7_pine2")])
-weights = PackedFloat32Array()

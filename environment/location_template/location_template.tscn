@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://barn6ej68ry5i"]
 
 [ext_resource type="Script" uid="uid://dpn4ili41pnrl" path="res://environment/location_template/location_template.gd" id="1_btpl"]
+[ext_resource type="TileSet" uid="uid://rhlox203ltec" path="res://environment/ground_terrain.tres" id="2_awbi1"]
 
 [node name="LocationTemplate" type="Node2D" unique_id=1657578176]
 script = ExtResource("1_btpl")
 
 [node name="Footprint" type="TileMapLayer" parent="." unique_id=71017451]
+tile_set = ExtResource("2_awbi1")
 
 [node name="Slots" type="Node2D" parent="." unique_id=1720410780]

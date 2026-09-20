@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cv17vlg17tpl0"]
+[gd_scene load_steps=16 format=3 uid="uid://cv17vlg17tpl0"]
 
 [ext_resource type="PackedScene" uid="uid://barn6ej68ry5i" path="res://environment/location_template/location_template.tscn" id="1_base"]
 [ext_resource type="PackedScene" uid="uid://blnha8a5y5ygn" path="res://environment/location_template/template_slot.tscn" id="2_slot"]
@@ -10,47 +10,51 @@
 [ext_resource type="PackedScene" uid="uid://c5dryjeoop8oy" path="res://environment/building/church.tscn" id="8_church"]
 [ext_resource type="PackedScene" uid="uid://r2m1ce0rfees" path="res://environment/building/red_brick.tscn" id="9_brick"]
 [ext_resource type="PackedScene" uid="uid://creyruv0517ol" path="res://environment/objects/lavka_h.tscn" id="10_lavka"]
+[ext_resource type="PackedScene" uid="uid://creysav0517ol" path="res://environment/objects/lavka_v.tscn" id="11_lavka_v"]
 
 [sub_resource type="Resource" script_class="SlotPool" id="Pool_shed"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("7_shed")])
-weights = PackedFloat32Array()
 
 [sub_resource type="Resource" script_class="SlotPool" id="Pool_church_or_brick"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("8_church"), ExtResource("9_brick")])
-weights = PackedFloat32Array()
 
 [sub_resource type="Resource" script_class="SlotPool" id="Pool_bench"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("10_lavka")])
-weights = PackedFloat32Array()
+
+[sub_resource type="Resource" script_class="SlotPool" id="Pool_bench_v"]
+script = ExtResource("3_pool")
+entries = Array[PackedScene]([ExtResource("11_lavka_v")])
 
 [node name="Village17" unique_id=544237903 instance=ExtResource("1_base")]
-preview_bounds = true
+
+[node name="Footprint" parent="." index="0" unique_id=71017451]
+tile_map_data = PackedByteArray("AAAMAA0AAAAEAAEAAAAMAAwAAAAAAAEAAAAMAAsAAAAAAAEAAAAMAAoAAAAAAAEAAAAMAAkAAAAAAAEAAAAMAAgAAAAAAAEAAAAMAAcAAAAAAAEAAAAMAAYAAAAAAAEAAAAMAAUAAAAEAAAAAAALAA0AAAABAAAAAAALAAwAAAAAAAMAAAALAAsAAAAAAAMAAAALAAoAAAAAAAMAAAALAAkAAAAAAAMAAAALAAgAAAAAAAMAAAALAAcAAAAAAAMAAAALAAYAAAAAAAMAAAALAAUAAAABAAIAAAAKAA0AAAABAAAAAAAKAAwAAAAAAAMAAAAKAAsAAAAAAAMAAAAKAAoAAAAAAAMAAAAKAAkAAAAAAAMAAAAKAAgAAAAAAAMAAAAKAAcAAAAAAAMAAAAKAAYAAAAAAAMAAAAKAAUAAAABAAIAAAAJAA0AAAABAAAAAAAJAAwAAAAAAAMAAAAJAAsAAAAAAAMAAAAJAAoAAAAAAAMAAAAJAAkAAAAAAAMAAAAJAAgAAAAAAAMAAAAJAAcAAAAAAAMAAAAJAAYAAAAAAAMAAAAJAAUAAAABAAIAAAAIAA0AAAABAAAAAAAIAAwAAAAAAAMAAAAIAAsAAAAAAAMAAAAIAAoAAAAAAAMAAAAIAAkAAAAAAAMAAAAIAAgAAAAAAAMAAAAIAAcAAAAAAAMAAAAIAAYAAAAAAAMAAAAIAAUAAAABAAIAAAAHAA0AAAABAAAAAAAHAAwAAAAAAAMAAAAHAAsAAAAAAAMAAAAHAAoAAAAAAAMAAAAHAAkAAAAAAAMAAAAHAAgAAAAAAAMAAAAHAAcAAAABAAMAAAAHAAYAAAAAAAMAAAAHAAUAAAABAAIAAAAGAA0AAAABAAAAAAAGAAwAAAAAAAMAAAAGAAsAAAAAAAMAAAAGAAoAAAAAAAMAAAAGAAkAAAAAAAMAAAAGAAgAAAAAAAMAAAAGAAcAAAAAAAMAAAAGAAYAAAAAAAMAAAAGAAUAAAABAAIAAAAFAA0AAAABAAAAAAAFAAwAAAAAAAMAAAAFAAsAAAAAAAMAAAAFAAoAAAAAAAMAAAAFAAkAAAAAAAMAAAAFAAgAAAAAAAMAAAAFAAcAAAAAAAMAAAAFAAYAAAAAAAMAAAAFAAUAAAABAAIAAAAEAA0AAAABAAAAAAAEAAwAAAAAAAMAAAAEAAsAAAAAAAMAAAAEAAoAAAAAAAMAAAAEAAkAAAAAAAMAAAAEAAgAAAAAAAMAAAAEAAcAAAAAAAMAAAAEAAYAAAAAAAMAAAAEAAUAAAABAAIAAAADAA0AAAADAAEAAAADAAwAAAACAAEAAAADAAsAAAACAAEAAAADAAoAAAACAAEAAAADAAkAAAACAAEAAAADAAgAAAACAAEAAAADAAcAAAACAAEAAAADAAYAAAACAAEAAAADAAUAAAADAAAAAAA=")
 
 [node name="House1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="0" unique_id=1599667497 instance=ExtResource("2_slot")]
-position = Vector2(273, 254)
+position = Vector2(261, 251)
 pool = ExtResource("4_houses")
 
 [node name="House2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="1" unique_id=2000308001 instance=ExtResource("2_slot")]
-position = Vector2(741, 248)
+position = Vector2(728, 245)
 pool = ExtResource("4_houses")
 
 [node name="Shed1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="2" unique_id=1978608264 instance=ExtResource("2_slot")]
-position = Vector2(130, 487)
+position = Vector2(66, 415)
 pool = SubResource("Pool_shed")
 
 [node name="Shed2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="3" unique_id=776317053 instance=ExtResource("2_slot")]
-position = Vector2(865, 487)
+position = Vector2(938, 413)
 pool = SubResource("Pool_shed")
 
 [node name="ChurchOrBrick" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="4" unique_id=1372505630 instance=ExtResource("2_slot")]
-position = Vector2(510, 618)
+position = Vector2(485, 641)
 pool = SubResource("Pool_church_or_brick")
 
 [node name="Car1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="5" unique_id=1443303329 instance=ExtResource("2_slot")]
-position = Vector2(792, 602)
+position = Vector2(788, 602)
 pool = ExtResource("5_cars")
 
 [node name="Car2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="6" unique_id=693607408 instance=ExtResource("2_slot")]
@@ -58,15 +62,15 @@ position = Vector2(510, 907)
 pool = ExtResource("5_cars")
 
 [node name="Car3" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="7" unique_id=402489541 instance=ExtResource("2_slot")]
-position = Vector2(228, 377)
+position = Vector2(224, 377)
 pool = ExtResource("5_cars")
 
 [node name="Bench1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="8" unique_id=1668161843 instance=ExtResource("2_slot")]
-position = Vector2(630, 710)
+position = Vector2(557, 711)
 pool = SubResource("Pool_bench")
 
 [node name="Bench2" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="9" unique_id=2110324858 instance=ExtResource("2_slot")]
-position = Vector2(389, 711)
+position = Vector2(421, 710)
 pool = SubResource("Pool_bench")
 
 [node name="Tree1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="10" unique_id=1312153837 instance=ExtResource("2_slot")]
@@ -86,17 +90,21 @@ position = Vector2(360, 895)
 pool = ExtResource("6_trees")
 
 [node name="Tree5" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="14" unique_id=986494674 instance=ExtResource("2_slot")]
-position = Vector2(660, 895)
+position = Vector2(651, 901)
 pool = ExtResource("6_trees")
 
 [node name="Tree6" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="15" unique_id=73975320 instance=ExtResource("2_slot")]
-position = Vector2(777, 888)
+position = Vector2(755, 893)
 pool = ExtResource("6_trees")
 
 [node name="Tree7" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="16" unique_id=1414839137 instance=ExtResource("2_slot")]
-position = Vector2(885, 836)
+position = Vector2(867, 853)
 pool = ExtResource("6_trees")
 
 [node name="Tree8" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="17" unique_id=42451295 instance=ExtResource("2_slot")]
-position = Vector2(903, 712)
+position = Vector2(885, 715)
 pool = ExtResource("6_trees")
+
+[node name="Bench3" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="18" unique_id=1908446271 instance=ExtResource("2_slot")]
+position = Vector2(857, 378)
+pool = SubResource("Pool_bench_v")

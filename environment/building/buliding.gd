@@ -50,7 +50,7 @@ func change_transparency(value: float, only_outside: bool = false) -> void:
 	if only_outside:
 		for name in building_sprites:
 			var sprite := get_node(name) as Sprite2D
-			sprite.self_modulate.a = value if sprite == %Outside else 1
+			sprite.self_modulate.a = value if sprite == %Outside else 1.0
 		return
 	
 	for sprite in building_sprites:

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SlotPool" load_steps=7 format=3]
+[gd_resource type="Resource" script_class="SlotPool" format=3 uid="uid://brdxadkn7edup"]
 
 [ext_resource type="Script" uid="uid://34mxjlsnauxh" path="res://environment/location_template/slot_pool.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://bklp5pavejub" path="res://environment/building/village_brown.tscn" id="2_brown"]
@@ -10,4 +10,3 @@
 [resource]
 script = ExtResource("1_script")
 entries = Array[PackedScene]([ExtResource("2_brown"), ExtResource("3_red"), ExtResource("4_green"), ExtResource("5_yellow"), ExtResource("6_hostel")])
-weights = PackedFloat32Array()

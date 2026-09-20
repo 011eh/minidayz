@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SlotPool" load_steps=6 format=3]
+[gd_resource type="Resource" script_class="SlotPool" format=3 uid="uid://cpir3x1psitje"]
 
 [ext_resource type="Script" uid="uid://34mxjlsnauxh" path="res://environment/location_template/slot_pool.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://c22n8uo7fk44h" path="res://environment/objects/car_hatch.tscn" id="2_hatch"]
@@ -9,4 +9,3 @@
 [resource]
 script = ExtResource("1_script")
 entries = Array[PackedScene]([ExtResource("2_hatch"), ExtResource("3_regular"), ExtResource("4_regvert"), ExtResource("5_van")])
-weights = PackedFloat32Array()

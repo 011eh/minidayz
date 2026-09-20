@@ -8,12 +8,12 @@ extends Node2D
 @export var auto_render_decoration := true
 
 @export_group("Location Templates")
-@export var village_templates: Array[PackedScene] = []
-@export var city_templates: Array[PackedScene] = []
-@export var military_templates: Array[PackedScene] = []
-@export var hospital_templates: Array[PackedScene] = []
-@export var firestation_templates: Array[PackedScene] = []
-@export var secret_templates: Array[PackedScene] = []
+@export var village_templates: SlotPool
+@export var city_templates: SlotPool
+@export var military_templates: SlotPool
+@export var hospital_templates: SlotPool
+@export var firestation_templates: SlotPool
+@export var secret_templates: SlotPool
 
 @export_group("Decoration Scattering")
 @export_range(0.0, 100.0, 0.1, "suffix:%")
@@ -59,6 +59,15 @@ const ROAD_MIN_IN_BLOCK := BLOCK_SIZE_IN_TILE / 2 - ROAD_WIDTH / 2
 
 # 10
 const ROAD_MAX_IN_BLOCK := ROAD_MIN_IN_BLOCK + ROAD_WIDTH
+
+## 地点地块朝四个方向伸出的连接臂（地块内局部 tile 坐标），邻格是道路时才画。
+## 每条臂从地块边缘一直铺到中心，与 T 形路口支路用的是同一组矩形，两侧才能严丝合缝地接上。
+const LOCATION_ARMS := {
+	Vector2i(0, -1): Rect2i(ROAD_MIN_IN_BLOCK, 0, ROAD_WIDTH, ROAD_MAX_IN_BLOCK),
+	Vector2i(0, 1): Rect2i(ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, ROAD_WIDTH, BLOCK_SIZE_IN_TILE - ROAD_MIN_IN_BLOCK),
+	Vector2i(-1, 0): Rect2i(0, ROAD_MIN_IN_BLOCK, ROAD_MAX_IN_BLOCK, ROAD_WIDTH),
+	Vector2i(1, 0): Rect2i(ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE - ROAD_MIN_IN_BLOCK, ROAD_WIDTH),
+}
 
 # 12
 const DECO_ROAD_MIN := ROAD_MIN_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
@@ -136,7 +145,8 @@ var rng: RandomNumberGenerator
 var locations_root: Node2D
 
 
-## 地点类型 → 候选模板集。秘密地点暂归入 SECRET。
+## 地点类型 → 候选模板池。池内写重复条目即为加权，与原版
+## choose(3, 1, 2, 8, 10, 1, 2, 8, 10) 那种城市模板抽取方式一致。秘密地点暂归入 SECRET。
 func _template_registry() -> Dictionary:
 	return {
 		BlockType.VILLAGE: village_templates,
@@ -533,6 +543,7 @@ func render_map():
 	# 道路与地点足迹铺进同一个路面 terrain，村内小路才能无缝接到村外的路。
 	var pavement_cells := {}
 	_collect_road_cells(pavement_cells)
+	_collect_location_arms(pavement_cells)
 	render_locations(pavement_cells)
 	if not pavement_cells.is_empty():
 		ground_layer.set_cells_terrain_connect(pavement_cells.keys(), 0, 1, false)
@@ -552,10 +563,12 @@ func render_locations(pavement_cells: Dictionary) -> void:
 	for loc in locations:
 		if not registry.has(loc.type):
 			continue
-		var templates: Array[PackedScene] = registry[loc.type]
-		if templates.is_empty():
+		var pool: SlotPool = registry[loc.type]
+		if pool == null:
 			continue
-		var scene := templates[rng.randi() % templates.size()]
+		var scene := pool.pick(rng)
+		if scene == null:
+			continue
 		var instance := scene.instantiate()
 		var block := instance as LocationTemplate
 		if block == null:
@@ -618,6 +631,19 @@ func _add_road_cells_for_type(road_cells: Dictionary, block: Vector2i, type: Blo
 		BlockType.ROAD_CROSS:
 			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
 			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+
+func _collect_location_arms(pavement_cells: Dictionary) -> void:
+	"""地点地块朝相邻道路伸出连接臂，否则道路停在地块边界，进不了村子。"""
+	for loc in locations:
+		if not (loc.type in ROAD_CONNECT_TYPES):
+			continue
+		var block: Vector2i = loc.block
+		for dir in LOCATION_ARMS:
+			var n: Vector2i = block + dir
+			if not is_in_grid(n.x, n.y) or not is_road(get_block(n.x, n.y)):
+				continue
+			var arm: Rect2i = LOCATION_ARMS[dir]
+			_add_road_rect(pavement_cells, block, arm.position.x, arm.position.y, arm.end.x, arm.end.y)
 
 func _add_road_rect(road_cells: Dictionary, block: Vector2i, x0: int, y0: int, x1: int, y1: int) -> void:
 	var org := block * BLOCK_SIZE_IN_TILE

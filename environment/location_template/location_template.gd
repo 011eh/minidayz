@@ -11,12 +11,28 @@ const TILE_PX := 60
 const BLOCK_SIZE_IN_TILE := 17
 const BLOCK_PX := BLOCK_SIZE_IN_TILE * TILE_PX
 
+const STANDALONE_PREVIEW_PATH := "res://dev_res/location_template_preview.gd"
+
 var footprint: TileMapLayer:
 	get: return get_node_or_null(^"Footprint") as TileMapLayer
 
 var slots: Node2D:
 	get: return get_node_or_null(^"Slots") as Node2D
 
+
+## 单独运行本场景（F6）时自建一次并挂上调试视图；被 ground.gd 实例化时挂在 Locations 下，不触发。
+func _ready() -> void:
+	if Engine.is_editor_hint() or get_parent() != get_tree().root:
+		return
+	var rng := RandomNumberGenerator.new()
+	var used_seed := rng.seed
+	build(rng, {})
+	var preview_script: GDScript = load(STANDALONE_PREVIEW_PATH)
+	if preview_script == null:
+		return
+	var preview: Node = preview_script.new()
+	preview.seed_value = used_seed
+	add_child(preview)
 
 func build(rng: RandomNumberGenerator, pavement_cells: Dictionary) -> void:
 	_collect_footprint(pavement_cells)
@@ -26,7 +42,8 @@ func _collect_footprint(pavement_cells: Dictionary) -> void:
 	var footprint := self.footprint
 	if footprint == null:
 		return
-	# position = block坐标 × 1020 = block × 17 × 60，故 position / 60 = block 的 tile 原点。
+	
+	# 1个 block 为17个 cell，除以 TILE_PX 得 cell 的全局偏移量
 	var tile_origin := Vector2i(roundi(position.x / TILE_PX), roundi(position.y / TILE_PX))
 	for cell in footprint.get_used_cells():
 		pavement_cells[tile_origin + cell] = true
@@ -41,15 +58,15 @@ func _build_slots(rng: RandomNumberGenerator) -> void:
 	for child in slots.get_children():
 		if child is TemplateSlot:
 			template_slots.append(child as TemplateSlot)
-	for slot in template_slots:
-		var scene := slot.pick_scene(rng)
+	for t_slot in template_slots:
+		var scene := t_slot.pick_scene(rng)
 		if scene != null:
 			var inst := scene.instantiate()
 			slots.add_child(inst)
 			var inst_2d := inst as Node2D
 			if inst_2d != null:
-				inst_2d.position = slot.spawn_position(rng)
-		slot.queue_free()
+				inst_2d.position = t_slot.spawn_position(rng)
+		t_slot.queue_free()
 
 
 func _get_configuration_warnings() -> PackedStringArray:
