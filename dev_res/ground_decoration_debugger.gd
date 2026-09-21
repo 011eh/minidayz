@@ -237,8 +237,8 @@ func _rebuild_bands_for_block(block: Vector2i) -> void:
 
 func _add_road_block_bands(type: int) -> void:
 	var size := _deco_block_size()
-	var road_start := int(ground.DECO_ROAD_MIN)
-	var road_end := int(ground.DECO_ROAD_MAX)
+	var road_start := int(ground.DECO_ROAD_START)
+	var road_end := int(ground.DECO_ROAD_END)
 	var side_scattering: float = ground.grass_scattering
 	var connections: Dictionary = ground._road_connections_for_type(type)
 
@@ -278,8 +278,8 @@ func _add_road_block_bands(type: int) -> void:
 
 func _add_road_debris_bands(connections: Dictionary) -> void:
 	var size := _deco_block_size()
-	var road_start := int(ground.DECO_ROAD_MIN)
-	var road_end := int(ground.DECO_ROAD_MAX)
+	var road_start := int(ground.DECO_ROAD_START)
+	var road_end := int(ground.DECO_ROAD_END)
 	var debris_scattering: float = ground.road_debris_scattering
 
 	if connections["left"] and connections["right"]:

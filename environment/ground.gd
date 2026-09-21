@@ -12,7 +12,7 @@ extends Node2D
 @export var city_templates: SlotPool
 @export var military_templates: SlotPool
 @export var hospital_templates: SlotPool
-@export var firestation_templates: SlotPool
+@export var fire_station_templates: SlotPool
 @export var secret_templates: SlotPool
 
 @export_group("Decoration Scattering")
@@ -48,32 +48,31 @@ const BLOCK_PX := BLOCK_SIZE_IN_TILE * TILE_PX
 const ROAD_WIDTH := 4
 const DECO_TILE_PX := 30
 
-# 34
+## 34
 const DECO_BLOCK_SIZE := BLOCK_PX / DECO_TILE_PX
 
-# 2
+## 2
 const DECO_TILES_PER_GROUND_TILE := TILE_PX / DECO_TILE_PX
 
-# 6
-const ROAD_MIN_IN_BLOCK := BLOCK_SIZE_IN_TILE / 2 - ROAD_WIDTH / 2
 
-# 10
-const ROAD_MAX_IN_BLOCK := ROAD_MIN_IN_BLOCK + ROAD_WIDTH
+## 7
+const ROAD_START_IN_BLOCK := BLOCK_SIZE_IN_TILE / 2 - 1
 
-## 地点地块朝四个方向伸出的连接臂（地块内局部 tile 坐标），邻格是道路时才画。
-## 每条臂从地块边缘一直铺到中心，与 T 形路口支路用的是同一组矩形，两侧才能严丝合缝地接上。
+# 11
+const ROAD_END_IN_BLOCK := ROAD_START_IN_BLOCK + ROAD_WIDTH
+
 const LOCATION_ARMS := {
-	Vector2i(0, -1): Rect2i(ROAD_MIN_IN_BLOCK, 0, ROAD_WIDTH, ROAD_MAX_IN_BLOCK),
-	Vector2i(0, 1): Rect2i(ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, ROAD_WIDTH, BLOCK_SIZE_IN_TILE - ROAD_MIN_IN_BLOCK),
-	Vector2i(-1, 0): Rect2i(0, ROAD_MIN_IN_BLOCK, ROAD_MAX_IN_BLOCK, ROAD_WIDTH),
-	Vector2i(1, 0): Rect2i(ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE - ROAD_MIN_IN_BLOCK, ROAD_WIDTH),
+	Vector2i(0, -1): Rect2i(ROAD_START_IN_BLOCK, 0, ROAD_WIDTH, ROAD_END_IN_BLOCK),
+	Vector2i(0, 1): Rect2i(ROAD_START_IN_BLOCK, ROAD_START_IN_BLOCK, ROAD_WIDTH, BLOCK_SIZE_IN_TILE - ROAD_START_IN_BLOCK),
+	Vector2i(-1, 0): Rect2i(0, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK, ROAD_WIDTH),
+	Vector2i(1, 0): Rect2i(ROAD_START_IN_BLOCK, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE - ROAD_START_IN_BLOCK, ROAD_WIDTH),
 }
 
-# 12
-const DECO_ROAD_MIN := ROAD_MIN_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
+## 14
+const DECO_ROAD_START := ROAD_START_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
 
-# 20
-const DECO_ROAD_MAX := ROAD_MAX_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
+## 22
+const DECO_ROAD_END := ROAD_END_IN_BLOCK * DECO_TILES_PER_GROUND_TILE
 
 # atlas source id
 const DECO_SRC_GRASS := 0
@@ -153,7 +152,7 @@ func _template_registry() -> Dictionary:
 		BlockType.CITY: city_templates,
 		BlockType.MILITARY: military_templates,
 		BlockType.HOSPITAL: hospital_templates,
-		BlockType.FIRESTATION: firestation_templates,
+		BlockType.FIRESTATION: fire_station_templates,
 		BlockType.SECRET: secret_templates,
 	}
 
@@ -543,8 +542,8 @@ func render_map():
 	# 道路与地点足迹铺进同一个路面 terrain，村内小路才能无缝接到村外的路。
 	var pavement_cells := {}
 	_collect_road_cells(pavement_cells)
-	_collect_location_arms(pavement_cells)
 	render_locations(pavement_cells)
+	_collect_location_arms(pavement_cells)
 	if not pavement_cells.is_empty():
 		ground_layer.set_cells_terrain_connect(pavement_cells.keys(), 0, 1, false)
 
@@ -613,24 +612,24 @@ func _collect_road_cells(road_cells: Dictionary) -> void:
 func _add_road_cells_for_type(road_cells: Dictionary, block: Vector2i, type: BlockType) -> void:
 	match type:
 		BlockType.ROAD_H:
-			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, 0, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_END_IN_BLOCK)
 		BlockType.ROAD_H_UP:
-			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, 0, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_END_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, 0, ROAD_END_IN_BLOCK, ROAD_END_IN_BLOCK)
 		BlockType.ROAD_H_DOWN:
-			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, 0, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_END_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK, BLOCK_SIZE_IN_TILE)
 		BlockType.ROAD_V:
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, 0, ROAD_END_IN_BLOCK, BLOCK_SIZE_IN_TILE)
 		BlockType.ROAD_V_LEFT:
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
-			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, ROAD_MAX_IN_BLOCK, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, 0, ROAD_END_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, 0, ROAD_START_IN_BLOCK, ROAD_END_IN_BLOCK, ROAD_END_IN_BLOCK)
 		BlockType.ROAD_V_RIGHT:
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, 0, ROAD_END_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_END_IN_BLOCK)
 		BlockType.ROAD_CROSS:
-			_add_road_rect(road_cells, block, 0, ROAD_MIN_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_MAX_IN_BLOCK)
-			_add_road_rect(road_cells, block, ROAD_MIN_IN_BLOCK, 0, ROAD_MAX_IN_BLOCK, BLOCK_SIZE_IN_TILE)
+			_add_road_rect(road_cells, block, 0, ROAD_START_IN_BLOCK, BLOCK_SIZE_IN_TILE, ROAD_END_IN_BLOCK)
+			_add_road_rect(road_cells, block, ROAD_START_IN_BLOCK, 0, ROAD_END_IN_BLOCK, BLOCK_SIZE_IN_TILE)
 
 func _collect_location_arms(pavement_cells: Dictionary) -> void:
 	"""地点地块朝相邻道路伸出连接臂，否则道路停在地块边界，进不了村子。"""
@@ -642,8 +641,33 @@ func _collect_location_arms(pavement_cells: Dictionary) -> void:
 			var n: Vector2i = block + dir
 			if not is_in_grid(n.x, n.y) or not is_road(get_block(n.x, n.y)):
 				continue
-			var arm: Rect2i = LOCATION_ARMS[dir]
-			_add_road_rect(pavement_cells, block, arm.position.x, arm.position.y, arm.end.x, arm.end.y)
+			_add_arm(pavement_cells, block, dir, LOCATION_ARMS[dir])
+
+## 世界道路连接地点内道路
+func _add_arm(pavement_cells: Dictionary, block: Vector2i, dir: Vector2i, arm: Rect2i) -> void:
+	var org := block * BLOCK_SIZE_IN_TILE
+	var depth: int = arm.size.y if dir.x == 0 else arm.size.x
+	for d in depth:
+		var slice := _arm_slice(arm, dir, d)
+		var touched := false
+		for y in range(slice.position.y, slice.end.y):
+			for x in range(slice.position.x, slice.end.x):
+				var cell := org + Vector2i(x, y)
+				touched = touched or pavement_cells.has(cell)
+				pavement_cells[cell] = true
+		if touched:
+			return
+
+## 臂的第 depth 条切片：朝上、朝左的臂从矩形近端往里数，朝下、朝右的从远端倒着数——
+## Rect2i 的 position 恒在左上角，而切片必须从贴着邻居的那条边起算。
+func _arm_slice(arm: Rect2i, dir: Vector2i, depth: int) -> Rect2i:
+	if dir.y < 0:
+		return Rect2i(arm.position.x, arm.position.y + depth, arm.size.x, 1)
+	if dir.y > 0:
+		return Rect2i(arm.position.x, arm.end.y - 1 - depth, arm.size.x, 1)
+	if dir.x < 0:
+		return Rect2i(arm.position.x + depth, arm.position.y, 1, arm.size.y)
+	return Rect2i(arm.end.x - 1 - depth, arm.position.y, 1, arm.size.y)
 
 func _add_road_rect(road_cells: Dictionary, block: Vector2i, x0: int, y0: int, x1: int, y1: int) -> void:
 	var org := block * BLOCK_SIZE_IN_TILE
@@ -693,51 +717,51 @@ func _scatter_water_block(org: Vector2i) -> void:
 
 func _scatter_road_block(type: BlockType, org: Vector2i):
 	"""道路块按 grid 中保存的道路类型散布装饰。"""
-	var road_min := DECO_ROAD_MIN
-	var road_max := DECO_ROAD_MAX
-	var road_width := road_max - road_min
+	var road_start := DECO_ROAD_START
+	var road_end := DECO_ROAD_END
+	var road_width := road_end - road_start
 	var connections := _road_connections_for_type(type)
 
 	# 道路块会被道路分割最多4块区域
 	var grass_bands: Array[Rect2i] = [
-		Rect2i(0, 0, road_min, road_min),
-		Rect2i(road_max, 0, DECO_BLOCK_SIZE - road_max, road_min),
-		Rect2i(0, road_max, road_min, DECO_BLOCK_SIZE - road_max),
-		Rect2i(road_max, road_max, DECO_BLOCK_SIZE - road_max, DECO_BLOCK_SIZE - road_max),
+		Rect2i(0, 0, road_start, road_start),
+		Rect2i(road_end, 0, DECO_BLOCK_SIZE - road_end, road_start),
+		Rect2i(0, road_end, road_start, DECO_BLOCK_SIZE - road_end),
+		Rect2i(road_end, road_end, DECO_BLOCK_SIZE - road_end, DECO_BLOCK_SIZE - road_end),
 	]
 	if not connections["left"]:
-		grass_bands.append(Rect2i(0, road_min, road_min, road_width))
+		grass_bands.append(Rect2i(0, road_start, road_start, road_width))
 	if not connections["right"]:
-		grass_bands.append(Rect2i(road_max, road_min, DECO_BLOCK_SIZE - road_max, road_width))
+		grass_bands.append(Rect2i(road_end, road_start, DECO_BLOCK_SIZE - road_end, road_width))
 	if not connections["up"]:
-		grass_bands.append(Rect2i(road_min, 0, road_width, road_min))
+		grass_bands.append(Rect2i(road_start, 0, road_width, road_start))
 	if not connections["down"]:
-		grass_bands.append(Rect2i(road_min, road_max, road_width, DECO_BLOCK_SIZE - road_max))
+		grass_bands.append(Rect2i(road_start, road_end, road_width, DECO_BLOCK_SIZE - road_end))
 
 	_scatter_rects(org, DECO_SRC_GRASS, grass_scattering, grass_bands)
 	_scatter_road_debris_for_connections(org, connections)
 
 func _scatter_road_debris_for_connections(org: Vector2i, connections: Dictionary) -> void:
-	var road_min := DECO_ROAD_MIN
-	var road_max := DECO_ROAD_MAX
-	var road_width := road_max - road_min
+	var road_start := DECO_ROAD_START
+	var road_end := DECO_ROAD_END
+	var road_width := road_end - road_start
 	var debris_bands: Array[Rect2i] = []
 
 	if connections["left"] and connections["right"]:
-		debris_bands.append(Rect2i(0, road_min, DECO_BLOCK_SIZE, road_width))
+		debris_bands.append(Rect2i(0, road_start, DECO_BLOCK_SIZE, road_width))
 	else:
 		if connections["left"]:
-			debris_bands.append(Rect2i(0, road_min, road_max, road_width))
+			debris_bands.append(Rect2i(0, road_start, road_end, road_width))
 		if connections["right"]:
-			debris_bands.append(Rect2i(road_min, road_min, DECO_BLOCK_SIZE - road_min, road_width))
+			debris_bands.append(Rect2i(road_start, road_start, DECO_BLOCK_SIZE - road_start, road_width))
 
 	if connections["up"] and connections["down"]:
-		debris_bands.append(Rect2i(road_min, 0, road_width, DECO_BLOCK_SIZE))
+		debris_bands.append(Rect2i(road_start, 0, road_width, DECO_BLOCK_SIZE))
 	else:
 		if connections["up"]:
-			debris_bands.append(Rect2i(road_min, 0, road_width, road_max))
+			debris_bands.append(Rect2i(road_start, 0, road_width, road_end))
 		if connections["down"]:
-			debris_bands.append(Rect2i(road_min, road_min, road_width, DECO_BLOCK_SIZE - road_min))
+			debris_bands.append(Rect2i(road_start, road_start, road_width, DECO_BLOCK_SIZE - road_start))
 
 	_scatter_rects(org, DECO_SRC_ROAD, road_debris_scattering, debris_bands)
 

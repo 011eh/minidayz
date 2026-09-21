@@ -59,13 +59,13 @@ func _build_slots(rng: RandomNumberGenerator) -> void:
 		if child is TemplateSlot:
 			template_slots.append(child as TemplateSlot)
 	for t_slot in template_slots:
-		var scene := t_slot.pick_scene(rng)
-		if scene != null:
-			var inst := scene.instantiate()
+		var choice := t_slot.pick(rng)
+		if choice != null:
+			var inst := choice.scene.instantiate()
 			slots.add_child(inst)
 			var inst_2d := inst as Node2D
 			if inst_2d != null:
-				inst_2d.position = t_slot.spawn_position(rng)
+				inst_2d.position = choice.position
 		t_slot.queue_free()
 
 

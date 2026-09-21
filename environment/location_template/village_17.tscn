@@ -1,37 +1,58 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv17vlg17tpl0"]
+[gd_scene format=4 uid="uid://cv17vlg17tpl0"]
 
 [ext_resource type="PackedScene" uid="uid://barn6ej68ry5i" path="res://environment/location_template/location_template.tscn" id="1_base"]
 [ext_resource type="PackedScene" uid="uid://blnha8a5y5ygn" path="res://environment/location_template/template_slot.tscn" id="2_slot"]
 [ext_resource type="Script" uid="uid://34mxjlsnauxh" path="res://environment/location_template/slot_pool.gd" id="3_pool"]
-[ext_resource type="Resource" path="res://environment/location_template/pool/houses_village.tres" id="4_houses"]
-[ext_resource type="Resource" path="res://environment/location_template/pool/cars.tres" id="5_cars"]
+[ext_resource type="PackedScene" uid="uid://bklp5pavejub" path="res://environment/building/village_brown.tscn" id="4_c3i0d"]
+[ext_resource type="Resource" uid="uid://brdxadkn7edup" path="res://environment/location_template/pool/houses_village.tres" id="4_houses"]
+[ext_resource type="Resource" uid="uid://cpir3x1psitje" path="res://environment/location_template/pool/cars.tres" id="5_cars"]
+[ext_resource type="PackedScene" uid="uid://cesb8fs8ynlq" path="res://environment/building/village_red.tscn" id="5_dyay7"]
+[ext_resource type="PackedScene" uid="uid://cdq7hupfk50xu" path="res://environment/building/village_green.tscn" id="6_1c3et"]
 [ext_resource type="Resource" path="res://environment/location_template/pool/trees_town.tres" id="6_trees"]
+[ext_resource type="PackedScene" uid="uid://b8tbvw8w7j1mc" path="res://environment/building/village_yellow.tscn" id="7_jmafr"]
 [ext_resource type="PackedScene" uid="uid://cnknximavirof" path="res://environment/building/small_shed.tscn" id="7_shed"]
+[ext_resource type="PackedScene" uid="uid://b7p08jmvxhq04" path="res://environment/building/hostel.tscn" id="8_4d8r1"]
 [ext_resource type="PackedScene" uid="uid://c5dryjeoop8oy" path="res://environment/building/church.tscn" id="8_church"]
 [ext_resource type="PackedScene" uid="uid://r2m1ce0rfees" path="res://environment/building/red_brick.tscn" id="9_brick"]
 [ext_resource type="PackedScene" uid="uid://creyruv0517ol" path="res://environment/objects/lavka_h.tscn" id="10_lavka"]
 [ext_resource type="PackedScene" uid="uid://creysav0517ol" path="res://environment/objects/lavka_v.tscn" id="11_lavka_v"]
+[ext_resource type="PackedScene" uid="uid://c22n8uo7fk44h" path="res://environment/objects/car_hatch.tscn" id="14_k5aga"]
+[ext_resource type="PackedScene" uid="uid://c22ydh8boc44h" path="res://environment/objects/car_regular.tscn" id="15_jtvpd"]
+[ext_resource type="PackedScene" uid="uid://c22ydh8boc40t" path="res://environment/objects/car_regular_vert.tscn" id="16_i7bne"]
+[ext_resource type="PackedScene" uid="uid://c2228peqfk4l0" path="res://environment/objects/car_van.tscn" id="17_scmkd"]
+[ext_resource type="PackedScene" uid="uid://bn3lv1l5leaf1" path="res://environment/objects/tree_leaves_1.tscn" id="20_rsiqv"]
+[ext_resource type="PackedScene" uid="uid://cn4mw2l6leaf2" path="res://environment/objects/tree_leaves_2.tscn" id="21_r2xl8"]
+[ext_resource type="PackedScene" uid="uid://dp5nx3l7leaf3" path="res://environment/objects/tree_leaves_3.tscn" id="22_ghbjc"]
+[ext_resource type="PackedScene" uid="uid://vrse2oy06eod" path="res://environment/objects/tree_leaves_4.tscn" id="23_afx1a"]
+[ext_resource type="PackedScene" uid="uid://b25whorq8cii0" path="res://environment/objects/tree_pine_1.tscn" id="24_nckdl"]
+[ext_resource type="PackedScene" uid="uid://dn2pq7l4tree2" path="res://environment/objects/tree_pine_2.tscn" id="25_4f63e"]
+[ext_resource type="Script" uid="uid://b0h3wvlkurxgc" path="res://environment/location_template/slot_entry_offset.gd" id="26_offset"]
 
-[sub_resource type="Resource" script_class="SlotPool" id="Pool_shed"]
+[sub_resource type="Resource" id="Pool_shed"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("7_shed")])
 
-[sub_resource type="Resource" script_class="SlotPool" id="Pool_church_or_brick"]
+[sub_resource type="Resource" id="Pool_church_or_brick"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("8_church"), ExtResource("9_brick")])
 
-[sub_resource type="Resource" script_class="SlotPool" id="Pool_bench"]
+[sub_resource type="Resource" id="Offset_brick"]
+script = ExtResource("26_offset")
+scene = ExtResource("9_brick")
+offset = Vector2(0, -71)
+
+[sub_resource type="Resource" id="Pool_bench"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("10_lavka")])
 
-[sub_resource type="Resource" script_class="SlotPool" id="Pool_bench_v"]
+[sub_resource type="Resource" id="Pool_bench_v"]
 script = ExtResource("3_pool")
 entries = Array[PackedScene]([ExtResource("11_lavka_v")])
 
 [node name="Village17" unique_id=544237903 instance=ExtResource("1_base")]
 
 [node name="Footprint" parent="." index="0" unique_id=71017451]
-tile_map_data = PackedByteArray("AAAMAA0AAAAEAAEAAAAMAAwAAAAAAAEAAAAMAAsAAAAAAAEAAAAMAAoAAAAAAAEAAAAMAAkAAAAAAAEAAAAMAAgAAAAAAAEAAAAMAAcAAAAAAAEAAAAMAAYAAAAAAAEAAAAMAAUAAAAEAAAAAAALAA0AAAABAAAAAAALAAwAAAAAAAMAAAALAAsAAAAAAAMAAAALAAoAAAAAAAMAAAALAAkAAAAAAAMAAAALAAgAAAAAAAMAAAALAAcAAAAAAAMAAAALAAYAAAAAAAMAAAALAAUAAAABAAIAAAAKAA0AAAABAAAAAAAKAAwAAAAAAAMAAAAKAAsAAAAAAAMAAAAKAAoAAAAAAAMAAAAKAAkAAAAAAAMAAAAKAAgAAAAAAAMAAAAKAAcAAAAAAAMAAAAKAAYAAAAAAAMAAAAKAAUAAAABAAIAAAAJAA0AAAABAAAAAAAJAAwAAAAAAAMAAAAJAAsAAAAAAAMAAAAJAAoAAAAAAAMAAAAJAAkAAAAAAAMAAAAJAAgAAAAAAAMAAAAJAAcAAAAAAAMAAAAJAAYAAAAAAAMAAAAJAAUAAAABAAIAAAAIAA0AAAABAAAAAAAIAAwAAAAAAAMAAAAIAAsAAAAAAAMAAAAIAAoAAAAAAAMAAAAIAAkAAAAAAAMAAAAIAAgAAAAAAAMAAAAIAAcAAAAAAAMAAAAIAAYAAAAAAAMAAAAIAAUAAAABAAIAAAAHAA0AAAABAAAAAAAHAAwAAAAAAAMAAAAHAAsAAAAAAAMAAAAHAAoAAAAAAAMAAAAHAAkAAAAAAAMAAAAHAAgAAAAAAAMAAAAHAAcAAAABAAMAAAAHAAYAAAAAAAMAAAAHAAUAAAABAAIAAAAGAA0AAAABAAAAAAAGAAwAAAAAAAMAAAAGAAsAAAAAAAMAAAAGAAoAAAAAAAMAAAAGAAkAAAAAAAMAAAAGAAgAAAAAAAMAAAAGAAcAAAAAAAMAAAAGAAYAAAAAAAMAAAAGAAUAAAABAAIAAAAFAA0AAAABAAAAAAAFAAwAAAAAAAMAAAAFAAsAAAAAAAMAAAAFAAoAAAAAAAMAAAAFAAkAAAAAAAMAAAAFAAgAAAAAAAMAAAAFAAcAAAAAAAMAAAAFAAYAAAAAAAMAAAAFAAUAAAABAAIAAAAEAA0AAAABAAAAAAAEAAwAAAAAAAMAAAAEAAsAAAAAAAMAAAAEAAoAAAAAAAMAAAAEAAkAAAAAAAMAAAAEAAgAAAAAAAMAAAAEAAcAAAAAAAMAAAAEAAYAAAAAAAMAAAAEAAUAAAABAAIAAAADAA0AAAADAAEAAAADAAwAAAACAAEAAAADAAsAAAACAAEAAAADAAoAAAACAAEAAAADAAkAAAACAAEAAAADAAgAAAACAAEAAAADAAcAAAACAAEAAAADAAYAAAACAAEAAAADAAUAAAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAANAA4AAAAEAAEAAAANAA0AAAAAAAEAAAANAAwAAAAAAAEAAAANAAsAAAAAAAEAAAANAAoAAAAAAAEAAAANAAkAAAAAAAEAAAANAAgAAAAAAAEAAAANAAcAAAAAAAEAAAANAAYAAAAAAAEAAAANAAUAAAAAAAEAAAANAAQAAAAEAAAAAAAMAA4AAAABAAAAAAAMAA0AAAAAAAMAAAAMAAwAAAAAAAMAAAAMAAsAAAAAAAMAAAAMAAoAAAAAAAMAAAAMAAkAAAAAAAMAAAAMAAgAAAAAAAMAAAAMAAcAAAAAAAMAAAAMAAYAAAAAAAMAAAAMAAUAAAAAAAMAAAAMAAQAAAABAAIAAAALAA4AAAABAAAAAAALAA0AAAAAAAMAAAALAAwAAAAAAAMAAAALAAsAAAAAAAMAAAALAAoAAAAAAAMAAAALAAkAAAAAAAMAAAALAAgAAAAAAAMAAAALAAcAAAAAAAMAAAALAAYAAAAAAAMAAAALAAUAAAAAAAMAAAALAAQAAAABAAIAAAAKAA4AAAABAAAAAAAKAA0AAAAAAAMAAAAKAAwAAAAAAAMAAAAKAAsAAAACAAIAAAAKAAoAAAACAAEAAAAKAAkAAAACAAEAAAAKAAgAAAACAAEAAAAKAAcAAAACAAAAAAAKAAYAAAAAAAMAAAAKAAUAAAAAAAMAAAAKAAQAAAABAAIAAAAJAA4AAAABAAAAAAAJAA0AAAAAAAMAAAAJAAwAAAAAAAMAAAAJAAsAAAABAAIAAAAJAAcAAAABAAAAAAAJAAYAAAAAAAMAAAAJAAUAAAAAAAMAAAAJAAQAAAABAAIAAAAIAA4AAAABAAAAAAAIAA0AAAAAAAMAAAAIAAwAAAAAAAMAAAAIAAsAAAABAAIAAAAIAAcAAAABAAAAAAAIAAYAAAAAAAMAAAAIAAUAAAAAAAMAAAAIAAQAAAABAAIAAAAHAA4AAAABAAAAAAAHAA0AAAAAAAMAAAAHAAwAAAAAAAMAAAAHAAsAAAABAAIAAAAHAAcAAAABAAAAAAAHAAYAAAAAAAMAAAAHAAUAAAAAAAMAAAAHAAQAAAABAAIAAAAGAA4AAAABAAAAAAAGAA0AAAAAAAMAAAAGAAwAAAAAAAMAAAAGAAsAAAABAAIAAAAGAAcAAAABAAAAAAAGAAYAAAAAAAMAAAAGAAUAAAAAAAMAAAAGAAQAAAABAAIAAAAFAA4AAAABAAAAAAAFAA0AAAAAAAMAAAAFAAwAAAAAAAMAAAAFAAsAAAAAAAIAAAAFAAoAAAAAAAEAAAAFAAkAAAAAAAEAAAAFAAgAAAAAAAEAAAAFAAcAAAAAAAAAAAAFAAYAAAAAAAMAAAAFAAUAAAAAAAMAAAAFAAQAAAABAAIAAAAEAA4AAAABAAAAAAAEAA0AAAAAAAMAAAAEAAwAAAAAAAMAAAAEAAsAAAAAAAMAAAAEAAoAAAAAAAMAAAAEAAkAAAAAAAMAAAAEAAgAAAAAAAMAAAAEAAcAAAAAAAMAAAAEAAYAAAAAAAMAAAAEAAUAAAAAAAMAAAAEAAQAAAABAAIAAAADAA4AAAABAAAAAAADAA0AAAAAAAMAAAADAAwAAAAAAAMAAAADAAsAAAAAAAMAAAADAAoAAAAAAAMAAAADAAkAAAAAAAMAAAADAAgAAAAAAAMAAAADAAcAAAAAAAMAAAADAAYAAAAAAAMAAAADAAUAAAAAAAMAAAADAAQAAAABAAIAAAACAA4AAAADAAEAAAACAA0AAAACAAEAAAACAAwAAAACAAEAAAACAAsAAAACAAEAAAACAAoAAAACAAEAAAACAAkAAAACAAEAAAACAAgAAAACAAEAAAACAAcAAAACAAEAAAACAAYAAAACAAEAAAACAAUAAAACAAEAAAACAAQAAAADAAAAAAA=")
 
 [node name="House1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="0" unique_id=1599667497 instance=ExtResource("2_slot")]
 position = Vector2(261, 251)
@@ -50,8 +71,10 @@ position = Vector2(938, 413)
 pool = SubResource("Pool_shed")
 
 [node name="ChurchOrBrick" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="4" unique_id=1372505630 instance=ExtResource("2_slot")]
-position = Vector2(485, 641)
+position = Vector2(485, 678)
 pool = SubResource("Pool_church_or_brick")
+entry_offsets = Array[SlotEntryOffset]([SubResource("Offset_brick")])
+preview_index = 1
 
 [node name="Car1" parent="Slots" parent_id_path=PackedInt32Array(1720410780) index="5" unique_id=1443303329 instance=ExtResource("2_slot")]
 position = Vector2(788, 602)
